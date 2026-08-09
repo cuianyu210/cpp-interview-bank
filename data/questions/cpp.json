@@ -1,0 +1,3418 @@
+[
+  {
+    "id": "001",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "ODR 对跨翻译单元的声明和定义有哪些约束？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "One Definition Rule"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "同一实体可以有多次声明，但被 ODR-use 的非 inline 实体通常只能有一个定义。inline 函数、inline 变量和模板可在多个翻译单元出现等价定义，违反一致性要求会形成未定义行为。"
+  },
+  {
+    "id": "002",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "inline 关键字为什么不等于编译器一定内联函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "inline specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "inline 的语言语义主要是允许实体在多个翻译单元中出现等价定义，并不强制机器码展开。是否执行调用内联属于优化决定，编译器可以忽略 inline，也可以内联未标记的函数。"
+  },
+  {
+    "id": "003",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "内部链接和外部链接如何决定名字是否表示同一实体？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "storage duration and linkage"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "内部链接的名字在每个翻译单元中表示独立实体，外部链接的名字可以在多个翻译单元中指向同一实体。匿名命名空间和命名空间作用域 const 常用于获得内部链接，extern 可用于声明具有外部链接的实体。"
+  },
+  {
+    "id": "004",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "extern \"C\" 会改变函数的哪些链接语义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "language linkage"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "extern \"C\" 指定 C 语言链接，主要影响函数名的链接方式以及实现定义的调用约定。它不会把 C++ 类型、重载或异常自动变成 C ABI 可用形式，因此接口仍应限制为双方都能表示的数据布局。"
+  },
+  {
+    "id": "005",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "ADL 如何向普通名字查找结果中加入函数候选？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "argument-dependent lookup"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "对未限定函数调用，ADL 会根据实参类型的关联命名空间和关联类加入候选。它不会作用于限定调用，隐藏友元可只通过 ADL 被找到，因此泛型代码需要谨慎控制 using 和限定名。"
+  },
+  {
+    "id": "006",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "using 声明和 using 指令对名字查找有什么不同？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "namespace using-directives"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "using 声明把指定名字引入当前作用域，而 using 指令让名字查找考虑整个命名空间。头文件中的 using namespace 会影响所有包含者的候选集，容易造成歧义，所以通常只在局部实现作用域使用。"
+  },
+  {
+    "id": "007",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "constexpr 函数在编译期和运行期调用时有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constexpr specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "constexpr 函数具备参与常量求值的资格，但只有实参和执行路径满足常量表达式规则时才必须在编译期求值。C++14 放宽了函数体限制；不满足常量求值条件的调用仍可作为普通运行期调用。"
+  },
+  {
+    "id": "008",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "if constexpr 为什么能避免实例化无效的模板分支？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constexpr if"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "if constexpr 的条件必须可转为常量表达式，未选择的分支会成为 discarded statement。依赖模板参数的丢弃分支不会在该实例中完成实例化，但分支仍必须满足基本语法并通过非依赖名字检查。"
+  },
+  {
+    "id": "009",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "auto 类型推导会丢弃哪些 cv 和引用限定？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "placeholder type specifiers"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "普通 auto 按模板按值参数的规则推导，会丢弃顶层 cv 和引用。使用 auto&、const auto& 或 auto&& 可以保留相应引用语义，而花括号初始化还可能触发 initializer_list 的特殊规则。"
+  },
+  {
+    "id": "010",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "decltype 对变量名和带括号表达式为何可能得到不同类型？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "decltype specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "对未加括号的名字或成员访问，decltype 直接得到声明类型。对一般表达式，lvalue 得到 T&、xvalue 得到 T&&、prvalue 得到 T，因此额外括号可能把变量名从 T 变成 T&。"
+  },
+  {
+    "id": "011",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "decltype(auto) 返回局部变量时为什么要警惕额外括号？",
+    "difficulty": 4,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "placeholder type specifiers decltype(auto)"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "decltype(auto) 完全采用 decltype 的规则，return (local) 会推导为局部变量的左值引用。函数返回后该引用悬空，而 return local 通常按声明类型返回值，所以括号会实质改变接口。"
+  },
+  {
+    "id": "012",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "nullptr 为什么比 0 或 NULL 更适合作为空指针实参？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "pointer literals"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "nullptr 的类型是 std::nullptr_t，可以转换为任意指针和成员指针，但不会按普通整数参与重载。0 或实现为整数的 NULL 可能选择整型重载，从而产生歧义或调用错误接口。"
+  },
+  {
+    "id": "013",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "enum class 如何避免枚举值污染作用域和隐式转整数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "enumeration declaration"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "作用域枚举的枚举值必须通过枚举类型限定访问，并且不会隐式转换为整数。可以显式指定底层类型以控制存储和 ABI，但跨接口时仍应固定编译器和布局约定。"
+  },
+  {
+    "id": "014",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "alignas 能否降低一个类型原本要求的对齐？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "alignment specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "alignas 可以提高对象或类型的对齐要求，不能用更小的非零值削弱自然对齐。多个 alignas 同时出现时采用最严格的有效要求，不满足实现支持范围会使程序不符合规则。"
+  },
+  {
+    "id": "015",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "不同翻译单元中的静态对象初始化顺序为何不可靠？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "non-local initialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "同一翻译单元内的有序动态初始化按定义顺序进行，但不同翻译单元之间通常没有可依赖的全局顺序。用函数内静态对象按需初始化可以把依赖关系转移到首次调用，并从 C++11 起获得线程安全初始化。"
+  },
+  {
+    "id": "016",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "thread_local 对象何时初始化并在何时析构？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "storage duration thread local"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "每个线程拥有独立的 thread_local 对象实例，其动态初始化最迟在该线程首次 ODR-use 前完成。实例通常在线程退出时析构，若析构依赖其他已销毁的线程局部或静态对象，仍可能出现顺序问题。"
+  },
+  {
+    "id": "017",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "整型提升会怎样影响小整数类型的表达式结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "implicit conversions integral promotions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "bool、char、short 等小整数类型参与大多数算术运算前会提升为 int 或 unsigned int。运算结果类型由提升后的操作数决定，因此溢出和重载选择不能按原始变量类型判断。"
+  },
+  {
+    "id": "018",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "有符号数和无符号数混合比较为什么容易得到反直觉结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "usual arithmetic conversions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "通常算术转换可能把有符号操作数转换成同等级的无符号类型，负数随后表现为很大的无符号值。比较前应统一到能表达双方范围的类型，不能只在结果异常后再做强制转换。"
+  },
+  {
+    "id": "019",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "列表初始化会拒绝哪些窄化转换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "list-initialization narrowing conversions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "花括号初始化会拒绝可能丢失范围或精度的整型、浮点和浮点到整型转换，只有部分可证明安全的常量表达式例外。这个检查发生在编译期，因此比圆括号初始化更适合暴露隐式截断。"
+  },
+  {
+    "id": "020",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "initializer_list 构造函数为何会优先于其他重载？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "list-initialization overload resolution"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "列表初始化的重载解析先单独考虑 initializer_list 构造函数，只要存在可行候选就优先选择。即使另一个构造函数看起来参数更精确，也可能直到 initializer_list 阶段失败后才被考虑。"
+  },
+  {
+    "id": "021",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "聚合初始化在 C++17 中如何处理基类和默认成员初始化器？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "aggregate initialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "C++17 允许满足聚合条件的类包含公开基类，初始化顺序先基类后成员。未显式提供的成员使用默认成员初始化器或值初始化，但用户提供构造函数等条件会使类型失去聚合资格。"
+  },
+  {
+    "id": "022",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "临时对象绑定到 const 引用时寿命一定会延长吗？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "reference initialization temporary lifetime"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "临时对象直接绑定到局部 const 引用时，寿命通常延长到该引用的作用域结束。通过函数参数、new 初始化器或返回引用等场景有不同边界，不能把寿命延长沿着另一个引用继续传递。"
+  },
+  {
+    "id": "023",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "数组在什么上下文中不会退化为指针？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "array-to-pointer conversion"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "数组在大多数值上下文中转换为指向首元素的指针，但作为 sizeof、alignof、取地址和引用绑定的操作数时不会退化。模板按引用接收数组也能保留长度信息。"
+  },
+  {
+    "id": "024",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "模板按值参数为什么会丢弃实参的顶层 const？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "template argument deduction cv qualifiers"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "按值形参会复制一个新的对象，模板推导因此忽略实参类型的顶层 cv 限定。指针所指对象的 const 属于低层限定并会保留，按引用形参也能观察原对象的 cv 属性。"
+  },
+  {
+    "id": "025",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "严格别名规则允许通过哪些类型访问对象存储？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "object type-aliasing"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "对象通常只能通过与其动态类型兼容的 glvalue 访问，char、unsigned char 和 std::byte 可用于检查对象表示。用不相关指针 reinterpret_cast 后解引用可能违反严格别名并导致未定义行为，复制字节应优先使用 memcpy。"
+  },
+  {
+    "id": "026",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "读取 union 的非活动成员是否具有可移植语义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "union declaration active member"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "标准通常只允许读取当前活动成员，切换活动成员需要开始新成员的生命周期。某些实现扩展允许类型双关，但可移植代码应使用显式转换、memcpy 或 C++17 的 variant。"
+  },
+  {
+    "id": "027",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "memcpy 何时可以安全复制一个对象的表示？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "object representation and trivially copyable types"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "对 trivially copyable 类型，可以把对象表示复制到字节数组并复制回来，原值应得到恢复。把字节解释成另一个不兼容类型仍受生命周期、对齐和别名规则约束，memcpy 不是任意类型转换许可证。"
+  },
+  {
+    "id": "028",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "C++17 对函数实参求值顺序提供了什么保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "order of evaluation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "C++17 保证不同实参的求值彼此不交错，即一个实参完整求值后才开始另一个。具体先算哪个实参仍通常未指定，所以程序不能依赖从左到右的调用顺序。"
+  },
+  {
+    "id": "029",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "声明析构函数后编译器还会隐式生成移动操作吗？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "special member functions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "用户声明析构函数会抑制隐式移动构造和移动赋值的生成，但复制操作可能仍存在。资源管理类型应显式决定五个特殊成员的语义，纯组合类型则优先遵循零法则。"
+  },
+  {
+    "id": "030",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "零法则为什么优于手写五个特殊成员函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "rule of zero"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "零法则把资源所有权交给标准容器和智能指针，使编译器生成的复制、移动和析构自然组合。只有类型直接拥有非 RAII 资源或需要特殊复制语义时，才应显式实现五法则。"
+  },
+  {
+    "id": "031",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "通过基类指针删除派生对象时为什么需要虚析构函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "virtual destructor"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "若基类析构函数非虚，通过基类指针 delete 一个派生对象会产生未定义行为。虚析构保证从最终派生类开始逐层析构；不允许多态删除的基类可采用 protected 非虚析构。"
+  },
+  {
+    "id": "032",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "纯虚析构函数为什么仍然必须提供定义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "pure virtual destructor"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "纯虚析构函数可以让类保持抽象，但派生对象销毁时仍会调用基类析构部分。链接器因此需要找到该析构函数的定义，即使它被声明为 = 0。"
+  },
+  {
+    "id": "033",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "override 和 final 如何帮助编译器检查虚函数层次？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "override specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "override 要求当前声明确实覆盖某个基类虚函数，签名或 cv/ref 限定不匹配会直接报错。final 可以禁止继续覆盖函数或继承类，把设计意图变成编译期约束。"
+  },
+  {
+    "id": "034",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "构造函数和析构函数中的虚调用会分派到哪一层？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "virtual function during construction"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "构造或析构某一层基类期间，虚调用只分派到当前正在构造或析构的层次，不会进入尚未构造或已经销毁的派生部分。依赖完整派生状态的逻辑应放到对象完成构造后的显式阶段。"
+  },
+  {
+    "id": "035",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "把派生对象按值传给基类参数会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "object slicing"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "按值构造基类对象只复制派生对象中的基类子对象，派生新增状态被切掉，这就是对象切片。需要保留动态类型时应使用引用、指针或具备值语义的多态封装。"
+  },
+  {
+    "id": "036",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "多重继承中的同名成员歧义如何消解？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "multiple inheritance"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "若多个基类都提供同名成员，未限定访问可能产生歧义，即使其中实现完全相同。可以用限定名、using 声明或重新设计公共虚基类来明确选择，但还要检查转换路径是否唯一。"
+  },
+  {
+    "id": "037",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "虚基类由谁负责初始化？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "virtual base classes"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "虚基类只在最终派生对象中存在一个共享子对象，并由最派生类负责初始化。中间类初始化列表中对虚基类的初始化在构造更深派生对象时会被忽略。"
+  },
+  {
+    "id": "038",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "standard-layout 和 trivially copyable 分别保证什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "type properties"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "standard-layout 约束成员和继承布局，使部分 C 互操作与首成员地址规则成立。trivially copyable 关注对象能否按字节复制，两者相互独立，不能从一个属性推导另一个。"
+  },
+  {
+    "id": "039",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "成员初始化列表的书写顺序会改变实际初始化顺序吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constructors initialization order"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "成员始终按类中声明顺序初始化，基类则先于成员，初始化列表的排列不会改变这个顺序。若一个成员初始化依赖另一个成员，声明顺序错误会导致读取尚未初始化的数据。"
+  },
+  {
+    "id": "040",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "空基类优化为什么不能当成所有对象布局的保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "empty base optimization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "实现通常允许空基类不占额外空间，但相同类型的不同子对象仍需满足地址可区分等规则。标准只在特定布局关系下提供保证，普通空成员在 C++17 中仍通常占用空间。"
+  },
+  {
+    "id": "041",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "PImpl 如何降低头文件依赖并稳定二进制边界？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "pImpl idiom"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "PImpl 让公开类只持有指向私有实现的指针，调用方无需看到成员布局，修改实现通常不要求重新编译用户代码。析构和移动操作应在实现类型完整的源文件中定义，并明确跨模块分配释放责任。"
+  },
+  {
+    "id": "042",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "协变返回类型允许虚函数怎样改变返回值？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "virtual function covariant return"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "覆盖函数可以把返回的类指针或引用收窄为基类返回类型的派生类指针或引用。该规则不适用于按值返回，也要求目标类型在覆盖点具备可访问且无歧义的继承转换。"
+  },
+  {
+    "id": "043",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "RAII 如何让异常路径自动释放资源？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "RAII"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "RAII 把资源获取绑定到对象构造，把释放绑定到析构，因此正常返回和栈展开都会执行同一清理路径。资源拥有者必须具备明确的移动或复制语义，析构还应保持不抛异常。"
+  },
+  {
+    "id": "044",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "基本保证、强保证和不抛保证有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "exception safety"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "基本保证要求失败后对象仍有效且没有资源泄漏，强保证要求操作要么成功要么保持原状态。不抛保证承诺操作不会传播异常，常用于析构、swap 和移动路径。"
+  },
+  {
+    "id": "045",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "构造函数中途抛异常时哪些析构函数会执行？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constructors exceptions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "已经完成构造的基类和成员会按逆序析构，尚未完成的最外层对象本身不会调用析构函数。构造函数直接获得的裸资源若未交给已构造成员管理，可能在此路径泄漏。"
+  },
+  {
+    "id": "046",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "析构函数在栈展开期间再次抛异常会发生什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "destructors noexcept"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "若已有异常正在传播，析构函数再让异常逃逸会触发 std::terminate。析构函数默认 noexcept，清理失败通常应被记录、转成状态，或交由显式 close 操作处理。"
+  },
+  {
+    "id": "047",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "placement new 之后为什么需要显式结束旧对象生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "new expression placement new"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "placement new 只在给定存储上构造对象，不负责释放存储，也不会自动调用原对象析构。重用非平凡对象的存储前应结束旧生命周期，并保证对齐、大小和后续访问满足新对象类型。"
+  },
+  {
+    "id": "048",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "std::launder 在哪些对象重用场景中有意义？",
+    "difficulty": 5,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::launder"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "在同一存储中构造新对象后，旧指针有时不能直接用于访问新对象，尤其涉及 const 成员或完整对象替换边界时。std::launder 返回可用于指向新对象的指针，但不会修复错误的对齐、生命周期或类型别名。"
+  },
+  {
+    "id": "049",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "返回绑定到局部临时对象的引用为什么会悬空？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "reference initialization lifetime"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "函数返回时局部对象和大多数局部临时对象的生命周期结束，引用本身不会延长它们到调用方。编译器可能接受该代码，但任何后续解引用都访问已结束生命周期的对象。"
+  },
+  {
+    "id": "050",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "string_view 怎样因为源字符串变化而失效？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::basic_string_view"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "string_view 不拥有字符存储，只保存指针和长度。源 string 析构、移动或发生重新分配后，已有 view 可能悬空，接口应让拥有者寿命明显长于所有观察者。"
+  },
+  {
+    "id": "051",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "移动后的标准库对象还能执行哪些操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "move constructors moved-from state"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "除非具体类型另有说明，移动后的对象处于有效但未指定状态，可以析构、赋值或调用不依赖特定值的操作。代码不能假设它一定为空，应在需要确定状态时显式重新赋值。"
+  },
+  {
+    "id": "052",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "copy-and-swap 如何提供强异常保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "copy assignment copy-and-swap"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "赋值先在临时对象中完成可能抛异常的复制，成功后再用不抛的 swap 提交状态。复制失败时原对象保持不变，代价是额外临时对象，并且 swap 必须正确处理所有不变量。"
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "自赋值检查是否是所有赋值运算符的必要步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "copy assignment operator"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "良好设计的复制赋值应在 x = x 时保持正确，但不一定需要显式比较地址。copy-and-swap 天然处理自赋值；手写先释放后复制的实现则可能必须检测或重新安排顺序。"
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "new[] 分配的对象为什么必须与 delete[] 配对？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "delete expression arrays"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "数组 new 可能记录元素数量并逐个构造对象，delete[] 才会按逆序析构全部元素并使用匹配的释放机制。把 new[] 与 delete 配对会产生未定义行为，即使元素是基础类型也不能依赖实现偶然可用。"
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "非虚基类析构下删除派生对象为何是未定义行为？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "delete expression polymorphic"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "delete 表达式通过静态基类指针释放派生对象时，需要虚析构才能找到最终析构链和正确释放函数。缺少虚析构不仅会漏掉派生成员清理，标准直接把这种删除定义为未定义行为。"
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "C++17 之前如何实现可靠的作用域退出清理？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "RAII scope guard"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "可以用自定义 RAII guard 在构造时保存清理函数，并在析构时执行，移动时必须确保只有一个活动拥有者。清理函数不应让异常逃出析构，提交成功后则需要显式 release 取消执行。"
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unique_ptr 的自定义删除器如何影响指针类型和大小？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::unique_ptr"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "删除器是 unique_ptr 类型的一部分，状态删除器通常会增加对象大小，无状态删除器可能借助空基类优化不占额外空间。移动 unique_ptr 会连同删除器一起转移，释放接口必须与删除器预期的资源来源匹配。"
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unique_ptr<T[]> 与 unique_ptr<T> 的接口有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::unique_ptr array specialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "数组特化使用 delete[] 并提供下标访问，不提供单对象的 operator* 和 operator->。创建数组所有权时必须选择 T[] 类型，不能把 new T[n] 交给 unique_ptr<T>。"
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "make_unique 相比直接 new 有哪些异常安全优势？",
+    "difficulty": 2,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::make_unique"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "make_unique 在一个函数调用中完成对象构造和 unique_ptr 建立，避免裸指针暴露在其他可能抛异常的实参求值之间。它还减少重复类型名，但需要自定义删除器时仍要显式构造 unique_ptr。"
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "shared_ptr 控制块保存哪些状态？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::shared_ptr implementation notes"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "控制块通常保存强引用计数、弱引用计数、删除器和可能的分配器，被管理对象不一定与 get() 返回的地址相同。计数操作具有规定的线程安全性，但多个线程读写被管理对象仍需自行同步。"
+  },
+  {
+    "id": "061",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "make_shared 的单次分配会带来什么生命周期取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::make_shared"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "make_shared 通常把对象和控制块放在一次分配中，减少分配次数并提高局部性。若仍有 weak_ptr 存在，整块存储可能在对象析构后继续保留；它也不能直接接受自定义删除器。"
+  },
+  {
+    "id": "062",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "weak_ptr 如何打破 shared_ptr 的循环引用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::weak_ptr"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "weak_ptr 不增加强引用计数，因此把环上的非拥有边改为 weak_ptr 后，强引用归零时对象仍可析构。访问前必须调用 lock 获取临时 shared_ptr，并处理对象已经过期的情况。"
+  },
+  {
+    "id": "063",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "weak_ptr::lock 在并发场景中保证了什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::weak_ptr lock"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "lock 会原子地检查控制块并在对象仍存活时增加强引用计数，成功后返回的 shared_ptr 保证该次使用期间对象不被销毁。它不保护对象内部数据，也不保证下一次 lock 仍会成功。"
+  },
+  {
+    "id": "064",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "shared_ptr 的别名构造为什么可能让 get() 指向子对象？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::shared_ptr aliasing constructor"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "别名构造共享另一个 shared_ptr 的控制块，却保存一个不同的观察指针。它可让成员子对象随宿主一起存活，但销毁的始终是控制块原本管理的对象，不是 get() 指向的地址。"
+  },
+  {
+    "id": "065",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "enable_shared_from_this 何时能够安全返回 shared_ptr？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::enable_shared_from_this"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "对象必须已经由兼容的 shared_ptr 建立控制块，enable_shared_from_this 内部的 weak 引用才会被初始化。对栈对象、构造期间尚未托管的对象或存在第二控制块的对象调用 shared_from_this 会失败或破坏所有权。"
+  },
+  {
+    "id": "066",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "同一裸指针创建两个 shared_ptr 为什么会重复释放？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::shared_ptr constructors"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "分别从同一裸指针构造 shared_ptr 会创建两个互不知情的控制块，每个控制块都认为自己拥有删除责任。应从已有 shared_ptr 复制、使用 shared_from_this，或在一个明确工厂中建立唯一控制块。"
+  },
+  {
+    "id": "067",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "C++11 的 shared_ptr 原子自由函数解决了什么问题？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "atomic operations for shared_ptr"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "atomic_load、atomic_store 等自由函数允许多个线程原子替换和读取同一个 shared_ptr 对象，避免对该句柄本身的数据竞争。它们只同步智能指针值，被管理对象的可变状态仍需独立同步。"
+  },
+  {
+    "id": "068",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "跨 DLL 传递智能指针时删除器为什么必须匹配分配端？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "resource ownership across ABI"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "不同模块可能使用不同运行库、堆或编译选项，在另一侧直接 delete 会跨越不兼容的分配边界。接口应携带由分配模块提供的删除器，或暴露成对的创建和销毁函数。"
+  },
+  {
+    "id": "069",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "lvalue、xvalue 和 prvalue 如何影响引用绑定？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "value categories"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "lvalue 表示有身份且通常可再次访问的对象，xvalue 表示可复用资源的将亡对象，prvalue 用于初始化结果对象。非 const 左值引用只绑定 lvalue，右值引用绑定 xvalue 或 prvalue，const 左值引用可绑定三者。"
+  },
+  {
+    "id": "070",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "引用折叠的四种组合最终得到什么类型？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "reference collapsing"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "只要组合中出现左值引用，T& 与任何 & 或 && 折叠后都是 T&。只有 T&& 与 T&& 组合仍为 T&&，这条规则让转发引用能够保留实参值类别。"
+  },
+  {
+    "id": "071",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "转发引用与普通右值引用怎样区分？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "forwarding references"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "函数模板中形如 T&& 且 T 由该实参推导时是转发引用，auto&& 也遵循类似规则。若 T 已固定、带 const，或不是发生推导的位置，它就是普通右值引用。"
+  },
+  {
+    "id": "072",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::move 为什么本身不移动任何资源？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::move"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "std::move 只是把表达式转换为对应的右值引用类型，从而允许重载选择移动操作。真正的资源转移发生在随后调用的移动构造、移动赋值或其他接收右值的函数中。"
+  },
+  {
+    "id": "073",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::forward 如何保留调用方的值类别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::forward"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "std::forward<T> 根据模板参数 T 把形参恢复为原来的左值或右值类别。T 必须来自转发引用的推导结果，手工指定错误类型可能把左值错误地转换成右值。"
+  },
+  {
+    "id": "074",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "对 const 对象调用 std::move 为什么常常仍然复制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::move const objects"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "std::move(const T) 产生 const T&&，而多数移动构造需要修改源对象并接收 T&&。const 右值无法绑定该重载，重载解析于是选择接收 const T& 的复制构造。"
+  },
+  {
+    "id": "075",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "移动构造标记 noexcept 为什么会影响 vector 扩容？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "move constructor noexcept"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "vector 为保持强异常保证，在移动可能抛异常且类型可复制时通常选择复制旧元素。将确实不抛的移动构造标记 noexcept 后，容器可以安全使用移动并避免昂贵复制。"
+  },
+  {
+    "id": "076",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "C++17 的强制拷贝消除覆盖哪些返回场景？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "copy elision"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "当 prvalue 直接初始化同类型结果对象时，C++17 把它构造在最终存储中，不要求存在可访问的复制或移动构造。具名局部变量的 NRVO 仍是允许但不强制的优化。"
+  },
+  {
+    "id": "077",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "NRVO 未发生时返回局部对象会怎样选择移动或复制？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "copy elision NRVO"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "返回满足条件的自动存储局部对象时，即使表达式是名字，重载解析也会先把它当作右值尝试移动。移动不可行时再尝试复制，但 NRVO 本身并不由标准强制。"
+  },
+  {
+    "id": "078",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "return std::move(local) 为什么可能阻止 NRVO？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "copy elision return std::move"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "NRVO 要求返回表达式直接是具名局部对象，包一层 std::move 后表达式变成转换结果，不再满足该形式。编译器仍可调用移动构造，但失去了原地构造的机会。"
+  },
+  {
+    "id": "079",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "移动后对象的有效但未指定状态意味着什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "moved-from state"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "对象仍满足类型不变量，可以安全析构、赋新值，并调用不要求特定旧值的操作。标准没有普遍保证容器一定为空，只有具体类型文档给出的额外后置条件可以依赖。"
+  },
+  {
+    "id": "080",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "转发构造函数为什么可能劫持复制构造调用？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "forwarding constructor overload resolution"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "不受约束的模板 T&& 对某些非 const 左值能形成比 const T& 更好的匹配，从而抢在复制构造前被选择。应使用 SFINAE 排除本类型及其派生类型，或提供更窄的显式重载。"
+  },
+  {
+    "id": "081",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "类型参数、非类型参数和模板模板参数分别表达什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "template parameters"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "类型参数代表一个类型，非类型参数代表满足版本限制的编译期值，模板模板参数代表能按指定形状实例化的模板。选择参数种类应反映调用方需要替换的是类型、值还是类型构造器。"
+  },
+  {
+    "id": "082",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "函数模板推导遇到数组和函数实参时何时会退化？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "template argument deduction"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "按值形参推导时，数组和函数会分别退化为指针，顶层 cv 也会被忽略。按引用形参推导可以保留数组长度、函数类型和 cv 限定。"
+  },
+  {
+    "id": "083",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "依赖类型名前为什么需要 typename？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "dependent names typename"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "模板定义阶段，依赖限定名默认不被当作类型，除非语法上下文已经明确。typename 告诉解析器该名字在实例化后应表示类型，类似地调用依赖模板成员时可能需要 template 消歧义符。"
+  },
+  {
+    "id": "084",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "两阶段名字查找如何影响模板中的非依赖调用？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "two-phase name lookup"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "非依赖名字在模板定义时完成查找，实例化点后来声明的普通重载不会自动加入。依赖调用会在实例化时结合 ADL 查找关联命名空间，因此声明位置和关联类型会改变候选集。"
+  },
+  {
+    "id": "085",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "类模板偏特化如何选择最匹配的特化？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "partial template specialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "编译器先找出所有可匹配偏特化，再按类似函数模板偏序的规则选择更专门者。若两个偏特化互不更专门，实例化会产生歧义而不会回退到主模板。"
+  },
+  {
+    "id": "086",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "显式全特化为什么必须遵守声明可见性和 ODR？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "explicit specialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "全特化必须在第一次会导致对应实例化的使用之前声明，并放在允许的命名空间作用域。跨翻译单元的定义仍受 ODR 约束，头文件定义通常需要 inline 或只保留声明。"
+  },
+  {
+    "id": "087",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "函数模板为什么不能做偏特化？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "function template overloading"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "语言只允许函数模板显式全特化，不允许偏特化。需要按类型族定制行为时通常使用函数重载、类模板偏特化辅助器或 SFINAE。"
+  },
+  {
+    "id": "088",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "哪些替换错误会被 SFINAE 排除而不是直接报错？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "SFINAE"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "只有在模板参数替换的立即上下文中形成的无效类型或表达式才会使候选被丢弃。函数体实例化、访问后的副作用以及已选候选内部的错误不属于 SFINAE，仍会产生诊断。"
+  },
+  {
+    "id": "089",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "enable_if 放在返回类型和模板参数中各有什么取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::enable_if"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "放在返回类型中不参与普通参数推导，但构造函数没有可用返回类型。放在默认模板参数中更通用，却要避免多个声明只因默认值不同而被视为同一模板。"
+  },
+  {
+    "id": "090",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "void_t 如何把无效表达式转成检测失败？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::void_t"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "void_t 会把所有有效模板实参映射为 void，若构造某个实参类型失败，所在偏特化会因 SFINAE 被排除。它常与 decltype 和 declval 组合检测成员类型或表达式是否存在。"
+  },
+  {
+    "id": "091",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "检测惯用法如何同时返回真假和检测到的类型？",
+    "difficulty": 4,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "detection idiom"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "检测器主模板表示替换失败并提供默认类型，使用 void_t 的偏特化在表达式有效时保存 decltype 结果。调用端可读取 value 判断能力，也能读取 type 继续构造后续泛型接口。"
+  },
+  {
+    "id": "092",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "if constexpr 与 SFINAE 的适用边界有什么不同？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constexpr if and SFINAE"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "SFINAE 控制函数或特化是否进入候选集，适合约束公开接口。if constexpr 在已经选中的函数体内丢弃不适用分支，适合共享接口后的实现分派。"
+  },
+  {
+    "id": "093",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "折叠表达式如何处理空参数包？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "fold expressions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "一元折叠只有 &&、|| 和逗号对空包有规定的单位值，其他运算符对空包不成立。二元折叠提供显式初始值，因此可以为加法等操作定义空包结果。"
+  },
+  {
+    "id": "094",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "C++17 的非类型模板参数仍有哪些类型限制？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "non-type template parameters"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "C++17 允许整型、枚举、指针、引用、成员指针和 std::nullptr_t 等作为非类型模板参数。浮点值和普通类类型尚不能直接作为参数，相关对象还要满足链接和常量表达式要求。"
+  },
+  {
+    "id": "095",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 扩容后哪些迭代器、指针和引用会失效？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::vector iterator invalidation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "发生重新分配时，所有指向元素的迭代器、指针和引用都会失效。未重新分配的插入仍会使插入点及其后的迭代器失效，因此保留元素地址前要确认容量和操作位置。"
+  },
+  {
+    "id": "096",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 的 reserve 和 resize 为什么不能互换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::vector capacity"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "reserve 只保证容量至少达到给定值，不改变 size，也不构造新元素。resize 改变元素数量，会构造或销毁元素，并可能因为容量不足触发重新分配。"
+  },
+  {
+    "id": "097",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector<bool> 为什么不提供普通 bool 引用？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::vector bool specialization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "vector<bool> 允许按位压缩存储，operator[] 返回代理对象而不是 bool&。依赖真实地址、引用类型或并发独立元素写入的泛型代码不应假设它与普通 vector<T> 完全一致。"
+  },
+  {
+    "id": "098",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "deque 在首尾插入后迭代器和引用的有效性如何变化？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::deque iterator invalidation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "deque 的分段存储使首尾插入通常不会移动已有元素，因此元素引用通常保持有效。迭代器可能因内部映射调整而失效，中间插入或删除还可能使更多引用失效，必须按具体操作规则判断。"
+  },
+  {
+    "id": "099",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "list::splice 为什么可以在常数时间转移节点？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::list splice"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "splice 重新连接链表节点而不移动或复制元素，同一 allocator 条件满足时可保持指向被转移元素的迭代器有效。跨不同容器转移后，迭代器归属新的容器，源容器不再包含这些节点。"
+  },
+  {
+    "id": "100",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "forward_list 为什么提供 before_begin 和 erase_after？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::forward_list"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "单向链表只有指向下一节点的链接，删除当前节点需要持有前驱。before_begin 提供首元素之前的哨兵位置，使头部插入和 erase_after 能使用统一接口。"
+  },
+  {
+    "id": "101",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "map 比较器必须满足严格弱序的哪些性质？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "Compare named requirement"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "比较器必须满足非自反、非对称和传递性，并让不可互相小于的键形成传递的等价类。违反这些性质会破坏树结构假设，查找、插入结果将不再可靠。"
+  },
+  {
+    "id": "102",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unordered_map 的 Hash 与 KeyEqual 为什么必须一致？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "UnorderedAssociativeContainer requirements"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "若 KeyEqual 判定两个键等价，Hash 必须为它们产生相同哈希值，否则查找可能进入错误桶。rehash 会改变桶布局并使迭代器失效，但元素引用和指针通常保持有效。"
+  },
+  {
+    "id": "103",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 和 list 在内存布局、随机访问和插入删除上怎么取舍？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::vector"
+      },
+      {
+        "authority": "cppreference",
+        "topic": "std::list"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "vector 连续存储，随机访问是常数时间，尾部追加通常是摊还常数时间，但中间插入删除需要移动元素并可能使迭代器失效。list 是节点式存储，不支持随机访问，已知位置插入删除为常数时间，但缓存局部性和额外指针开销更差。面试中通常先看访问模式：遍历和随机访问多选 vector，频繁在中间稳定位置 splice 或 erase 才考虑 list。"
+  },
+  {
+    "id": "104",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::sort 的稳定性和开销有什么特点？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::sort"
+      },
+      {
+        "authority": "cppreference",
+        "topic": "std::stable_sort"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "std::sort 不保证等价元素的相对顺序。std::stable_sort 保持等价元素的相对顺序，通常需要额外内存或更高的常数开销。等价元素的顺序需要保留时，可以考虑 stable_sort。"
+  },
+  {
+    "id": "105",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "迭代器类别如何限制标准算法可执行的操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "iterator concepts legacy categories"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "输入迭代器只保证单遍读取，前向迭代器支持多遍，双向迭代器增加递减，随机访问迭代器支持常数时间跳转。算法根据最低类别决定可用操作和复杂度，伪造更强类别会破坏契约。"
+  },
+  {
+    "id": "106",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "erase-remove 惯用法为什么需要两个步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "erase-remove idiom"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "remove 只把保留元素前移并返回新的逻辑结尾，不会改变容器 size。随后调用容器 erase 才真正销毁尾部多余元素；关联容器则应使用自身的 erase 接口。"
+  },
+  {
+    "id": "107",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "emplace_back 一定比 push_back 少一次移动吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::vector emplace_back"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "emplace_back 在容器存储中直接用实参构造元素，但若调用方已经有一个 T 对象，push_back(T&&) 同样可以移动构造。emplace 还可能接受意外的隐式构造参数，性能和可读性应按实际调用比较。"
+  },
+  {
+    "id": "108",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "标准容器的复杂度保证是最坏情况还是摊还复杂度？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "container library requirements complexity"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "不同接口给出的保证不同，例如 vector::push_back 通常是摊还常数，而 map 查找是对数复杂度。unordered 容器常给平均常数和最坏线性保证，设计时必须阅读具体操作的复杂度条款。"
+  },
+  {
+    "id": "109",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "Lambda 按值捕获和按引用捕获怎样影响对象生命周期？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda capture"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "按值捕获把当时的值存进闭包，闭包寿命独立于原局部变量；按引用捕获只保存引用关系。若闭包逃出作用域或跨线程执行，引用捕获很容易悬空。"
+  },
+  {
+    "id": "110",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "C++14 初始化捕获如何移动一个只移动对象？",
+    "difficulty": 2,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda init-capture"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "初始化捕获允许在捕获列表中定义闭包成员，例如 p = std::move(ptr)。该成员随闭包移动或销毁，不再依赖原局部变量，因此可安全转移 unique_ptr 所有权。"
+  },
+  {
+    "id": "111",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "泛型 Lambda 的 auto 形参会生成什么调用运算符？",
+    "difficulty": 3,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "generic lambda"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "泛型 Lambda 的 operator() 是函数模板，auto 形参分别参与模板参数推导。每组实参类型会形成相应实例，值类别要用 auto&& 与 std::forward 才能保留。"
+  },
+  {
+    "id": "112",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "mutable Lambda 为什么能修改按值捕获的副本？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda mutable"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "Lambda 的 operator() 默认是 const，因此不能修改普通按值捕获成员。mutable 移除该 const 限定，只改变闭包内部副本，不会反向修改原变量。"
+  },
+  {
+    "id": "113",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "无捕获 Lambda 在什么条件下能转换为函数指针？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda function pointer conversion"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "无捕获 Lambda 可以转换为具有兼容参数和返回类型的函数指针。带捕获闭包需要对象状态，无法转换成普通函数指针，通常改用模板回调或 std::function。"
+  },
+  {
+    "id": "114",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "异步回调捕获 this 为什么可能访问已销毁对象？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda capture this"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "捕获 this 只保存裸指针，不会延长所属对象生命周期。异步执行前对象若已销毁，成员访问会产生未定义行为，应捕获受控所有权或 weak_ptr 并在回调中提升检查。"
+  },
+  {
+    "id": "115",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::function 的类型擦除会带来哪些成本？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::function"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "std::function 通过统一调用接口保存不同可调用对象，可能产生间接调用和动态分配。它要求目标可复制，移动专用闭包不能直接放入 C++17 的 std::function。"
+  },
+  {
+    "id": "116",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "std::invoke 如何统一成员函数和普通可调用对象的调用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::invoke"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "std::invoke 能调用函数对象、函数指针和成员指针，并按规则解引用对象、引用包装器或指针。invoke_result 等 traits 使用同一调用语义，避免泛型代码手写成员指针分支。"
+  },
+  {
+    "id": "117",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::optional 如何表达有值和无值而不使用哨兵？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::optional"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "optional 在对象内部保存是否已构造 T 的状态，无值时不会存在一个可访问的 T。value 在无值时抛 bad_optional_access，value_or 则返回值或提供的后备值。"
+  },
+  {
+    "id": "118",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "variant 和 any 在可存类型集合上有什么根本区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::variant and std::any"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "variant 的备选类型集合在编译期固定，可用 visit 做封闭分派并获得静态类型检查。any 可保存任意满足要求的类型，通过 any_cast 在运行期检查，灵活性更高但无法枚举完整状态集合。"
+  },
+  {
+    "id": "119",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "为什么推荐按值抛出并按 const 引用捕获异常？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "throw expression and catch handler"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "按值抛出会把异常对象复制或移动到异常存储，避免引用局部对象。按 const 引用捕获不会再次复制，并能通过虚函数保留派生异常的动态行为而避免切片。"
+  },
+  {
+    "id": "120",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "异常处理器的排列顺序为什么要从派生类到基类？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "catch handler matching"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "处理器按源代码顺序匹配，第一个可处理异常类型的 catch 会被选择。若基类处理器在前，它会截获派生异常，使更具体的处理器永远不可达。"
+  },
+  {
+    "id": "121",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "栈展开期间局部对象按什么顺序析构？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "stack unwinding"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "从抛出点到匹配处理器之间，已经完成构造的自动对象按构造的逆序析构。动态分配但未交给 RAII 对象的资源不会自动释放，因此异常安全依赖所有权对象。"
+  },
+  {
+    "id": "122",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "noexcept 函数让异常逃逸时会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "noexcept specification"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "异常若试图越过 noexcept 函数边界，运行时调用 std::terminate，而不是把它交给外层 catch。noexcept 应只标在确实能兑现承诺的操作上，并会影响容器选择移动还是复制。"
+  },
+  {
+    "id": "123",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "析构函数如何处理无法忽略的清理失败？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "destructor exception safety"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "析构函数不适合传播错误，因为它可能在另一个异常的栈展开中执行。需要报告失败的资源应提供显式 close 或 commit 操作，析构只做不抛的兜底清理。"
+  },
+  {
+    "id": "124",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "dynamic_cast 对指针和引用转换失败时行为有何不同？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "dynamic_cast conversion"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "对指针做运行期向下或横向转换失败会返回 nullptr。对引用转换失败会抛 std::bad_cast，且源类型必须是多态类型才能执行需要运行期检查的转换。"
+  },
+  {
+    "id": "125",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "typeid 作用于多态表达式时何时读取动态类型？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "typeid operator"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "当操作数是多态类型的 glvalue 时，typeid 返回实际最派生对象的 type_info。对非多态表达式只反映静态类型；解引用空的多态指针作为操作数会抛 std::bad_typeid。"
+  },
+  {
+    "id": "126",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "跨共享库抛出 C++ 异常为什么存在 ABI 风险？",
+    "difficulty": 5,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cpp-core-guidelines",
+        "topic": "exceptions across ABI"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "异常对象布局、RTTI、运行库和展开机制都必须在模块间兼容，否则匹配和销毁可能失败。稳定插件接口通常不让异常跨边界，而是在边界内捕获并转换成错误码或结果对象。"
+  },
+  {
+    "id": "127",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::thread 析构前为什么必须 join 或 detach？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::thread destructor"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "joinable 的 std::thread 在析构时会直接调用 std::terminate，防止后台线程静默失去所有权。所有控制路径都必须 join、detach 或把线程交给能保证收尾的 RAII 包装。"
+  },
+  {
+    "id": "128",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "mutex、recursive_mutex 和 timed_mutex 应如何选择？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "mutex types"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "mutex 提供基本互斥，recursive_mutex 允许同一线程重复加锁但容易掩盖重入设计问题，timed_mutex 增加超时尝试。默认应选择最简单的 mutex，只有明确协议需要时再扩大能力。"
+  },
+  {
+    "id": "129",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "lock_guard 和 unique_lock 的能力差异是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::unique_lock"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "lock_guard 在构造时加锁并在析构时解锁，状态简单且不能中途释放。unique_lock 可延迟、尝试、转移和临时解锁，是 condition_variable 等需要操作锁状态的接口所要求的类型。"
+  },
+  {
+    "id": "130",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::lock 如何避免同时锁多个 mutex 时的死锁？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::lock"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "std::lock 使用避免死锁的算法尝试获取一组 Lockable 对象，而不是让调用方按不一致顺序逐个加锁。成功后仍要用 adopt_lock 的 RAII 包装接管每把锁，异常时释放已获得的锁。"
+  },
+  {
+    "id": "131",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "scoped_lock 如何同时管理多把互斥量？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::scoped_lock"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "scoped_lock 接收多把互斥量时使用与 std::lock 等价的死锁避免机制，并在析构时统一释放。它不可手动解锁，适合整个作用域都持锁的多锁临界区。"
+  },
+  {
+    "id": "132",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "condition_variable 为什么必须用谓词循环等待？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::condition_variable wait"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "条件变量允许虚假唤醒，通知到达也不保证业务条件仍成立。wait(lock, predicate) 会在持锁状态检查谓词并在不满足时继续等待，从而把共享状态而非通知次数作为依据。"
+  },
+  {
+    "id": "133",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "如何避免通知先于等待造成的丢失唤醒？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "condition variable lost wakeup"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "条件状态必须存放在受同一 mutex 保护的共享变量中，等待方先检查状态再原子地释放锁并阻塞。通知本身不保存历史，只有状态谓词能让后来开始等待的线程观察已经发生的事件。"
+  },
+  {
+    "id": "134",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "数据竞争为什么直接构成未定义行为？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "memory model data races"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "两个线程并发访问同一内存位置、至少一个写入且没有 happens-before 关系时形成数据竞争。除原子对象外，数据竞争使整个程序行为未定义，不能依赖硬件上看似原子的读写。"
+  },
+  {
+    "id": "135",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "memory_order_relaxed 能保证什么而不能保证什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::memory_order relaxed"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "relaxed 操作保证该原子对象自身的修改顺序和读写原子性，不建立其他普通内存访问的跨线程同步。它适合独立计数等场景，不能单独发布另一个对象的初始化结果。"
+  },
+  {
+    "id": "136",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "release 写和 acquire 读如何发布对象状态？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::memory_order acquire release"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "线程在 release 操作之前的写入，对读取同一值并执行 acquire 操作的线程可见。同步只在 acquire 实际读到 release 序列中的值时建立，操作不同原子或读到旧值都不满足条件。"
+  },
+  {
+    "id": "137",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "顺序一致原子操作提供了怎样的全局顺序？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::memory_order sequentially-consistent"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "memory_order_seq_cst 除 acquire/release 语义外，还要求所有顺序一致操作可放入一个与各线程程序顺序一致的单一总序。它更易推理，但可能限制某些架构上的优化。"
+  },
+  {
+    "id": "138",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "promise 被销毁但未设置结果时 future 会观察到什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::promise"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "promise 在共享状态仍需要结果时被销毁，会把 broken_promise 异常存入共享状态。future::get 随后抛出 future_error，并且 get 通常只能消费结果一次。"
+  },
+  {
+    "id": "139",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::async 的 async 和 deferred 策略有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::async"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "launch::async 允许任务在独立线程异步执行，launch::deferred 则到 wait 或 get 时才在等待线程运行。未显式指定策略时实现可以选择，两种行为对并发度和异常时机都有影响。"
+  },
+  {
+    "id": "140",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "call_once 如何保证初始化函数只成功执行一次？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::call_once"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "多个线程对同一 once_flag 调用 call_once 时，只有一个成功返回的执行被记为完成，其他线程随后观察其效果。若初始化函数抛异常，标志不会完成，后续调用可以再次尝试。"
+  },
+  {
+    "id": "141",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "string_view 返回给调用方时需要满足什么寿命条件？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::basic_string_view"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "string_view 不拥有字符数据，返回它只安全于底层存储在调用方使用期间持续有效。不能返回指向局部 string、临时拼接结果或随后可能扩容的缓冲区的 view。"
+  },
+  {
+    "id": "142",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::string::data 在 C++17 中提供了什么可写保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::basic_string data"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "C++17 为非 const string 提供返回 char* 的 data，可在不改变 size 的前提下修改已有字符。写越过 size、破坏结尾空字符约束或把指针保留到会失效的修改之后仍然不合法。"
+  },
+  {
+    "id": "143",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "标准是否保证 std::string 使用小字符串优化？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::basic_string implementation notes"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "标准没有要求 small string optimization，也不规定阈值或对象布局。代码不能根据短字符串假设零分配，性能判断应基于目标标准库和实测。"
+  },
+  {
+    "id": "144",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::string 为什么不能直接代表任意文本编码？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "strings and encodings"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "std::string 只是 char 序列，不记录编码，也不会验证 UTF-8。接口必须约定字节编码和错误处理，按字符截断、大小写转换或索引时还要区分字节、码点和用户感知字符。"
+  },
+  {
+    "id": "145",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "filesystem::path 如何处理平台相关的路径表示？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::filesystem::path"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "path 保存平台原生路径格式，并提供 generic 格式用于跨平台表达。路径拼接应使用 operator/，字符串编码转换和根目录语义仍取决于平台，失败可通过异常或 error_code 重载报告。"
+  },
+  {
+    "id": "146",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "system_clock 和 steady_clock 分别适合测量什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "chrono clocks"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "system_clock 可与日历时间互转，但可能因系统校时向前或向后跳变。steady_clock 保证单调递增，更适合测量超时和耗时，不能直接当作墙上时间显示。"
+  },
+  {
+    "id": "147",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "chrono::duration 的隐式转换为何会拒绝可能丢精度的方向？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::chrono::duration"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ],
+    "answer": "从细粒度到粗粒度且不能保证整除的转换可能截断，因此通常需要 duration_cast 显式表达。反向扩大精度在表示类型兼容时可隐式完成，但还要考虑计数值溢出。"
+  },
+  {
+    "id": "148",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "eofbit、failbit 和 badbit 分别表示什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::ios_base iostate"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-004",
+      "evidence-cpp-001"
+    ],
+    "answer": "eofbit 表示输入序列到达末尾，failbit 表示格式化提取失败，badbit 表示底层 I/O 等严重错误。状态位可以同时存在，clear 只重置状态，不会自动修复数据源或回退已消费输入。"
+  },
+  {
+    "id": "149",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "自定义 streambuf 时 underflow 和 overflow 各负责什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "std::basic_streambuf"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ],
+    "answer": "underflow 在读区无可用字符时补充或报告输入，overflow 在写区满或显式同步时提交输出。实现必须维护 get/put 区指针、EOF 约定和所有权，错误状态最终由上层流对象观察。"
+  },
+  {
+    "id": "150",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::regex 为什么不适合所有高性能解析任务？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "regular expressions library"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ],
+    "answer": "标准规定匹配语义和接口，但没有统一保证实现算法、编译缓存或最坏时间复杂度。对输入可控性和延迟敏感的场景应测量目标标准库，并考虑专用解析器或受限模式。"
+  }
+]

@@ -1,0 +1,37 @@
+{
+  "name": "cpp-interview-bank",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "questions": "tsx tools/questions/check.ts",
+    "questions:check": "pnpm questions check",
+    "build:questions": "pnpm questions build",
+    "build:app": "esbuild src/main.ts --bundle --format=iife --target=es2020 --outfile=app.js",
+    "build:css": "esbuild src/styles/main.css --bundle --outfile=styles.css",
+    "build": "pnpm run build:questions && pnpm run build:app && pnpm run build:css && pnpm run questions:check",
+    "check": "pnpm run typecheck && pnpm run lint && pnpm run test:coverage && pnpm run questions:check",
+    "test:e2e": "playwright test",
+    "verify": "pnpm run build && pnpm run check && pnpm run test:e2e"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@playwright/test": "1.52.0",
+    "@types/node": "24.0.0",
+    "@vitest/coverage-v8": "3.0.9",
+    "esbuild": "0.25.2",
+    "eslint": "9.22.0",
+    "jsdom": "26.0.0",
+    "pnpm": "11.9.0",
+    "tsx": "4.19.3",
+    "typescript": "5.8.2",
+    "typescript-eslint": "8.26.0",
+    "vitest": "3.0.9",
+    "zod": "3.24.2"
+  }
+}
