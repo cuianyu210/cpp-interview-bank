@@ -29,6 +29,7 @@
     "ue5/delegate-interface-async": "\u59D4\u6258\u3001\u63A5\u53E3\u4E0E\u5F02\u6B65",
     "ue5/replication-rpc-serialization": "\u590D\u5236\u3001RPC \u4E0E\u5E8F\u5217\u5316",
     "ue5/modules-plugins-buildcs": "\u6A21\u5757\u3001\u63D2\u4EF6\u4E0E Build.cs",
+    "ue5/xr-vr": "XR/VR \u4EA4\u4E92\u4E0E\u6027\u80FD",
     "windows/process-thread-sync": "\u8FDB\u7A0B\u3001\u7EBF\u7A0B\u4E0E\u540C\u6B65",
     "windows/winsock-protocol-iocp": "Winsock\u3001\u7F51\u7EDC\u534F\u8BAE\u4E0E IOCP",
     "windows/dll-files-mmap-unicode-handles": "DLL\u3001\u6587\u4EF6\u6620\u5C04\u3001Unicode \u4E0E\u53E5\u67C4"
@@ -54,7 +55,8 @@
       "ue5/actor-component-subsystem",
       "ue5/delegate-interface-async",
       "ue5/replication-rpc-serialization",
-      "ue5/modules-plugins-buildcs"
+      "ue5/modules-plugins-buildcs",
+      "ue5/xr-vr"
     ],
     windows: [
       "windows/process-thread-sync",

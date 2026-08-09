@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Question } from '../../src/domain/question';
 import { StudyPathSortStrategy } from '../../src/application/sort-strategy';
+import { categoryLabel, sortCategoriesByStudyPath } from '../../src/application/question-taxonomy';
 
 const makeQuestion = (
   id: string,
@@ -35,5 +36,18 @@ describe('StudyPathSortStrategy', () => {
     expect(result.map((question) => question.id)).toEqual(['1', '2', '20', '3', '4', '10']);
     expect(input).toEqual(original);
     expect(result).not.toBe(input);
+  });
+
+  it('places the UE5 XR and VR category after the core engine categories', () => {
+    expect(categoryLabel('ue5/xr-vr')).toBe('XR/VR 交互与性能');
+    expect(sortCategoriesByStudyPath('ue5', [
+      'ue5/xr-vr',
+      'ue5/uobject-reflection-gc',
+      'ue5/modules-plugins-buildcs'
+    ])).toEqual([
+      'ue5/uobject-reflection-gc',
+      'ue5/modules-plugins-buildcs',
+      'ue5/xr-vr'
+    ]);
   });
 });

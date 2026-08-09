@@ -142,5 +142,32 @@
     "url": "https://www.nowcoder.com/discuss/382135751327252480",
     "accessedAt": "2026-08-09",
     "reportedQuestion": "HTTP/2有哪些特质；TCP如何实现可靠传输；HTTP连接中，SERVER端如何判断Client端出现错误，出现了哪些错误？；TIME_WAIT和CLOSE_WAIT分别出现在哪个阶段；DNS的递归访问？举例子，比如你现在发一个DNS请求怎么访问？；有哪些拥塞控制？分别的原理是什么？有什么不同的应用场景？"
+  },
+  {
+    "id": "evidence-ue5-005",
+    "company": "字节跳动朝夕光年、分岔点VR、索尼中国等",
+    "role": "游戏客户端/UE4/VRAR 开发",
+    "sourceTitle": "23届游戏开发/游戏客户端开发岗位个人秋招全记录，面经+总结",
+    "url": "https://www.nowcoder.com/discuss/428252230693683200",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "UE4各模块；项目碰撞检测、网络同步、AI；UE4 C++必问 gameplay、反射、GC、智能指针；分岔点VR和索尼VRAR相关岗位面试记录"
+  },
+  {
+    "id": "evidence-ue5-006",
+    "company": "Dassault Systèmes、NASA、Vinacts 等",
+    "role": "AR/VR Developer、VR Software Engineer、VR Developer",
+    "sourceTitle": "VR Developer Interview Questions",
+    "url": "https://www.glassdoor.com/Interview/vr-developer-interview-questions-SRCH_KO0%2C12.htm",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "AR和VR的概念；游戏引擎经验；Unreal Engine 选择题；渲染速度；显示与感知相关问题"
+  },
+  {
+    "id": "evidence-ue5-007",
+    "company": "Voodoo、iBLOXX、Abhiwan Technology 等",
+    "role": "Unreal Engine Developer",
+    "sourceTitle": "Unreal Engine Developer Interview Questions",
+    "url": "https://www.glassdoor.com/Interview/unreal-engine-developer-interview-questions-SRCH_KO0%2C23.htm",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "Unreal Networking and optimization；Make Text Editor using Widgets；UFUNCTION、UPROPERTY；Unreal Engine 工作经验和任务追问"
   }
 ]

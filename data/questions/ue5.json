@@ -2098,5 +2098,257 @@
       "evidence-ue5-004",
       "evidence-ue5-001"
     ]
+  },
+  {
+    "id": "381",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "UE5 VR 项目为什么通常优先接 OpenXR（开放式 XR 标准）？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "OpenXR 把头显、手柄输入和常见运行时封装成统一接口，UE5 可以用同一套动作映射适配多家设备。平台专有功能仍要查厂商插件或扩展，常规移动、输入和渲染流程不应该一上来就绑死在某个 SDK 上。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Prerequisites and OpenXR Input"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "382",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VRPawn、Camera 和 Motion Controller（运动控制器）通常怎么组织？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "VRPawn 负责承载玩家在场景中的 XR 原点，Camera 跟随 HMD（头戴显示器）追踪，左右 Motion Controller 组件跟随手柄或手部输入。PlayerStart 的朝向会影响玩家初始朝向，抓取、射线和手部网格应挂在控制器下面，避免把普通 Character 的摄像机逻辑直接套进 VR。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Pawn and Motion Controller Components"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "383",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "Teleport（传送）和 Snap Turn（离散转向）为什么适合做 VR 默认移动？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Teleport 用瞬移替代持续推着相机移动，可以减少视觉运动和前庭感受不一致带来的眩晕。Snap Turn 一次转过固定角度，比平滑旋转更容易被多数玩家接受，落点还要受导航网格和碰撞限制。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Locomotion and XR Comfort"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "384",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 中为什么不要随便改 FOV（视场角）？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "VR 的投影和视场角由头显设备和运行时决定，强行改 FOV 会让画面比例、深度和头部转动反馈不匹配。更可靠的做法是保持真实设备投影，通过世界尺度、相机高度、移动方式和交互节奏来处理舒适度。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "XR Best Practices Field of View"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "385",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "World To Meters（世界到米比例）设置错了会出现什么问题？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "World To Meters 决定 Unreal 单位和玩家真实身高、距离感之间的换算，数值错误会让角色像巨人或小人，也会影响抓取距离和空间判断。VR 项目通常保持 1 Unreal Unit 等于 1 厘米，只在明确需要改变体感尺度时成套调整。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "XR Best Practices World Scale"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "386",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "OpenXR 的 Grip Pose（握持姿态）和 Aim Pose（瞄准姿态）有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Grip Pose 表示手柄被握持时适合放置物体或手模型的位置，Aim Pose 表示用于射线指向和菜单瞄准的方向。抓取物体通常跟随 Grip，远距离 UI 或传送指示通常跟随 Aim，混用会让手感和视觉方向对不上。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Input Grip Pose and Aim Pose"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "387",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 抓取物体时为什么要把输入、碰撞检测和手部显示分开？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "输入只表达玩家按下抓取动作，碰撞或射线负责确定候选物体，手部网格只是反馈当前姿态和抓取状态。这样同一套交互可以适配不同手柄、手部追踪和网络同步，也能避免用显示模型的位置直接决定玩法结果。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Input and Interaction"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "388",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 里怎样用手柄射线点击 3D UMG（虚幻动态图形界面）？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "常见做法是在世界中放 Widget Component，再把 Widget Interaction Component 挂到手柄或手部射线上。扳机按下时调用对应的 Press Pointer Key，松开时调用 Release Pointer Key，悬停、点击和调试射线都由这个交互组件处理。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Widget Interaction Component"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-007",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "389",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "Quest 或移动 VR 和 PC VR 的性能策略有什么不同？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "移动 VR 的 CPU、GPU、带宽和散热余量都比 PC VR 小，不能把桌面级后处理、动态阴影和高面数场景直接搬过去。UE5 项目需要按目标设备选择移动多视图、LOD、贴图预算、固定注视点渲染等能力，并用真机帧率验证。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Developing for Oculus VR and VR Performance Features"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "390",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 性能优化为什么优先看稳定帧率和延迟？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "VR 中掉帧和高延迟会直接影响舒适度，因为用户头部运动需要尽快反映到画面里。优化时先用 Unreal Insights、stat 和平台工具区分 CPU 或 GPU 瓶颈，再决定用实例化立体渲染、剔除、LOD 或材质降级。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Performance and Profiling"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "391",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "OpenXR 和厂商插件之间怎么取舍，比如 Meta Quest 手部追踪？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "OpenXR 适合作为跨设备基础层，输入和常规 XR 流程尽量走标准接口。手部追踪、固定注视点渲染等厂商特性可能依赖对应插件或扩展，项目要按目标平台确认支持矩阵，避免在 PC VR 和 Quest 上假设功能完全一致。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR and Oculus VR Platform Features"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "392",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR Spectator Screen（旁观者屏幕）适合解决什么问题？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Spectator Screen 用来给不戴头显的人看监视器画面，常用于演示、录制和调试体验流程。它可能需要额外渲染目标或场景捕获，移动 VR 支持也有限，所以正式项目要把它当作展示功能而不是核心玩法链路。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Virtual Reality Spectator Screen"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
   }
 ]

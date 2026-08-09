@@ -30,6 +30,7 @@ export const studyPathCategoryLabels: Readonly<Record<string, string>> = {
   'ue5/delegate-interface-async': '委托、接口与异步',
   'ue5/replication-rpc-serialization': '复制、RPC 与序列化',
   'ue5/modules-plugins-buildcs': '模块、插件与 Build.cs',
+  'ue5/xr-vr': 'XR/VR 交互与性能',
   'windows/process-thread-sync': '进程、线程与同步',
   'windows/winsock-protocol-iocp': 'Winsock、网络协议与 IOCP',
   'windows/dll-files-mmap-unicode-handles': 'DLL、文件映射、Unicode 与句柄'
@@ -56,7 +57,8 @@ const categoryOrderByGroup: Readonly<Record<QuestionGroup, readonly string[]>> =
     'ue5/actor-component-subsystem',
     'ue5/delegate-interface-async',
     'ue5/replication-rpc-serialization',
-    'ue5/modules-plugins-buildcs'
+    'ue5/modules-plugins-buildcs',
+    'ue5/xr-vr'
   ],
   windows: [
     'windows/process-thread-sync',

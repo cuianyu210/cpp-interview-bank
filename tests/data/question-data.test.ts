@@ -45,7 +45,7 @@ const questionFiles: Record<Group, string> = {
 const expectedCounts: Record<Group, number> = {
   cpp: 150,
   gof: 50,
-  ue5: 100,
+  ue5: 112,
   windows: 80
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
@@ -132,13 +132,33 @@ describe('authoring question data', () => {
   const evidenceById = new Map(evidence.map((record) => [record.id, record]));
 
   it('publishes the requested group counts and one continuous id sequence', () => {
-    expect(questions).toHaveLength(380);
+    expect(questions).toHaveLength(392);
     for (const group of Object.keys(expectedCounts) as Group[]) {
       expect(questions.filter((question) => question.group === group)).toHaveLength(expectedCounts[group]);
     }
-    expect(questions.map((question) => question.id)).toEqual(
+    const sortedIds = questions.map((question) => question.id)
+      .sort((left, right) => Number(left) - Number(right));
+    expect(sortedIds).toEqual(
       Array.from({ length: questions.length }, (_, index) => String(index + 1).padStart(3, '0'))
     );
+  });
+
+  it('adds a practical UE5 XR and VR interview category backed by Epic topics', () => {
+    const xrQuestions = questions.filter((question) => question.category === 'ue5/xr-vr');
+
+    expect(xrQuestions).toHaveLength(12);
+    expect(xrQuestions.every((question) => question.group === 'ue5')).toBe(true);
+    expect(xrQuestions.every((question) => question.scopes.includes('UE5'))).toBe(true);
+    expect(xrQuestions.every((question) => question.answerSources.some((source) => source.authority === 'epic-games'))).toBe(true);
+    expect(xrQuestions.every((question) => new Set(question.evidenceIds).size >= 2)).toBe(true);
+
+    const titles = xrQuestions.map((question) => question.title).join('\n');
+    expect(titles).toMatch(/OpenXR/);
+    expect(titles).toMatch(/VRPawn/);
+    expect(titles).toMatch(/Teleport|Snap Turn/);
+    expect(titles).toMatch(/FOV|视场角/);
+    expect(titles).toMatch(/手柄|Motion Controller/);
+    expect(titles).toMatch(/Quest|移动 VR/);
   });
 
   it('groups intermediate C++ STL and standard-library questions under a dedicated category', () => {
