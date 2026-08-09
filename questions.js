@@ -1,7705 +1,4999 @@
-﻿window.CPP_INTERVIEW_QUESTIONS =
-[
-    {
-        "id":  "001",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "声明与定义：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：声明与定义",
-                         "url":  "https://zh.cppreference.com/cpp/language/declarations"
-                     }
-                 ]
-    },
-    {
-        "id":  "002",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "extern 接口：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：extern 接口",
-                         "url":  "https://zh.cppreference.com/cpp/language/storage_duration"
-                     }
-                 ]
-    },
-    {
-        "id":  "003",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ODR 约束：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ODR 约束",
-                         "url":  "https://zh.cppreference.com/cpp/language/definition"
-                     }
-                 ]
-    },
-    {
-        "id":  "004",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "名称查找：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：名称查找",
-                         "url":  "https://zh.cppreference.com/cpp/language/lookup"
-                     }
-                 ]
-    },
-    {
-        "id":  "005",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ADL 调用：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ADL 调用",
-                         "url":  "https://zh.cppreference.com/cpp/language/adl"
-                     }
-                 ]
-    },
-    {
-        "id":  "006",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "using 声明：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：using 声明",
-                         "url":  "https://zh.cppreference.com/cpp/language/using_declaration"
-                     }
-                 ]
-    },
-    {
-        "id":  "007",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "constexpr 与 constinit：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：constexpr 与 constinit",
-                         "url":  "https://zh.cppreference.com/cpp/language/constexpr"
-                     }
-                 ]
-    },
-    {
-        "id":  "008",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "if constexpr：在编译、链接和运行时分别由哪些规则决定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：if constexpr",
-                         "url":  "https://zh.cppreference.com/cpp/language/if"
-                     }
-                 ]
-    },
-    {
-        "id":  "009",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "声明与定义：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：声明与定义",
-                         "url":  "https://zh.cppreference.com/cpp/language/declarations"
-                     }
-                 ]
-    },
-    {
-        "id":  "010",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "extern 接口：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：extern 接口",
-                         "url":  "https://zh.cppreference.com/cpp/language/storage_duration"
-                     }
-                 ]
-    },
-    {
-        "id":  "011",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ODR 约束：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ODR 约束",
-                         "url":  "https://zh.cppreference.com/cpp/language/definition"
-                     }
-                 ]
-    },
-    {
-        "id":  "012",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "名称查找：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：名称查找",
-                         "url":  "https://zh.cppreference.com/cpp/language/lookup"
-                     }
-                 ]
-    },
-    {
-        "id":  "013",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ADL 调用：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ADL 调用",
-                         "url":  "https://zh.cppreference.com/cpp/language/adl"
-                     }
-                 ]
-    },
-    {
-        "id":  "014",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "using 声明：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：using 声明",
-                         "url":  "https://zh.cppreference.com/cpp/language/using_declaration"
-                     }
-                 ]
-    },
-    {
-        "id":  "015",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "constexpr 与 constinit：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：constexpr 与 constinit",
-                         "url":  "https://zh.cppreference.com/cpp/language/constexpr"
-                     }
-                 ]
-    },
-    {
-        "id":  "016",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "if constexpr：放在头文件并跨翻译单元使用时，怎样避免 ODR 与链接问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：if constexpr",
-                         "url":  "https://zh.cppreference.com/cpp/language/if"
-                     }
-                 ]
-    },
-    {
-        "id":  "017",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "声明与定义：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：声明与定义",
-                         "url":  "https://zh.cppreference.com/cpp/language/declarations"
-                     }
-                 ]
-    },
-    {
-        "id":  "018",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "extern 接口：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：extern 接口",
-                         "url":  "https://zh.cppreference.com/cpp/language/storage_duration"
-                     }
-                 ]
-    },
-    {
-        "id":  "019",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ODR 约束：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ODR 约束",
-                         "url":  "https://zh.cppreference.com/cpp/language/definition"
-                     }
-                 ]
-    },
-    {
-        "id":  "020",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "名称查找：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：名称查找",
-                         "url":  "https://zh.cppreference.com/cpp/language/lookup"
-                     }
-                 ]
-    },
-    {
-        "id":  "021",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "ADL 调用：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ADL 调用",
-                         "url":  "https://zh.cppreference.com/cpp/language/adl"
-                     }
-                 ]
-    },
-    {
-        "id":  "022",
-        "group":  "cpp",
-        "category":  "cpp/core-language",
-        "title":  "using 声明：它与最接近的语言特性边界在哪里，面试中常见误区是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：using 声明",
-                         "url":  "https://zh.cppreference.com/cpp/language/using_declaration"
-                     }
-                 ]
-    },
-    {
-        "id":  "023",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "整型提升：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：整型提升",
-                         "url":  "https://zh.cppreference.com/cpp/language/implicit_conversion"
-                     }
-                 ]
-    },
-    {
-        "id":  "024",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "通常算术转换：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：通常算术转换",
-                         "url":  "https://zh.cppreference.com/cpp/language/usual_arithmetic_conversions"
-                     }
-                 ]
-    },
-    {
-        "id":  "025",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "列表初始化：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：列表初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/list_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "026",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "直接初始化与拷贝初始化：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：直接初始化与拷贝初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "027",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "聚合初始化：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：聚合初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/aggregate_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "028",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "默认成员初始化：在重载解析中会发生哪些隐式转换，窄化如何被拒绝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：默认成员初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/data_members"
-                     }
-                 ]
-    },
-    {
-        "id":  "029",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "整型提升：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：整型提升",
-                         "url":  "https://zh.cppreference.com/cpp/language/implicit_conversion"
-                     }
-                 ]
-    },
-    {
-        "id":  "030",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "通常算术转换：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：通常算术转换",
-                         "url":  "https://zh.cppreference.com/cpp/language/usual_arithmetic_conversions"
-                     }
-                 ]
-    },
-    {
-        "id":  "031",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "列表初始化：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：列表初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/list_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "032",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "直接初始化与拷贝初始化：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：直接初始化与拷贝初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "033",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "聚合初始化：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：聚合初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/aggregate_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "034",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "默认成员初始化：它与列表初始化、直接初始化和拷贝初始化的候选顺序有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：默认成员初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/data_members"
-                     }
-                 ]
-    },
-    {
-        "id":  "035",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "整型提升：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：整型提升",
-                         "url":  "https://zh.cppreference.com/cpp/language/implicit_conversion"
-                     }
-                 ]
-    },
-    {
-        "id":  "036",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "通常算术转换：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：通常算术转换",
-                         "url":  "https://zh.cppreference.com/cpp/language/usual_arithmetic_conversions"
-                     }
-                 ]
-    },
-    {
-        "id":  "037",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "列表初始化：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：列表初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/list_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "038",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "直接初始化与拷贝初始化：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：直接初始化与拷贝初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "039",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "聚合初始化：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：聚合初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/aggregate_initialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "040",
-        "group":  "cpp",
-        "category":  "cpp/types-expressions-initialization",
-        "title":  "默认成员初始化：遇到求值顺序争议时，怎样判断结果是否未定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：默认成员初始化",
-                         "url":  "https://zh.cppreference.com/cpp/language/data_members"
-                     }
-                 ]
-    },
-    {
-        "id":  "041",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "特殊成员函数生成：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：特殊成员函数生成",
-                         "url":  "https://zh.cppreference.com/cpp/language/special_member_functions"
-                     }
-                 ]
-    },
-    {
-        "id":  "042",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "五法则与零法则：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：五法则与零法则",
-                         "url":  "https://zh.cppreference.com/cpp/language/rule_of_three"
-                     }
-                 ]
-    },
-    {
-        "id":  "043",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "trivial 属性：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：trivial 属性",
-                         "url":  "https://zh.cppreference.com/cpp/language/classes"
-                     }
-                 ]
-    },
-    {
-        "id":  "044",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚函数分派：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚函数分派",
-                         "url":  "https://zh.cppreference.com/cpp/language/virtual"
-                     }
-                 ]
-    },
-    {
-        "id":  "045",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚析构函数：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚析构函数",
-                         "url":  "https://zh.cppreference.com/cpp/language/destructor"
-                     }
-                 ]
-    },
-    {
-        "id":  "046",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "override 与 final：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：override 与 final",
-                         "url":  "https://zh.cppreference.com/cpp/language/override"
-                     }
-                 ]
-    },
-    {
-        "id":  "047",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "多重继承：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：多重继承",
-                         "url":  "https://zh.cppreference.com/cpp/language/derived_class"
-                     }
-                 ]
-    },
-    {
-        "id":  "048",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚继承：编译器何时隐式生成、删除或抑制特殊成员函数？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚继承",
-                         "url":  "https://zh.cppreference.com/cpp/language/derived_class"
-                     }
-                 ]
-    },
-    {
-        "id":  "049",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "特殊成员函数生成：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：特殊成员函数生成",
-                         "url":  "https://zh.cppreference.com/cpp/language/special_member_functions"
-                     }
-                 ]
-    },
-    {
-        "id":  "050",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "五法则与零法则：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：五法则与零法则",
-                         "url":  "https://zh.cppreference.com/cpp/language/rule_of_three"
-                     }
-                 ]
-    },
-    {
-        "id":  "051",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "trivial 属性：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：trivial 属性",
-                         "url":  "https://zh.cppreference.com/cpp/language/classes"
-                     }
-                 ]
-    },
-    {
-        "id":  "052",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚函数分派：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚函数分派",
-                         "url":  "https://zh.cppreference.com/cpp/language/virtual"
-                     }
-                 ]
-    },
-    {
-        "id":  "053",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚析构函数：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚析构函数",
-                         "url":  "https://zh.cppreference.com/cpp/language/destructor"
-                     }
-                 ]
-    },
-    {
-        "id":  "054",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "override 与 final：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：override 与 final",
-                         "url":  "https://zh.cppreference.com/cpp/language/override"
-                     }
-                 ]
-    },
-    {
-        "id":  "055",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "多重继承：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：多重继承",
-                         "url":  "https://zh.cppreference.com/cpp/language/derived_class"
-                     }
-                 ]
-    },
-    {
-        "id":  "056",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚继承：继承和虚函数分派会怎样改变对象布局与析构行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚继承",
-                         "url":  "https://zh.cppreference.com/cpp/language/derived_class"
-                     }
-                 ]
-    },
-    {
-        "id":  "057",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "特殊成员函数生成：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：特殊成员函数生成",
-                         "url":  "https://zh.cppreference.com/cpp/language/special_member_functions"
-                     }
-                 ]
-    },
-    {
-        "id":  "058",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "五法则与零法则：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：五法则与零法则",
-                         "url":  "https://zh.cppreference.com/cpp/language/rule_of_three"
-                     }
-                 ]
-    },
-    {
-        "id":  "059",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "trivial 属性：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：trivial 属性",
-                         "url":  "https://zh.cppreference.com/cpp/language/classes"
-                     }
-                 ]
-    },
-    {
-        "id":  "060",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚函数分派：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚函数分派",
-                         "url":  "https://zh.cppreference.com/cpp/language/virtual"
-                     }
-                 ]
-    },
-    {
-        "id":  "061",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "虚析构函数：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚析构函数",
-                         "url":  "https://zh.cppreference.com/cpp/language/destructor"
-                     }
-                 ]
-    },
-    {
-        "id":  "062",
-        "group":  "cpp",
-        "category":  "cpp/classes-object-model",
-        "title":  "override 与 final：面向多态删除时，基类析构函数需要满足什么条件？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：override 与 final",
-                         "url":  "https://zh.cppreference.com/cpp/language/override"
-                     }
-                 ]
-    },
-    {
-        "id":  "063",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "对象生命周期：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：对象生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "064",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "placement new：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：placement new",
-                         "url":  "https://zh.cppreference.com/cpp/language/new"
-                     }
-                 ]
-    },
-    {
-        "id":  "065",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "std::launder：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::launder",
-                         "url":  "https://zh.cppreference.com/cpp/utility/launder"
-                     }
-                 ]
-    },
-    {
-        "id":  "066",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "临时对象：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：临时对象",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "067",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "悬空引用：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：悬空引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "068",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "RAII 包装：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：RAII 包装",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "069",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "scope guard：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scope guard",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "070",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "异常安全：对象从构造、临时物化到析构的顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：异常安全",
-                         "url":  "https://zh.cppreference.com/cpp/language/exceptions"
-                     }
-                 ]
-    },
-    {
-        "id":  "071",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "对象生命周期：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：对象生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "072",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "placement new：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：placement new",
-                         "url":  "https://zh.cppreference.com/cpp/language/new"
-                     }
-                 ]
-    },
-    {
-        "id":  "073",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "std::launder：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::launder",
-                         "url":  "https://zh.cppreference.com/cpp/utility/launder"
-                     }
-                 ]
-    },
-    {
-        "id":  "074",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "临时对象：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：临时对象",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "075",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "悬空引用：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：悬空引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "076",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "RAII 包装：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：RAII 包装",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "077",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "scope guard：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scope guard",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "078",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "异常安全：异常、提前 return 和 placement new 场景下如何保证只释放一次？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：异常安全",
-                         "url":  "https://zh.cppreference.com/cpp/language/exceptions"
-                     }
-                 ]
-    },
-    {
-        "id":  "079",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "对象生命周期：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：对象生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "080",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "placement new：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：placement new",
-                         "url":  "https://zh.cppreference.com/cpp/language/new"
-                     }
-                 ]
-    },
-    {
-        "id":  "081",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "std::launder：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::launder",
-                         "url":  "https://zh.cppreference.com/cpp/utility/launder"
-                     }
-                 ]
-    },
-    {
-        "id":  "082",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "临时对象：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：临时对象",
-                         "url":  "https://zh.cppreference.com/cpp/language/lifetime"
-                     }
-                 ]
-    },
-    {
-        "id":  "083",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "悬空引用：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：悬空引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "084",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "RAII 包装：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：RAII 包装",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "085",
-        "group":  "cpp",
-        "category":  "cpp/lifetime-raii",
-        "title":  "scope guard：临时对象、悬空引用与 std::launder 的边界分别在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scope guard",
-                         "url":  "https://zh.cppreference.com/cpp/language/raii"
-                     }
-                 ]
-    },
-    {
-        "id":  "086",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "unique_ptr 所有权：如何用 unique_ptr 表达独占所有权、数组所有权和自定义删除器？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_ptr 所有权",
-                         "url":  "https://zh.cppreference.com/cpp/memory/unique_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "087",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "shared_ptr 控制块：shared_ptr 控制块保存哪些状态，引用计数的线程安全边界是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：shared_ptr 控制块",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "088",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "weak_ptr 观察：weak_ptr::lock 的成功条件和过期观察语义是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：weak_ptr 观察",
-                         "url":  "https://zh.cppreference.com/cpp/memory/weak_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "089",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "make_shared：make_shared 的单次分配、异常安全和对象可见性有什么影响？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：make_shared",
-                         "url":  "https://zh.cppreference.com/cpp/memory/make_shared"
-                     }
-                 ]
-    },
-    {
-        "id":  "090",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "别名构造：shared_ptr 别名构造如何保持被管理对象存活，却让 get() 指向子对象？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：别名构造",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "091",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "enable_shared_from_this：enable_shared_from_this 何时初始化 weak_this，为什么栈对象上调用会出错？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_shared_from_this",
-                         "url":  "https://zh.cppreference.com/cpp/memory/enable_shared_from_this"
-                     }
-                 ]
-    },
-    {
-        "id":  "092",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "unique_ptr 所有权：unique_ptr 移动、释放和异常路径的所有权转移如何验证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_ptr 所有权",
-                         "url":  "https://zh.cppreference.com/cpp/memory/unique_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "093",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "shared_ptr 控制块：shared_ptr 的拷贝、移动和别名构造会怎样改变控制块与对象寿命？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：shared_ptr 控制块",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "094",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "weak_ptr 观察：weak_ptr 如何打破 shared_ptr 循环引用，回调中怎样避免竞态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：weak_ptr 观察",
-                         "url":  "https://zh.cppreference.com/cpp/memory/weak_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "095",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "make_shared：构造函数私有、数组对象或自定义删除器场景为何不能直接套用 make_shared？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：make_shared",
-                         "url":  "https://zh.cppreference.com/cpp/memory/make_shared"
-                     }
-                 ]
-    },
-    {
-        "id":  "096",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "别名构造：别名构造与容器元素、成员子对象结合时，哪些指针会悬空？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：别名构造",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "097",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "enable_shared_from_this：从成员函数返回 shared_from_this 时，如何避免对象尚未被 shared_ptr 管理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_shared_from_this",
-                         "url":  "https://zh.cppreference.com/cpp/memory/enable_shared_from_this"
-                     }
-                 ]
-    },
-    {
-        "id":  "098",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "unique_ptr 所有权：跨 DLL 或 C API 边界返回 unique_ptr 时，删除器和分配器如何匹配？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_ptr 所有权",
-                         "url":  "https://zh.cppreference.com/cpp/memory/unique_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "099",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "shared_ptr 控制块：如何排查多个 shared_ptr 控制块导致的重复释放问题？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：shared_ptr 控制块",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "100",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "weak_ptr 观察：把 weak_ptr 用作缓存或观察者句柄时，失效处理应如何设计？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：weak_ptr 观察",
-                         "url":  "https://zh.cppreference.com/cpp/memory/weak_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "101",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "make_shared：make_shared 与显式 new shared_ptr 在控制块布局和生命周期上如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：make_shared",
-                         "url":  "https://zh.cppreference.com/cpp/memory/make_shared"
-                     }
-                 ]
-    },
-    {
-        "id":  "102",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "别名构造：如何区分别名构造的观察指针与控制块实际负责释放的对象？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：别名构造",
-                         "url":  "https://zh.cppreference.com/cpp/memory/shared_ptr"
-                     }
-                 ]
-    },
-    {
-        "id":  "103",
-        "group":  "cpp",
-        "category":  "cpp/smart-pointers-allocators",
-        "title":  "enable_shared_from_this：继承层次、多重控制块和拷贝对象场景下，enable_shared_from_this 的边界是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_shared_from_this",
-                         "url":  "https://zh.cppreference.com/cpp/memory/enable_shared_from_this"
-                     }
-                 ]
-    },
-    {
-        "id":  "104",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "左值与右值：左值、纯右值和将亡值如何影响重载选择与引用绑定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：左值与右值",
-                         "url":  "https://zh.cppreference.com/cpp/language/value_category"
-                     }
-                 ]
-    },
-    {
-        "id":  "105",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "引用折叠：引用折叠的四条规则如何在模板实例化中生效？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：引用折叠",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "106",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "转发引用：转发引用与普通右值引用的识别条件分别是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：转发引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "107",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::move：std::move 只改变值类别而不移动资源时，调用方应如何理解？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::move",
-                         "url":  "https://zh.cppreference.com/cpp/utility/move"
-                     }
-                 ]
-    },
-    {
-        "id":  "108",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::forward：std::forward 的模板参数从哪里来，错误指定参数会造成什么后果？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::forward",
-                         "url":  "https://zh.cppreference.com/cpp/utility/forward"
-                     }
-                 ]
-    },
-    {
-        "id":  "109",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "移动构造 noexcept：移动构造标记为 noexcept 时，容器扩容和异常保证会发生什么变化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：移动构造 noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "110",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "拷贝消除：C++17 强制拷贝消除适用于哪些纯右值初始化场景？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：拷贝消除",
-                         "url":  "https://zh.cppreference.com/cpp/language/copy_elision"
-                     }
-                 ]
-    },
-    {
-        "id":  "111",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "NRVO：具名返回值优化的触发条件和不保证发生的边界是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：NRVO",
-                         "url":  "https://zh.cppreference.com/cpp/language/copy_elision"
-                     }
-                 ]
-    },
-    {
-        "id":  "112",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "左值与右值：表达式加括号、返回值和成员访问会怎样改变值类别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：左值与右值",
-                         "url":  "https://zh.cppreference.com/cpp/language/value_category"
-                     }
-                 ]
-    },
-    {
-        "id":  "113",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "引用折叠：引用折叠与 const、volatile 组合时，最终参数类型如何推导？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：引用折叠",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "114",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "转发引用：转发引用接收数组、函数和 const 对象时，模板参数如何变化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：转发引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "115",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::move：对 const 对象使用 std::move 为什么通常仍会触发拷贝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::move",
-                         "url":  "https://zh.cppreference.com/cpp/utility/move"
-                     }
-                 ]
-    },
-    {
-        "id":  "116",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::forward：完美转发到重载、初始化列表或成员函数时，如何避免错误匹配？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::forward",
-                         "url":  "https://zh.cppreference.com/cpp/utility/forward"
-                     }
-                 ]
-    },
-    {
-        "id":  "117",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "移动构造 noexcept：移动构造抛异常时，源对象与目标对象分别允许处于什么状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：移动构造 noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "118",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "拷贝消除：NRVO 未发生时，编译器会按什么顺序尝试移动和拷贝？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：拷贝消除",
-                         "url":  "https://zh.cppreference.com/cpp/language/copy_elision"
-                     }
-                 ]
-    },
-    {
-        "id":  "119",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "NRVO：多个返回分支返回不同局部对象时，NRVO 与移动构造如何交互？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：NRVO",
-                         "url":  "https://zh.cppreference.com/cpp/language/copy_elision"
-                     }
-                 ]
-    },
-    {
-        "id":  "120",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "左值与右值：如何用重载探针或 decltype 判断一个表达式的值类别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：左值与右值",
-                         "url":  "https://zh.cppreference.com/cpp/language/value_category"
-                     }
-                 ]
-    },
-    {
-        "id":  "121",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "引用折叠：设计转发接口时，引用折叠怎样避免意外复制？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：引用折叠",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "122",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "转发引用：转发引用配合 std::forward 时，如何保持调用方原始值类别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：转发引用",
-                         "url":  "https://zh.cppreference.com/cpp/language/reference"
-                     }
-                 ]
-    },
-    {
-        "id":  "123",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::move：连续两次 std::move 或移动后再次使用对象时，接口契约如何表达？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::move",
-                         "url":  "https://zh.cppreference.com/cpp/utility/move"
-                     }
-                 ]
-    },
-    {
-        "id":  "124",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "std::forward：std::forward 与转发引用之外的参数组合是否仍然成立？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::forward",
-                         "url":  "https://zh.cppreference.com/cpp/utility/forward"
-                     }
-                 ]
-    },
-    {
-        "id":  "125",
-        "group":  "cpp",
-        "category":  "cpp/value-categories-move-forwarding",
-        "title":  "移动构造 noexcept：如何用 noexcept 条件影响泛型算法对拷贝或移动的选择？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：移动构造 noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "126",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板参数种类：类型、非类型和模板模板参数分别适合表达什么约束？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板参数种类",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "127",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "函数模板推导：函数模板推导遇到数组、函数、cv/ref 和初始化列表时会怎样退化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：函数模板推导",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_argument_deduction"
-                     }
-                 ]
-    },
-    {
-        "id":  "128",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "非类型模板参数：非类型模板参数的类型限制和链接身份如何影响实例化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：非类型模板参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "129",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板默认参数：类模板和函数模板的默认参数声明位置有哪些限制？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板默认参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "130",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "偏特化：类模板偏特化如何匹配指针、数组或参数包等类型族？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：偏特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/partial_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "131",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "全特化：显式全特化的声明、定义和命名空间位置有什么要求？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：全特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "132",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "SFINAE：SFINAE 发生在替换的哪一阶段，哪些错误不会被它吞掉？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：SFINAE",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "133",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "enable_if：enable_if 放在返回类型、模板参数或函数参数中各有什么副作用？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_if",
-                         "url":  "https://zh.cppreference.com/cpp/types/enable_if"
-                     }
-                 ]
-    },
-    {
-        "id":  "134",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "void_t：void_t 检测惯用法如何探测成员类型、表达式和运算符？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：void_t",
-                         "url":  "https://zh.cppreference.com/cpp/types/void_t"
-                     }
-                 ]
-    },
-    {
-        "id":  "135",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "检测惯用法：检测惯用法如何判断一个类型是否支持 begin、size 或调用操作？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：检测惯用法",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "136",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "if constexpr：if constexpr 丢弃语句的规则如何避免无关分支实例化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：if constexpr",
-                         "url":  "https://zh.cppreference.com/cpp/language/if"
-                     }
-                 ]
-    },
-    {
-        "id":  "137",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "type_traits：type_traits 查询的是类型属性还是表达式性质，如何选择对应 trait？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：type_traits",
-                         "url":  "https://zh.cppreference.com/cpp/header/type_traits"
-                     }
-                 ]
-    },
-    {
-        "id":  "138",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板参数种类：模板参数默认值、包参数和参数顺序如何影响调用端写法？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板参数种类",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "139",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "函数模板推导：显式模板实参、默认实参和重载候选如何共同决定最终实例？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：函数模板推导",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_argument_deduction"
-                     }
-                 ]
-    },
-    {
-        "id":  "140",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "非类型模板参数：指针、引用和整型非类型参数在 C++17 中有哪些合法形式？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：非类型模板参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "141",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板默认参数：默认模板参数与前置声明、偏特化和模块头文件如何保持一致？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板默认参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "142",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "偏特化：偏特化的匹配优先级与主模板、其他偏特化之间如何判定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：偏特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/partial_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "143",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "全特化：全特化与显式实例化如何避免跨翻译单元重复定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：全特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "144",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "SFINAE：SFINAE 重载与普通重载并存时，如何让诊断保持可读？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：SFINAE",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "145",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "enable_if：enable_if 重载遇到默认参数和继承转换时如何避免歧义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_if",
-                         "url":  "https://zh.cppreference.com/cpp/types/enable_if"
-                     }
-                 ]
-    },
-    {
-        "id":  "146",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "void_t：void_t 偏特化的失败位置与别名模板实例化顺序是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：void_t",
-                         "url":  "https://zh.cppreference.com/cpp/types/void_t"
-                     }
-                 ]
-    },
-    {
-        "id":  "147",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "检测惯用法：检测表达式时，decltype、declval 和访问控制会带来哪些边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：检测惯用法",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "148",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "if constexpr：if constexpr 与重载、lambda 和局部变量作用域结合时有哪些陷阱？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：if constexpr",
-                         "url":  "https://zh.cppreference.com/cpp/language/if"
-                     }
-                 ]
-    },
-    {
-        "id":  "149",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "type_traits：自定义 trait 的主模板、偏特化和变量模板应如何组织？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：type_traits",
-                         "url":  "https://zh.cppreference.com/cpp/header/type_traits"
-                     }
-                 ]
-    },
-    {
-        "id":  "150",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板参数种类：跨 C++11 到 C++17 时，模板参数允许的常量表达式范围有什么变化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板参数种类",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "151",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "函数模板推导：推导失败时如何区分参数不匹配、约束失败和重载歧义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：函数模板推导",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_argument_deduction"
-                     }
-                 ]
-    },
-    {
-        "id":  "152",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "非类型模板参数：非类型模板参数参与重载或偏特化时，如何避免产生意外的不同类型？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：非类型模板参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "153",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "模板默认参数：调用端省略默认参数后，重载解析还能看到哪些候选？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：模板默认参数",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_parameters"
-                     }
-                 ]
-    },
-    {
-        "id":  "154",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "偏特化：函数模板不能偏特化时，通常应改用哪些替代技术？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：偏特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/partial_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "155",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "全特化：为某个类型全特化后，后续重载和 ADL 行为会发生什么变化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：全特化",
-                         "url":  "https://zh.cppreference.com/cpp/language/template_specialization"
-                     }
-                 ]
-    },
-    {
-        "id":  "156",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "SFINAE：C++17 中 if constexpr 与 SFINAE 在接口约束上的取舍是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：SFINAE",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "157",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "enable_if：如何把 enable_if 约束迁移为更清晰的 traits 或 if constexpr？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：enable_if",
-                         "url":  "https://zh.cppreference.com/cpp/types/enable_if"
-                     }
-                 ]
-    },
-    {
-        "id":  "158",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "void_t：检测到成员后，如何继续给出稳定的 fallback 类型？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：void_t",
-                         "url":  "https://zh.cppreference.com/cpp/types/void_t"
-                     }
-                 ]
-    },
-    {
-        "id":  "159",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "检测惯用法：检测结果如何组合成不泄漏实现细节的泛型接口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：检测惯用法",
-                         "url":  "https://zh.cppreference.com/cpp/language/sfinae"
-                     }
-                 ]
-    },
-    {
-        "id":  "160",
-        "group":  "cpp",
-        "category":  "cpp/templates-sfinae-traits-constexpr",
-        "title":  "if constexpr：何时应使用 if constexpr，何时仍需要偏特化或 SFINAE？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：if constexpr",
-                         "url":  "https://zh.cppreference.com/cpp/language/if"
-                     }
-                 ]
-    },
-    {
-        "id":  "161",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "vector 扩容：vector 扩容时哪些迭代器、引用和指针会失效？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：vector 扩容",
-                         "url":  "https://zh.cppreference.com/cpp/container/vector"
-                     }
-                 ]
-    },
-    {
-        "id":  "162",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "deque 失效规则：deque 的分段存储如何影响插入、删除后的迭代器和引用有效性？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：deque 失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/container/deque"
-                     }
-                 ]
-    },
-    {
-        "id":  "163",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "list splice：list::splice 如何转移节点而不移动元素，迭代器有效性怎样保持？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：list splice",
-                         "url":  "https://zh.cppreference.com/cpp/container/list"
-                     }
-                 ]
-    },
-    {
-        "id":  "164",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "forward_list：forward_list 为什么提供 before_begin，erase_after 的使用契约是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：forward_list",
-                         "url":  "https://zh.cppreference.com/cpp/container/forward_list"
-                     }
-                 ]
-    },
-    {
-        "id":  "165",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "array：array 的固定大小、聚合初始化和 data() 语义与原生数组有何不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：array",
-                         "url":  "https://zh.cppreference.com/cpp/container/array"
-                     }
-                 ]
-    },
-    {
-        "id":  "166",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "map 比较器：map 比较器必须满足怎样的严格弱序，等价键如何定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：map 比较器",
-                         "url":  "https://zh.cppreference.com/cpp/container/map"
-                     }
-                 ]
-    },
-    {
-        "id":  "167",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "unordered_map 桶：load_factor、max_load_factor 和 rehash 如何共同决定桶数量？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unordered_map 桶",
-                         "url":  "https://zh.cppreference.com/cpp/container/unordered_map"
-                     }
-                 ]
-    },
-    {
-        "id":  "168",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "Hash 与 KeyEqual：自定义 Hash 与 KeyEqual 必须满足什么等价关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Hash 与 KeyEqual",
-                         "url":  "https://zh.cppreference.com/cpp/utility/hash"
-                     }
-                 ]
-    },
-    {
-        "id":  "169",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string 小字符串优化：标准是否保证 SSO，代码如何避免依赖具体实现的布局？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string 小字符串优化",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "170",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string_view：string_view 不拥有存储时，哪些返回值和异步回调会产生悬空视图？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string_view",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string_view"
-                     }
-                 ]
-    },
-    {
-        "id":  "171",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "迭代器类别：输入、前向、双向和随机访问迭代器分别承诺哪些操作？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：迭代器类别",
-                         "url":  "https://zh.cppreference.com/cpp/iterator"
-                     }
-                 ]
-    },
-    {
-        "id":  "172",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "const_iterator：iterator 到 const_iterator 的转换和反向转换为什么不对称？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：const_iterator",
-                         "url":  "https://zh.cppreference.com/cpp/iterator"
-                     }
-                 ]
-    },
-    {
-        "id":  "173",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "vector 扩容：reserve、resize 和 push_back 对容量、构造次数和异常保证有什么区别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：vector 扩容",
-                         "url":  "https://zh.cppreference.com/cpp/container/vector"
-                     }
-                 ]
-    },
-    {
-        "id":  "174",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "deque 失效规则：deque 首尾操作与中间插入的复杂度、失效规则有什么差异？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：deque 失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/container/deque"
-                     }
-                 ]
-    },
-    {
-        "id":  "175",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "list splice：splice 的来源容器、分配器和自拼接边界有哪些要求？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：list splice",
-                         "url":  "https://zh.cppreference.com/cpp/container/list"
-                     }
-                 ]
-    },
-    {
-        "id":  "176",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "forward_list：forward_list::splice_after 转移节点时，前驱迭代器如何管理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：forward_list",
-                         "url":  "https://zh.cppreference.com/cpp/container/forward_list"
-                     }
-                 ]
-    },
-    {
-        "id":  "177",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "array：array 的迭代器、零长度实例和边界访问应如何处理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：array",
-                         "url":  "https://zh.cppreference.com/cpp/container/array"
-                     }
-                 ]
-    },
-    {
-        "id":  "178",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "map 比较器：透明比较器与 heterogeneous lookup 如何避免临时键构造？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：map 比较器",
-                         "url":  "https://zh.cppreference.com/cpp/container/map"
-                     }
-                 ]
-    },
-    {
-        "id":  "179",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "unordered_map 桶：unordered_map rehash 后哪些迭代器、引用和指针会失效？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unordered_map 桶",
-                         "url":  "https://zh.cppreference.com/cpp/container/unordered_map"
-                     }
-                 ]
-    },
-    {
-        "id":  "180",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "Hash 与 KeyEqual：哈希函数质量、冲突处理和异常保证如何影响 unordered_map 行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Hash 与 KeyEqual",
-                         "url":  "https://zh.cppreference.com/cpp/utility/hash"
-                     }
-                 ]
-    },
-    {
-        "id":  "181",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string 小字符串优化：string 扩容或移动后，指针、引用和 string_view 的有效性如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string 小字符串优化",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "182",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string_view：substr、remove_prefix 和 data/size 组合时，调用方应承担哪些边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string_view",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string_view"
-                     }
-                 ]
-    },
-    {
-        "id":  "183",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "迭代器类别：迭代器类别如何影响标准库组件的复杂度和可用算法接口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：迭代器类别",
-                         "url":  "https://zh.cppreference.com/cpp/iterator"
-                     }
-                 ]
-    },
-    {
-        "id":  "184",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "const_iterator：cbegin、begin 和容器 const 性如何影响调用端的可写权限？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：const_iterator",
-                         "url":  "https://zh.cppreference.com/cpp/iterator"
-                     }
-                 ]
-    },
-    {
-        "id":  "185",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "vector 扩容：元素类型不可 noexcept 移动时，vector 扩容如何选择拷贝或移动？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：vector 扩容",
-                         "url":  "https://zh.cppreference.com/cpp/container/vector"
-                     }
-                 ]
-    },
-    {
-        "id":  "186",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "deque 失效规则：需要稳定引用又要双端操作时，deque 的边界应如何评估？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：deque 失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/container/deque"
-                     }
-                 ]
-    },
-    {
-        "id":  "187",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "list splice：list 与 vector 在删除、局部性和节点开销上的取舍如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：list splice",
-                         "url":  "https://zh.cppreference.com/cpp/container/list"
-                     }
-                 ]
-    },
-    {
-        "id":  "188",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "forward_list：单向链表没有 size 时，接口设计和遍历成本如何权衡？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：forward_list",
-                         "url":  "https://zh.cppreference.com/cpp/container/forward_list"
-                     }
-                 ]
-    },
-    {
-        "id":  "189",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "array：需要编译期大小和连续存储时，array 与 vector 的接口取舍是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：array",
-                         "url":  "https://zh.cppreference.com/cpp/container/array"
-                     }
-                 ]
-    },
-    {
-        "id":  "190",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "map 比较器：修改 map 键、提取 node_handle 和异常路径时，有序性不变量如何保持？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：map 比较器",
-                         "url":  "https://zh.cppreference.com/cpp/container/map"
-                     }
-                 ]
-    },
-    {
-        "id":  "191",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "unordered_map 桶：reserve 与 rehash 的区别是什么，如何预估高并发插入的内存成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unordered_map 桶",
-                         "url":  "https://zh.cppreference.com/cpp/container/unordered_map"
-                     }
-                 ]
-    },
-    {
-        "id":  "192",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "Hash 与 KeyEqual：键对象可变时，为什么会破坏哈希容器的不变量？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Hash 与 KeyEqual",
-                         "url":  "https://zh.cppreference.com/cpp/utility/hash"
-                     }
-                 ]
-    },
-    {
-        "id":  "193",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string 小字符串优化：跨 ABI 边界传递 string 时，SSO 和分配器差异会带来什么风险？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string 小字符串优化",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "194",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "string_view：接口返回 string_view 还是 string，如何表达所有权和生命周期？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：string_view",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string_view"
-                     }
-                 ]
-    },
-    {
-        "id":  "195",
-        "group":  "cpp",
-        "category":  "cpp/containers-iterators",
-        "title":  "迭代器类别：C++17 中 iterator_traits、标签分派和自定义迭代器应如何配合？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：迭代器类别",
-                         "url":  "https://zh.cppreference.com/cpp/iterator"
-                     }
-                 ]
-    },
-    {
-        "id":  "196",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按值捕获：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按值捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "197",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按引用捕获：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "198",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "初始化捕获：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：初始化捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "199",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "mutable Lambda：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutable Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "200",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "泛型 Lambda：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：泛型 Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "201",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "无捕获 Lambda 转函数指针：按值、按引用和初始化捕获会怎样影响生命周期与复制成本？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：无捕获 Lambda 转函数指针",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "202",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按值捕获：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按值捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "203",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按引用捕获：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "204",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "初始化捕获：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：初始化捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "205",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "mutable Lambda：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutable Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "206",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "泛型 Lambda：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：泛型 Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "207",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "无捕获 Lambda 转函数指针：泛型、mutable 和无捕获闭包的类型与转换规则有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：无捕获 Lambda 转函数指针",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "208",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按值捕获：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按值捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "209",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "Lambda 按引用捕获：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：Lambda 按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "210",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "初始化捕获：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：初始化捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "211",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "mutable Lambda：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutable Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "212",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "泛型 Lambda：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：泛型 Lambda",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "213",
-        "group":  "cpp",
-        "category":  "cpp/lambdas-utility-types",
-        "title":  "无捕获 Lambda 转函数指针：与 std::function、bind、invoke 或函数指针组合时，类型擦除成本如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：无捕获 Lambda 转函数指针",
-                         "url":  "https://zh.cppreference.com/cpp/language/lambda"
-                     }
-                 ]
-    },
-    {
-        "id":  "214",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "按值抛出按引用捕获：异常对象、栈展开和 catch 顺序如何影响资源释放？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：按值抛出按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/throw"
-                     }
-                 ]
-    },
-    {
-        "id":  "215",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "异常层次捕获顺序：异常对象、栈展开和 catch 顺序如何影响资源释放？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：异常层次捕获顺序",
-                         "url":  "https://zh.cppreference.com/cpp/language/catch"
-                     }
-                 ]
-    },
-    {
-        "id":  "216",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "noexcept：异常对象、栈展开和 catch 顺序如何影响资源释放？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "217",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "栈展开：异常对象、栈展开和 catch 顺序如何影响资源释放？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：栈展开",
-                         "url":  "https://zh.cppreference.com/cpp/language/exceptions"
-                     }
-                 ]
-    },
-    {
-        "id":  "218",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "函数 try 块：异常对象、栈展开和 catch 顺序如何影响资源释放？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：函数 try 块",
-                         "url":  "https://zh.cppreference.com/cpp/language/function-try_block"
-                     }
-                 ]
-    },
-    {
-        "id":  "219",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "按值抛出按引用捕获：noexcept、terminate、析构函数和移动操作之间有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：按值抛出按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/throw"
-                     }
-                 ]
-    },
-    {
-        "id":  "220",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "异常层次捕获顺序：noexcept、terminate、析构函数和移动操作之间有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：异常层次捕获顺序",
-                         "url":  "https://zh.cppreference.com/cpp/language/catch"
-                     }
-                 ]
-    },
-    {
-        "id":  "221",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "noexcept：noexcept、terminate、析构函数和移动操作之间有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "222",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "栈展开：noexcept、terminate、析构函数和移动操作之间有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：栈展开",
-                         "url":  "https://zh.cppreference.com/cpp/language/exceptions"
-                     }
-                 ]
-    },
-    {
-        "id":  "223",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "函数 try 块：noexcept、terminate、析构函数和移动操作之间有什么关系？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：函数 try 块",
-                         "url":  "https://zh.cppreference.com/cpp/language/function-try_block"
-                     }
-                 ]
-    },
-    {
-        "id":  "224",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "按值抛出按引用捕获：dynamic_cast、typeid、static_cast 和 reinterpret_cast 的合法边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：按值抛出按引用捕获",
-                         "url":  "https://zh.cppreference.com/cpp/language/throw"
-                     }
-                 ]
-    },
-    {
-        "id":  "225",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "异常层次捕获顺序：dynamic_cast、typeid、static_cast 和 reinterpret_cast 的合法边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：异常层次捕获顺序",
-                         "url":  "https://zh.cppreference.com/cpp/language/catch"
-                     }
-                 ]
-    },
-    {
-        "id":  "226",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "noexcept：dynamic_cast、typeid、static_cast 和 reinterpret_cast 的合法边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：noexcept",
-                         "url":  "https://zh.cppreference.com/cpp/language/noexcept_spec"
-                     }
-                 ]
-    },
-    {
-        "id":  "227",
-        "group":  "cpp",
-        "category":  "cpp/exceptions-rtti",
-        "title":  "栈展开：dynamic_cast、typeid、static_cast 和 reinterpret_cast 的合法边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：栈展开",
-                         "url":  "https://zh.cppreference.com/cpp/language/exceptions"
-                     }
-                 ]
-    },
-    {
-        "id":  "228",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::thread 生命周期：std::thread 析构时仍可 joinable 会发生什么，所有权如何转移？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::thread 生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread"
-                     }
-                 ]
-    },
-    {
-        "id":  "229",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "join 与 detach：join 与 detach 对进程退出、资源回收和异常传播的影响有什么不同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：join 与 detach",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread/join"
-                     }
-                 ]
-    },
-    {
-        "id":  "230",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "mutex 类型：mutex、recursive_mutex、timed_mutex 的适用边界和递归语义是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutex 类型",
-                         "url":  "https://zh.cppreference.com/cpp/thread/mutex"
-                     }
-                 ]
-    },
-    {
-        "id":  "231",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "lock_guard：lock_guard 的作用域与异常安全保证如何利用？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：lock_guard",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock_guard"
-                     }
-                 ]
-    },
-    {
-        "id":  "232",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "unique_lock：unique_lock 的 defer_lock、adopt_lock 和 try_lock 状态如何区分？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/unique_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "233",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "scoped_lock：scoped_lock 如何一次获取多把锁并避免固定顺序导致的死锁？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scoped_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/scoped_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "234",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::lock：std::lock 的死锁避免保证是什么，调用方何时需要 adopt_lock？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "235",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "condition_variable：condition_variable 的等待谓词为什么必须放在循环中？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：condition_variable",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable"
-                     }
-                 ]
-    },
-    {
-        "id":  "236",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "虚假唤醒：虚假唤醒会怎样破坏一次性 if 判断，正确谓词应如何书写？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚假唤醒",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/wait"
-                     }
-                 ]
-    },
-    {
-        "id":  "237",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "notify_one 与 notify_all：notify_one 与 notify_all 如何选择，是否持锁通知会影响吞吐？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：notify_one 与 notify_all",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/notify_all"
-                     }
-                 ]
-    },
-    {
-        "id":  "238",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "future 与 promise：future/promise 共享状态如何传递值、异常和 broken_promise？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：future 与 promise",
-                         "url":  "https://zh.cppreference.com/cpp/thread/future"
-                     }
-                 ]
-    },
-    {
-        "id":  "239",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "async 策略：std::async 的 async、deferred 策略如何影响线程创建和析构阻塞？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：async 策略",
-                         "url":  "https://zh.cppreference.com/cpp/thread/async"
-                     }
-                 ]
-    },
-    {
-        "id":  "240",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::thread 生命周期：线程函数捕获对象、启动失败和退出清理的生命周期如何保证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::thread 生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread"
-                     }
-                 ]
-    },
-    {
-        "id":  "241",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "join 与 detach：如何为线程设计可取消的 join 流程，避免 detach 后悬空捕获？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：join 与 detach",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread/join"
-                     }
-                 ]
-    },
-    {
-        "id":  "242",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "mutex 类型：互斥量销毁或移动时有哪些前置条件，如何表达锁的所有权？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutex 类型",
-                         "url":  "https://zh.cppreference.com/cpp/thread/mutex"
-                     }
-                 ]
-    },
-    {
-        "id":  "243",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "lock_guard：lock_guard 不能提前解锁时，接口设计应如何安排临界区边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：lock_guard",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock_guard"
-                     }
-                 ]
-    },
-    {
-        "id":  "244",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "unique_lock：unique_lock 与 condition_variable 等待配合时，锁的所有权如何变化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/unique_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "245",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "scoped_lock：scoped_lock 与 lock_guard、unique_lock 混用时有哪些所有权边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scoped_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/scoped_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "246",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::lock：std::lock 获取多把锁失败或异常时，已获得的锁如何处理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "247",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "condition_variable：condition_variable 的 notify 时机、锁释放顺序和丢失唤醒如何验证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：condition_variable",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable"
-                     }
-                 ]
-    },
-    {
-        "id":  "248",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "虚假唤醒：多个消费者遇到虚假唤醒时，通知次数和共享状态如何协调？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚假唤醒",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/wait"
-                     }
-                 ]
-    },
-    {
-        "id":  "249",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "notify_one 与 notify_all：多个条件或多个消费者共享通知源时，怎样避免唤醒错误对象？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：notify_one 与 notify_all",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/notify_all"
-                     }
-                 ]
-    },
-    {
-        "id":  "250",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "future 与 promise：future::get 只能调用一次时，多个消费者应使用什么替代方案？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：future 与 promise",
-                         "url":  "https://zh.cppreference.com/cpp/thread/future"
-                     }
-                 ]
-    },
-    {
-        "id":  "251",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "async 策略：future 临时对象析构可能等待任务时，调用端如何避免隐式串行化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：async 策略",
-                         "url":  "https://zh.cppreference.com/cpp/thread/async"
-                     }
-                 ]
-    },
-    {
-        "id":  "252",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::thread 生命周期：移动 std::thread 后，原对象和新对象分别处于什么状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::thread 生命周期",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread"
-                     }
-                 ]
-    },
-    {
-        "id":  "253",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "join 与 detach：一个线程只能 join 一次时，接口如何表达调用责任？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：join 与 detach",
-                         "url":  "https://zh.cppreference.com/cpp/thread/thread/join"
-                     }
-                 ]
-    },
-    {
-        "id":  "254",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "mutex 类型：跨线程共享 mutex 时，异常路径怎样保证不遗留锁？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：mutex 类型",
-                         "url":  "https://zh.cppreference.com/cpp/thread/mutex"
-                     }
-                 ]
-    },
-    {
-        "id":  "255",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "lock_guard：采用 lock_guard 还是 unique_lock，取决于哪些操作需求？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：lock_guard",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock_guard"
-                     }
-                 ]
-    },
-    {
-        "id":  "256",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "unique_lock：移动 unique_lock 后谁负责解锁，异常路径如何验证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：unique_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/unique_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "257",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "scoped_lock：空锁列表和重复锁对象传给 scoped_lock 时应如何处理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：scoped_lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/scoped_lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "258",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "std::lock：如何把 std::lock 与不同类型的锁包装组合起来？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：std::lock",
-                         "url":  "https://zh.cppreference.com/cpp/thread/lock"
-                     }
-                 ]
-    },
-    {
-        "id":  "259",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "condition_variable：wait_for、wait_until 超时后，谓词和锁的状态分别是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：condition_variable",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable"
-                     }
-                 ]
-    },
-    {
-        "id":  "260",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "虚假唤醒：如何用测试稳定复现并诊断虚假唤醒相关竞态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：虚假唤醒",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/wait"
-                     }
-                 ]
-    },
-    {
-        "id":  "261",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "notify_one 与 notify_all：通知发生在等待者入队之前时，为什么仍需用谓词保护状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：notify_one 与 notify_all",
-                         "url":  "https://zh.cppreference.com/cpp/thread/condition_variable/notify_all"
-                     }
-                 ]
-    },
-    {
-        "id":  "262",
-        "group":  "cpp",
-        "category":  "cpp/standard-concurrency",
-        "title":  "future 与 promise：promise 设置值与等待线程销毁并发发生时，生命周期如何保证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：future 与 promise",
-                         "url":  "https://zh.cppreference.com/cpp/thread/future"
-                     }
-                 ]
-    },
-    {
-        "id":  "263",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "basic_string traits：char_traits、Allocator 和字符类型如何共同决定 basic_string 的行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：basic_string traits",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "264",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "字符串失效规则：basic_string 修改或扩容后，指针、引用和 string_view 的失效边界是什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：字符串失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "265",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "locale：locale、facet 和 imbue 如何影响格式化、比较和字符分类？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：locale",
-                         "url":  "https://zh.cppreference.com/cpp/locale"
-                     }
-                 ]
-    },
-    {
-        "id":  "266",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "正则表达式：regex_match、regex_search 和 regex_replace 的匹配范围有什么区别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：正则表达式",
-                         "url":  "https://zh.cppreference.com/cpp/regex"
-                     }
-                 ]
-    },
-    {
-        "id":  "267",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "ios 状态位：rdstate、eofbit、failbit 和 badbit 分别表示什么，clear 如何恢复流？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ios 状态位",
-                         "url":  "https://zh.cppreference.com/cpp/io/ios_base"
-                     }
-                 ]
-    },
-    {
-        "id":  "268",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "streambuf：streambuf 的缓冲区、underflow/overflow 和 putback 契约如何协同？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：streambuf",
-                         "url":  "https://zh.cppreference.com/cpp/io/basic_streambuf"
-                     }
-                 ]
-    },
-    {
-        "id":  "269",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "basic_string traits：自定义 traits 或 allocator 时，哪些接口必须满足一致性契约？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：basic_string traits",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "270",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "字符串失效规则：返回临时 string 的视图、substr 和 data() 组合时如何避免悬空？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：字符串失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "271",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "locale：全局 locale 与线程局部 locale 的变化会怎样影响库代码？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：locale",
-                         "url":  "https://zh.cppreference.com/cpp/locale"
-                     }
-                 ]
-    },
-    {
-        "id":  "272",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "正则表达式：正则迭代器、异常和临时字符串生命周期如何共同影响结果？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：正则表达式",
-                         "url":  "https://zh.cppreference.com/cpp/regex"
-                     }
-                 ]
-    },
-    {
-        "id":  "273",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "ios 状态位：exceptions() 设置后，流错误何时转为异常，析构阶段如何处理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ios 状态位",
-                         "url":  "https://zh.cppreference.com/cpp/io/ios_base"
-                     }
-                 ]
-    },
-    {
-        "id":  "274",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "streambuf：自定义 streambuf 时，seek、同步和所有权由谁负责？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：streambuf",
-                         "url":  "https://zh.cppreference.com/cpp/io/basic_streambuf"
-                     }
-                 ]
-    },
-    {
-        "id":  "275",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "basic_string traits：basic_string 与 string_view、C 字符串互操作时，长度和所有权如何表达？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：basic_string traits",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "276",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "字符串失效规则：跨线程只读共享字符串时，哪些操作会意外触发写入或重分配？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：字符串失效规则",
-                         "url":  "https://zh.cppreference.com/cpp/string/basic_string"
-                     }
-                 ]
-    },
-    {
-        "id":  "277",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "locale：跨平台处理数字和文本时，locale 与显式编码策略如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：locale",
-                         "url":  "https://zh.cppreference.com/cpp/locale"
-                     }
-                 ]
-    },
-    {
-        "id":  "278",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "正则表达式：需要可预测性能时，std::regex 与手写解析的边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：正则表达式",
-                         "url":  "https://zh.cppreference.com/cpp/regex"
-                     }
-                 ]
-    },
-    {
-        "id":  "279",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "ios 状态位：格式化失败和底层 I/O 失败怎样通过 iostream 状态区分？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：ios 状态位",
-                         "url":  "https://zh.cppreference.com/cpp/io/ios_base"
-                     }
-                 ]
-    },
-    {
-        "id":  "280",
-        "group":  "cpp",
-        "category":  "cpp/strings-time-files-streams",
-        "title":  "streambuf：文件流、字符串流与底层 streambuf 的生命周期如何安排？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "refs":  [
-                     {
-                         "kind":  "cppreference",
-                         "label":  "cppreference：streambuf",
-                         "url":  "https://zh.cppreference.com/cpp/io/basic_streambuf"
-                     }
-                 ]
-    },
-    {
-        "id":  "281",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Abstract Factory 如何创建一组相互匹配的产品？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Abstract Factory",
-        "answer":  "抽象工厂提供创建一族相互匹配产品的接口，客户端只依赖抽象产品，因此可以整体替换产品族。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "282",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "切换 Abstract Factory 产品族时依赖应放在哪里？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Abstract Factory",
-        "answer":  "产品族的选择应放在组合根或配置层，业务对象只拿到抽象工厂；切换族时不把具体类型判断扩散到客户端。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "283",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Abstract Factory 与依赖注入如何保持接口稳定？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Abstract Factory",
-        "answer":  "把抽象工厂作为依赖注入，客户端依赖稳定的产品接口；测试时可注入另一套工厂而不改业务代码。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "284",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Builder 如何分离复杂对象的构造步骤？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Builder",
-        "answer":  "Builder 将复杂对象的构造步骤与最终表示分离，调用者按步骤组装，适合可选参数多且构造顺序有约束的对象。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "285",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "可复用 Builder 怎样避免上一次状态泄漏？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Builder",
-        "answer":  "可复用 Builder 必须在每次 Build 后重置或创建新状态，不能让上一次构造的可变字段泄漏到下一次结果。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "286",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Builder 与命名构造函数如何取舍？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Builder",
-        "answer":  "参数少且约束简单时命名构造函数更直接；步骤多、可选组合多或需要多种表示时再采用 Builder。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "287",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Factory Method 如何把具体产品决定延迟到派生类？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Factory Method",
-        "answer":  "Factory Method 在基类定义创建操作，把具体产品的决定延迟给派生类，同时让业务流程依赖抽象产品。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "288",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Factory Method 的扩展点应如何控制？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Factory Method",
-        "answer":  "扩展点应只暴露抽象产品和受控的创建钩子，避免派生类修改核心流程或把具体类型泄漏给调用方。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "289",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Factory Method 与简单工厂在测试替身注入上有何差异？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Factory Method",
-        "answer":  "简单工厂集中一个条件分支创建对象；Factory Method 用多态延迟创建，更适合扩展和注入测试替身。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "290",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Prototype 复制对象时如何处理深拷贝和共享资源？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Prototype",
-        "answer":  "Prototype 通过复制已有实例创建对象；复制契约必须明确值字段、拥有资源和共享资源分别采用浅拷贝还是深拷贝。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "291",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "原型注册表如何管理复制入口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Prototype",
-        "answer":  "原型注册表用稳定键保存原型并返回 Clone 结果，要处理键冲突、缺失键和原型生命周期，不能把注册表当全局裸指针表。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "292",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Prototype 与值语义结合时拷贝契约如何定义？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Prototype",
-        "answer":  "与值语义结合时应让拷贝构造或 Clone 明确独立所有权；内部共享的可变资源必须有同步或复制策略。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "293",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Singleton 的唯一实例如何保证线程安全初始化？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Singleton",
-        "answer":  "C++11 起函数内静态对象的初始化是线程安全的，通常可用它实现惰性初始化的单例，但仍要明确唯一性和访问边界。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "294",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Singleton 生命周期与静态析构顺序有何风险？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Singleton",
-        "answer":  "静态对象之间的析构顺序跨翻译单元不稳定，单例不要在析构阶段依赖另一个静态对象；必要时采用受控生命周期。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "295",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Singleton 与依赖注入相比会引入哪些全局耦合？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Singleton",
-        "answer":  "Singleton 把状态变成全局依赖，测试替换和并发隔离都变难；能用依赖注入表达的服务通常不应强行做成单例。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "296",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Adapter 如何把旧接口转换为客户端期待的接口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Adapter",
-        "answer":  "Adapter 把已有接口转换为客户端需要的接口，适配器持有被适配对象并只承担协议转换，不改变原对象职责。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "297",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "对象 Adapter 与类 Adapter 如何选择？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Adapter",
-        "answer":  "对象适配器通过组合更灵活；类适配器依赖多重继承或继承关系，只有在语言和类型层次允许时才考虑。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "298",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Adapter 转译所有权和异常时应保持哪些边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Adapter",
-        "answer":  "适配器要明确所有权、异常和错误码的转换边界，通常不接管被适配对象的生命周期，除非接口契约明确转移所有权。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "299",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Bridge 如何拆开抽象层和实现层的变化轴？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Bridge",
-        "answer":  "Bridge 将抽象层与实现层拆成两条可独立变化的层次，通过组合持有实现者，避免平台变化导致抽象类层次爆炸。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "300",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Bridge 的实现对象由谁拥有和替换？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Bridge",
-        "answer":  "实现对象的拥有和替换由抽象层的生命周期契约决定，通常用接口加智能指针表达所有权和可替换性。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "301",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Bridge 如何减少平台实现对上层头文件的暴露？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Bridge",
-        "answer":  "把平台实现放在实现层和私有头文件中，抽象层只依赖稳定接口，可减少跨平台代码和头文件耦合。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "302",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Composite 如何让叶子和组合对象共享操作接口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Composite",
-        "answer":  "Composite 让叶子和组合节点实现同一组件接口，客户端可以统一处理单个对象和对象树。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "303",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Composite 遍历子节点时如何处理生命周期？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Composite",
-        "answer":  "遍历子节点时要先定义节点所有权和删除时机，避免在回调或遍历期间销毁当前节点造成悬空访问。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "304",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "透明 Composite 接口与安全接口各牺牲什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Composite",
-        "answer":  "透明接口把子节点管理操作放进统一接口，使用方便但叶子要处理无意义操作；安全接口更精确但客户端需要区分节点类型。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "305",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Decorator 如何在不修改原类的情况下叠加职责？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Decorator",
-        "answer":  "Decorator 通过包装同一接口在运行时叠加职责，不修改原类，也不要求为每种组合建立新的派生类。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "306",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "多层 Decorator 的析构与异常传播如何保证？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Decorator",
-        "answer":  "多层装饰器应按栈式所有权销毁；异常要沿同一调用链传播，资源清理交给 RAII，不能在某一层吞掉失败。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "307",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Decorator 与继承扩展的运行时能力有何差异？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Decorator",
-        "answer":  "Decorator 适合运行时组合，继承适合固定的类型差异；前者可动态增删职责，后者更容易表达静态不变量。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "308",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Facade 如何为多个子系统提供稳定入口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Facade",
-        "answer":  "Facade 为多个子系统提供一个稳定的高层入口，隐藏协作顺序和内部类型，降低调用方的认知和编译耦合。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "309",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Facade 是否应该管理子系统对象生命周期？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Facade",
-        "answer":  "Facade 可以协调子系统，但是否拥有对象要看职责；共享基础设施通常由外部注入，避免 Facade 变成隐式全局容器。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "310",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Facade 与模块边界结合如何降低编译耦合？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Facade",
-        "answer":  "把 Facade 放在模块边界并只暴露前置声明或接口，可让调用方不包含子系统实现头文件，减少重编译。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "311",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Flyweight 如何区分内在状态和外在状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Flyweight",
-        "answer":  "Flyweight 把可共享的内在状态与每次使用的外在状态分开，用共享对象降低重复内存，但共享状态应尽量不可变。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "312",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Flyweight 工厂怎样保证共享键和生命周期一致？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Flyweight",
-        "answer":  "Flyweight 工厂以规范化键管理共享实例，键、缓存所有权和淘汰策略必须一致，不能让调用者保存失效裸指针。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "313",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Flyweight 共享不可变数据时如何处理并发读取？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Flyweight",
-        "answer":  "共享不可变数据可并发只读；若内在状态会变化，就必须同步或复制，否则共享会把一次修改传播到所有使用者。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "314",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Proxy 如何在不改变真实对象接口的情况下增加访问控制？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Proxy",
-        "answer":  "Proxy 提供与真实对象相同的接口，在访问前后增加权限、远程调用、缓存或日志控制，而不改变客户端协议。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "315",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "虚拟 Proxy 延迟创建资源时如何报告失败？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Proxy",
-        "answer":  "虚拟 Proxy 延迟创建真实资源；创建失败应通过明确的错误返回、异常或状态对象报告，不能返回看似有效的空对象。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "316",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Proxy、Decorator 和 Adapter 的职责边界如何辨别？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Proxy",
-        "answer":  "Adapter 改变接口，Decorator 叠加职责，Proxy 控制对真实对象的访问；判断意图比看起来是否都在“包一层”更重要。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "317",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Chain of Responsibility 如何沿处理者链传递请求？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Chain of Responsibility",
-        "answer":  "责任链把请求沿处理者链传递，每个处理者决定处理、继续传递或拒绝，发送者不需要知道具体接收者。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "318",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "处理者链如何表达处理、继续和拒绝三种结果？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Chain of Responsibility",
-        "answer":  "接口应明确三种结果并约定是否允许多个处理者处理；不能用“返回空”同时表示已处理和未处理。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "319",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "动态增删处理者时如何保持链顺序契约？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Chain of Responsibility",
-        "answer":  "动态增删处理者要由链的所有者维护顺序和生命周期，修改链时避免并发遍历看到半更新结构。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "320",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Command 如何把一次操作封装成可排队对象？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Command",
-        "answer":  "Command 把一次操作及其接收者参数封装成对象，因此可以排队、记录、延迟执行或统一撤销。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "321",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "支持撤销时 Command 需要保存哪些状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Command",
-        "answer":  "可撤销 Command 至少保存恢复所需的旧状态或反向操作；只保存“操作名称”无法可靠撤销副作用。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "322",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "宏命令组合多个 Command 时如何处理部分失败？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Command",
-        "answer":  "宏命令执行多个子命令时要定义失败策略：回滚已完成步骤、记录部分成功，或明确保持不可回滚状态。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "323",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Interpreter 如何用类层次表达小型语法规则？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Interpreter",
-        "answer":  "Interpreter 用类层次表示小型语法的非终结符和终结符，每个表达式在上下文中解释自身。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "324",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Interpreter 上下文对象应保存哪些运行期信息？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Interpreter",
-        "answer":  "Context 保存解释期间共享的变量、环境或输入位置；它不应偷偷承担解析器和业务服务的生命周期。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "325",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "语法规则增长时 Interpreter 如何与解析器协作？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Interpreter",
-        "answer":  "语法增长后通常让解析器负责词法和语法分析、解释器负责执行语义，避免用大量解释节点承担复杂解析。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "326",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Iterator 如何隐藏集合内部表示并提供统一访问协议？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Iterator",
-        "answer":  "Iterator 将集合内部表示隐藏在访问协议后，客户端通过统一的 begin/end 或迭代器接口遍历。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "327",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "自定义 Iterator 的失效条件和所有权如何说明？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Iterator",
-        "answer":  "自定义 Iterator 必须说明失效条件、比较规则和底层所有权；迭代器通常不拥有容器，容器销毁后迭代器立即失效。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "328",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Iterator 与范围 for 接口结合需要哪些运算符？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Iterator",
-        "answer":  "范围 for 需要 begin/end、迭代器的递增、解引用和可比较语义；数组式集合还要保证返回的迭代器满足相应类别。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "329",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Mediator 如何把同事对象间的网状依赖集中起来？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Mediator",
-        "answer":  "Mediator 把同事对象之间的网状协作集中到中介者，组件只与中介者通信，减少彼此直接依赖。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "330",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Mediator 过度膨胀时怎样重划协作边界？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Mediator",
-        "answer":  "中介者膨胀说明协作边界过大，应按用例或子域拆分多个中介者，而不是继续堆叠条件分支。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "331",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Mediator 转发失败应如何传回调用者？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Mediator",
-        "answer":  "中介者转发失败要用返回值、错误对象或异常明确传回调用者，不能静默吞掉某个同事对象的失败。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "332",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Memento 如何在不暴露内部表示时保存状态？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Memento",
-        "answer":  "Memento 在不暴露对象内部表示的前提下保存快照，由发起者创建和恢复，管理者只负责保存。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "333",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Memento 快照的所有权和版本号由谁维护？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Memento",
-        "answer":  "快照的所有权和版本应由管理者或发起者明确，恢复前检查版本，避免把旧布局直接解释成新状态。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "334",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "大量 Memento 快照如何控制内存占用？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Memento",
-        "answer":  "快照数量大时应限制历史深度、做增量快照或压缩，并明确淘汰策略，不能无限复制完整状态。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "335",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Observer 注册和取消订阅时如何避免悬空回调？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Observer",
-        "answer":  "Observer 建立一对多通知关系，主题只依赖观察者接口；注册和取消订阅必须与观察者生命周期绑定。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "336",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Observer 通知期间修改订阅集合会发生什么？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Observer",
-        "answer":  "通知期间修改订阅集合应遍历稳定快照或延迟修改，避免迭代器失效和回调重入破坏容器。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "337",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Observer 异步通知如何定义顺序和失败处理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Observer",
-        "answer":  "异步通知要约定顺序、线程和失败隔离；通常复制事件数据并让单个观察者失败不阻塞整个广播。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "338",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "State 如何把状态行为从大型条件分支中拆出？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "State",
-        "answer":  "State 把状态相关行为拆成状态对象，让上下文委托当前状态，替代不断增长的大型条件分支。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "339",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "共享 State 对象时如何隔离瞬时数据？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "State",
-        "answer":  "共享 State 对象只能保存不可变行为；与请求或上下文有关的瞬时数据应放在 Context 或调用参数中。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "340",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "状态切换失败时上下文应回滚哪些内容？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "State",
-        "answer":  "状态切换失败时应恢复上下文状态和外部副作用，若无法回滚就把操作设计成可重试或显式失败。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "341",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Strategy 如何把可替换行为封装成稳定接口？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Strategy",
-        "answer":  "Strategy 把可替换算法或业务策略封装为稳定接口，Context 组合一个策略并在运行时选择。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "342",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "运行时选择 Strategy 时依赖和生命周期如何管理？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Strategy",
-        "answer":  "运行时选择策略时由组合根或工厂管理依赖和生命周期，Context 不应自行创建具体策略或拥有全局注册表。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "343",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Strategy 与 Template Method 的扩展方式有何差异？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Strategy",
-        "answer":  "Strategy 通过组合在运行时替换行为；Template Method 通过继承固定骨架并覆盖步骤，扩展时机不同。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "344",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Template Method 如何固定流程骨架并开放可变步骤？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Template Method",
-        "answer":  "Template Method 在基类固定流程骨架，把可变步骤交给派生类或钩子实现，保证整体顺序不被改变。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "345",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Template Method 钩子函数如何处理异常和默认行为？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Template Method",
-        "answer":  "钩子应有清晰默认行为和异常契约；基类负责资源和流程收尾，派生类不能破坏不变量。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "346",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Template Method 与 Strategy 的测试边界如何划分？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Template Method",
-        "answer":  "Template Method 适合同一流程的静态变体，Strategy 适合运行时替换；测试边界也分别落在派生步骤和独立策略上。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "347",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Visitor 如何在不修改元素层次时增加新操作？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Visitor",
-        "answer":  "Visitor 把操作从元素层次移出，新增操作无需修改每个元素，但需要元素提供 accept 接口。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "348",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "双重分派在 Visitor 中解决了什么类型限制？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Visitor",
-        "answer":  "双重分派让元素类型和访问者类型共同决定 visit 重载，解决单次虚调用无法同时依赖两种动态类型的限制。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "349",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Visitor 面对频繁变化的元素类型时成本如何评估？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Visitor",
-        "answer":  "元素类型频繁变化时 Visitor 的每次新增元素都要修改所有 Visitor，维护成本可能超过新增操作带来的收益。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "350",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Abstract Factory 与 Builder 如何共同构造可配置产品？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Abstract Factory 负责选择一族一致产品，Builder 负责按步骤组装一个复杂产品；前者解决产品族替换，后者解决构造过程组织。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "351",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Factory Method 与 Prototype 在复制和创建之间如何选择？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Factory Method 适合把创建点延迟给派生类，Prototype 适合已有实例复制成本更低或类型运行时决定的场景。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "352",
-        "group":  "gof",
-        "category":  "gof/creation",
-        "title":  "Singleton 与 Facade 组合时如何限制全局入口数量？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Facade 提供窄入口，Singleton 只解决唯一访问点；组合时让 Facade 由外部注入服务，避免 Singleton 把整个子系统变成全局状态。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "353",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Adapter、Bridge、Facade 三种结构型模式的边界如何判断？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Adapter 改变接口，Bridge 拆分抽象与实现两个变化轴，Facade 提供子系统的高层入口；判断客户端意图即可区分三者。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "354",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Composite 与 Visitor 组合时如何遍历并扩展树形对象？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Composite 提供统一树遍历，Visitor 把操作外置；通常由 Visitor 访问 Composite 节点并递归子节点，同时保持元素接口稳定。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "355",
-        "group":  "gof",
-        "category":  "gof/structural",
-        "title":  "Decorator 与 Proxy 都包裹对象时如何辨认意图？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Decorator 重点是叠加职责，Proxy 重点是控制访问，二者都保持接口不变；看包装对象是否代表真实对象及访问策略即可判断。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "356",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Command 与 Memento 组合如何实现可撤销操作？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Command 保存待执行操作，Memento 保存执行前快照；撤销时先恢复快照或执行反向 Command，并明确部分失败策略。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "357",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Observer 与 Mediator 组合如何控制事件广播范围？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Mediator 负责限定协作范围，Observer 负责一对多通知；让主题只向中介者发布领域事件，避免观察者直接形成广播网。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "358",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "State 与 Strategy 都替换行为时如何区分上下文职责？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "State 表示上下文状态导致的行为变化，Strategy 表示调用方选择的可替换策略；前者通常由 Context 驱动切换，后者由组合根选择。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "359",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Chain of Responsibility 与 Interpreter 组合如何处理分层请求？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Interpreter 表达语法语义，责任链表达处理者逐级接管；可先由解释器生成结构化请求，再交给责任链按层级处理。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "360",
-        "group":  "gof",
-        "category":  "gof/behavioral",
-        "title":  "Template Method 与 Factory Method 组合时创建点如何延迟？",
-        "scopes":  [
-                       "C++11",
-                       "C++14",
-                       "C++17"
-                   ],
-        "pattern":  "Cross-pattern",
-        "answer":  "Template Method 固定流程，Factory Method 把其中的创建步骤交给派生类；创建点延迟但流程骨架仍由基类掌控。",
-        "source":  "来源：InformIT 的 GoF《Design Patterns》章节资料（原书定义）"
-    },
-    {
-        "id":  "361",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UObject 反射信息：反射元数据由谁生成，运行时如何查询并避免依赖生成细节？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UHT 在构建阶段扫描 UCLASS、USTRUCT、UFUNCTION 等声明并生成反射代码；运行时通过 UClass、FProperty、UFunction 查询，不应依赖生成文件内部细节。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "362",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UCLASS 与 USTRUCT：两者在 UHT 处理、默认构造和序列化能力上有哪些边界？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UCLASS 属于 UObject 体系，支持 GC、反射和对象引用；USTRUCT 更像可按值传递的数据类型，可反射和序列化但不由 GC 单独管理。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "363",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UFUNCTION 与 UPROPERTY：哪些 specifier 会改变 Blueprint 暴露、复制或编辑器可见性？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "specifier 决定 Blueprint 暴露、编辑器可见性、复制和序列化行为；它们是引擎工具的元数据，不等同于 C++ 的访问控制或线程安全。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "364",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UHT 头文件解析：哪些 C++ 声明或 include 写法会让 UHT 解析失败，如何定位生成错误？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UHT 只支持规定的反射语法和可解析声明；遇到复杂模板、宏展开或 include 顺序问题，应先看 UHT 生成日志和最早的解析错误。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "365",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "GENERATED_BODY：生成代码插入位置和声明顺序有什么要求，常见编译错误如何判断？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "GENERATED_BODY 必须放在反射类型声明的合适位置并保持声明顺序稳定；迁移或重命名后要重新生成代码，优先排查宏位置和模块可见性。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "366",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "属性编辑器权限：EditAnywhere、VisibleInstanceOnly 等元数据如何决定编辑器中的修改权限？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "EditAnywhere、VisibleInstanceOnly 等控制编辑器能否修改属性；编辑器权限、运行时可写性、配置保存和网络复制是四个独立概念。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "367",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "Outer 层级：Outer 如何参与对象归属、命名和 GC 可达性，什么时候不应随意复用？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Outer 表达 UObject 的归属和命名层级，也参与部分 GC 可达性；跨关卡或异步对象不能随意复用短生命周期 Outer，应选择明确的持有者。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "368",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "NewObject：NewObject 的 Outer、模板对象和对象标志参数如何影响初始化与 GC？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "NewObject 用 Outer、模板和对象标志创建 UObject；运行时普通对象用 NewObject，复制已有对象用 DuplicateObject，默认子对象应在构造函数中创建。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "369",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "对象标志：RF_Transient、RF_Public 等对象标志分别影响哪些保存、复制和 GC 行为？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "RF_Transient 等标志影响保存、复制和编辑器行为；调试时把标志当作状态线索，不能用单个标志替代 UPROPERTY 引用和生命周期判断。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "370",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "GC 可达性：GC root、UPROPERTY 引用和容器引用如何共同决定对象是否可达？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "GC 从 root 遍历 UPROPERTY 等可追踪引用；裸指针、普通容器或异步任务不会自动保持 UObject，必须使用 UPROPERTY、TObjectPtr 或显式 root 方案。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "371",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "TObjectPtr：TObjectPtr 与裸 UObject 指针在 GC、编辑器和序列化场景下有什么差异？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "TObjectPtr 是引擎可追踪的 UObject 指针，便于 GC、编辑器和序列化；裸指针只表达地址，不能单独保证对象存活。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "372",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "TWeakObjectPtr：TWeakObjectPtr 如何表达弱引用，IsValid 与 Pin 的使用边界是什么？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "TWeakObjectPtr 不拥有对象，IsValid 用于检查当前有效性，Pin 用于在短暂使用期间取得安全的强引用；对象销毁后弱引用会失效。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "373",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UObject 反射信息：反射信息如何影响序列化、编辑器工具和运行时类型判断？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UHT 在构建阶段扫描 UCLASS、USTRUCT、UFUNCTION 等声明并生成反射代码；运行时通过 UClass、FProperty、UFunction 查询，不应依赖生成文件内部细节。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "374",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UCLASS 与 USTRUCT：选择 UCLASS 还是 USTRUCT 时，如何权衡 GC、复制和按值传递？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UCLASS 属于 UObject 体系，支持 GC、反射和对象引用；USTRUCT 更像可按值传递的数据类型，可反射和序列化但不由 GC 单独管理。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "375",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UFUNCTION 与 UPROPERTY：声明变化后 UHT 生成代码和二进制接口会受到什么影响？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "specifier 决定 Blueprint 暴露、编辑器可见性、复制和序列化行为；它们是引擎工具的元数据，不等同于 C++ 的访问控制或线程安全。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "376",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "UHT 头文件解析：UHT 的解析边界如何影响模板、宏和跨模块反射声明？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UHT 只支持规定的反射语法和可解析声明；遇到复杂模板、宏展开或 include 顺序问题，应先看 UHT 生成日志和最早的解析错误。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "377",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "GENERATED_BODY：迁移或重命名反射类型时，GENERATED_BODY 与生成文件如何保持一致？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "GENERATED_BODY 必须放在反射类型声明的合适位置并保持声明顺序稳定；迁移或重命名后要重新生成代码，优先排查宏位置和模块可见性。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "378",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "属性编辑器权限：编辑器权限与运行时可写性、配置保存和复制属性是否是同一概念？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "EditAnywhere、VisibleInstanceOnly 等控制编辑器能否修改属性；编辑器权限、运行时可写性、配置保存和网络复制是四个独立概念。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "379",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "Outer 层级：跨关卡或异步加载时 Outer 选择错误会造成哪些生命周期问题？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Outer 表达 UObject 的归属和命名层级，也参与部分 GC 可达性；跨关卡或异步对象不能随意复用短生命周期 Outer，应选择明确的持有者。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "380",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "NewObject：运行时创建 UObject 时，何时应使用 NewObject、DuplicateObject 或构造子对象？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "NewObject 用 Outer、模板和对象标志创建 UObject；运行时普通对象用 NewObject，复制已有对象用 DuplicateObject，默认子对象应在构造函数中创建。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "381",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "对象标志：调试 UObject 生命周期时，如何利用对象标志判断对象所处阶段？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "RF_Transient 等标志影响保存、复制和编辑器行为；调试时把标志当作状态线索，不能用单个标志替代 UPROPERTY 引用和生命周期判断。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "382",
-        "group":  "ue5",
-        "category":  "ue5/uobject-reflection-gc",
-        "title":  "GC 可达性：异步任务或非 UPROPERTY 指针持有 UObject 时，怎样避免被 GC 提前回收？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "GC 从 root 遍历 UPROPERTY 等可追踪引用；裸指针、普通容器或异步任务不会自动保持 UObject，必须使用 UPROPERTY、TObjectPtr 或显式 root 方案。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "383",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "Actor 构造函数：构造、OnConstruction、BeginPlay 的调用时机分别是什么，哪些对象此时可用？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "构造函数主要创建默认子对象，不能依赖 World、运行时玩家或资产状态；OnConstruction 处理实例化后的属性构造，BeginPlay 才进入运行时。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "384",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "OnConstruction：编辑器修改属性时 OnConstruction 如何重复执行，如何避免副作用？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "OnConstruction 会在编辑器属性变化和运行时生成后执行，逻辑必须可重复且可撤销，不能把一次性运行时副作用放进去。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "385",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "BeginPlay：BeginPlay 与组件注册、网络初始化的先后关系如何确认？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "BeginPlay 在 Actor 和组件完成注册、世界开始运行后调用；需要网络角色或运行时世界状态的初始化应放在这里并确认调用顺序。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "386",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "SpawnActor 参数：SpawnCollisionHandlingOverride、Owner、Instigator 等参数如何影响生成结果？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "生成碰撞处理决定重叠、阻挡时是否生成，Owner 表达归属和 RPC 权限，Instigator 表达发起者；三者不是同一个概念。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "387",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "组件注册：运行时组件从创建到 RegisterComponent、Attach 和激活需要遵循什么顺序？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "动态组件通常先创建并设置 Outer/所有者，再 RegisterComponent、Attach 并激活；漏注册会导致世界、渲染或 Tick 系统看不到组件。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "388",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "根组件层级：设置 RootComponent、AttachParent 和相对变换时，如何避免层级与变换错乱？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "RootComponent 是 Actor 变换根，AttachParent 和相对变换决定子组件局部姿态；修改层级时要明确使用相对还是世界变换。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "389",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "CreateDefaultSubobject：默认子对象与运行时 CreateComponent 的生命周期、编辑器显示和复制行为有什么区别？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "CreateDefaultSubobject 在构造阶段建立可编辑的默认子对象模板；运行时 CreateComponent 是实例级动态对象，注册和销毁责任不同。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "390",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "运行时 CreateComponent：动态组件创建后何时注册、设置所有者并加入实例组件列表？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "动态组件创建后设置所属 Actor，完成 RegisterComponent 并加入实例组件列表；需要复制或保存时还要单独配置相应标志。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "391",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "组件 Tick 依赖：TickFunction 的前置依赖如何声明，如何保证组件更新顺序稳定？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "用 TickFunction 的 AddPrerequisite 声明前置依赖，让引擎调度顺序稳定；不要依赖当前帧偶然的组件注册顺序。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "392",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "PrimaryComponentTick：如何通过 PrimaryComponentTick 控制 Tick、TickGroup 和运行时开关？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "PrimaryComponentTick 控制组件是否 Tick、TickGroup 和运行时开关；先设置 bCanEverTick，再按需要启用并选择合适 TickGroup。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "393",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "WorldSubsystem：WorldSubsystem 的实例范围和初始化时机如何与 UWorld 生命周期对应？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "WorldSubsystem 每个 UWorld 通常有一个实例，随 World 初始化和销毁；它适合关卡级服务，不适合保存跨关卡全局状态。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "394",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "GameInstanceSubsystem：GameInstanceSubsystem 适合持有哪些跨关卡状态，何时销毁？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "GameInstanceSubsystem 随 GameInstance 存活，适合跨关卡但属于当前游戏实例的服务；退出 GameInstance 时统一销毁。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "395",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "Subsystem 初始化：Subsystem 的 Initialize、Deinitialize 与依赖模块加载顺序如何协调？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Subsystem 的 Initialize/Deinitialize 应与宿主生命周期对齐；跨模块依赖要在 Build.cs 和模块加载阶段明确，不能在初始化时假设任意模块已可用。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "396",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "ChildActorComponent：ChildActorComponent 的子 Actor 创建、重建和销毁时机有哪些陷阱？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "ChildActorComponent 可能在编辑器重建、运行时生成和销毁子 Actor；不要缓存过期指针，并把子 Actor 的所有权和重建时机当成动态的。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "397",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "组件模板：组件模板与实例属性如何区分，编辑器默认值何时复制到实例？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "组件模板保存默认值，实例属性由模板初始化后可独立修改；区分模板对象和实例对象，避免把实例运行时状态写回默认值。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "398",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "Actor 销毁回调：EndPlay、OnDestroyed 和析构函数各自负责什么，如何安排清理顺序？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "EndPlay 负责按结束原因清理运行时资源，OnDestroyed 表示销毁通知，析构函数只做 C++ 内存收尾；不要把引擎交互放进析构函数。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "399",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "Actor 构造函数：Actor 构造函数中创建默认子对象时，为什么不能依赖世界或运行时状态？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "构造函数主要创建默认子对象，不能依赖 World、运行时玩家或资产状态；OnConstruction 处理实例化后的属性构造，BeginPlay 才进入运行时。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "400",
-        "group":  "ue5",
-        "category":  "ue5/actor-component-subsystem",
-        "title":  "OnConstruction：运行时 SpawnActor 与编辑器放置 Actor 时，OnConstruction 的输入和调用顺序有何不同？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "OnConstruction 会在编辑器属性变化和运行时生成后执行，逻辑必须可重复且可撤销，不能把一次性运行时副作用放进去。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "401",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "单播 Delegate：单播 Delegate 的绑定对象、执行结果和解绑时机如何定义？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "单播 Delegate 只有一个绑定目标，Execute 前要确认绑定有效；绑定对象销毁或结束玩法时及时解绑，避免调用悬空成员函数。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "402",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "多播 Delegate：多播 Delegate 的调用顺序、广播期间修改订阅集合如何处理？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "多播 Delegate 可通知多个订阅者，广播期间不要直接破坏正在遍历的订阅集合；通过引擎提供的解绑语义或延迟修改处理重入。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "403",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "动态 Delegate：动态 Delegate 与反射、序列化和性能开销之间有什么取舍？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "动态 Delegate 走反射，可被 Blueprint 使用并支持序列化，但开销高于原生 Delegate；只有需要反射边界时才使用。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "404",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "AddUObject 与 AddRaw：AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "AddUObject 能感知 UObject 生命周期，AddRaw 不会自动检查裸指针，AddLambda 还要审查捕获对象；跨异步边界优先用可失效绑定或显式解绑。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "405",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "Delegate 解绑：Destroy、EndPlay 或对象移动后，怎样可靠地清理 Delegate 绑定？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "在 EndPlay、销毁或拥有者变化时集中解绑，并保存绑定句柄；不要只依赖对象移动或析构顺序自动清理非 UObject 绑定。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "406",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "BlueprintNativeEvent：BlueprintNativeEvent 的 C++ 基类实现、_Implementation 和覆盖规则如何配合？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "C++ 提供函数声明和 _Implementation 默认实现，Blueprint 可覆盖；C++ 调用应走生成的函数入口，不能绕过反射直接调用错误的实现层。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "407",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "UINTERFACE：UINTERFACE 与纯 C++ 接口的反射声明、实现类和调用方式有什么区别？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "UINTERFACE 是反射壳，真正的接口函数放在 IInterface 中并由 UObject 类实现；调用前用接口检查和 Cast，不能把 UObject 指针直接当接口指针。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "408",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "接口指针转换：如何在 UObject、UInterface 和实现类指针之间安全转换并检查有效性？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "用 Cast\u003cIInterface\u003e 或 Implements 检查 UObject 是否实现接口，再取得接口指针；始终校验对象有效性，避免 reinterpret_cast 破坏 UObject 布局。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "409",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "AsyncTask：AsyncTask 切换线程时如何保证 UObject 访问发生在正确的线程？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "AsyncTask 只能把工作切到指定线程，UObject 和大多数引擎对象访问必须回到 GameThread；跨线程传递数据而不是直接捕获并操作 UObject。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "410",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "线程池任务：线程池任务的捕获对象、取消和完成回调如何避免竞态？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "线程池任务要明确捕获对象的生命周期、取消标志和完成回调线程；任务结束前不能释放共享状态，回调也要检查对象是否仍有效。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "411",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "TFuture 与 TPromise：TFuture/TPromise 的结果传递、等待和异常路径如何设计？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "TPromise 设置共享结果，TFuture 负责等待或取得结果；要定义只取一次还是共享读取，并为取消、超时和异常提供完成路径。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "412",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "Latent Action：Latent Action 的生命周期、世界上下文和取消条件如何管理？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Latent Action 绑定 World 上下文并跨帧继续执行；必须处理世界销毁、取消和回调重复触发，不能把短生命周期对象裸捕获进去。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "413",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "异步加载回调：异步加载完成回调如何持有资源引用并处理加载失败或对象销毁？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "异步加载回调应保存软引用或句柄并在回调中重新校验对象有效性；加载失败、取消和宿主销毁都要有明确分支。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "414",
-        "group":  "ue5",
-        "category":  "ue5/delegate-interface-async",
-        "title":  "取消异步任务：取消异步任务时，如何处理已排队回调、线程安全和资源释放？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "取消通常只阻止后续工作或回调，不代表已运行代码立即停止；用线程安全状态协调资源释放，并让已排队回调安全地早退。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "415",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "Actor 复制开关：bReplicates、NetLoadOnClient 和网络相关标志如何决定 Actor 是否复制？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "bReplicates 决定 Actor 是否进入网络复制，NetLoadOnClient 影响客户端关卡加载，其他网络标志还要结合角色和连接状态判断。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "416",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "ReplicatedUsing：ReplicatedUsing 的 OnRep 回调何时触发，初始同步和服务端修改有何差异？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "属性初始同步或服务端变更到达客户端后可触发 OnRep；服务端本地写入不会自动调用客户端回调，初始同步和后续变更要分别验证。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "417",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "DOREPLIFETIME：DOREPLIFETIME 与条件复制如何声明属性，成员变化怎样进入复制布局？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "DOREPLIFETIME 把属性加入复制布局，条件复制通过 DOREPLIFETIME_CONDITION 等宏声明；成员变化必须保持反射和复制声明一致。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "418",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "条件复制：COND_OwnerOnly、COND_SkipOwner 等条件如何与连接所有权共同生效？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "COND_OwnerOnly、COND_SkipOwner 等条件依赖连接所有权和 Actor 角色；先确认谁是 owning connection，再判断该连接是否满足条件。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "419",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "服务器权威：服务器权威模型下，客户端输入、验证和状态回写的边界如何划分？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "客户端只提交输入或请求，服务器验证并修改权威状态，再通过复制回写；客户端预测可以改善手感，但不能替代服务端校验。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "420",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "NetMulticast RPC：NetMulticast RPC 的调用前提、可靠性和非相关客户端行为如何判断？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "NetMulticast 通常只能由服务器发起，并只发送给相关客户端；它适合瞬时事件，不适合承载必须最终一致的持久状态。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "421",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "Server RPC：Server RPC 的拥有者检查、参数验证和可靠性选项如何设计？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Server RPC 要检查调用者是否拥有 Actor，并在服务端验证参数和权限；Reliable 只保证传输语义，不等于业务请求合法。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "422",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "Client RPC：Client RPC 如何定位目标连接，何时会因调用者不是拥有者而失效？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Client RPC 按 Actor 所属连接定位目标客户端；调用者不是有效拥有者或 Actor 不相关时，RPC 可能不会到达目标。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "423",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "可靠 RPC：Reliable RPC 的顺序与重传保证是什么，为什么不能替代状态复制？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Reliable RPC 保证有序可靠送达但会占用带宽并产生积压；它不能替代状态复制，因为新加入或丢失中间事件的客户端仍需要当前状态。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "424",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "组件复制：组件复制开关、注册顺序和网络角色如何影响组件状态同步？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "组件要允许复制、由复制 Actor 持有并在正确时机注册；网络角色和组件生命周期不匹配时，属性不会按预期同步。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "425",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "子对象复制：ReplicateSubobjects 与子对象生命周期、所有权和带宽如何协同？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "ReplicateSubobjects 需要稳定的子对象所有权和生命周期，并在复制函数中把子对象写入；同时评估每个子对象的带宽成本。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "426",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "Fast Array Serializer：Fast Array Serializer 的标记、增量变更和删除通知如何工作？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Fast Array Serializer 通过标记数组项和增量变化，只发送新增、修改和删除项；回调和序列化 traits 必须按约定实现。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "427",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "NetDeltaSerialize：NetDeltaSerialize 需要满足哪些 traits 和序列化契约，如何处理版本变化？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "NetDeltaSerialize 用 traits 自定义增量序列化，必须正确报告是否写入变化并兼容版本；不能把本地容器布局直接当网络协议。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "428",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "FArchive 序列化：FArchive 序列化与网络复制、SaveGame 序列化的边界如何区分？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "FArchive 是通用归档接口，网络复制、SaveGame 和资产序列化有不同生命周期与版本契约；不要用一次归档实现替代所有协议。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "429",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "SaveGame 字段：SaveGame 标记、Transient 属性和对象引用在保存恢复时如何取舍？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "SaveGame 字段进入存档，Transient 字段通常跳过；对象引用要考虑路径、软引用和加载顺序，不能假设运行时地址可持久化。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "430",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "USaveGame 版本：USaveGame 数据升级时如何设计版本号、兼容读取和迁移路径？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "存档应带显式版本号，读取时先判断版本再迁移到当前结构；迁移逻辑要可重复并为缺失字段提供默认值。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "431",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "重连恢复：客户端重连后，哪些状态依靠复制重建，哪些状态需要额外恢复协议？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "复制只能重建当前可复制状态，客户端本地缓存和临时任务需要额外恢复协议；重连流程应以服务器快照或重新初始化为准。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "432",
-        "group":  "ue5",
-        "category":  "ue5/replication-rpc-serialization",
-        "title":  "NetUpdateFrequency：NetUpdateFrequency 与优先级、带宽预算和状态延迟之间如何权衡？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "NetUpdateFrequency 决定属性更新检查频率，要与优先级、相关性和带宽预算一起调节；提高频率会增加带宽和服务器开销。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "433",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "Runtime 模块：Runtime 模块的公开 API、依赖和打包边界应如何定义？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Runtime 模块只暴露运行时需要的公共 API，Build.cs 依赖和导出宏要与 Public 头文件一致，编辑器代码不能反向进入运行时。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "434",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "Editor 模块：Editor 模块如何隔离编辑器依赖，避免运行时目标加载不必要的代码？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Editor 模块承载编辑器工具并隔离 UnrealEd 等依赖，运行时目标不应加载它；插件通常用 Runtime/Editor 双模块划分边界。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "435",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "Build.cs 公有依赖：PublicDependencyModuleNames 与头文件暴露的依赖如何保持一致？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "头文件中出现的类型需要放入 PublicDependencyModuleNames；只在 cpp 使用的依赖放私有，避免把实现依赖扩散给所有包含者。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "436",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "Build.cs 私有依赖：PrivateDependencyModuleNames 何时足够，哪些 include 会迫使依赖升级为公有？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "PrivateDependencyModuleNames 足够覆盖仅在 cpp 或私有头使用的模块；一旦公共头暴露其类型，就必须升级为公有依赖。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "437",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "UHT 模块依赖：UHT 扫描反射类型时，模块依赖和生成代码可见性需要满足什么条件？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "反射类型所在模块必须声明生成代码需要的依赖，并保证公共头和生成代码可见；UHT 报错先查模块名、Public 依赖和 include。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "438",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "插件 LoadingPhase：插件 LoadingPhase 与模块启动顺序、编辑器工具可用时机有什么关系？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "LoadingPhase 决定插件模块在引擎启动哪个阶段加载；依赖更早阶段模块时要匹配启动顺序，编辑器工具则避免在运行时阶段强行加载。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "439",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "第三方库接入：第三方库的库文件、头文件和运行时 DLL 如何在 Build.cs 中稳定接入？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "Build.cs 应分别声明头文件路径、库文件和运行时 DLL，并按目标平台配置；打包时还要确认 DLL 被 staged 且 ABI 与编译器一致。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "440",
-        "group":  "ue5",
-        "category":  "ue5/modules-plugins-buildcs",
-        "title":  "模块 API 宏：模块 API 宏如何控制跨模块符号导出，哪些类型不应直接暴露？",
-        "scopes":  [
-                       "UE5"
-                   ],
-        "answer":  "模块 API 宏控制跨模块符号导出；只导出稳定的公共类型和函数，避免把私有实现、模板内部状态或第三方 ABI 直接暴露。",
-        "source":  "来源：Epic Games Unreal Engine 5 官方 C++ 文档"
-    },
-    {
-        "id":  "441",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "CreateProcess：CreateProcess 的命令行、继承句柄、环境块和启动信息如何正确组合？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "CreateProcess 的命令行缓冲区必须可写，启动信息和环境块要使用正确的 Unicode 版本；继承句柄要显式筛选，父进程按责任关闭不再使用的句柄。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "442",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "进程和线程句柄：进程/线程句柄的访问权限、等待语义和 CloseHandle 责任如何划分？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "句柄是内核对象引用，访问权限决定可做的操作；等待不会转移所有权，成功创建后由拥有者在所有路径调用 CloseHandle 一次。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "443",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "句柄继承：句柄继承的筛选方式和安全边界是什么，子进程如何确认继承结果？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "句柄继承必须同时满足可继承属性和创建时的继承策略；更安全的做法是显式传入允许继承的句柄，并在子进程中确认结果后关闭副本。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "444",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "Job Object：Job Object 如何限制进程组资源并接收终止通知？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Job Object 把进程放进可管理的进程组，可限制 CPU、内存等资源并接收结束通知；句柄和关联策略由创建它的服务统一管理。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "445",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "WaitForSingleObject：WaitForSingleObject 的返回值、超时和等待对象类型有哪些陷阱？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "返回 WAIT_OBJECT_0、WAIT_TIMEOUT 和 WAIT_FAILED 要分开处理；等待期间不要销毁对象或依赖未定义的消息泵行为，超时不是失败完成。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "446",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "TLS：线程局部存储的分配、访问和线程退出清理如何设计？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "TLS 为每个线程保存独立槽位，分配索引后在线程上下文中读写；线程退出清理和 DLL 卸载顺序必须明确，不能让回调访问已卸载模块。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "447",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "CreateThread 与 _beginthreadex：两种线程入口创建方式对 C 运行库初始化、参数和退出清理有何影响？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "_beginthreadex 会初始化 C 运行库线程状态，使用 CRT 的线程应优先它；入口参数和退出码由调用方约定，并在结束后关闭线程句柄。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "448",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "线程优先级：线程优先级与调度、饥饿和实时性之间如何权衡？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "线程优先级只影响调度倾向，不保证实时性；过高优先级可能饿死普通线程，应结合等待、CPU 占用和 QoS 调整。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "449",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "APC：用户态 APC 何时执行，alertable wait 和取消流程如何配合？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "用户态 APC 只有在线程进入 alertable wait 时执行；取消流程要让线程可进入可警觉等待，并保证 APC 数据和回调代码在线程退出前仍有效。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "450",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "临界区：临界区初始化、递归进入、争用和删除时有哪些生命周期要求？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "CRITICAL_SECTION 需先初始化再使用，同一线程递归进入会增加递归计数；删除前必须确认没有线程持有或等待它。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "451",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "互斥体：命名互斥体与进程内锁的权限、递归和异常退出语义如何比较？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "命名 Mutex 可跨进程并受安全描述符约束，进程内锁只解决本进程同步；Windows Mutex 允许同线程递归，但异常退出会产生 abandoned 状态。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "452",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "信号量：信号量计数、ReleaseSemaphore 和等待失败路径如何避免超发？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Semaphore 的计数代表可用资源数，ReleaseSemaphore 不能超过最大计数；等待失败或重复释放要回滚对应的资源记账。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "453",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "事件：手动重置与自动重置事件如何选择，如何避免丢失唤醒？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "手动重置事件唤醒后保持有信号，自动重置通常只释放一个等待者；状态更新必须和 SetEvent 配合，否则会丢失唤醒。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "454",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "SRWLock：SRW lock 的共享/独占模式、递归限制和升级降级边界是什么？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "SRWLock 支持共享和独占模式但不支持递归，也不能随意升级或降级；必须用与获取模式匹配的释放函数。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "455",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "条件变量：条件变量如何与 CRITICAL_SECTION 或 SRWLOCK 配合处理虚假唤醒？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Windows 条件变量要和 CRITICAL_SECTION 或 SRWLOCK 配合，并在循环中检查谓词；虚假唤醒和竞争会使一次 if 判断不可靠。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "456",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "Interlocked：Interlocked 原子操作的内存序和 ABA 风险如何评估？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Interlocked 提供原子读改写和平台规定的内存序，但不能自动解决 ABA；需要版本标记、锁或更高层并发结构保护复合状态。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "457",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "WaitOnAddress：WaitOnAddress 的比较值、唤醒时机和与传统事件的取舍是什么？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "WaitOnAddress 比较内存当前值与调用者提供的旧值，值变化后再唤醒；它适合轻量等待，但仍需循环检查谓词并处理虚假唤醒。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "458",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "INIT_ONCE：InitOnceExecuteOnce 如何保证一次性初始化，并处理初始化失败？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "InitOnceExecuteOnce 保证初始化回调只成功执行一次；回调失败要返回失败，让后续调用有机会重试，而不是发布半初始化对象。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "459",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "死锁条件：如何从互斥、持有并等待、不可剥夺和循环等待四个条件定位死锁？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "死锁需要互斥、持有并等待、不可剥夺和循环等待同时成立；排查时画出线程与锁的等待图，破坏任一条件即可降低风险。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "460",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "锁顺序：多把锁的全局顺序如何约定，异常路径怎样保持同一顺序？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "多把锁按全局顺序获取并在异常路径保持同一顺序；需要反向顺序时拆分临界区或使用能同时获取多把锁的协议。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "461",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "TLS 清理：线程退出时 TLS 回调、析构和 DLL 卸载的先后关系如何确认？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "线程退出会触发 TLS 清理机制，但 DLL 回调受卸载顺序影响；清理代码不能依赖已经卸载的模块或仍在运行的线程。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "462",
-        "group":  "windows",
-        "category":  "windows/process-thread-sync",
-        "title":  "进程终止回调：进程正常退出、TerminateProcess 和 DLL 卸载时的清理保证有什么不同？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "正常退出通常执行 CRT 和 DLL 清理，TerminateProcess 不保证这些清理；资源必须由外部所有者和显式关闭路径负责。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "463",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "WSAStartup：WSAStartup/WSACleanup 的引用计数、版本协商和失败回滚如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "WSAStartup 与 WSACleanup 成对调用并带引用计数，版本协商失败要回滚已初始化状态；不要在线程间随意提前 Cleanup。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "464",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "阻塞与非阻塞 socket：阻塞、非阻塞和重叠 socket 的错误码与线程模型如何区分？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "阻塞调用会等待，非阻塞通常返回 WSAEWOULDBLOCK，重叠 I/O 通过 OVERLAPPED 和完成通知推进；三者的线程模型不能混用。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "465",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "bind、listen、accept：监听 socket 的地址绑定、backlog 和 accept 失败路径如何设计？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "bind 固定本地地址，listen 建立监听队列，accept 取出已完成连接；backlog 不是无限队列，失败要区分地址冲突、资源不足和暂时错误。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "466",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "connect 超时：非阻塞 connect 如何检测完成、超时并安全关闭 socket？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "非阻塞 connect 先等待可写或异常事件，再用 SO_ERROR 判断结果；超时后关闭该 socket，不能把未完成连接继续当作成功连接使用。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "467",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "TCP 字节流：TCP 不保留消息边界时，应用层如何处理拆包、粘包和半关闭？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "TCP 只保证有序字节流，不保留消息边界；应用层必须自定义定长、长度前缀或分隔符协议，并单独表达半关闭。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "468",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "套接字复用：SO_REUSEADDR 等复用选项在 Windows 上的语义和端口冲突风险是什么？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "SO_REUSEADDR 等选项的语义与平台有关，不能把它当作“多个进程随便抢同一端口”；先明确监听地址、重启场景和独占策略。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "469",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "select 与 WSAPoll：select 与 WSAPoll 的句柄集合、容量限制和可扩展性如何比较？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "select 需要维护 fd 集合且有容量限制，WSAPoll 用数组表达事件；二者都适合小规模连接，连接数增长应考虑 IOCP。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "470",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "WSAEventSelect：WSAEventSelect 的网络事件位、重置方式和非阻塞要求是什么？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "WSAEventSelect 把网络事件映射到事件对象并要求 socket 非阻塞；处理事件后按约定重置或重新查询，不能只依赖一次通知。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "471",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "部分 send：send 返回小于请求长度时，发送缓冲区和重试策略如何设计？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "send 只保证接受了部分字节时，应记录偏移并继续发送；发送缓冲区必须在所有异步操作完成前保持有效。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "472",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "recv 返回值：recv 返回 0、SOCKET_ERROR 和正数分别表示什么状态？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "正数表示收到字节，0 表示对端有序关闭，SOCKET_ERROR 表示失败；非阻塞下还要识别 WSAEWOULDBLOCK，而不是立即断开。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "473",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "shutdown 半关闭：shutdown 的读写方向与 FIN 交互如何表达半关闭协议？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "shutdown 可以只关闭发送或接收方向，分别对应 FIN 语义；半关闭后仍要继续读取对端数据，并最终 closesocket 释放句柄。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "474",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "SO_KEEPALIVE：SO_KEEPALIVE 与应用层心跳、探测间隔和断线检测如何取舍？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Keepalive 是内核级探测，参数和触发时间受系统控制；应用层心跳能表达业务活性，二者应按故障检测目标组合。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "475",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "UDP 报文：UDP 报文边界、丢包、乱序和接收缓冲区限制如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "UDP 保留报文边界但不保证送达、顺序或去重；应用层需处理丢包、乱序、重试和接收缓冲区不足。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "476",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "IPv4 与 IPv6：双栈监听、地址解析和 IPv4-mapped IPv6 地址有哪些兼容问题？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "双栈服务要明确 IPV6_V6ONLY、监听地址和 IPv4-mapped 地址策略；解析结果应逐个尝试，不能只取列表第一项。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "477",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "getaddrinfo：getaddrinfo 的 hints、地址遍历和异步解析失败如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "getaddrinfo 用 hints 指定地址族、套接字类型和协议，遍历返回链表逐个尝试；失败时释放结果并区分解析失败与连接失败。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "478",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "Overlapped I/O：OVERLAPPED 结构、缓冲区和完成通知的生命周期如何保证？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "OVERLAPPED、缓冲区和上下文必须活到 I/O 完成；完成端口或事件只报告完成，真正的字节数和错误码仍要读取完成结果。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "479",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "IOCP 完成键：完成键如何关联连接上下文，工作线程如何区分不同 I/O 类型？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "完成键通常绑定连接或资源上下文，工作线程从完成包区分 I/O 类型并取得 OVERLAPPED；上下文释放必须晚于最后一个完成包。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "480",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "GetQueuedCompletionStatus：GetQueuedCompletionStatus 的返回值、ERROR_OPERATION_ABORTED 和退出哨兵如何判断？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "返回值要结合完成字节数、OVERLAPPED 和 GetLastError 判断；ERROR_OPERATION_ABORTED 常表示取消，退出哨兵应使用独立约定。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "481",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "多个 recv 请求：同一 socket 排队多个 recv 时，缓冲区所有权和完成顺序如何管理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "多个 recv 必须为每个请求分配独立缓冲区和 OVERLAPPED，并记录所有权；完成顺序不等于提交顺序，协议层要自行排序或拼接。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "482",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "取消套接字 I/O：CancelIoEx、closesocket 与未完成 Winsock I/O 的竞态如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "CancelIoEx、closesocket 与完成通知可能竞态，取消后仍要消费完成包并只释放一次上下文；不能用关闭句柄立刻证明回调已结束。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "483",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "TCP_NODELAY：TCP_NODELAY 对小包延迟、吞吐和应用层批量发送有什么影响？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "TCP_NODELAY 禁用 Nagle 以降低小包等待，但可能增加包数和带宽；应结合应用层批量发送和延迟目标测量。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "484",
-        "group":  "windows",
-        "category":  "windows/winsock-protocol-iocp",
-        "title":  "TLS 会话：TLS 握手、证书验证和底层 socket 生命周期如何分层管理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "TLS 在 socket 字节流之上负责握手、加密和证书验证；把握手状态与 socket 生命周期分层，验证失败必须安全关闭并清理会话。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "485",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "LoadLibraryEx：LoadLibraryEx 的搜索路径、标志和模块引用计数如何控制？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "LoadLibraryEx 的搜索路径和标志决定加载哪个模块，成功后模块引用计数增加；应使用受控搜索路径并对句柄执行对称 FreeLibrary。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "486",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "GetProcAddress：GetProcAddress 的名称修饰、序号导出和函数指针签名如何保证 ABI 一致？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "GetProcAddress 返回的地址必须匹配真实导出 ABI；名称修饰、序号和调用约定不一致都会导致错误调用或崩溃。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "487",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "DLLMain：DllMain 中哪些操作受 loader lock 限制，初始化逻辑应如何拆分？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "DllMain 运行在 loader lock 下，应只做最小初始化；不要在其中加载 DLL、创建复杂线程、调用可能再次触发加载器的 API。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "488",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "卸载 DLL：FreeLibrary 与线程回调、静态对象析构和仍在执行的函数如何协调？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "FreeLibrary 前必须确认没有线程仍执行 DLL 代码或持有其函数指针；静态对象、线程回调和引用计数要在卸载前完成收尾。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "489",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "CreateFile 共享模式：CreateFile 的访问权、共享模式、创建选项和安全属性如何组合？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "CreateFile 的访问权、共享模式、创建方式和安全属性共同决定能否打开及后续兼容性；读写共享策略要与所有协作者约定一致。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "490",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "句柄继承：跨进程传递句柄时，继承标志、DuplicateHandle 和权限如何选择？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "句柄继承必须同时满足可继承属性和创建时的继承策略；更安全的做法是显式传入允许继承的句柄，并在子进程中确认结果后关闭副本。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "491",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "DuplicateHandle：DuplicateHandle 的源/目标进程权限和关闭责任如何划分？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "DuplicateHandle 在源进程读取句柄并在目标进程创建副本；双方都要明确访问权限和各自 CloseHandle 责任，源句柄不会自动关闭。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "492",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "ReadFile 与 WriteFile：同步与重叠文件 I/O 的返回值、偏移和缓冲区生命周期如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "同步 I/O 返回完成状态，重叠 I/O 可能先返回 FALSE 并报告 ERROR_IO_PENDING；缓冲区和 OVERLAPPED 必须保持有效直到完成。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "493",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "FlushFileBuffers：FlushFileBuffers 保证到哪一层持久性，调用频率如何权衡？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "FlushFileBuffers 请求系统把文件缓冲刷新到设备链路，但不等于所有硬件都已持久化；应按数据可靠性需求控制调用频率。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "494",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "CreateFileMapping：CreateFileMapping 的保护属性、映射大小和命名冲突如何设计？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "映射对象的保护属性、最大大小和名称决定共享协议；命名冲突要检查 GetLastError，大小和权限必须由生产者消费者共同约定。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "495",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "MapViewOfFile：MapViewOfFile 的偏移对齐、视图权限和 UnmapViewOfFile 顺序是什么？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "映射偏移必须满足系统分配粒度，视图权限不能超过映射保护；使用完先 UnmapViewOfFile，再关闭 mapping 句柄。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "496",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "跨进程映射：跨进程共享内存的同步、版本布局和异常退出清理如何保证？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "共享内存只共享字节，不提供同步和版本；要配套命名锁或事件、固定布局版本，并处理进程异常退出留下的半写入状态。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "497",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "UTF-16 与 UTF-8：Windows 宽字符 API 与 UTF-8 转换时，长度、错误和不可表示字符如何处理？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "Windows 宽字符 API 通常使用 UTF-16，转换时按字符数和字节数分别计算并检查无效序列；不能把字节长度当作字符长度。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "498",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "命名对象 Unicode：命名内核对象的 Unicode、命名空间和权限边界有哪些陷阱？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "命名内核对象使用 Unicode 名称和命名空间，权限由安全描述符决定；跨会话或服务交互时要避免名称冲突和权限误配。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "499",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "CloseHandle：CloseHandle 的幂等性、伪句柄和重复关闭行为应如何避免？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "CloseHandle 不是幂等操作，伪句柄不能直接按普通句柄重复关闭；关闭后立刻清空变量并确保没有并发使用者。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    },
-    {
-        "id":  "500",
-        "group":  "windows",
-        "category":  "windows/dll-files-mmap-unicode-handles",
-        "title":  "伪句柄：GetCurrentProcess/GetCurrentThread 伪句柄何时需要 DuplicateHandle 才能跨线程或进程使用？",
-        "scopes":  [
-                       "Win32"
-                   ],
-        "answer":  "GetCurrentProcess/GetCurrentThread 返回当前上下文的伪句柄，不能直接传给别的进程；跨边界使用前用 DuplicateHandle 转成真实句柄。",
-        "source":  "来源：Microsoft Learn Win32/Winsock 文档；协议语义参考 IETF RFC Editor"
-    }
-]
-;
-
+window.CPP_INTERVIEW_QUESTIONS = [
+  {
+    "id": "001",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "ODR 对跨翻译单元的声明和定义有哪些约束？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "同一实体可以有多次声明，但被 ODR-use 的非 inline 实体通常只能有一个定义。inline 函数、inline 变量和模板可在多个翻译单元出现等价定义，违反一致性要求会形成未定义行为。",
+    "source": "资料依据：cppreference · One Definition Rule"
+  },
+  {
+    "id": "002",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "inline 关键字为什么不等于编译器一定内联函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "inline 的语言语义主要是允许实体在多个翻译单元中出现等价定义，并不强制机器码展开。是否执行调用内联属于优化决定，编译器可以忽略 inline，也可以内联未标记的函数。",
+    "source": "资料依据：cppreference · inline specifier"
+  },
+  {
+    "id": "003",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "内部链接和外部链接如何决定名字是否表示同一实体？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "内部链接的名字在每个翻译单元中表示独立实体，外部链接的名字可以在多个翻译单元中指向同一实体。匿名命名空间和命名空间作用域 const 常用于获得内部链接，extern 可用于声明具有外部链接的实体。",
+    "source": "资料依据：cppreference · storage duration and linkage"
+  },
+  {
+    "id": "004",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "extern \"C\" 会改变函数的哪些链接语义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "extern \"C\" 指定 C 语言链接，主要影响函数名的链接方式以及实现定义的调用约定。它不会把 C++ 类型、重载或异常自动变成 C ABI 可用形式，因此接口仍应限制为双方都能表示的数据布局。",
+    "source": "资料依据：cppreference · language linkage"
+  },
+  {
+    "id": "005",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "ADL 如何向普通名字查找结果中加入函数候选？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对未限定函数调用，ADL 会根据实参类型的关联命名空间和关联类加入候选。它不会作用于限定调用，隐藏友元可只通过 ADL 被找到，因此泛型代码需要谨慎控制 using 和限定名。",
+    "source": "资料依据：cppreference · argument-dependent lookup"
+  },
+  {
+    "id": "006",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "using 声明和 using 指令对名字查找有什么不同？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "using 声明把指定名字引入当前作用域，而 using 指令让名字查找考虑整个命名空间。头文件中的 using namespace 会影响所有包含者的候选集，容易造成歧义，所以通常只在局部实现作用域使用。",
+    "source": "资料依据：cppreference · namespace using-directives"
+  },
+  {
+    "id": "007",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "constexpr 函数在编译期和运行期调用时有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "constexpr 函数具备参与常量求值的资格，但只有实参和执行路径满足常量表达式规则时才必须在编译期求值。C++14 放宽了函数体限制；不满足常量求值条件的调用仍可作为普通运行期调用。",
+    "source": "资料依据：cppreference · constexpr specifier"
+  },
+  {
+    "id": "008",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "if constexpr 为什么能避免实例化无效的模板分支？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "if constexpr 的条件必须可转为常量表达式，未选择的分支会成为 discarded statement。依赖模板参数的丢弃分支不会在该实例中完成实例化，但分支仍必须满足基本语法并通过非依赖名字检查。",
+    "source": "资料依据：cppreference · constexpr if"
+  },
+  {
+    "id": "009",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "auto 类型推导会丢弃哪些 cv 和引用限定？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "普通 auto 按模板按值参数的规则推导，会丢弃顶层 cv 和引用。使用 auto&、const auto& 或 auto&& 可以保留相应引用语义，而花括号初始化还可能触发 initializer_list 的特殊规则。",
+    "source": "资料依据：cppreference · placeholder type specifiers"
+  },
+  {
+    "id": "010",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "decltype 对变量名和带括号表达式为何可能得到不同类型？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对未加括号的名字或成员访问，decltype 直接得到声明类型。对一般表达式，lvalue 得到 T&、xvalue 得到 T&&、prvalue 得到 T，因此额外括号可能把变量名从 T 变成 T&。",
+    "source": "资料依据：cppreference · decltype specifier"
+  },
+  {
+    "id": "011",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "decltype(auto) 返回局部变量时为什么要警惕额外括号？",
+    "difficulty": 4,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answer": "decltype(auto) 完全采用 decltype 的规则，return (local) 会推导为局部变量的左值引用。函数返回后该引用悬空，而 return local 通常按声明类型返回值，所以括号会实质改变接口。",
+    "source": "资料依据：cppreference · placeholder type specifiers decltype(auto)"
+  },
+  {
+    "id": "012",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "nullptr 为什么比 0 或 NULL 更适合作为空指针实参？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "nullptr 的类型是 std::nullptr_t，可以转换为任意指针和成员指针，但不会按普通整数参与重载。0 或实现为整数的 NULL 可能选择整型重载，从而产生歧义或调用错误接口。",
+    "source": "资料依据：cppreference · pointer literals"
+  },
+  {
+    "id": "013",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "enum class 如何避免枚举值污染作用域和隐式转整数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "作用域枚举的枚举值必须通过枚举类型限定访问，并且不会隐式转换为整数。可以显式指定底层类型以控制存储和 ABI，但跨接口时仍应固定编译器和布局约定。",
+    "source": "资料依据：cppreference · enumeration declaration"
+  },
+  {
+    "id": "014",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "alignas 能否降低一个类型原本要求的对齐？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "alignas 可以提高对象或类型的对齐要求，不能用更小的非零值削弱自然对齐。多个 alignas 同时出现时采用最严格的有效要求，不满足实现支持范围会使程序不符合规则。",
+    "source": "资料依据：cppreference · alignment specifier"
+  },
+  {
+    "id": "015",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "不同翻译单元中的静态对象初始化顺序为何不可靠？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "同一翻译单元内的有序动态初始化按定义顺序进行，但不同翻译单元之间通常没有可依赖的全局顺序。用函数内静态对象按需初始化可以把依赖关系转移到首次调用，并从 C++11 起获得线程安全初始化。",
+    "source": "资料依据：cppreference · non-local initialization"
+  },
+  {
+    "id": "016",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "thread_local 对象何时初始化并在何时析构？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "每个线程拥有独立的 thread_local 对象实例，其动态初始化最迟在该线程首次 ODR-use 前完成。实例通常在线程退出时析构，若析构依赖其他已销毁的线程局部或静态对象，仍可能出现顺序问题。",
+    "source": "资料依据：cppreference · storage duration thread local"
+  },
+  {
+    "id": "017",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "整型提升会怎样影响小整数类型的表达式结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "bool、char、short 等小整数类型参与大多数算术运算前会提升为 int 或 unsigned int。运算结果类型由提升后的操作数决定，因此溢出和重载选择不能按原始变量类型判断。",
+    "source": "资料依据：cppreference · implicit conversions integral promotions"
+  },
+  {
+    "id": "018",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "有符号数和无符号数混合比较为什么容易得到反直觉结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "通常算术转换可能把有符号操作数转换成同等级的无符号类型，负数随后表现为很大的无符号值。比较前应统一到能表达双方范围的类型，不能只在结果异常后再做强制转换。",
+    "source": "资料依据：cppreference · usual arithmetic conversions"
+  },
+  {
+    "id": "019",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "列表初始化会拒绝哪些窄化转换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "花括号初始化会拒绝可能丢失范围或精度的整型、浮点和浮点到整型转换，只有部分可证明安全的常量表达式例外。这个检查发生在编译期，因此比圆括号初始化更适合暴露隐式截断。",
+    "source": "资料依据：cppreference · list-initialization narrowing conversions"
+  },
+  {
+    "id": "020",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "initializer_list 构造函数为何会优先于其他重载？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "列表初始化的重载解析先单独考虑 initializer_list 构造函数，只要存在可行候选就优先选择。即使另一个构造函数看起来参数更精确，也可能直到 initializer_list 阶段失败后才被考虑。",
+    "source": "资料依据：cppreference · list-initialization overload resolution"
+  },
+  {
+    "id": "021",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "聚合初始化在 C++17 中如何处理基类和默认成员初始化器？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "C++17 允许满足聚合条件的类包含公开基类，初始化顺序先基类后成员。未显式提供的成员使用默认成员初始化器或值初始化，但用户提供构造函数等条件会使类型失去聚合资格。",
+    "source": "资料依据：cppreference · aggregate initialization"
+  },
+  {
+    "id": "022",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "临时对象绑定到 const 引用时寿命一定会延长吗？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "临时对象直接绑定到局部 const 引用时，寿命通常延长到该引用的作用域结束。通过函数参数、new 初始化器或返回引用等场景有不同边界，不能把寿命延长沿着另一个引用继续传递。",
+    "source": "资料依据：cppreference · reference initialization temporary lifetime"
+  },
+  {
+    "id": "023",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "数组在什么上下文中不会退化为指针？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "数组在大多数值上下文中转换为指向首元素的指针，但作为 sizeof、alignof、取地址和引用绑定的操作数时不会退化。模板按引用接收数组也能保留长度信息。",
+    "source": "资料依据：cppreference · array-to-pointer conversion"
+  },
+  {
+    "id": "024",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "模板按值参数为什么会丢弃实参的顶层 const？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "按值形参会复制一个新的对象，模板推导因此忽略实参类型的顶层 cv 限定。指针所指对象的 const 属于低层限定并会保留，按引用形参也能观察原对象的 cv 属性。",
+    "source": "资料依据：cppreference · template argument deduction cv qualifiers"
+  },
+  {
+    "id": "025",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "严格别名规则允许通过哪些类型访问对象存储？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对象通常只能通过与其动态类型兼容的 glvalue 访问，char、unsigned char 和 std::byte 可用于检查对象表示。用不相关指针 reinterpret_cast 后解引用可能违反严格别名并导致未定义行为，复制字节应优先使用 memcpy。",
+    "source": "资料依据：cppreference · object type-aliasing"
+  },
+  {
+    "id": "026",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "读取 union 的非活动成员是否具有可移植语义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "标准通常只允许读取当前活动成员，切换活动成员需要开始新成员的生命周期。某些实现扩展允许类型双关，但可移植代码应使用显式转换、memcpy 或 C++17 的 variant。",
+    "source": "资料依据：cppreference · union declaration active member"
+  },
+  {
+    "id": "027",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "memcpy 何时可以安全复制一个对象的表示？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对 trivially copyable 类型，可以把对象表示复制到字节数组并复制回来，原值应得到恢复。把字节解释成另一个不兼容类型仍受生命周期、对齐和别名规则约束，memcpy 不是任意类型转换许可证。",
+    "source": "资料依据：cppreference · object representation and trivially copyable types"
+  },
+  {
+    "id": "028",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "C++17 对函数实参求值顺序提供了什么保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "C++17 保证不同实参的求值彼此不交错，即一个实参完整求值后才开始另一个。具体先算哪个实参仍通常未指定，所以程序不能依赖从左到右的调用顺序。",
+    "source": "资料依据：cppreference · order of evaluation"
+  },
+  {
+    "id": "029",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "声明析构函数后编译器还会隐式生成移动操作吗？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用户声明析构函数会抑制隐式移动构造和移动赋值的生成，但复制操作可能仍存在。资源管理类型应显式决定五个特殊成员的语义，纯组合类型则优先遵循零法则。",
+    "source": "资料依据：cppreference · special member functions"
+  },
+  {
+    "id": "030",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "零法则为什么优于手写五个特殊成员函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "零法则把资源所有权交给标准容器和智能指针，使编译器生成的复制、移动和析构自然组合。只有类型直接拥有非 RAII 资源或需要特殊复制语义时，才应显式实现五法则。",
+    "source": "资料依据：cppreference · rule of zero"
+  },
+  {
+    "id": "031",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "通过基类指针删除派生对象时为什么需要虚析构函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "若基类析构函数非虚，通过基类指针 delete 一个派生对象会产生未定义行为。虚析构保证从最终派生类开始逐层析构；不允许多态删除的基类可采用 protected 非虚析构。",
+    "source": "资料依据：C++ Core Guidelines · virtual destructor"
+  },
+  {
+    "id": "032",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "纯虚析构函数为什么仍然必须提供定义？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "纯虚析构函数可以让类保持抽象，但派生对象销毁时仍会调用基类析构部分。链接器因此需要找到该析构函数的定义，即使它被声明为 = 0。",
+    "source": "资料依据：cppreference · pure virtual destructor"
+  },
+  {
+    "id": "033",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "override 和 final 如何帮助编译器检查虚函数层次？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "override 要求当前声明确实覆盖某个基类虚函数，签名或 cv/ref 限定不匹配会直接报错。final 可以禁止继续覆盖函数或继承类，把设计意图变成编译期约束。",
+    "source": "资料依据：cppreference · override specifier"
+  },
+  {
+    "id": "034",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "构造函数和析构函数中的虚调用会分派到哪一层？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "构造或析构某一层基类期间，虚调用只分派到当前正在构造或析构的层次，不会进入尚未构造或已经销毁的派生部分。依赖完整派生状态的逻辑应放到对象完成构造后的显式阶段。",
+    "source": "资料依据：cppreference · virtual function during construction"
+  },
+  {
+    "id": "035",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "把派生对象按值传给基类参数会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "按值构造基类对象只复制派生对象中的基类子对象，派生新增状态被切掉，这就是对象切片。需要保留动态类型时应使用引用、指针或具备值语义的多态封装。",
+    "source": "资料依据：C++ Core Guidelines · object slicing"
+  },
+  {
+    "id": "036",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "多重继承中的同名成员歧义如何消解？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "若多个基类都提供同名成员，未限定访问可能产生歧义，即使其中实现完全相同。可以用限定名、using 声明或重新设计公共虚基类来明确选择，但还要检查转换路径是否唯一。",
+    "source": "资料依据：cppreference · multiple inheritance"
+  },
+  {
+    "id": "037",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "虚基类由谁负责初始化？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "虚基类只在最终派生对象中存在一个共享子对象，并由最派生类负责初始化。中间类初始化列表中对虚基类的初始化在构造更深派生对象时会被忽略。",
+    "source": "资料依据：cppreference · virtual base classes"
+  },
+  {
+    "id": "038",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "standard-layout 和 trivially copyable 分别保证什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "standard-layout 约束成员和继承布局，使部分 C 互操作与首成员地址规则成立。trivially copyable 关注对象能否按字节复制，两者相互独立，不能从一个属性推导另一个。",
+    "source": "资料依据：cppreference · type properties"
+  },
+  {
+    "id": "039",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "成员初始化列表的书写顺序会改变实际初始化顺序吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "成员始终按类中声明顺序初始化，基类则先于成员，初始化列表的排列不会改变这个顺序。若一个成员初始化依赖另一个成员，声明顺序错误会导致读取尚未初始化的数据。",
+    "source": "资料依据：cppreference · constructors initialization order"
+  },
+  {
+    "id": "040",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "空基类优化为什么不能当成所有对象布局的保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "实现通常允许空基类不占额外空间，但相同类型的不同子对象仍需满足地址可区分等规则。标准只在特定布局关系下提供保证，普通空成员在 C++17 中仍通常占用空间。",
+    "source": "资料依据：cppreference · empty base optimization"
+  },
+  {
+    "id": "041",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "PImpl 如何降低头文件依赖并稳定二进制边界？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "PImpl 让公开类只持有指向私有实现的指针，调用方无需看到成员布局，修改实现通常不要求重新编译用户代码。析构和移动操作应在实现类型完整的源文件中定义，并明确跨模块分配释放责任。",
+    "source": "资料依据：C++ Core Guidelines · pImpl idiom"
+  },
+  {
+    "id": "042",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "协变返回类型允许虚函数怎样改变返回值？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "覆盖函数可以把返回的类指针或引用收窄为基类返回类型的派生类指针或引用。该规则不适用于按值返回，也要求目标类型在覆盖点具备可访问且无歧义的继承转换。",
+    "source": "资料依据：cppreference · virtual function covariant return"
+  },
+  {
+    "id": "043",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "RAII 如何让异常路径自动释放资源？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "RAII 把资源获取绑定到对象构造，把释放绑定到析构，因此正常返回和栈展开都会执行同一清理路径。资源拥有者必须具备明确的移动或复制语义，析构还应保持不抛异常。",
+    "source": "资料依据：cppreference · RAII"
+  },
+  {
+    "id": "044",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "基本保证、强保证和不抛保证有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "基本保证要求失败后对象仍有效且没有资源泄漏，强保证要求操作要么成功要么保持原状态。不抛保证承诺操作不会传播异常，常用于析构、swap 和移动路径。",
+    "source": "资料依据：cppreference · exception safety"
+  },
+  {
+    "id": "045",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "构造函数中途抛异常时哪些析构函数会执行？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "已经完成构造的基类和成员会按逆序析构，尚未完成的最外层对象本身不会调用析构函数。构造函数直接获得的裸资源若未交给已构造成员管理，可能在此路径泄漏。",
+    "source": "资料依据：cppreference · constructors exceptions"
+  },
+  {
+    "id": "046",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "析构函数在栈展开期间再次抛异常会发生什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "若已有异常正在传播，析构函数再让异常逃逸会触发 std::terminate。析构函数默认 noexcept，清理失败通常应被记录、转成状态，或交由显式 close 操作处理。",
+    "source": "资料依据：cppreference · destructors noexcept"
+  },
+  {
+    "id": "047",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "placement new 之后为什么需要显式结束旧对象生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "placement new 只在给定存储上构造对象，不负责释放存储，也不会自动调用原对象析构。重用非平凡对象的存储前应结束旧生命周期，并保证对齐、大小和后续访问满足新对象类型。",
+    "source": "资料依据：cppreference · new expression placement new"
+  },
+  {
+    "id": "048",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "std::launder 在哪些对象重用场景中有意义？",
+    "difficulty": 5,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "在同一存储中构造新对象后，旧指针有时不能直接用于访问新对象，尤其涉及 const 成员或完整对象替换边界时。std::launder 返回可用于指向新对象的指针，但不会修复错误的对齐、生命周期或类型别名。",
+    "source": "资料依据：cppreference · std::launder"
+  },
+  {
+    "id": "049",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "返回绑定到局部临时对象的引用为什么会悬空？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "函数返回时局部对象和大多数局部临时对象的生命周期结束，引用本身不会延长它们到调用方。编译器可能接受该代码，但任何后续解引用都访问已结束生命周期的对象。",
+    "source": "资料依据：cppreference · reference initialization lifetime"
+  },
+  {
+    "id": "050",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "string_view 怎样因为源字符串变化而失效？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "string_view 不拥有字符存储，只保存指针和长度。源 string 析构、移动或发生重新分配后，已有 view 可能悬空，接口应让拥有者寿命明显长于所有观察者。",
+    "source": "资料依据：cppreference · std::basic_string_view"
+  },
+  {
+    "id": "051",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "移动后的标准库对象还能执行哪些操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "除非具体类型另有说明，移动后的对象处于有效但未指定状态，可以析构、赋值或调用不依赖特定值的操作。代码不能假设它一定为空，应在需要确定状态时显式重新赋值。",
+    "source": "资料依据：cppreference · move constructors moved-from state"
+  },
+  {
+    "id": "052",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "copy-and-swap 如何提供强异常保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "赋值先在临时对象中完成可能抛异常的复制，成功后再用不抛的 swap 提交状态。复制失败时原对象保持不变，代价是额外临时对象，并且 swap 必须正确处理所有不变量。",
+    "source": "资料依据：cppreference · copy assignment copy-and-swap"
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "自赋值检查是否是所有赋值运算符的必要步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "良好设计的复制赋值应在 x = x 时保持正确，但不一定需要显式比较地址。copy-and-swap 天然处理自赋值；手写先释放后复制的实现则可能必须检测或重新安排顺序。",
+    "source": "资料依据：cppreference · copy assignment operator"
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "new[] 分配的对象为什么必须与 delete[] 配对？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "数组 new 可能记录元素数量并逐个构造对象，delete[] 才会按逆序析构全部元素并使用匹配的释放机制。把 new[] 与 delete 配对会产生未定义行为，即使元素是基础类型也不能依赖实现偶然可用。",
+    "source": "资料依据：cppreference · delete expression arrays"
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "非虚基类析构下删除派生对象为何是未定义行为？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "delete 表达式通过静态基类指针释放派生对象时，需要虚析构才能找到最终析构链和正确释放函数。缺少虚析构不仅会漏掉派生成员清理，标准直接把这种删除定义为未定义行为。",
+    "source": "资料依据：cppreference · delete expression polymorphic"
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "C++17 之前如何实现可靠的作用域退出清理？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可以用自定义 RAII guard 在构造时保存清理函数，并在析构时执行，移动时必须确保只有一个活动拥有者。清理函数不应让异常逃出析构，提交成功后则需要显式 release 取消执行。",
+    "source": "资料依据：C++ Core Guidelines · RAII scope guard"
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unique_ptr 的自定义删除器如何影响指针类型和大小？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "删除器是 unique_ptr 类型的一部分，状态删除器通常会增加对象大小，无状态删除器可能借助空基类优化不占额外空间。移动 unique_ptr 会连同删除器一起转移，释放接口必须与删除器预期的资源来源匹配。",
+    "source": "资料依据：cppreference · std::unique_ptr"
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unique_ptr<T[]> 与 unique_ptr<T> 的接口有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "数组特化使用 delete[] 并提供下标访问，不提供单对象的 operator* 和 operator->。创建数组所有权时必须选择 T[] 类型，不能把 new T[n] 交给 unique_ptr<T>。",
+    "source": "资料依据：cppreference · std::unique_ptr array specialization"
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "make_unique 相比直接 new 有哪些异常安全优势？",
+    "difficulty": 2,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answer": "make_unique 在一个函数调用中完成对象构造和 unique_ptr 建立，避免裸指针暴露在其他可能抛异常的实参求值之间。它还减少重复类型名，但需要自定义删除器时仍要显式构造 unique_ptr。",
+    "source": "资料依据：cppreference · std::make_unique"
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "shared_ptr 控制块保存哪些状态？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "控制块通常保存强引用计数、弱引用计数、删除器和可能的分配器，被管理对象不一定与 get() 返回的地址相同。计数操作具有规定的线程安全性，但多个线程读写被管理对象仍需自行同步。",
+    "source": "资料依据：cppreference · std::shared_ptr implementation notes"
+  },
+  {
+    "id": "061",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "make_shared 的单次分配会带来什么生命周期取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "make_shared 通常把对象和控制块放在一次分配中，减少分配次数并提高局部性。若仍有 weak_ptr 存在，整块存储可能在对象析构后继续保留；它也不能直接接受自定义删除器。",
+    "source": "资料依据：cppreference · std::make_shared"
+  },
+  {
+    "id": "062",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "weak_ptr 如何打破 shared_ptr 的循环引用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "weak_ptr 不增加强引用计数，因此把环上的非拥有边改为 weak_ptr 后，强引用归零时对象仍可析构。访问前必须调用 lock 获取临时 shared_ptr，并处理对象已经过期的情况。",
+    "source": "资料依据：cppreference · std::weak_ptr"
+  },
+  {
+    "id": "063",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "weak_ptr::lock 在并发场景中保证了什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "lock 会原子地检查控制块并在对象仍存活时增加强引用计数，成功后返回的 shared_ptr 保证该次使用期间对象不被销毁。它不保护对象内部数据，也不保证下一次 lock 仍会成功。",
+    "source": "资料依据：cppreference · std::weak_ptr lock"
+  },
+  {
+    "id": "064",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "shared_ptr 的别名构造为什么可能让 get() 指向子对象？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "别名构造共享另一个 shared_ptr 的控制块，却保存一个不同的观察指针。它可让成员子对象随宿主一起存活，但销毁的始终是控制块原本管理的对象，不是 get() 指向的地址。",
+    "source": "资料依据：cppreference · std::shared_ptr aliasing constructor"
+  },
+  {
+    "id": "065",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "enable_shared_from_this 何时能够安全返回 shared_ptr？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对象必须已经由兼容的 shared_ptr 建立控制块，enable_shared_from_this 内部的 weak 引用才会被初始化。对栈对象、构造期间尚未托管的对象或存在第二控制块的对象调用 shared_from_this 会失败或破坏所有权。",
+    "source": "资料依据：cppreference · std::enable_shared_from_this"
+  },
+  {
+    "id": "066",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "同一裸指针创建两个 shared_ptr 为什么会重复释放？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "分别从同一裸指针构造 shared_ptr 会创建两个互不知情的控制块，每个控制块都认为自己拥有删除责任。应从已有 shared_ptr 复制、使用 shared_from_this，或在一个明确工厂中建立唯一控制块。",
+    "source": "资料依据：cppreference · std::shared_ptr constructors"
+  },
+  {
+    "id": "067",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "C++11 的 shared_ptr 原子自由函数解决了什么问题？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "atomic_load、atomic_store 等自由函数允许多个线程原子替换和读取同一个 shared_ptr 对象，避免对该句柄本身的数据竞争。它们只同步智能指针值，被管理对象的可变状态仍需独立同步。",
+    "source": "资料依据：cppreference · atomic operations for shared_ptr"
+  },
+  {
+    "id": "068",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "跨 DLL 传递智能指针时删除器为什么必须匹配分配端？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "不同模块可能使用不同运行库、堆或编译选项，在另一侧直接 delete 会跨越不兼容的分配边界。接口应携带由分配模块提供的删除器，或暴露成对的创建和销毁函数。",
+    "source": "资料依据：C++ Core Guidelines · resource ownership across ABI"
+  },
+  {
+    "id": "069",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "lvalue、xvalue 和 prvalue 如何影响引用绑定？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "lvalue 表示有身份且通常可再次访问的对象，xvalue 表示可复用资源的将亡对象，prvalue 用于初始化结果对象。非 const 左值引用只绑定 lvalue，右值引用绑定 xvalue 或 prvalue，const 左值引用可绑定三者。",
+    "source": "资料依据：cppreference · value categories"
+  },
+  {
+    "id": "070",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "引用折叠的四种组合最终得到什么类型？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "只要组合中出现左值引用，T& 与任何 & 或 && 折叠后都是 T&。只有 T&& 与 T&& 组合仍为 T&&，这条规则让转发引用能够保留实参值类别。",
+    "source": "资料依据：cppreference · reference collapsing"
+  },
+  {
+    "id": "071",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "转发引用与普通右值引用怎样区分？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "函数模板中形如 T&& 且 T 由该实参推导时是转发引用，auto&& 也遵循类似规则。若 T 已固定、带 const，或不是发生推导的位置，它就是普通右值引用。",
+    "source": "资料依据：cppreference · forwarding references"
+  },
+  {
+    "id": "072",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::move 为什么本身不移动任何资源？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::move 只是把表达式转换为对应的右值引用类型，从而允许重载选择移动操作。真正的资源转移发生在随后调用的移动构造、移动赋值或其他接收右值的函数中。",
+    "source": "资料依据：cppreference · std::move"
+  },
+  {
+    "id": "073",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::forward 如何保留调用方的值类别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::forward<T> 根据模板参数 T 把形参恢复为原来的左值或右值类别。T 必须来自转发引用的推导结果，手工指定错误类型可能把左值错误地转换成右值。",
+    "source": "资料依据：cppreference · std::forward"
+  },
+  {
+    "id": "074",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "对 const 对象调用 std::move 为什么常常仍然复制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::move(const T) 产生 const T&&，而多数移动构造需要修改源对象并接收 T&&。const 右值无法绑定该重载，重载解析于是选择接收 const T& 的复制构造。",
+    "source": "资料依据：cppreference · std::move const objects"
+  },
+  {
+    "id": "075",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "移动构造标记 noexcept 为什么会影响 vector 扩容？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "vector 为保持强异常保证，在移动可能抛异常且类型可复制时通常选择复制旧元素。将确实不抛的移动构造标记 noexcept 后，容器可以安全使用移动并避免昂贵复制。",
+    "source": "资料依据：cppreference · move constructor noexcept"
+  },
+  {
+    "id": "076",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "C++17 的强制拷贝消除覆盖哪些返回场景？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "当 prvalue 直接初始化同类型结果对象时，C++17 把它构造在最终存储中，不要求存在可访问的复制或移动构造。具名局部变量的 NRVO 仍是允许但不强制的优化。",
+    "source": "资料依据：cppreference · copy elision"
+  },
+  {
+    "id": "077",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "NRVO 未发生时返回局部对象会怎样选择移动或复制？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "返回满足条件的自动存储局部对象时，即使表达式是名字，重载解析也会先把它当作右值尝试移动。移动不可行时再尝试复制，但 NRVO 本身并不由标准强制。",
+    "source": "资料依据：cppreference · copy elision NRVO"
+  },
+  {
+    "id": "078",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "return std::move(local) 为什么可能阻止 NRVO？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "NRVO 要求返回表达式直接是具名局部对象，包一层 std::move 后表达式变成转换结果，不再满足该形式。编译器仍可调用移动构造，但失去了原地构造的机会。",
+    "source": "资料依据：cppreference · copy elision return std::move"
+  },
+  {
+    "id": "079",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "移动后对象的有效但未指定状态意味着什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对象仍满足类型不变量，可以安全析构、赋新值，并调用不要求特定旧值的操作。标准没有普遍保证容器一定为空，只有具体类型文档给出的额外后置条件可以依赖。",
+    "source": "资料依据：cppreference · moved-from state"
+  },
+  {
+    "id": "080",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "转发构造函数为什么可能劫持复制构造调用？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "不受约束的模板 T&& 对某些非 const 左值能形成比 const T& 更好的匹配，从而抢在复制构造前被选择。应使用 SFINAE 排除本类型及其派生类型，或提供更窄的显式重载。",
+    "source": "资料依据：cppreference · forwarding constructor overload resolution"
+  },
+  {
+    "id": "081",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "类型参数、非类型参数和模板模板参数分别表达什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "类型参数代表一个类型，非类型参数代表满足版本限制的编译期值，模板模板参数代表能按指定形状实例化的模板。选择参数种类应反映调用方需要替换的是类型、值还是类型构造器。",
+    "source": "资料依据：cppreference · template parameters"
+  },
+  {
+    "id": "082",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "函数模板推导遇到数组和函数实参时何时会退化？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "按值形参推导时，数组和函数会分别退化为指针，顶层 cv 也会被忽略。按引用形参推导可以保留数组长度、函数类型和 cv 限定。",
+    "source": "资料依据：cppreference · template argument deduction"
+  },
+  {
+    "id": "083",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "依赖类型名前为什么需要 typename？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "模板定义阶段，依赖限定名默认不被当作类型，除非语法上下文已经明确。typename 告诉解析器该名字在实例化后应表示类型，类似地调用依赖模板成员时可能需要 template 消歧义符。",
+    "source": "资料依据：cppreference · dependent names typename"
+  },
+  {
+    "id": "084",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "两阶段名字查找如何影响模板中的非依赖调用？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "非依赖名字在模板定义时完成查找，实例化点后来声明的普通重载不会自动加入。依赖调用会在实例化时结合 ADL 查找关联命名空间，因此声明位置和关联类型会改变候选集。",
+    "source": "资料依据：cppreference · two-phase name lookup"
+  },
+  {
+    "id": "085",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "类模板偏特化如何选择最匹配的特化？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "编译器先找出所有可匹配偏特化，再按类似函数模板偏序的规则选择更专门者。若两个偏特化互不更专门，实例化会产生歧义而不会回退到主模板。",
+    "source": "资料依据：cppreference · partial template specialization"
+  },
+  {
+    "id": "086",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "显式全特化为什么必须遵守声明可见性和 ODR？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "全特化必须在第一次会导致对应实例化的使用之前声明，并放在允许的命名空间作用域。跨翻译单元的定义仍受 ODR 约束，头文件定义通常需要 inline 或只保留声明。",
+    "source": "资料依据：cppreference · explicit specialization"
+  },
+  {
+    "id": "087",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "函数模板为什么不能做偏特化？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "语言只允许函数模板显式全特化，不允许偏特化。需要按类型族定制行为时通常使用函数重载、类模板偏特化辅助器或 SFINAE。",
+    "source": "资料依据：cppreference · function template overloading"
+  },
+  {
+    "id": "088",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "哪些替换错误会被 SFINAE 排除而不是直接报错？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "只有在模板参数替换的立即上下文中形成的无效类型或表达式才会使候选被丢弃。函数体实例化、访问后的副作用以及已选候选内部的错误不属于 SFINAE，仍会产生诊断。",
+    "source": "资料依据：cppreference · SFINAE"
+  },
+  {
+    "id": "089",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "enable_if 放在返回类型和模板参数中各有什么取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "放在返回类型中不参与普通参数推导，但构造函数没有可用返回类型。放在默认模板参数中更通用，却要避免多个声明只因默认值不同而被视为同一模板。",
+    "source": "资料依据：cppreference · std::enable_if"
+  },
+  {
+    "id": "090",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "void_t 如何把无效表达式转成检测失败？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "void_t 会把所有有效模板实参映射为 void，若构造某个实参类型失败，所在偏特化会因 SFINAE 被排除。它常与 decltype 和 declval 组合检测成员类型或表达式是否存在。",
+    "source": "资料依据：cppreference · std::void_t"
+  },
+  {
+    "id": "091",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "检测惯用法如何同时返回真假和检测到的类型？",
+    "difficulty": 4,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "检测器主模板表示替换失败并提供默认类型，使用 void_t 的偏特化在表达式有效时保存 decltype 结果。调用端可读取 value 判断能力，也能读取 type 继续构造后续泛型接口。",
+    "source": "资料依据：cppreference · detection idiom"
+  },
+  {
+    "id": "092",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "if constexpr 与 SFINAE 的适用边界有什么不同？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "SFINAE 控制函数或特化是否进入候选集，适合约束公开接口。if constexpr 在已经选中的函数体内丢弃不适用分支，适合共享接口后的实现分派。",
+    "source": "资料依据：cppreference · constexpr if and SFINAE"
+  },
+  {
+    "id": "093",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "折叠表达式如何处理空参数包？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "一元折叠只有 &&、|| 和逗号对空包有规定的单位值，其他运算符对空包不成立。二元折叠提供显式初始值，因此可以为加法等操作定义空包结果。",
+    "source": "资料依据：cppreference · fold expressions"
+  },
+  {
+    "id": "094",
+    "group": "cpp",
+    "category": "cpp/templates-sfinae-traits-constexpr",
+    "title": "C++17 的非类型模板参数仍有哪些类型限制？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "C++17 允许整型、枚举、指针、引用、成员指针和 std::nullptr_t 等作为非类型模板参数。浮点值和普通类类型尚不能直接作为参数，相关对象还要满足链接和常量表达式要求。",
+    "source": "资料依据：cppreference · non-type template parameters"
+  },
+  {
+    "id": "095",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 扩容后哪些迭代器、指针和引用会失效？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "发生重新分配时，所有指向元素的迭代器、指针和引用都会失效。未重新分配的插入仍会使插入点及其后的迭代器失效，因此保留元素地址前要确认容量和操作位置。",
+    "source": "资料依据：cppreference · std::vector iterator invalidation"
+  },
+  {
+    "id": "096",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 的 reserve 和 resize 为什么不能互换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "reserve 只保证容量至少达到给定值，不改变 size，也不构造新元素。resize 改变元素数量，会构造或销毁元素，并可能因为容量不足触发重新分配。",
+    "source": "资料依据：cppreference · std::vector capacity"
+  },
+  {
+    "id": "097",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector<bool> 为什么不提供普通 bool 引用？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "vector<bool> 允许按位压缩存储，operator[] 返回代理对象而不是 bool&。依赖真实地址、引用类型或并发独立元素写入的泛型代码不应假设它与普通 vector<T> 完全一致。",
+    "source": "资料依据：cppreference · std::vector bool specialization"
+  },
+  {
+    "id": "098",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "deque 在首尾插入后迭代器和引用的有效性如何变化？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "deque 的分段存储使首尾插入通常不会移动已有元素，因此元素引用通常保持有效。迭代器可能因内部映射调整而失效，中间插入或删除还可能使更多引用失效，必须按具体操作规则判断。",
+    "source": "资料依据：cppreference · std::deque iterator invalidation"
+  },
+  {
+    "id": "099",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "list::splice 为什么可以在常数时间转移节点？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "splice 重新连接链表节点而不移动或复制元素，同一 allocator 条件满足时可保持指向被转移元素的迭代器有效。跨不同容器转移后，迭代器归属新的容器，源容器不再包含这些节点。",
+    "source": "资料依据：cppreference · std::list splice"
+  },
+  {
+    "id": "100",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "forward_list 为什么提供 before_begin 和 erase_after？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "单向链表只有指向下一节点的链接，删除当前节点需要持有前驱。before_begin 提供首元素之前的哨兵位置，使头部插入和 erase_after 能使用统一接口。",
+    "source": "资料依据：cppreference · std::forward_list"
+  },
+  {
+    "id": "101",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "map 比较器必须满足严格弱序的哪些性质？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "比较器必须满足非自反、非对称和传递性，并让不可互相小于的键形成传递的等价类。违反这些性质会破坏树结构假设，查找、插入结果将不再可靠。",
+    "source": "资料依据：cppreference · Compare named requirement"
+  },
+  {
+    "id": "102",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "unordered_map 的 Hash 与 KeyEqual 为什么必须一致？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "若 KeyEqual 判定两个键等价，Hash 必须为它们产生相同哈希值，否则查找可能进入错误桶。rehash 会改变桶布局并使迭代器失效，但元素引用和指针通常保持有效。",
+    "source": "资料依据：cppreference · UnorderedAssociativeContainer requirements"
+  },
+  {
+    "id": "103",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 和 list 在内存布局、随机访问和插入删除上怎么取舍？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "vector 连续存储，随机访问是常数时间，尾部追加通常是摊还常数时间，但中间插入删除需要移动元素并可能使迭代器失效。list 是节点式存储，不支持随机访问，已知位置插入删除为常数时间，但缓存局部性和额外指针开销更差。面试中通常先看访问模式：遍历和随机访问多选 vector，频繁在中间稳定位置 splice 或 erase 才考虑 list。",
+    "source": "资料依据：cppreference · std::vector；cppreference · std::list"
+  },
+  {
+    "id": "104",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::sort 的稳定性和开销有什么特点？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::sort 不保证等价元素的相对顺序。std::stable_sort 保持等价元素的相对顺序，通常需要额外内存或更高的常数开销。等价元素的顺序需要保留时，可以考虑 stable_sort。",
+    "source": "资料依据：cppreference · std::sort；cppreference · std::stable_sort"
+  },
+  {
+    "id": "105",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "迭代器类别如何限制标准算法可执行的操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "输入迭代器只保证单遍读取，前向迭代器支持多遍，双向迭代器增加递减，随机访问迭代器支持常数时间跳转。算法根据最低类别决定可用操作和复杂度，伪造更强类别会破坏契约。",
+    "source": "资料依据：cppreference · iterator concepts legacy categories"
+  },
+  {
+    "id": "106",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "erase-remove 惯用法为什么需要两个步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "remove 只把保留元素前移并返回新的逻辑结尾，不会改变容器 size。随后调用容器 erase 才真正销毁尾部多余元素；关联容器则应使用自身的 erase 接口。",
+    "source": "资料依据：cppreference · erase-remove idiom"
+  },
+  {
+    "id": "107",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "emplace_back 一定比 push_back 少一次移动吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "emplace_back 在容器存储中直接用实参构造元素，但若调用方已经有一个 T 对象，push_back(T&&) 同样可以移动构造。emplace 还可能接受意外的隐式构造参数，性能和可读性应按实际调用比较。",
+    "source": "资料依据：cppreference · std::vector emplace_back"
+  },
+  {
+    "id": "108",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "标准容器的复杂度保证是最坏情况还是摊还复杂度？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "不同接口给出的保证不同，例如 vector::push_back 通常是摊还常数，而 map 查找是对数复杂度。unordered 容器常给平均常数和最坏线性保证，设计时必须阅读具体操作的复杂度条款。",
+    "source": "资料依据：cppreference · container library requirements complexity"
+  },
+  {
+    "id": "109",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "Lambda 按值捕获和按引用捕获怎样影响对象生命周期？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "按值捕获把当时的值存进闭包，闭包寿命独立于原局部变量；按引用捕获只保存引用关系。若闭包逃出作用域或跨线程执行，引用捕获很容易悬空。",
+    "source": "资料依据：cppreference · lambda capture"
+  },
+  {
+    "id": "110",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "C++14 初始化捕获如何移动一个只移动对象？",
+    "difficulty": 2,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answer": "初始化捕获允许在捕获列表中定义闭包成员，例如 p = std::move(ptr)。该成员随闭包移动或销毁，不再依赖原局部变量，因此可安全转移 unique_ptr 所有权。",
+    "source": "资料依据：cppreference · lambda init-capture"
+  },
+  {
+    "id": "111",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "泛型 Lambda 的 auto 形参会生成什么调用运算符？",
+    "difficulty": 3,
+    "scopes": [
+      "C++14",
+      "C++17"
+    ],
+    "answer": "泛型 Lambda 的 operator() 是函数模板，auto 形参分别参与模板参数推导。每组实参类型会形成相应实例，值类别要用 auto&& 与 std::forward 才能保留。",
+    "source": "资料依据：cppreference · generic lambda"
+  },
+  {
+    "id": "112",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "mutable Lambda 为什么能修改按值捕获的副本？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Lambda 的 operator() 默认是 const，因此不能修改普通按值捕获成员。mutable 移除该 const 限定，只改变闭包内部副本，不会反向修改原变量。",
+    "source": "资料依据：cppreference · lambda mutable"
+  },
+  {
+    "id": "113",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "无捕获 Lambda 在什么条件下能转换为函数指针？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "无捕获 Lambda 可以转换为具有兼容参数和返回类型的函数指针。带捕获闭包需要对象状态，无法转换成普通函数指针，通常改用模板回调或 std::function。",
+    "source": "资料依据：cppreference · lambda function pointer conversion"
+  },
+  {
+    "id": "114",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "异步回调捕获 this 为什么可能访问已销毁对象？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "捕获 this 只保存裸指针，不会延长所属对象生命周期。异步执行前对象若已销毁，成员访问会产生未定义行为，应捕获受控所有权或 weak_ptr 并在回调中提升检查。",
+    "source": "资料依据：cppreference · lambda capture this"
+  },
+  {
+    "id": "115",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::function 的类型擦除会带来哪些成本？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::function 通过统一调用接口保存不同可调用对象，可能产生间接调用和动态分配。它要求目标可复制，移动专用闭包不能直接放入 C++17 的 std::function。",
+    "source": "资料依据：cppreference · std::function"
+  },
+  {
+    "id": "116",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "std::invoke 如何统一成员函数和普通可调用对象的调用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "std::invoke 能调用函数对象、函数指针和成员指针，并按规则解引用对象、引用包装器或指针。invoke_result 等 traits 使用同一调用语义，避免泛型代码手写成员指针分支。",
+    "source": "资料依据：cppreference · std::invoke"
+  },
+  {
+    "id": "117",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "std::optional 如何表达有值和无值而不使用哨兵？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "optional 在对象内部保存是否已构造 T 的状态，无值时不会存在一个可访问的 T。value 在无值时抛 bad_optional_access，value_or 则返回值或提供的后备值。",
+    "source": "资料依据：cppreference · std::optional"
+  },
+  {
+    "id": "118",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "variant 和 any 在可存类型集合上有什么根本区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "variant 的备选类型集合在编译期固定，可用 visit 做封闭分派并获得静态类型检查。any 可保存任意满足要求的类型，通过 any_cast 在运行期检查，灵活性更高但无法枚举完整状态集合。",
+    "source": "资料依据：cppreference · std::variant and std::any"
+  },
+  {
+    "id": "119",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "为什么推荐按值抛出并按 const 引用捕获异常？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "按值抛出会把异常对象复制或移动到异常存储，避免引用局部对象。按 const 引用捕获不会再次复制，并能通过虚函数保留派生异常的动态行为而避免切片。",
+    "source": "资料依据：cppreference · throw expression and catch handler"
+  },
+  {
+    "id": "120",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "异常处理器的排列顺序为什么要从派生类到基类？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "处理器按源代码顺序匹配，第一个可处理异常类型的 catch 会被选择。若基类处理器在前，它会截获派生异常，使更具体的处理器永远不可达。",
+    "source": "资料依据：cppreference · catch handler matching"
+  },
+  {
+    "id": "121",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "栈展开期间局部对象按什么顺序析构？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "从抛出点到匹配处理器之间，已经完成构造的自动对象按构造的逆序析构。动态分配但未交给 RAII 对象的资源不会自动释放，因此异常安全依赖所有权对象。",
+    "source": "资料依据：cppreference · stack unwinding"
+  },
+  {
+    "id": "122",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "noexcept 函数让异常逃逸时会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "异常若试图越过 noexcept 函数边界，运行时调用 std::terminate，而不是把它交给外层 catch。noexcept 应只标在确实能兑现承诺的操作上，并会影响容器选择移动还是复制。",
+    "source": "资料依据：cppreference · noexcept specification"
+  },
+  {
+    "id": "123",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "析构函数如何处理无法忽略的清理失败？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "析构函数不适合传播错误，因为它可能在另一个异常的栈展开中执行。需要报告失败的资源应提供显式 close 或 commit 操作，析构只做不抛的兜底清理。",
+    "source": "资料依据：C++ Core Guidelines · destructor exception safety"
+  },
+  {
+    "id": "124",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "dynamic_cast 对指针和引用转换失败时行为有何不同？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对指针做运行期向下或横向转换失败会返回 nullptr。对引用转换失败会抛 std::bad_cast，且源类型必须是多态类型才能执行需要运行期检查的转换。",
+    "source": "资料依据：cppreference · dynamic_cast conversion"
+  },
+  {
+    "id": "125",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "typeid 作用于多态表达式时何时读取动态类型？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "当操作数是多态类型的 glvalue 时，typeid 返回实际最派生对象的 type_info。对非多态表达式只反映静态类型；解引用空的多态指针作为操作数会抛 std::bad_typeid。",
+    "source": "资料依据：cppreference · typeid operator"
+  },
+  {
+    "id": "126",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "跨共享库抛出 C++ 异常为什么存在 ABI 风险？",
+    "difficulty": 5,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "异常对象布局、RTTI、运行库和展开机制都必须在模块间兼容，否则匹配和销毁可能失败。稳定插件接口通常不让异常跨边界，而是在边界内捕获并转换成错误码或结果对象。",
+    "source": "资料依据：C++ Core Guidelines · exceptions across ABI"
+  },
+  {
+    "id": "127",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::thread 析构前为什么必须 join 或 detach？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "joinable 的 std::thread 在析构时会直接调用 std::terminate，防止后台线程静默失去所有权。所有控制路径都必须 join、detach 或把线程交给能保证收尾的 RAII 包装。",
+    "source": "资料依据：cppreference · std::thread destructor"
+  },
+  {
+    "id": "128",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "mutex、recursive_mutex 和 timed_mutex 应如何选择？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "mutex 提供基本互斥，recursive_mutex 允许同一线程重复加锁但容易掩盖重入设计问题，timed_mutex 增加超时尝试。默认应选择最简单的 mutex，只有明确协议需要时再扩大能力。",
+    "source": "资料依据：cppreference · mutex types"
+  },
+  {
+    "id": "129",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "lock_guard 和 unique_lock 的能力差异是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "lock_guard 在构造时加锁并在析构时解锁，状态简单且不能中途释放。unique_lock 可延迟、尝试、转移和临时解锁，是 condition_variable 等需要操作锁状态的接口所要求的类型。",
+    "source": "资料依据：cppreference · std::unique_lock"
+  },
+  {
+    "id": "130",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::lock 如何避免同时锁多个 mutex 时的死锁？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::lock 使用避免死锁的算法尝试获取一组 Lockable 对象，而不是让调用方按不一致顺序逐个加锁。成功后仍要用 adopt_lock 的 RAII 包装接管每把锁，异常时释放已获得的锁。",
+    "source": "资料依据：cppreference · std::lock"
+  },
+  {
+    "id": "131",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "scoped_lock 如何同时管理多把互斥量？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "scoped_lock 接收多把互斥量时使用与 std::lock 等价的死锁避免机制，并在析构时统一释放。它不可手动解锁，适合整个作用域都持锁的多锁临界区。",
+    "source": "资料依据：cppreference · std::scoped_lock"
+  },
+  {
+    "id": "132",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "condition_variable 为什么必须用谓词循环等待？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "条件变量允许虚假唤醒，通知到达也不保证业务条件仍成立。wait(lock, predicate) 会在持锁状态检查谓词并在不满足时继续等待，从而把共享状态而非通知次数作为依据。",
+    "source": "资料依据：cppreference · std::condition_variable wait"
+  },
+  {
+    "id": "133",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "如何避免通知先于等待造成的丢失唤醒？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "条件状态必须存放在受同一 mutex 保护的共享变量中，等待方先检查状态再原子地释放锁并阻塞。通知本身不保存历史，只有状态谓词能让后来开始等待的线程观察已经发生的事件。",
+    "source": "资料依据：cppreference · condition variable lost wakeup"
+  },
+  {
+    "id": "134",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "数据竞争为什么直接构成未定义行为？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "两个线程并发访问同一内存位置、至少一个写入且没有 happens-before 关系时形成数据竞争。除原子对象外，数据竞争使整个程序行为未定义，不能依赖硬件上看似原子的读写。",
+    "source": "资料依据：cppreference · memory model data races"
+  },
+  {
+    "id": "135",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "memory_order_relaxed 能保证什么而不能保证什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "relaxed 操作保证该原子对象自身的修改顺序和读写原子性，不建立其他普通内存访问的跨线程同步。它适合独立计数等场景，不能单独发布另一个对象的初始化结果。",
+    "source": "资料依据：cppreference · std::memory_order relaxed"
+  },
+  {
+    "id": "136",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "release 写和 acquire 读如何发布对象状态？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "线程在 release 操作之前的写入，对读取同一值并执行 acquire 操作的线程可见。同步只在 acquire 实际读到 release 序列中的值时建立，操作不同原子或读到旧值都不满足条件。",
+    "source": "资料依据：cppreference · std::memory_order acquire release"
+  },
+  {
+    "id": "137",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "顺序一致原子操作提供了怎样的全局顺序？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "memory_order_seq_cst 除 acquire/release 语义外，还要求所有顺序一致操作可放入一个与各线程程序顺序一致的单一总序。它更易推理，但可能限制某些架构上的优化。",
+    "source": "资料依据：cppreference · std::memory_order sequentially-consistent"
+  },
+  {
+    "id": "138",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "promise 被销毁但未设置结果时 future 会观察到什么？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "promise 在共享状态仍需要结果时被销毁，会把 broken_promise 异常存入共享状态。future::get 随后抛出 future_error，并且 get 通常只能消费结果一次。",
+    "source": "资料依据：cppreference · std::promise"
+  },
+  {
+    "id": "139",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "std::async 的 async 和 deferred 策略有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "launch::async 允许任务在独立线程异步执行，launch::deferred 则到 wait 或 get 时才在等待线程运行。未显式指定策略时实现可以选择，两种行为对并发度和异常时机都有影响。",
+    "source": "资料依据：cppreference · std::async"
+  },
+  {
+    "id": "140",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "call_once 如何保证初始化函数只成功执行一次？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "多个线程对同一 once_flag 调用 call_once 时，只有一个成功返回的执行被记为完成，其他线程随后观察其效果。若初始化函数抛异常，标志不会完成，后续调用可以再次尝试。",
+    "source": "资料依据：cppreference · std::call_once"
+  },
+  {
+    "id": "141",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "string_view 返回给调用方时需要满足什么寿命条件？",
+    "difficulty": 2,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "string_view 不拥有字符数据，返回它只安全于底层存储在调用方使用期间持续有效。不能返回指向局部 string、临时拼接结果或随后可能扩容的缓冲区的 view。",
+    "source": "资料依据：cppreference · std::basic_string_view"
+  },
+  {
+    "id": "142",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::string::data 在 C++17 中提供了什么可写保证？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "C++17 为非 const string 提供返回 char* 的 data，可在不改变 size 的前提下修改已有字符。写越过 size、破坏结尾空字符约束或把指针保留到会失效的修改之后仍然不合法。",
+    "source": "资料依据：cppreference · std::basic_string data"
+  },
+  {
+    "id": "143",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "标准是否保证 std::string 使用小字符串优化？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "标准没有要求 small string optimization，也不规定阈值或对象布局。代码不能根据短字符串假设零分配，性能判断应基于目标标准库和实测。",
+    "source": "资料依据：cppreference · std::basic_string implementation notes"
+  },
+  {
+    "id": "144",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::string 为什么不能直接代表任意文本编码？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "std::string 只是 char 序列，不记录编码，也不会验证 UTF-8。接口必须约定字节编码和错误处理，按字符截断、大小写转换或索引时还要区分字节、码点和用户感知字符。",
+    "source": "资料依据：cppreference · strings and encodings"
+  },
+  {
+    "id": "145",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "filesystem::path 如何处理平台相关的路径表示？",
+    "difficulty": 3,
+    "scopes": [
+      "C++17"
+    ],
+    "answer": "path 保存平台原生路径格式，并提供 generic 格式用于跨平台表达。路径拼接应使用 operator/，字符串编码转换和根目录语义仍取决于平台，失败可通过异常或 error_code 重载报告。",
+    "source": "资料依据：cppreference · std::filesystem::path"
+  },
+  {
+    "id": "146",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "system_clock 和 steady_clock 分别适合测量什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "system_clock 可与日历时间互转，但可能因系统校时向前或向后跳变。steady_clock 保证单调递增，更适合测量超时和耗时，不能直接当作墙上时间显示。",
+    "source": "资料依据：cppreference · chrono clocks"
+  },
+  {
+    "id": "147",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "chrono::duration 的隐式转换为何会拒绝可能丢精度的方向？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "从细粒度到粗粒度且不能保证整除的转换可能截断，因此通常需要 duration_cast 显式表达。反向扩大精度在表示类型兼容时可隐式完成，但还要考虑计数值溢出。",
+    "source": "资料依据：cppreference · std::chrono::duration"
+  },
+  {
+    "id": "148",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "eofbit、failbit 和 badbit 分别表示什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "eofbit 表示输入序列到达末尾，failbit 表示格式化提取失败，badbit 表示底层 I/O 等严重错误。状态位可以同时存在，clear 只重置状态，不会自动修复数据源或回退已消费输入。",
+    "source": "资料依据：cppreference · std::ios_base iostate"
+  },
+  {
+    "id": "149",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "自定义 streambuf 时 underflow 和 overflow 各负责什么？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "underflow 在读区无可用字符时补充或报告输入，overflow 在写区满或显式同步时提交输出。实现必须维护 get/put 区指针、EOF 约定和所有权，错误状态最终由上层流对象观察。",
+    "source": "资料依据：cppreference · std::basic_streambuf"
+  },
+  {
+    "id": "150",
+    "group": "cpp",
+    "category": "cpp/strings-time-files-streams",
+    "title": "std::regex 为什么不适合所有高性能解析任务？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "标准规定匹配语义和接口，但没有统一保证实现算法、编译缓存或最坏时间复杂度。对输入可控性和延迟敏感的场景应测量目标标准库，并考虑专用解析器或受限模式。",
+    "source": "资料依据：cppreference · regular expressions library"
+  },
+  {
+    "id": "151",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 如何创建一组相互匹配的产品？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "抽象工厂定义创建相关产品族的接口，让客户端只依赖抽象产品并保持同一族的兼容性。它适合产品族会整体替换的场景，但新增一种产品会迫使工厂接口及各具体工厂一起扩展。",
+    "pattern": "Abstract Factory",
+    "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
+  },
+  {
+    "id": "152",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "切换 Abstract Factory 产品族时依赖应放在哪里？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "客户端应依赖抽象工厂，具体工厂在组合根或配置边界被选择；同一工厂负责产生彼此匹配的产品。这样切换主题只替换工厂实现，代价是产品种类固定后扩展新产品需要修改全部工厂。",
+    "pattern": "Abstract Factory",
+    "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
+  },
+  {
+    "id": "153",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Adapter 如何把旧接口转换为客户端期待的接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "适配器实现客户端所需的 Target 接口，并把调用转换给已有 Adaptee；对象适配器用组合保存被适配对象。转换层应集中处理参数、错误和所有权差异，避免把旧接口细节泄漏到客户端。",
+    "pattern": "Adapter",
+    "source": "资料依据：GoF · GoF Adapter object and class adapters"
+  },
+  {
+    "id": "154",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "对象 Adapter 与类 Adapter 如何选择？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对象适配器通过组合可适配多个对象，运行时可替换且不受单继承限制；类适配器依赖多重继承并能直接覆盖受保护行为。C++ 中优先组合，只有需要静态复用实现且继承关系稳定时才考虑类适配器。",
+    "pattern": "Adapter",
+    "source": "资料依据：GoF · GoF Adapter object and class adapters"
+  },
+  {
+    "id": "155",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Bridge 如何拆开抽象层和实现层的变化轴？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "桥接把抽象层的操作接口与实现层的细节放在两个独立继承层次，并由抽象持有实现接口。两条变化轴可独立扩展，代价是多一个间接层和更复杂的对象装配；若只有一个稳定实现，普通继承更简单。",
+    "pattern": "Bridge",
+    "source": "资料依据：GoF · GoF Bridge abstraction-implementation separation"
+  },
+  {
+    "id": "156",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Bridge 的实现对象由谁拥有和替换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "实现对象通常由抽象端以唯一所有权或共享策略持有，构造时注入，必要时通过受控接口替换。替换必须保证旧实现上的未完成操作和资源先收尾，否则桥接只隐藏了生命周期错误而没有解决它。",
+    "pattern": "Bridge",
+    "source": "资料依据：GoF · GoF Bridge abstraction-implementation separation"
+  },
+  {
+    "id": "157",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Builder 如何分离复杂对象的构造步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Builder 将构造步骤从最终产品表示中分离，Director 可按固定顺序调用步骤而不暴露内部布局。产品有许多可选部件或需多种表示时适用；简单对象使用构造函数或工厂更直接。",
+    "pattern": "Builder",
+    "source": "资料依据：GoF · GoF Builder construction process and representation"
+  },
+  {
+    "id": "158",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "可复用 Builder 怎样避免上一次状态泄漏？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可复用 Builder 必须在开始新构造时清空产品或创建新的产品实例，并明确哪些配置是默认值。复用同一实例若不重置会把前一次选项带入后续结果；不可变 Builder 或一次性 Builder 能减少这种状态污染。",
+    "pattern": "Builder",
+    "source": "资料依据：GoF · GoF Builder construction process and representation"
+  },
+  {
+    "id": "159",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Chain of Responsibility 如何沿处理者链传递请求？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "责任链把请求沿一组可替换处理者传递，每个处理者决定处理或交给后继者，发送者不依赖具体接收者。链适合运行时组合处理步骤，但请求可能无人处理或顺序敏感，因此应定义终止处理者和可观察的拒绝结果。",
+    "pattern": "Chain of Responsibility",
+    "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
+  },
+  {
+    "id": "160",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "处理者链如何表达处理、继续和拒绝三种结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "处理者接口应明确返回已处理、继续传递或拒绝并报错等结果，不能只依赖隐含的副作用。调用端据此决定是否继续链、记录未处理请求或触发降级；链越长，调试和最坏延迟越难控制。",
+    "pattern": "Chain of Responsibility",
+    "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
+  },
+  {
+    "id": "161",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Command 如何把一次操作封装成可排队对象？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "命令对象把接收者、操作参数和执行入口封装起来，使调用者能把请求排队、记录或延迟执行。队列拥有命令对象的生命周期，接收者只负责实际业务；异步队列还要定义取消、失败和重试语义。",
+    "pattern": "Command",
+    "source": "资料依据：GoF · GoF Command request encapsulation and undo"
+  },
+  {
+    "id": "162",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "支持撤销时 Command 需要保存哪些状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可撤销命令需要保存执行前足以恢复不变量的状态，或设计可逆的反向操作；只保存“上一步”标志通常不够。外部资源和并发副作用难以回滚，命令应限制事务边界并说明撤销失败如何处理。",
+    "pattern": "Command",
+    "source": "资料依据：GoF · GoF Command request encapsulation and undo"
+  },
+  {
+    "id": "163",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Composite 如何让叶子和组合对象共享操作接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "组合模式把叶子与容器放进同一组件接口，客户端可对单个对象和整棵部分—整体树使用相同操作。透明接口便于递归处理但可能让叶子暴露无意义的 add/remove；安全接口则需在易用性与类型检查之间取舍。",
+    "pattern": "Composite",
+    "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
+  },
+  {
+    "id": "164",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Composite 遍历子节点时如何处理生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "组合对象应明确子节点的所有权，拥有型树可由父节点通过 RAII 管理，观察型关系则不能在遍历时假定子节点仍存活。删除或移动节点时必须使迭代器、父指针和缓存失效规则一致，否则递归访问会读到悬空对象。",
+    "pattern": "Composite",
+    "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
+  },
+  {
+    "id": "165",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 与 Builder 如何共同构造可配置产品？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "抽象工厂先决定兼容的产品族，Builder 再按步骤配置该族中的一个复杂产品；两者的边界分别是“选哪一族”和“怎样组装”。组合能同时支持主题替换与可选部件，但接口数量、测试夹具和装配代码都会增加。",
+    "pattern": "Cross-pattern",
+    "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
+  },
+  {
+    "id": "166",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 与 Prototype 在复制和创建之间如何选择？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Factory Method 通过虚拟创建钩子让派生类决定新对象，Prototype 则复制已配置实例以绕过具体构造过程。构造成本高且类型在运行时注册时适合原型；复制语义不清或资源不可复制时，工厂方法更容易维持不变量。",
+    "pattern": "Cross-pattern",
+    "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
+  },
+  {
+    "id": "167",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Decorator 如何在不修改原类的情况下叠加职责？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "装饰器实现与被装饰对象相同的接口，并在转发调用前后附加职责，因此可以运行时叠加功能而不修改原类。它适合职责组合细粒度变化，代价是调用链变长、调试困难，且装饰器顺序可能改变结果。",
+    "pattern": "Decorator",
+    "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
+  },
+  {
+    "id": "168",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "多层 Decorator 的析构与异常传播如何保证？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "每层装饰器应以 RAII 管理自己拥有的下层对象，并让析构保持不抛；异常从转发调用向外传播时不能跳过已构造层的清理。若某层需要吞掉或转换异常，边界必须写入接口契约，否则多层包装会掩盖失败来源。",
+    "pattern": "Decorator",
+    "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
+  },
+  {
+    "id": "169",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Facade 如何为多个子系统提供稳定入口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "外观为一组子系统提供面向用例的窄接口，隐藏初始化顺序和协作细节，但不替子系统定义新的业务模型。它降低调用方耦合，代价是外观可能膨胀成上帝对象；复杂用例应拆成多个门面或保留受控的子系统访问。",
+    "pattern": "Facade",
+    "source": "资料依据：GoF · GoF Facade subsystem interface"
+  },
+  {
+    "id": "170",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Facade 是否应该管理子系统对象生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "外观是否拥有子系统取决于创建边界：应用级外观可管理一次性资源，注入已有服务的外观只协调调用并不负责销毁。把两种责任混在一起会造成双重释放或静态生命周期依赖，接口应明确借用与拥有关系。",
+    "pattern": "Facade",
+    "source": "资料依据：GoF · GoF Facade subsystem interface"
+  },
+  {
+    "id": "171",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 如何把具体产品决定延迟到派生类？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "工厂方法在抽象产品接口中定义创建点，由具体创建者覆盖该方法来选择具体产品，业务流程仍写在基类中。它适合产品类型由子类或配置变化决定的框架，新增产品通常需要新增创建者而不是修改调用流程。",
+    "pattern": "Factory Method",
+    "source": "资料依据：GoF · GoF Factory Method product creation hook"
+  },
+  {
+    "id": "172",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 的扩展点应如何控制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "扩展点应只暴露创建所需的最小产品接口，并让基类保证创建后不变量；把业务分支全部塞进工厂方法会退化为大型 switch。若产品族需要同时保持配套关系，应改用抽象工厂而不是无限增加创建者子类。",
+    "pattern": "Factory Method",
+    "source": "资料依据：GoF · GoF Factory Method product creation hook"
+  },
+  {
+    "id": "173",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Flyweight 如何区分内在状态和外在状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "享元把可共享的内在状态放入池中，把位置、颜色等每次使用才确定的外在状态交给调用者。共享前必须证明内在状态不可变或有同步保护，否则节省内存会换来跨对象状态污染。",
+    "pattern": "Flyweight",
+    "source": "资料依据：GoF · GoF Flyweight intrinsic and extrinsic state"
+  },
+  {
+    "id": "174",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Flyweight 工厂怎样保证共享键和生命周期一致？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "享元工厂应以完整的内在状态作为规范化键，命中时返回同一个共享对象，并定义池的所有权和淘汰策略。弱引用或清晰的缓存生命周期可避免池无限增长；键遗漏字段会让不同语义错误地共享状态。",
+    "pattern": "Flyweight",
+    "source": "资料依据：GoF · GoF Flyweight intrinsic and extrinsic state"
+  },
+  {
+    "id": "175",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Interpreter 如何用类层次表达小型语法规则？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "解释器模式把文法规则表示为表达式对象，每个非终结符组合子递归解释上下文，终结符读取输入或变量。它适合小而稳定的 DSL；文法规模或性能要求上升后，解析器生成器和专用 AST 通常更可维护。",
+    "pattern": "Interpreter",
+    "source": "资料依据：GoF · GoF Interpreter grammar representation"
+  },
+  {
+    "id": "176",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Interpreter 上下文对象应保存哪些运行期信息？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Context 保存解释过程中共享的输入游标、变量环境或诊断信息，表达式只通过约定接口读写这些状态。上下文若混入线程局部或全局数据会破坏可重入性，多个解释任务应拥有独立上下文。",
+    "pattern": "Interpreter",
+    "source": "资料依据：GoF · GoF Interpreter grammar representation"
+  },
+  {
+    "id": "177",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Iterator 如何隐藏集合内部表示并提供统一访问协议？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "迭代器把遍历位置和递增规则封装起来，聚合对象只暴露 begin/end 或等价协议，客户端无需知道存储结构。不同迭代器可提供不同遍历策略，但必须清楚比较、终止和失效规则，不能把抽象迭代器当成永不失效的指针。",
+    "pattern": "Iterator",
+    "source": "资料依据：GoF · GoF Iterator aggregate traversal"
+  },
+  {
+    "id": "178",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "自定义 Iterator 的失效条件和所有权如何说明？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "自定义迭代器要声明其拥有的是容器的观察权而非元素所有权，并规定插入、删除、移动或容器销毁后的有效性。若迭代器跨线程或异步保存，容器和节点寿命必须由更高层契约保证，失效后继续递增或解引用属于未定义行为。",
+    "pattern": "Iterator",
+    "source": "资料依据：GoF · GoF Iterator aggregate traversal"
+  },
+  {
+    "id": "179",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Mediator 如何把同事对象间的网状依赖集中起来？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "中介者让同事对象只依赖协调接口，由中介者编排交互而不是彼此直接调用，从而把网状依赖变成星形依赖。它适合协作规则集中且变化频繁的场景，但中介者会承载过多业务时应按用例拆分或引入领域服务。",
+    "pattern": "Mediator",
+    "source": "资料依据：GoF · GoF Mediator colleague collaboration"
+  },
+  {
+    "id": "180",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Mediator 过度膨胀时怎样重划协作边界？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "当中介者同时知道所有同事的细节、状态和异常分支时，它已成为难以测试的上帝对象。可以按协作场景拆成多个中介者，或把稳定规则下沉回同事；拆分边界应由消息流和事务一致性决定。",
+    "pattern": "Mediator",
+    "source": "资料依据：GoF · GoF Mediator colleague collaboration"
+  },
+  {
+    "id": "181",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Memento 如何在不暴露内部表示时保存状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "备忘录由发起者创建并保存内部状态快照，管理者只持有不透明句柄，从而恢复状态而不暴露表示细节。快照必须定义一致性时点和容量成本；包含外部资源句柄时不能假设恢复能重新建立资源。",
+    "pattern": "Memento",
+    "source": "资料依据：GoF · GoF Memento encapsulation boundary"
+  },
+  {
+    "id": "182",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Memento 快照的所有权和版本号由谁维护？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "发起者应决定快照的格式与版本，管理者只负责保存、排序和淘汰，避免依赖私有字段。版本不兼容时应拒绝恢复或执行明确迁移，快照的拥有者还要保证底层数据在恢复前一直有效。",
+    "pattern": "Memento",
+    "source": "资料依据：GoF · GoF Memento encapsulation boundary"
+  },
+  {
+    "id": "183",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Observer 注册和取消订阅时如何避免悬空回调？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "观察者注册关系应有明确的取消机制，订阅令牌或弱引用可避免被通知对象销毁后仍调用回调。通知线程与取消线程并发时需要同步快照和回调状态，不能只从容器里删除指针就宣称安全。",
+    "pattern": "Observer",
+    "source": "资料依据：GoF · GoF Observer subject notification"
+  },
+  {
+    "id": "184",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Observer 通知期间修改订阅集合会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "通知期间直接修改订阅容器可能使迭代器失效、跳过观察者或重复调用，常见做法是遍历快照并把增删操作延迟到通知结束。回调抛异常时还要决定继续通知还是终止，并避免让一个观察者破坏发布者的不变量。",
+    "pattern": "Observer",
+    "source": "资料依据：GoF · GoF Observer subject notification"
+  },
+  {
+    "id": "185",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Prototype 复制对象时如何处理深拷贝和共享资源？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原型的 clone 操作应按对象语义决定深拷贝、共享不可变资源或复制所有权，不能由默认指针拷贝推断结果。多态复制通常要求虚拟 clone 返回拥有型指针，并为每个资源定义复制失败时的清理路径。",
+    "pattern": "Prototype",
+    "source": "资料依据：GoF · GoF Prototype cloning"
+  },
+  {
+    "id": "186",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "原型注册表如何管理复制入口？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原型注册表把类型键映射到可复制的原型对象，客户端按键请求 clone 而不依赖具体类名。注册表需规定替换、并发读写和对象所有权，未知键应返回可诊断错误而不是空指针继续执行。",
+    "pattern": "Prototype",
+    "source": "资料依据：GoF · GoF Prototype cloning"
+  },
+  {
+    "id": "187",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Proxy 如何在不改变真实对象接口的情况下增加访问控制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "代理实现与真实主题相同的接口，可在转发前后加入权限、缓存、远程传输或日志，因此客户端无需改写调用协议。代理不应伪装成同步本地对象来掩盖网络延迟和失败，远程代理尤其要明确超时、重试和资源所有权。",
+    "pattern": "Proxy",
+    "source": "资料依据：GoF · GoF Proxy subject access control"
+  },
+  {
+    "id": "188",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "虚拟 Proxy 延迟创建资源时如何报告失败？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "虚拟代理首次收到需要真实主题的请求时才创建它，创建失败应通过与主题一致的错误通道返回，并保持代理可再次尝试或进入终止状态。延迟初始化减小首屏成本，却把故障推迟到业务调用，调用方必须能区分未加载与已加载失败。",
+    "pattern": "Proxy",
+    "source": "资料依据：GoF · GoF Proxy subject access control"
+  },
+  {
+    "id": "189",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Singleton 的唯一实例如何保证线程安全初始化？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "C++11 的函数内静态对象在首次控制流经过声明时初始化，并由语言保证并发初始化只发生一次；这通常比手写双重检查更可靠。Singleton 仍引入全局可变状态和隐藏依赖，测试替换与析构顺序是采用前必须接受的代价。",
+    "pattern": "Singleton",
+    "source": "资料依据：GoF · GoF Singleton sole instance and global access"
+  },
+  {
+    "id": "190",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Singleton 生命周期与静态析构顺序有何风险？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "函数内静态 Singleton 的销毁顺序与其他静态对象的跨翻译单元顺序可能不匹配，析构阶段访问已销毁依赖会产生未定义行为。可通过显式生命周期管理、泄漏到进程结束或把依赖注入使用方规避，但每种选择都改变资源回收和测试策略。",
+    "pattern": "Singleton",
+    "source": "资料依据：GoF · GoF Singleton sole instance and global access"
+  },
+  {
+    "id": "191",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "State 如何把状态行为从大型条件分支中拆出？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "状态模式把每个状态相关行为放入独立对象，由上下文委托当前状态处理事件并在需要时切换。状态数量或转移规则增长时它能替代巨型条件分支，但对象切换、共享数据和转移合法性需要额外契约。",
+    "pattern": "State",
+    "source": "资料依据：GoF · GoF State state-dependent behavior"
+  },
+  {
+    "id": "192",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "共享 State 对象时如何隔离瞬时数据？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可共享的无状态 State 可以放入注册表，但用户输入、超时等瞬时数据必须保存在上下文或事件对象中，不能写进共享状态实例。若状态含可变字段，就应按上下文隔离或加同步，否则一个会话的转移会污染另一个会话。",
+    "pattern": "State",
+    "source": "资料依据：GoF · GoF State state-dependent behavior"
+  },
+  {
+    "id": "193",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Strategy 如何把可替换行为封装成稳定接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "策略模式把一组可互换算法封装成共同接口，由上下文持有并委托当前策略，从而把选择与算法实现分离。它适合运行时或配置驱动的算法变化，但策略类过多会增加装配和间接调用成本，固定且简单的分支可能更清楚。",
+    "pattern": "Strategy",
+    "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
+  },
+  {
+    "id": "194",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "运行时选择 Strategy 时依赖和生命周期如何管理？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "运行时策略可由依赖注入提供，拥有关系应由上下文、调用者或共享指针中的一个边界明确承担。切换策略时要处理正在执行的调用、线程安全和旧策略释放，不能只替换裸指针。",
+    "pattern": "Strategy",
+    "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
+  },
+  {
+    "id": "195",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Template Method 如何固定流程骨架并开放可变步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "模板方法在基类中固定算法骨架，通过受保护的原语操作或钩子把可变步骤交给子类；调用者只看到稳定的公共流程。它利用继承实现编译期复用，代价是基类控制反转且子类组合受限，需要防止钩子破坏骨架不变量。",
+    "pattern": "Template Method",
+    "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
+  },
+  {
+    "id": "196",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Template Method 钩子函数如何处理异常和默认行为？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "钩子通常提供无操作或保守默认实现，子类只覆盖确有需要的步骤；异常是否向上冒泡由模板方法的事务契约决定。模板方法若在中途吞掉异常或继续使用半完成状态，会让子类无法判断提交边界，应保持失败后的对象不变量。",
+    "pattern": "Template Method",
+    "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
+  },
+  {
+    "id": "197",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Visitor 如何在不修改元素层次时增加新操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "访问者把操作放进独立对象，元素通过 accept 将自身类型分派给对应 visit，从而新增操作无需修改元素类。它适合元素层次稳定而操作经常增加的系统；新增元素则要求修改所有访问者，类型安全与扩展方向存在明确取舍。",
+    "pattern": "Visitor",
+    "source": "资料依据：GoF · GoF Visitor double dispatch and operation extension"
+  },
+  {
+    "id": "198",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "双重分派在 Visitor 中解决了什么类型限制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "第一次分派选择元素的动态类型，accept 内部的第二次分派选择具体访问者重载，这正是双重分派绕过单次虚调用类型限制的机制。实现需要为每种元素维护 visit 重载，接口变更会带来较大的编译影响，且跨模块 ABI 要保持一致。",
+    "pattern": "Visitor",
+    "source": "资料依据：GoF · GoF Visitor double dispatch and operation extension"
+  },
+  {
+    "id": "199",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 与依赖注入如何保持接口稳定？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "依赖注入把抽象工厂作为构造或启动边界的依赖，业务对象只调用抽象产品接口，不直接实例化具体工厂。这样测试可以注入替身并整体切换产品族，但工厂接口仍会随新增产品扩张，不能把依赖注入误当成消除产品族约束。",
+    "pattern": "Abstract Factory",
+    "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
+  },
+  {
+    "id": "200",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Builder 与命名构造函数如何取舍？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "命名构造函数适合少量互斥选项，能保持调用点短且直接返回完整对象；Builder 更适合许多可选步骤、校验或多种表示。Builder 会增加类型和状态管理，若没有复杂构造过程，采用它反而扩大 API 和维护成本。",
+    "pattern": "Builder",
+    "source": "资料依据：GoF · GoF Builder construction process and representation"
+  },
+  {
+    "id": "201",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UObject 反射元数据由谁生成，运行时如何查询并避免依赖生成细节？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应直接依赖 Intermediate 下的生成符号和文件布局。",
+    "source": "资料依据：Epic Games · Unreal Header Tool and UObject Reflection System"
+  },
+  {
+    "id": "202",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UCLASS 与 USTRUCT 在 UHT 处理、默认构造和序列化能力上有哪些边界？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UCLASS 类型由 UHT 注册且实例必须通过 UObject 创建路径产生，具备对象身份、反射引用和 GC 生命周期。USTRUCT 是可按值构造、复制和嵌套的数据类型，只有被反射标记的字段才自动参与属性序列化和编辑器工具。",
+    "source": "资料依据：Epic Games · UObjects, UStructs, and Reflection"
+  },
+  {
+    "id": "203",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "哪些 UFUNCTION 和 UPROPERTY specifier 会改变 Blueprint 暴露、网络复制或编辑器可见性？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "BlueprintCallable、BlueprintPure、BlueprintNativeEvent 等 UFUNCTION specifier 决定蓝图调用或覆盖方式，EditAnywhere、BlueprintReadWrite、ReplicatedUsing 等 UPROPERTY specifier 分别控制编辑、脚本访问和复制。它们属于独立维度，能在蓝图中看到属性并不代表该属性会保存或同步到网络。",
+    "source": "资料依据：Epic Games · UFunctions and Unreal Property System Specifiers"
+  },
+  {
+    "id": "204",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "哪些 C++ 声明或 include 写法会让 UHT 解析失败，如何定位生成错误？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
+    "source": "资料依据：Epic Games · Unreal Header Tool Parsing and Generated Headers"
+  },
+  {
+    "id": "205",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "GENERATED_BODY 的插入位置和声明顺序有什么要求，常见编译错误如何判断？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
+    "source": "资料依据：Epic Games · GENERATED_BODY and Generated Code"
+  },
+  {
+    "id": "206",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "EditAnywhere、VisibleInstanceOnly 等 specifier 如何决定属性编辑器中的修改权限？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "EditAnywhere 同时允许修改类默认值和实例，EditDefaultsOnly 与 EditInstanceOnly 分别限制到默认对象或关卡实例，Visible 系列只改变详情面板的可编辑性。BlueprintReadOnly、Config、SaveGame 和 Replicated 等规则另行决定脚本访问、配置保存或网络同步，不能由 Edit/Visible specifier 推导。",
+    "source": "资料依据：Epic Games · Property Specifiers and Editor Visibility"
+  },
+  {
+    "id": "207",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "Outer 如何参与对象归属、命名和 GC 可达性，什么时候不应随意复用？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍需通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
+    "source": "资料依据：Epic Games · UObject Outer and Object Ownership Hierarchy"
+  },
+  {
+    "id": "208",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "NewObject 的 Outer、模板对象和对象标志参数如何影响初始化与 GC？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
+    "source": "资料依据：Epic Games · UObject Instance Creation with NewObject"
+  },
+  {
+    "id": "209",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "RF_Transient、RF_Public 等对象标志分别影响哪些保存、复制和 GC 行为？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "RF_Transient 阻止对象进入常规包保存，RF_Public 允许对象作为包的公开导出被外部引用，其他标志还描述默认对象、原型和销毁阶段。大多数标志不是 GC 强引用，判断存活性仍要看可达关系并使用 IsValid 等生命周期 API。",
+    "source": "资料依据：Epic Games · EObjectFlags and UObject Lifecycle"
+  },
+  {
+    "id": "210",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "GC root、UPROPERTY 引用和容器引用如何共同决定 UObject 是否可达？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图，因此必须改用受跟踪引用或显式引用收集。",
+    "source": "资料依据：Epic Games · Garbage Collection and Reflected Object References"
+  },
+  {
+    "id": "211",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "TObjectPtr 与裸 UObject 指针在 GC、编辑器和序列化场景下有什么差异？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可被反射系统跟踪，但未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
+    "source": "资料依据：Epic Games · Object Pointers and TObjectPtr"
+  },
+  {
+    "id": "212",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "TWeakObjectPtr 如何表达弱引用，IsValid 与 Pin 的使用边界是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用；对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应在游戏线程取得 Get 结果并立即重新校验。",
+    "source": "资料依据：Epic Games · Weak Object Pointers and TWeakObjectPtr"
+  },
+  {
+    "id": "213",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UObject 反射信息如何影响序列化、编辑器工具和运行时类型判断？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "反射数据让引擎按 FProperty 枚举字段、序列化资产、生成详情面板、调用蓝图函数，并通过 Cast 或 IsA 判断运行时类型。普通 C++ 成员和函数若没有反射声明就不会自动进入这些管线，需要自定义序列化或工具代码。",
+    "source": "资料依据：Epic Games · UObject Reflection Runtime Services"
+  },
+  {
+    "id": "214",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "选择 UCLASS 还是 USTRUCT 时，如何权衡 GC、复制和按值传递？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可被反射和序列化但不会作为独立 GC 对象；其中的 UObject 引用仍需用 UPROPERTY 等方式暴露给引用收集器。",
+    "source": "资料依据：Epic Games · Choosing UObjects versus UStructs"
+  },
+  {
+    "id": "215",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UFUNCTION 或 UPROPERTY 声明变化后，UHT 生成代码和二进制接口会受到什么影响？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应只依赖热重载来验证。",
+    "source": "资料依据：Epic Games · UHT Generated Code for UFunctions and Properties"
+  },
+  {
+    "id": "216",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UHT 的解析边界如何影响模板、宏和跨模块反射声明？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要正确的 Build.cs 依赖、可见头文件和 API 导出，否则生成代码会在编译或链接阶段缺少注册符号。",
+    "source": "资料依据：Epic Games · Unreal Header Tool Limitations and Module Visibility"
+  },
+  {
+    "id": "217",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "迁移或重命名反射类型时，GENERATED_BODY 与生成文件如何保持一致？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "反射类型的源头始终是头文件声明，GENERATED_BODY 和 generated.h 应由 UHT 重新生成而不是随类型手工搬运。重命名已被资产引用的类、结构体或属性时还要配置 Core Redirects，并让依赖蓝图重新加载和编译。",
+    "source": "资料依据：Epic Games · Core Redirects and Generated Reflection Code"
+  },
+  {
+    "id": "218",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "属性的编辑器权限与运行时可写性、配置保存和复制是否是同一概念？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Edit 和 Visible specifier 只控制详情面板在哪类对象上允许修改，C++ 运行时仍可按访问权限写入成员。Config、SaveGame、Transient、Replicated 和 BlueprintReadWrite 分别属于配置、存档、持久化排除、网络和蓝图访问规则，彼此不会自动联动。",
+    "source": "资料依据：Epic Games · Property Specifier Semantics"
+  },
+  {
+    "id": "219",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "跨关卡或异步加载时，Outer 选择错误会造成哪些生命周期问题？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "错误的 Outer 会把对象放入不合适的 World、Package 或临时对象层级，导致对象路径、保存归属和关卡卸载时机与预期不一致。跨关卡或异步工作应选择与真实寿命匹配的 Outer，保留明确强引用，并在 World 清理时取消回调。",
+    "source": "资料依据：Epic Games · UObject Outer across Worlds and Async Loading"
+  },
+  {
+    "id": "220",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "运行时创建 UObject 时，何时应使用 NewObject、DuplicateObject 或 CreateDefaultSubobject？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
+    "source": "资料依据：Epic Games · Creating and Duplicating UObject Instances"
+  },
+  {
+    "id": "221",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "调试 UObject 生命周期时，如何利用对象标志判断对象所处阶段？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "RF_ClassDefaultObject、RF_ArchetypeObject、RF_Transient、RF_BeginDestroyed 和 RF_FinishDestroyed 等标志可辅助判断对象角色与销毁阶段。单个标志不能证明对象安全可用，调试时还要结合 IsValid、GC 引用链、BeginDestroy/FinishDestroy 日志和创建调用栈。",
+    "source": "资料依据：Epic Games · EObjectFlags for UObject Lifecycle Diagnostics"
+  },
+  {
+    "id": "222",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "异步任务或非 UPROPERTY 指针持有 UObject 时，怎样避免被 GC 提前回收？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "后台任务不应靠裸指针延长 UObject 寿命，可由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
+    "source": "资料依据：Epic Games · Garbage Collection with Async Tasks"
+  },
+  {
+    "id": "223",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 的构造函数、OnConstruction、BeginPlay 分别何时调用，哪些对象此时可用？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "C++ 构造函数会为 CDO 和实例执行，只适合设置默认值和创建默认子对象，不能假定已有有效 World。OnConstruction 在属性初始化后构建实例并可能在编辑器反复执行，BeginPlay 则在组件注册完成且世界进入游戏后用于一次性的运行时逻辑。",
+    "source": "资料依据：Epic Games · Actor Lifecycle: Construction and BeginPlay"
+  },
+  {
+    "id": "224",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "编辑器修改属性时 OnConstruction 为什么会重复执行，如何避免副作用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction，因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应放到 BeginPlay 或显式命令，而不是构造阶段。",
+    "source": "资料依据：Epic Games · OnConstruction and Construction Script Reruns"
+  },
+  {
+    "id": "225",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "BeginPlay 与组件注册、网络初始化的先后关系如何确认？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达，但所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应使用相应回调并通过日志验证时序。",
+    "source": "资料依据：Epic Games · Actor Lifecycle and BeginPlay Networking"
+  },
+  {
+    "id": "226",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "SpawnCollisionHandlingOverride、Owner、Instigator 等参数如何影响 Actor 生成结果？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "SpawnCollisionHandlingOverride 可让生成因碰撞失败、调整位置或强制生成，因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因；它们都不会自动建立组件附加关系。",
+    "source": "资料依据：Epic Games · Spawning Actors and FActorSpawnParameters"
+  },
+  {
+    "id": "227",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "运行时组件从创建到附加、RegisterComponent 和激活需要遵循什么顺序？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "运行时组件通常以 Actor 为 Outer 创建，需要保存为实例组件时调用 AddInstanceComponent，并在附加关系确定后注册到正确 World。未注册的组件没有渲染、物理或 Tick 状态，注册后再用 Activate 或 SetComponentTickEnabled 控制运行。",
+    "source": "资料依据：Epic Games · Creating and Registering Actor Components"
+  },
+  {
+    "id": "228",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "设置 RootComponent、父子附加和相对变换时，如何避免层级与变换错乱？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
+    "source": "资料依据：Epic Games · Scene Component Attachment and Root Components"
+  },
+  {
+    "id": "229",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "CreateDefaultSubobject 创建的默认子对象与运行时组件有什么区别？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "CreateDefaultSubobject 在构造函数中建立 CDO 的默认子对象模板，实例会继承这些组件并在编辑器中获得稳定的默认结构。运行时通过 NewObject 创建的组件只属于当前实例，若未加入实例组件列表并注册，就不会自动获得同样的编辑器显示、复制和保存行为。",
+    "source": "资料依据：Epic Games · Default Subobjects and Instanced Components"
+  },
+  {
+    "id": "230",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "动态组件创建后何时注册、设置所有者并加入实例组件列表？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应在所有依赖和初始属性就绪后设置。",
+    "source": "资料依据：Epic Games · Runtime Component Creation"
+  },
+  {
+    "id": "231",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "TickFunction 的前置依赖如何声明，怎样保证组件更新顺序稳定？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "组件可用 AddTickPrerequisiteComponent 或 AddTickPrerequisiteActor 建立细粒度前置关系，TickGroup 只提供更粗的阶段顺序。依赖图应无环且两端 TickFunction 都已注册和启用，不能依赖组件数组或注册偶然顺序。",
+    "source": "资料依据：Epic Games · Actor Ticking and Tick Prerequisites"
+  },
+  {
+    "id": "232",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "PrimaryComponentTick 如何控制 Tick、TickGroup 和运行时开关？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "构造阶段通过 PrimaryComponentTick.bCanEverTick、bStartWithTickEnabled、TickGroup 和 TickInterval 定义组件的 Tick 能力与默认调度。运行时使用 SetComponentTickEnabled 或 SetTickInterval 控制已注册 Tick，关闭 bCanEverTick 的组件不能只靠运行时开关获得 Tick。",
+    "source": "资料依据：Epic Games · Component Tick Configuration"
+  },
+  {
+    "id": "233",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "WorldSubsystem 的实例范围和初始化时机如何与 UWorld 生命周期对应？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UWorldSubsystem 会为每个符合条件的 UWorld 创建独立实例，并在对应 World 的 Initialize/Deinitialize 区间内有效。它适合世界级缓存和服务，不适合保存无缝跨关卡或跨多个 World 的全局会话状态。",
+    "source": "资料依据：Epic Games · Programming Subsystems: UWorldSubsystem"
+  },
+  {
+    "id": "234",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "GameInstanceSubsystem 适合持有哪些跨关卡状态，何时销毁？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应长期强引用旧 World 的 Actor 和组件，世界切换时应通过委托更新或清理这些引用。",
+    "source": "资料依据：Epic Games · Programming Subsystems: UGameInstanceSubsystem"
+  },
+  {
+    "id": "235",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Subsystem 的 Initialize、Deinitialize 与依赖模块加载顺序如何协调？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍应由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
+    "source": "资料依据：Epic Games · Subsystem Initialization and Dependencies"
+  },
+  {
+    "id": "236",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "ChildActorComponent 的子 Actor 创建、重建和销毁时机有哪些陷阱？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应在重建后重新获取并让组件负责创建和销毁流程。",
+    "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
+  },
+  {
+    "id": "237",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "组件模板与实例属性如何区分，编辑器默认值何时复制到实例？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。",
+    "source": "资料依据：Epic Games · Component Templates and Class Default Objects"
+  },
+  {
+    "id": "238",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "EndPlay、OnDestroyed 和 Actor 析构函数各自负责什么，如何安排清理顺序？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托；OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应承担主要玩法清理。",
+    "source": "资料依据：Epic Games · Actor Lifecycle: EndPlay and Destroyed"
+  },
+  {
+    "id": "239",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 构造函数中创建默认子对象时，为什么不能依赖 World 或运行时状态？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Actor 构造函数也会为 CDO、加载和复制路径执行，此时实例可能尚未关联 World，GameMode、PlayerController 和运行时子系统都不可靠。构造阶段只定义默认属性和默认子对象，依赖 World 的初始化应移到 PostInitializeComponents、BeginPlay 或更具体的生命周期回调。",
+    "source": "资料依据：Epic Games · Actor Constructors and Class Default Objects"
+  },
+  {
+    "id": "240",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "OnConstruction 在运行时 SpawnActor 与编辑器放置 Actor 时有何不同？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造，因此逻辑必须可重复且不依赖固定调用次数。",
+    "source": "资料依据：Epic Games · Construction Script for Placed and Spawned Actors"
+  },
+  {
+    "id": "241",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "单播 Delegate 的绑定对象、执行结果和解绑时机如何定义？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "单播 Delegate 只保存一个可调用目标，执行有返回值的委托前应检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
+    "source": "资料依据：Epic Games · Delegates: Single-Cast Delegates"
+  },
+  {
+    "id": "242",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "多播 Delegate 的调用顺序和广播期间订阅变更如何处理？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
+    "source": "资料依据：Epic Games · Delegates: Multicast Delegates"
+  },
+  {
+    "id": "243",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "动态 Delegate 在反射、序列化和性能开销之间有什么取舍？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可被蓝图使用并支持序列化，但签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
+    "source": "资料依据：Epic Games · Delegates: Dynamic Delegates"
+  },
+  {
+    "id": "244",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "AddUObject 记录 UObject 弱绑定并在对象失效后跳过调用，AddRaw 不跟踪普通 C++ 对象寿命，目标析构前必须显式移除。AddLambda 的捕获寿命完全由调用方管理，涉及 UObject 时可用 AddWeakLambda 或捕获弱对象后再校验。",
+    "source": "资料依据：Epic Games · Delegate Binding and UObject Lifetime"
+  },
+  {
+    "id": "245",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "对象销毁、EndPlay 或移动后，怎样可靠地清理 Delegate 绑定？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目；Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
+    "source": "资料依据：Epic Games · Removing Delegate Bindings"
+  },
+  {
+    "id": "246",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "BlueprintNativeEvent 的 C++ 基类实现、_Implementation 和覆盖规则如何配合？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
+    "source": "资料依据：Epic Games · UFunctions: BlueprintNativeEvent"
+  },
+  {
+    "id": "247",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "UINTERFACE 与纯 C++ 接口的反射声明、实现类和调用方式有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用，但要支持蓝图实现时应使用反射检查和生成的 Execute_ 函数。",
+    "source": "资料依据：Epic Games · Unreal Interfaces"
+  },
+  {
+    "id": "248",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "如何在 UObject、UInterface 和实现类指针之间安全转换并检查有效性？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "应先用 IsValid 检查 UObject，再用 GetClass()->ImplementsInterface 判断反射接口，并通过 IMyInterface::Execute_Function 调用以兼容蓝图实现。直接 static_cast 或只依赖 Cast<IMyInterface> 可能遗漏蓝图专有实现，TScriptInterface 也要同时保持对象和接口语义正确。",
+    "source": "资料依据：Epic Games · Calling Unreal Interfaces"
+  },
+  {
+    "id": "249",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "AsyncTask 切换线程时如何保证 UObject 访问发生在正确线程？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
+    "source": "资料依据：Epic Games · AsyncTask and Game Thread UObject Access"
+  },
+  {
+    "id": "250",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "线程池任务怎样管理捕获对象、取消和完成回调以避免竞态？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "线程池任务应按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
+    "source": "资料依据：Epic Games · Async Work and Thread Pool Tasks"
+  },
+  {
+    "id": "251",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "TFuture 与 TPromise 的结果传递、等待和错误状态如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TPromise 由生产者设置结果，关联 TFuture 由消费者 Wait、IsReady 或 Get，等待游戏线程会阻塞帧并可能形成死锁。Unreal 常见构建关闭 C++ 异常，失败应放入显式结果类型或状态码，而不是假设 Future 会传递异常对象。",
+    "source": "资料依据：Epic Games · TFuture and TPromise"
+  },
+  {
+    "id": "252",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "Latent Action 的生命周期、World Context 和取消条件如何管理？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
+    "source": "资料依据：Epic Games · Latent Actions and FLatentActionManager"
+  },
+  {
+    "id": "253",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "异步加载完成回调如何持有资源引用并处理加载失败或对象销毁？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "异步资源加载应保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
+    "source": "资料依据：Epic Games · Asynchronous Asset Loading"
+  },
+  {
+    "id": "254",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "取消异步任务时，如何处理已排队回调、线程安全和资源释放？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
+    "source": "资料依据：Epic Games · Cancelling Async Tasks"
+  },
+  {
+    "id": "255",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "bReplicates、NetLoadOnClient 等网络标志如何决定 Actor 是否复制？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "bReplicates 允许服务器 Actor 建立网络通道，实际发送还受服务器生成、连接相关性、休眠和更新策略影响。NetLoadOnClient 控制关卡放置 Actor 是否由客户端加载，Owner、bAlwaysRelevant 等标志改变相关性或 RPC 路由，客户端自行生成的 Actor 不会因此成为权威复制对象。",
+    "source": "资料依据：Epic Games · Actor Replication Settings"
+  },
+  {
+    "id": "256",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "ReplicatedUsing 的 OnRep 回调何时触发，初始同步和服务器修改有何差异？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发；服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
+    "source": "资料依据：Epic Games · Replicate Actor Properties with RepNotify"
+  },
+  {
+    "id": "257",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "DOREPLIFETIME 与条件复制如何声明属性，成员变化怎样进入复制布局？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册；运行时差异应使用条件、Active Override 或 Push Model 的脏标记机制。",
+    "source": "资料依据：Epic Games · Replicate Actor Properties"
+  },
+  {
+    "id": "258",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "COND_OwnerOnly、COND_SkipOwner 等条件如何与连接所有权共同生效？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应在确认拥有关系后使用。",
+    "source": "资料依据：Epic Games · Conditional Property Replication"
+  },
+  {
+    "id": "259",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "服务器权威模型下，客户端输入、验证和状态回写的边界如何划分？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "客户端通过自己拥有的 Actor 发送输入或意图，服务器校验身份、速率、资源和当前状态后才修改权威属性。客户端预测只改善响应，最终状态由服务器复制回来并触发校正，不能信任客户端直接提交的位置、伤害或库存结果。",
+    "source": "资料依据：Epic Games · Server Authority in Network Multiplayer"
+  },
+  {
+    "id": "260",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "NetMulticast RPC 的调用前提、可靠性和非相关客户端行为如何判断？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史，因此持久状态仍应使用属性复制。",
+    "source": "资料依据：Epic Games · Remote Procedure Calls: NetMulticast"
+  },
+  {
+    "id": "261",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Server RPC 的拥有者检查、参数验证和可靠性选项如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "客户端只有对拥有连接可解析的 Actor 才能把 Server RPC 发到服务器，服务端实现仍要验证参数、权限和调用频率。Reliable 适合低频且必须到达的命令，高频输入更适合可丢弃或批量协议，避免可靠队列阻塞。",
+    "source": "资料依据：Epic Games · Remote Procedure Calls: Server RPC"
+  },
+  {
+    "id": "262",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Client RPC 如何定位目标连接，何时会因 Actor 没有正确所有者而失效？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
+    "source": "资料依据：Epic Games · Remote Procedure Calls: Client RPC"
+  },
+  {
+    "id": "263",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Reliable RPC 的顺序与重传保证是什么，为什么不能替代状态复制？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序，但前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态，所以连续状态仍应交给属性复制。",
+    "source": "资料依据：Epic Games · Remote Procedure Calls: Reliability"
+  },
+  {
+    "id": "264",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "组件复制开关、注册顺序和网络角色如何影响组件状态同步？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "组件状态复制要求拥有 Actor 已复制，组件本身通过 SetIsReplicatedByDefault 或 SetIsReplicated 启用复制，并在服务器以可复制方式创建和注册。组件网络角色来自拥有 Actor 的连接上下文，客户端本地动态组件不会自动与服务器组件配对。",
+    "source": "资料依据：Epic Games · Component Replication"
+  },
+  {
+    "id": "265",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "ReplicateSubobjects 如何与子对象生命周期、所有权和带宽协同？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需评估通道和带宽成本。",
+    "source": "资料依据：Epic Games · Replicating UObjects and Subobjects"
+  },
+  {
+    "id": "266",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Fast Array Serializer 的标记、增量变更和删除通知如何工作？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "FFastArraySerializer 的元素继承 FFastArraySerializerItem，服务器修改后调用 MarkItemDirty，结构性清空等操作使用 MarkArrayDirty。客户端通过 PreReplicatedRemove、PostReplicatedAdd 和 PostReplicatedChange 处理增量通知，遗漏脏标记就不会可靠发送变化。",
+    "source": "资料依据：Epic Games · Fast TArray Replication"
+  },
+  {
+    "id": "267",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "NetDeltaSerialize 需要满足哪些 traits 和序列化契约，如何处理版本变化？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "自定义结构通过 TStructOpsTypeTraits 声明 WithNetDeltaSerializer，并在 NetDeltaSerialize 中遵守 FNetDeltaSerializeInfo 的映射、基线和成功返回契约。改变字段或位布局时要配合网络版本或兼容分支并提供默认值，不能让新旧端按不同顺序读取同一数据流。",
+    "source": "资料依据：Epic Games · Custom NetDeltaSerialize"
+  },
+  {
+    "id": "268",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "FArchive 序列化与网络复制、SaveGame 序列化的边界如何区分？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志；网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
+    "source": "资料依据：Epic Games · Serialization, SaveGame, and Network Replication"
+  },
+  {
+    "id": "269",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "SaveGame 标记、Transient 属性和对象引用在保存恢复时如何取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
+    "source": "资料依据：Epic Games · Saving and Loading Your Game"
+  },
+  {
+    "id": "270",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "USaveGame 数据升级时如何设计版本号、兼容读取和迁移路径？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
+    "source": "资料依据：Epic Games · SaveGame Versioning and Migration"
+  },
+  {
+    "id": "271",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "客户端重连后，哪些状态依靠复制重建，哪些状态需要额外恢复协议？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "重连后仍存在且与连接相关的服务器 Actor 会通过属性复制重建当前权威快照，旧 RPC 和客户端瞬时对象不会自动重放。账户、库存、任务进度和已销毁 Actor 等跨连接状态需要服务器会话、PlayerState 恢复或持久化协议重新注入。",
+    "source": "资料依据：Epic Games · Reconnect State and Actor Replication"
+  },
+  {
+    "id": "272",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "NetUpdateFrequency 与优先级、带宽预算和状态延迟之间如何权衡？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "NetUpdateFrequency 限制 Actor 被考虑发送的频率，最终延迟还受相关性、优先级、休眠和连接带宽预算影响。只应提高真正延迟敏感对象的频率，其他状态可用休眠、量化、Push Model 或 Replication Graph 减少无效流量。",
+    "source": "资料依据：Epic Games · Actor Relevancy, Priority, and Update Frequency"
+  },
+  {
+    "id": "273",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "Runtime 模块的公开 API、依赖和打包边界应如何定义？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Runtime 模块的 Public 目录只暴露稳定接口和必要反射类型，具体实现与重依赖应放在 Private，并在 Build.cs 中声明最小依赖。模块描述必须是 Runtime 类型且不能依赖 UnrealEd 等编辑器模块，才能进入非编辑器目标和打包产物。",
+    "source": "资料依据：Epic Games · Unreal Engine Runtime Modules"
+  },
+  {
+    "id": "274",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "Editor 模块如何隔离编辑器依赖，避免运行时目标加载不必要代码？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "编辑器功能应放入 Type 为 Editor 的模块，由该模块依赖 UnrealEd、LevelEditor 等编辑器 API，Runtime 模块只暴露共享契约。非编辑器目标不会编译或加载 Editor 模块，少量条件代码也必须用目标规则和 WITH_EDITOR 边界隔离。",
+    "source": "资料依据：Epic Games · Creating an Editor Module"
+  },
+  {
+    "id": "275",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "PublicDependencyModuleNames 如何与 Public 头文件暴露的依赖保持一致？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "若 Public 头文件包含、继承或在公开签名中需要另一个模块的完整类型，该模块应列入 PublicDependencyModuleNames。只在 cpp 或 Private 头文件使用的实现依赖放入 PrivateDependencyModuleNames，前向声明可减少但不能掩盖公开 ABI 所需定义。",
+    "source": "资料依据：Epic Games · Module Properties in Build.cs: Public Dependencies"
+  },
+  {
+    "id": "276",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "PrivateDependencyModuleNames 何时足够，哪些 include 会迫使依赖升级为 Public？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "PrivateDependencyModuleNames 足以支撑本模块私有源文件中的 include 和链接，不会把依赖传递给包含本模块 Public 头的消费者。公开内联代码、模板、基类、按值成员或必须包含的反射类型若来自该模块，就需要把依赖提升为 Public。",
+    "source": "资料依据：Epic Games · Module Properties in Build.cs: Private Dependencies"
+  },
+  {
+    "id": "277",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "UHT 扫描反射类型时，模块依赖和生成代码可见性需要满足什么条件？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UHT 扫描公开反射声明时必须能解析其中引用的 UCLASS、USTRUCT 和 UENUM，生成代码随后还要链接这些类型的注册符号。对应模块应出现在 Build.cs 依赖中，跨模块类需要正确 API 导出，generated.h 仍必须是该头文件最后的 include。",
+    "source": "资料依据：Epic Games · Unreal Header Tool and Module Dependencies"
+  },
+  {
+    "id": "278",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "插件 LoadingPhase 与模块启动顺序、编辑器工具可用时机有什么关系？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "LoadingPhase 决定模块在 PreDefault、Default、PostEngineInit 等引擎阶段何时收到 StartupModule，不保证其依赖对象已经完成业务初始化。插件工具应选择满足所需编辑器服务的最晚合理阶段，并用模块依赖或显式加载保证其他模块可用。",
+    "source": "资料依据：Epic Games · Module Descriptors and LoadingPhase"
+  },
+  {
+    "id": "279",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "第三方库的库文件、头文件和运行时 DLL 如何在 Build.cs 中稳定接入？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
+    "source": "资料依据：Epic Games · Integrating Third-Party Libraries"
+  },
+  {
+    "id": "280",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "模块 API 宏如何控制跨模块符号导出，哪些类型不应直接暴露？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
+    "source": "资料依据：Epic Games · Module API Specifiers"
+  },
+  {
+    "id": "281",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Replicated subobject 如何随 Actor 所有权和通道状态建立？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "服务器创建的 UObject 子对象应具有稳定的 Actor Outer 或明确归属，并在 ActorChannel 有效时通过注册子对象列表或 ReplicateSubobjects 路径复制。客户端对象由通道创建或解析，服务器销毁前要取消注册并同步引用失效，不能把本地 NewObject 当成同一网络实例。",
+    "source": "资料依据：Epic Games · Replicating UObjects with Actor Channels"
+  },
+  {
+    "id": "282",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "FastArraySerializer 如何只同步变化元素并处理重连？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除；新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
+    "source": "资料依据：Epic Games · Fast TArray Replication and Reconnects"
+  },
+  {
+    "id": "283",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "Reliable RPC 堆积时怎样避免网络拥塞和顺序阻塞？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Reliable RPC 会在丢包时重传并保持顺序，持续高频发送会造成队首阻塞、通道积压甚至连接超时。每帧状态应改为属性复制或 Unreliable 消息，并通过合并、限频和只发送最新意图控制可靠流量。",
+    "source": "资料依据：Epic Games · Reliable RPC Queues and Network Saturation"
+  },
+  {
+    "id": "284",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "TObjectPtr 在编辑器、序列化和运行时 GC 中分别提供什么保证？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TObjectPtr 在编辑器和序列化管线中提供可跟踪的 UObject 引用表示，运行时通过指针式接口访问目标。真正的 GC 保证来自 UPROPERTY、引用收集器或根集合等可达路径，单独把裸指针类型换成 TObjectPtr 并不会让未反射存储自动成为强引用。",
+    "source": "资料依据：Epic Games · Object Pointers and TObjectPtr Guarantees"
+  },
+  {
+    "id": "285",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "TWeakObjectPtr 失效后如何安全地恢复或放弃异步结果？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TWeakObjectPtr 失效表示原 UObject 已不能安全访问，它不能把被销毁对象重新变回有效实例。异步结果应携带稳定 ID、软路径或任务代次，回到游戏线程后若弱指针无效就丢弃结果，确需恢复时按稳定标识重新解析或加载新对象。",
+    "source": "资料依据：Epic Games · Weak Object Pointers in Async Work"
+  },
+  {
+    "id": "286",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "组件注册顺序错误为什么会导致 RootComponent 和 Tick 依赖失效？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "运行时场景组件若在 RootComponent 和附加层级确定前注册，注册时计算的世界变换、渲染和物理状态可能基于错误父级。应先建立根和附件关系，再按层级注册组件，最后添加 Tick 前置关系并启用 Tick，避免把偶然注册顺序当成调度保证。",
+    "source": "资料依据：Epic Games · Component Registration Order and Tick Dependencies"
+  },
+  {
+    "id": "287",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "SpawnActorDeferred 允许调用方在哪个阶段设置初始化参数？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造，但 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
+    "source": "资料依据：Epic Games · Deferred Actor Spawning"
+  },
+  {
+    "id": "288",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "AsyncTask 回到游戏线程时如何检查 UObject 仍然有效？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "后台任务只保存 TWeakObjectPtr，使用 AsyncTask 投递到游戏线程后再通过 Weak.Get 和 IsValid 取得临时有效对象。还要核对 World、关卡或任务代次，防止对象地址有效但已经属于过期游戏会话。",
+    "source": "资料依据：Epic Games · AsyncTask Completion on the Game Thread"
+  },
+  {
+    "id": "289",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "动态多播委托为什么需要区分绑定对象和 Lambda 的解绑方式？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove；涉及 UObject 时可选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
+    "source": "资料依据：Epic Games · Dynamic and Native Multicast Delegates"
+  },
+  {
+    "id": "290",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "插件的 Runtime 模块依赖 Editor 类型时打包阶段会发生什么？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
+    "source": "资料依据：Epic Games · Separating Runtime and Editor Modules"
+  },
+  {
+    "id": "291",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "第三方库的延迟加载和模块卸载怎样避免悬空符号？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "延迟加载只推迟 DLL 解析，模块必须在首次调用外部符号前取得并保存 FPlatformProcess::GetDllHandle 返回的句柄。卸载前要停止线程和回调、销毁库创建的对象并清空函数指针，最后再 FreeDllHandle，避免执行已经卸载的代码。",
+    "source": "资料依据：Epic Games · Third-Party Libraries and Delay Loading"
+  },
+  {
+    "id": "292",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "RepNotify 在初始同步和后续属性变化中如何避免重复副作用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "RepNotify 应把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
+    "source": "资料依据：Epic Games · RepNotify Initial and Subsequent Updates"
+  },
+  {
+    "id": "293",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "WorldSubsystem 与 GameInstanceSubsystem 的生命周期边界如何选择？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍需随地图切换更新。",
+    "source": "资料依据：Epic Games · Choosing WorldSubsystem versus GameInstanceSubsystem"
+  },
+  {
+    "id": "294",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "软对象引用在异步加载失败时如何保留可诊断状态？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄；保留路径也允许后续重试。",
+    "source": "资料依据：Epic Games · Asynchronous Asset Loading with Soft Object References"
+  },
+  {
+    "id": "295",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "客户端预测结果回滚时哪些状态必须由服务器重新确认？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
+    "source": "资料依据：Epic Games · Client Prediction and Server Reconciliation"
+  },
+  {
+    "id": "296",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "取消一个后台任务时如何让回调只执行一次？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需等待工作结束或安全放弃结果。",
+    "source": "资料依据：Epic Games · Task Cancellation and Single Completion"
+  },
+  {
+    "id": "297",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "模块 API 宏遗漏时如何区分导出问题和链接顺序问题？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接；单纯调整链接顺序不能补上未导出的 DLL 符号。",
+    "source": "资料依据：Epic Games · Module API Specifiers and Link Errors"
+  },
+  {
+    "id": "298",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "编辑器 Construction Script 与运行时 BeginPlay 的副作用如何隔离？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Construction Script 和 OnConstruction 可能在编辑器、加载、烘焙与运行时生成过程中重复执行，只应确定性地生成组件和预览状态。一次性玩法、存档、网络请求与外部副作用放在 BeginPlay 或显式运行时流程，并在 EndPlay 对称清理。",
+    "source": "资料依据：Epic Games · Construction Script versus BeginPlay"
+  },
+  {
+    "id": "299",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "对象销毁通知与异步回调竞态时如何防止再次访问 UObject？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "EndPlay 或 BeginDestroy 时应标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
+    "source": "资料依据：Epic Games · UObject Destruction and Async Callback Races"
+  },
+  {
+    "id": "300",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "自定义网络序列化怎样兼容旧客户端和字段默认值？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
+    "source": "资料依据：Epic Games · Custom NetSerialize Version Compatibility"
+  },
+  {
+    "id": "301",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "CreateProcess 的命令行、继承句柄、环境块和启动信息如何正确组合？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "CreateProcessW 会把 lpCommandLine 当作可写缓冲区，STARTUPINFO 的 cb 必须正确设置；Unicode 环境块还要与 CREATE_UNICODE_ENVIRONMENT 配套。句柄继承应优先用 STARTUPINFOEX 的句柄列表收窄范围，创建成功后父进程及时关闭不再持有的线程、进程和管道句柄。",
+    "source": "资料依据：Microsoft Learn · CreateProcessW and STARTUPINFOEX handle inheritance"
+  },
+  {
+    "id": "302",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "进程和线程句柄的访问权限、等待语义和 CloseHandle 责任如何划分？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "进程或线程句柄携带创建或打开时取得的访问权，等待只是在内核对象进入终止信号态后返回，并不会替调用者回收句柄。每个独立获得或复制的真实句柄都由持有者调用一次 CloseHandle，关闭句柄也不会终止仍在运行的进程或线程。",
+    "source": "资料依据：Microsoft Learn · Process and thread handles, synchronization and CloseHandle"
+  },
+  {
+    "id": "303",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "句柄继承的筛选方式和安全边界是什么，子进程如何确认继承结果？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "传统继承要求父进程把 bInheritHandles 设为 TRUE，且目标句柄本身带可继承标志，这容易把无关句柄一并泄露给子进程。更稳妥的做法是用 PROC_THREAD_ATTRIBUTE_HANDLE_LIST 明确白名单，并通过约定的命令行、环境或 IPC 协议把这些句柄值交给子进程验证和使用。",
+    "source": "资料依据：Microsoft Learn · Inheritance of handles and PROC_THREAD_ATTRIBUTE_HANDLE_LIST"
+  },
+  {
+    "id": "304",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "Job Object 如何限制进程组资源并接收终止通知？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "进程加入 Job 后，可通过 SetInformationJobObject 设置进程数、CPU、内存以及 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等限制。把 Job 关联到完成端口可接收新进程、退出和资源限制消息，但消息通知不能代替对 API 返回值与进程退出状态的检查。",
+    "source": "资料依据：Microsoft Learn · Job Objects limits and completion port notifications"
+  },
+  {
+    "id": "305",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "WaitForSingleObject 的返回值、超时和等待对象类型有哪些陷阱？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "WAIT_OBJECT_0 表示对象已满足，WAIT_TIMEOUT 只是本次等待超时，WAIT_FAILED 后必须读取 GetLastError；等待互斥体还可能得到 WAIT_ABANDONED。等待尚未结束时关闭该句柄会产生未定义行为，而且 GUI 线程长期无限等待会阻塞消息泵。",
+    "source": "资料依据：Microsoft Learn · WaitForSingleObject return values and waitable objects"
+  },
+  {
+    "id": "306",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "线程局部存储的分配、访问和线程退出清理如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "TlsAlloc 只分配索引，TlsSetValue 保存的是每线程指针，系统不会替应用释放该指针指向的对象。需要退出回调时可使用 FLS，或者让受控线程在返回前执行清理；最后还要由进程级所有者调用 TlsFree 或 FlsFree 释放索引。",
+    "source": "资料依据：Microsoft Learn · Thread Local Storage and Fiber Local Storage callbacks"
+  },
+  {
+    "id": "307",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "CreateThread 与 _beginthreadex 对 C 运行库初始化和退出清理有何影响？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "会调用 C 运行库的线程入口通常使用 _beginthreadex，使运行库能够建立并在返回或 _endthreadex 时释放线程状态。CreateThread 适合不依赖这类运行库状态的纯 Win32 入口；无论用哪一种，创建方仍要等待或关闭返回的线程句柄。",
+    "source": "资料依据：Microsoft Learn · _beginthreadex and CreateThread runtime-library ownership"
+  },
+  {
+    "id": "308",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "线程优先级与调度、饥饿和实时性之间如何权衡？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "Windows 用进程优先级类和线程相对优先级计算基础优先级，动态提升也会影响实际调度，因此设置值不是确定的执行时限。长期提高优先级可能让输入、I/O 或其他工作线程饥饿，硬实时要求不能依赖普通 Windows 线程优先级来保证。",
+    "source": "资料依据：Microsoft Learn · Scheduling priorities and thread priority levels"
+  },
+  {
+    "id": "309",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "用户态 APC 何时执行，alertable wait 和取消流程如何配合？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "QueueUserAPC 只是把回调排入目标线程队列，目标线程进入 SleepEx、WaitForSingleObjectEx 等可警报等待后才会执行它。APC 没有通用的撤回接口，取消应由共享状态或代际标记让回调自行退出，并保证回调捕获的内存在执行前一直有效。",
+    "source": "资料依据：Microsoft Learn · Asynchronous Procedure Calls and alertable waits"
+  },
+  {
+    "id": "310",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "临界区初始化、递归进入、争用和删除时有哪些生命周期要求？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "CRITICAL_SECTION 只能用于同一进程，允许同一线程递归进入，但每次进入都必须有对应的 LeaveCriticalSection。DeleteCriticalSection 前必须确保没有线程持有或等待它，删除后再次进入属于未定义行为，因此锁对象应比所有使用线程活得更久。",
+    "source": "资料依据：Microsoft Learn · Critical section objects and lifecycle"
+  },
+  {
+    "id": "311",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "命名互斥体与进程内锁的权限、递归和异常退出语义如何比较？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "Mutex 是可命名、可跨进程等待的内核对象，创建和打开受安全描述符控制，同一拥有线程可以递归获取。拥有线程异常结束时等待者会收到 WAIT_ABANDONED；临界区或 SRW lock 更轻量但限于进程内，也没有这套 abandoned 语义。",
+    "source": "资料依据：Microsoft Learn · Mutex objects, ownership and abandoned state"
+  },
+  {
+    "id": "312",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "信号量计数、ReleaseSemaphore 和等待失败路径如何避免超发？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，增加后超过创建时最大值会失败且计数不变。代码应只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
+    "source": "资料依据：Microsoft Learn · Semaphore objects and ReleaseSemaphore limits"
+  },
+  {
+    "id": "313",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "手动重置与自动重置事件如何选择，如何避免丢失唤醒？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "自动重置事件通常释放一个等待者后自动回到无信号态，手动重置事件会保持有信号态，直到调用 ResetEvent，并可唤醒所有现有等待者。事件只保存一个信号位，连续 SetEvent 不会累计次数；需要计数语义时应使用信号量或受锁保护的条件状态。",
+    "source": "资料依据：Microsoft Learn · Event objects, manual-reset and auto-reset semantics"
+  },
+  {
+    "id": "314",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "SRW lock 的共享、独占、递归和升级边界是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "SRW lock 支持共享读和独占写，体积小且无需显式销毁，但不保证公平，也不能递归获取独占锁。API 没有原子升级或降级操作，释放共享锁再获取独占锁之间状态可能变化，必须重新检查受保护条件。",
+    "source": "资料依据：Microsoft Learn · Slim Reader Writer locks"
+  },
+  {
+    "id": "315",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "条件变量如何与 CRITICAL_SECTION 或 SRWLOCK 配合处理虚假唤醒？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "SleepConditionVariableCS 或 SleepConditionVariableSRW 会原子释放锁并进入等待，返回前重新取得锁，但返回可能来自虚假或被其他线程抢先消费的唤醒。等待方必须在同一把锁下用循环重新检查谓词，超时和错误也要作为独立结果处理。",
+    "source": "资料依据：Microsoft Learn · Condition variables with critical sections and SRW locks"
+  },
+  {
+    "id": "316",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "Interlocked 原子操作的内存序和 ABA 风险如何评估？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "常规 Interlocked 操作对目标值提供原子读改写，并在 Windows 支持的平台上形成完整内存屏障；带 Acquire、Release 或 NoFence 后缀的变体只提供标明的排序。比较交换只比较位模式，值从 A 变到 B 又回到 A 时仍会成功，版本计数、带标签指针或受锁回收才能处理 ABA。",
+    "source": "资料依据：Microsoft Learn · Interlocked variable access and memory barriers"
+  },
+  {
+    "id": "317",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "WaitOnAddress 的比较值、唤醒时机和与传统事件的取舍是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "WaitOnAddress 仅在目标内存与给定比较值相等时阻塞，返回后仍须重新读取状态，因为可能发生虚假唤醒或条件已被别的线程改变。修改状态的线程应在写入后调用 WakeByAddressSingle 或 WakeByAddressAll；它适合进程内轻量等待，但没有可继承或跨进程的内核事件句柄。",
+    "source": "资料依据：Microsoft Learn · WaitOnAddress and WakeByAddress functions"
+  },
+  {
+    "id": "318",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "InitOnceExecuteOnce 如何保证一次性初始化，并处理初始化失败？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "INIT_ONCE 以 INIT_ONCE_STATIC_INIT 或 InitOnceInitialize 建立状态，多个调用者只会让一个线程执行同步初始化回调。回调返回 FALSE 时本次初始化不提交，其他调用可以重试，因此失败产生的临时资源必须由回调自己回滚。",
+    "source": "资料依据：Microsoft Learn · One-time initialization with InitOnceExecuteOnce"
+  },
+  {
+    "id": "319",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "如何从四个必要条件定位和打破死锁？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "死锁要求互斥、持有并等待、不可剥夺和循环等待同时成立，线程转储或 Wait Chain Traversal 可以帮助找出实际等待环。工程上通常用固定锁顺序、一次取得多把锁、缩短持锁范围或可超时协议打破其中至少一个条件。",
+    "source": "资料依据：Microsoft Learn · Deadlock detection and Wait Chain Traversal"
+  },
+  {
+    "id": "320",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "多把锁的全局顺序如何约定，异常路径怎样保持同一顺序？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "所有代码路径应按稳定键定义同一获取顺序，例如对象地址、层级编号或资源 ID，并以逆序释放。锁守卫把释放绑定到作用域，批量操作则先排序并在任一获取失败时回滚已经持有的锁，避免异常分支破坏约定。",
+    "source": "资料依据：Microsoft Learn · Synchronization best practices and lock ordering"
+  },
+  {
+    "id": "321",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "线程退出时 TLS 回调、析构和 DLL 卸载的先后关系如何确认？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "DLL 的线程分离通知和 TLS 回调发生在加载器控制的退出流程中并受 loader lock 约束，回调里不能等待可能再次取得该锁的线程。TerminateThread、进程强制终止或 DisableThreadLibraryCalls 会改变甚至跳过部分通知，关键资源不能只依赖这些回调回收。",
+    "source": "资料依据：Microsoft Learn · Dynamic-link library thread-local storage and DllMain notifications"
+  },
+  {
+    "id": "322",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "进程正常退出、TerminateProcess 和 DLL 卸载时的清理保证有什么不同？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "正常返回或 ExitProcess 会终止其他线程并执行进程分离通知，但通知运行在受限的加载器环境中，不适合复杂协作式清理。TerminateProcess 会直接终止所有线程而不执行附加 DLL 的正常退出代码，系统只保证回收内核拥有的进程资源，应用数据可能未提交。",
+    "source": "资料依据：Microsoft Learn · Terminating a process and DLL process detach behavior"
+  },
+  {
+    "id": "323",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "WSAStartup 与 WSACleanup 的版本协商和配对规则是什么？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "WSAStartup 返回的 WSADATA 给出实际协商版本，调用方应检查该版本是否满足需求，失败时不能继续调用 Winsock。每次成功的 WSAStartup 都要有一次 WSACleanup 配对，库或模块应明确由谁持有这段进程级初始化生命周期。",
+    "source": "资料依据：Microsoft Learn · WSAStartup version negotiation and WSACleanup"
+  },
+  {
+    "id": "324",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "阻塞、非阻塞和重叠 socket 的错误码与线程模型如何区分？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "阻塞 socket 可让调用线程等待，非阻塞 socket 在暂时无法推进时返回 SOCKET_ERROR 和 WSAEWOULDBLOCK，调用方依赖 readiness 通知重试。重叠 I/O 则让每个操作携带 OVERLAPPED 和稳定缓冲区，WSA_IO_PENDING 表示稍后通过事件、回调或 IOCP 报告完成，它与非阻塞模式不是同一概念。",
+    "source": "资料依据：Microsoft Learn · Winsock blocking, nonblocking and overlapped I/O"
+  },
+  {
+    "id": "325",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "监听 socket 的地址绑定、backlog 和 accept 失败路径如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "服务端依次 bind 本地地址、listen 建立等待队列，再由 accept 为每个连接返回新的 socket；监听 socket 本身继续接收后续连接。backlog 是实现可调整的待处理连接提示，accept 失败时只处理对应错误并继续或停止监听，不能把监听句柄当成已连接句柄关闭。",
+    "source": "资料依据：Microsoft Learn · Binding, listening and accepting Winsock connections"
+  },
+  {
+    "id": "326",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "非阻塞 connect 如何检测完成、超时并安全关闭 socket？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "非阻塞 connect 返回 WSAEWOULDBLOCK 后，socket 可写只表示连接尝试结束，仍要读取 SO_ERROR 判断成功或具体错误。超时由应用自己的计时器和 readiness 等待实现，判定失败后关闭该 socket，并为重试创建新的连接状态，避免晚到事件污染下一次尝试。",
+    "source": "资料依据：Microsoft Learn · Nonblocking connect completion and SO_ERROR"
+  },
+  {
+    "id": "327",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "TCP 不保留消息边界时，应用层如何处理拆包、粘包和半关闭？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "TCP 只提供有序字节流，一次 send 与一次 recv 没有对应关系，应用协议必须用固定长度、长度前缀或可靠分隔符完成帧解析。recv 返回 0 表示对端完成有序关闭，仍应按协议处理已缓存的完整帧，并用 shutdown 表达本端不再发送或接收的方向。",
+    "source": "资料依据：IETF RFC · RFC 9293 TCP byte stream and connection closing"
+  },
+  {
+    "id": "328",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "SO_REUSEADDR 等复用选项在 Windows 上的语义和端口冲突风险是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "Windows 的 SO_REUSEADDR 可能允许套接字强制绑定已被占用的地址，多个套接字收到流量的行为并不可靠，因此不应照搬其他系统的服务器习惯。需要独占监听端口时使用 SO_EXCLUSIVEADDRUSE，并在 bind 前设置，权限和重启策略也要纳入部署设计。",
+    "source": "资料依据：Microsoft Learn · SO_REUSEADDR and SO_EXCLUSIVEADDRUSE"
+  },
+  {
+    "id": "329",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "select 与 WSAPoll 的容量限制和可扩展性如何比较？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "select 每次都扫描 fd_set，Windows 默认 FD_SETSIZE 还限制集合容量，调用后集合会被改写，下一轮必须重建。WSAPoll 也按数组扫描，接口更适合动态集合但仍是 readiness 模型；大规模并发 I/O 通常转向 IOCP，而不是把轮询数组无限放大。",
+    "source": "资料依据：Microsoft Learn · select, fd_set and WSAPoll"
+  },
+  {
+    "id": "330",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "WSAEventSelect 的网络事件位、重置方式和非阻塞要求是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象，并自动把 socket 置为非阻塞模式。事件被置位后应调用 WSAEnumNetworkEvents 读取每一位及其错误码，同时完成事件状态重置；只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
+    "source": "资料依据：Microsoft Learn · WSAEventSelect and WSAEnumNetworkEvents"
+  },
+  {
+    "id": "331",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "send 返回小于请求长度时，发送缓冲区和重试策略如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "流式 socket 的 send 成功值只是本次接受的字节数，应用需要记录偏移并继续发送剩余数据，不能把短写当成完整消息。非阻塞模式遇到 WSAEWOULDBLOCK 后等待可写事件，重叠模式则让缓冲区保持有效直到完成通知，再推进发送队列。",
+    "source": "资料依据：Microsoft Learn · Winsock send return values and partial sends"
+  },
+  {
+    "id": "332",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "recv 返回 0、SOCKET_ERROR 和正数分别表示什么状态？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "对面向连接的字节流，正数是实际收到的字节数，0 表示对端已经有序关闭发送方向，SOCKET_ERROR 后用 WSAGetLastError 判断可重试或致命错误。无连接报文可以合法携带零长度数据，因此不能在所有 socket 类型上把 0 一律解释为断线。",
+    "source": "资料依据：Microsoft Learn · Winsock recv return values and graceful close"
+  },
+  {
+    "id": "333",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "shutdown 的方向参数与 TCP FIN 如何表达半关闭？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "shutdown(SD_SEND) 禁止后续发送，并在已排队数据发出后启动 TCP 的有序关闭，接收方向仍可继续读取对端数据。shutdown 不是 closesocket，协议交换结束后仍要关闭句柄；SD_RECEIVE 和 SD_BOTH 的选择也必须与应用层状态机一致。",
+    "source": "资料依据：Microsoft Learn · Winsock shutdown and graceful connection closure；IETF RFC · RFC 9293 TCP half-close"
+  },
+  {
+    "id": "334",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "SO_KEEPALIVE 与应用层心跳、探测间隔和断线检测如何取舍？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "SO_KEEPALIVE 在连接长时间空闲后用传输层探测判断对端是否仍可达，默认周期通常不适合快速故障发现，具体参数还依赖系统配置或 SIO_KEEPALIVE_VALS。应用层心跳可以携带会话语义并设置业务超时，但会增加流量；二者解决的层次不同，可以按场景组合。",
+    "source": "资料依据：Microsoft Learn · SO_KEEPALIVE and SIO_KEEPALIVE_VALS"
+  },
+  {
+    "id": "335",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "UDP 报文边界、丢包、乱序和接收缓冲区限制如何处理？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "UDP 保留每个数据报的边界，但不保证送达、顺序、唯一性或拥塞控制，可靠性需要应用协议自己定义序号、重传和去重。接收缓冲区小于报文时 Winsock 可能返回 WSAEMSGSIZE 并截断数据，协议应限制最大报文并把分片风险纳入设计。",
+    "source": "资料依据：IETF RFC · RFC 768 User Datagram Protocol semantics；Microsoft Learn · Winsock datagram sockets and WSAEMSGSIZE"
+  },
+  {
+    "id": "336",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "IPv4 与 IPv6 双栈监听和 IPv4-mapped 地址有哪些兼容问题？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "双栈服务通常用 getaddrinfo(AF_UNSPEC) 遍历可用地址，并显式决定 IPv6 socket 的 IPV6_V6ONLY 策略，不能假设所有系统默认值相同。允许双栈时 IPv4 客户端可能以 IPv4-mapped IPv6 地址出现，日志、访问控制和地址比较必须先规范化表示。",
+    "source": "资料依据：Microsoft Learn · Dual-stack sockets and IPv4-mapped IPv6 addresses"
+  },
+  {
+    "id": "337",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "getaddrinfo 的 hints、地址遍历和异步解析失败如何处理？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "hints 用 family、socktype 和 protocol 限定结果，调用方应遍历链表逐个尝试创建与连接，而不是只使用第一项。每个失败的 socket 都要关闭，结果用 freeaddrinfo 释放；不能阻塞的线程可使用 GetAddrInfoEx 等异步接口并区分解析错误与连接错误。",
+    "source": "资料依据：Microsoft Learn · getaddrinfo and GetAddrInfoEx name resolution"
+  },
+  {
+    "id": "338",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "OVERLAPPED、缓冲区和完成通知的生命周期如何保证？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "每个未完成操作需要独立且稳定的 OVERLAPPED，相关 WSABUF、数据内存和连接上下文都必须保留到最终完成通知到达。函数立即返回成功也不能随意复用这些对象，因为完成通知策略可能仍会投递；释放时应以观察到该操作的最终完成为边界。",
+    "source": "资料依据：Microsoft Learn · Overlapped I/O and completion notification lifecycle"
+  },
+  {
+    "id": "339",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "IOCP 完成键如何关联连接上下文，工作线程如何区分不同 I/O 类型？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "CreateIoCompletionPort 把句柄与一个完成键关联，后续完成包会带回该键以及发起操作的 OVERLAPPED 指针。常见做法是让完成键指向连接上下文，让自定义 OVERLAPPED 容器记录接收、发送或控制操作类型，工作线程据此分派并维护所有权。",
+    "source": "资料依据：Microsoft Learn · I/O completion ports and completion keys"
+  },
+  {
+    "id": "340",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "GetQueuedCompletionStatus 的返回值和退出哨兵如何判断？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "返回 TRUE 表示取到成功完成；返回 FALSE 且 lpOverlapped 非空表示取到失败的 I/O 完成，此时 GetLastError 是该操作错误。返回 FALSE 且 lpOverlapped 为空通常是超时或端口错误，退出工作线程可用 PostQueuedCompletionStatus 投递约定的专用哨兵包。",
+    "source": "资料依据：Microsoft Learn · GetQueuedCompletionStatus result interpretation"
+  },
+  {
+    "id": "341",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "同一 socket 排队多个 recv 时，缓冲区所有权和完成顺序如何管理？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "每个 WSARecv 都要有独立的 OVERLAPPED 和缓冲区，直到对应完成包被处理前都不能移动或复用。即使传输层按序提供字节，多个工作线程取得完成包和执行回调的时间仍可能交错，连接层应按操作序号串行提交解析结果。",
+    "source": "资料依据：Microsoft Learn · Overlapped WSARecv ordering and buffer ownership"
+  },
+  {
+    "id": "342",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "CancelIoEx、closesocket 与未完成 Winsock I/O 的竞态如何处理？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "CancelIoEx 只请求取消指定句柄上的匹配操作，操作可能已经完成、无法找到或最终以 ERROR_OPERATION_ABORTED 完成。closesocket 也会触发未完成操作结束，但应用仍要排空完成通知后再释放 OVERLAPPED、缓冲区和连接对象，不能把发出取消当成生命周期终点。",
+    "source": "资料依据：Microsoft Learn · CancelIoEx and cancellation of overlapped Winsock I/O"
+  },
+  {
+    "id": "343",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "TCP_NODELAY 对小包延迟、吞吐和应用层批量发送有什么影响？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "TCP_NODELAY 禁用 Nagle 算法，可减少小写入等待未确认数据的延迟，但可能产生更多小包并降低链路效率。实时交互可以启用它，同时仍应在应用层合并同一帧可一起发送的数据；批处理吞吐场景通常不必默认关闭 Nagle。",
+    "source": "资料依据：Microsoft Learn · TCP_NODELAY socket option；IETF RFC · RFC 9293 Nagle algorithm"
+  },
+  {
+    "id": "344",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "TLS 握手、证书验证和底层 socket 生命周期如何分层管理？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "TLS 层应把 Schannel 或其他实现的握手状态、加密缓冲区与底层 socket 的收发状态分开，非阻塞握手可能需要多轮读写才能完成。客户端必须验证证书链、主机名和策略，关闭时尽量发送 close_notify，随后再结束 socket，并让所有异步操作完成后释放两层状态。",
+    "source": "资料依据：Microsoft Learn · Schannel TLS handshake and certificate validation；IETF RFC · RFC 8446 TLS 1.3 closure alerts"
+  },
+  {
+    "id": "345",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "LoadLibraryEx 的搜索路径、标志和模块引用计数如何控制？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "LoadLibraryEx 应使用绝对路径或 LOAD_LIBRARY_SEARCH_* 标志限定依赖搜索目录，避免依赖当前目录和旧式默认顺序。每次成功加载通常增加模块引用计数，拥有该引用的代码用 FreeLibrary 配对；GetModuleHandle 得到的句柄不增加计数，不能按同样方式释放。",
+    "source": "资料依据：Microsoft Learn · LoadLibraryEx search flags and module reference counts"
+  },
+  {
+    "id": "346",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "GetProcAddress 的名称修饰、序号导出和函数签名如何保证 ABI 一致？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "GetProcAddress 按导出表中的精确名称或序号查找，不会替调用方推断 C++ 名字修饰；序号还可能在稀疏导出表中得到无效的非空地址。调用端 typedef 必须与导出函数的参数、返回值和调用约定完全一致，跨编译器边界通常使用 extern \"C\" 和稳定的 C ABI。",
+    "source": "资料依据：Microsoft Learn · GetProcAddress exported names and calling conventions"
+  },
+  {
+    "id": "347",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "DllMain 中哪些操作受 loader lock 限制，初始化逻辑应如何拆分？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "DllMain 在 loader lock 下运行，不能调用可能再次加载 DLL、等待其他线程或取得与加载器顺序冲突的锁的代码，复杂的 COM、线程和同步初始化也应避免。入口只保留无依赖的最小状态设置，把可能失败的工作放到导出的显式 Initialize 或首次使用路径。",
+    "source": "资料依据：Microsoft Learn · Dynamic-link library best practices and loader lock"
+  },
+  {
+    "id": "348",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "FreeLibrary 如何与线程回调、静态析构和仍在执行的函数协调？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "卸载前必须停止新调用、取消并等待异步工作、解绑回调，确认没有线程的指令指针或对象虚表仍指向该模块。执行模块代码的线程若自行卸载，应使用 FreeLibraryAndExitThread 原子完成两步，避免 FreeLibrary 返回后线程又执行已经解除映射的代码。",
+    "source": "资料依据：Microsoft Learn · FreeLibraryAndExitThread and DLL unloading"
+  },
+  {
+    "id": "349",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "CreateFile 的访问权、共享模式、创建选项和安全属性如何组合？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "dwDesiredAccess 表示本次需要的读写权，dwShareMode 必须与所有已打开句柄彼此兼容，dwCreationDisposition 决定创建、覆盖或仅打开。SECURITY_ATTRIBUTES 同时控制安全描述符和句柄是否可继承，文件属性与 FILE_FLAG_* 则影响缓存、目录和重叠 I/O 行为。",
+    "source": "资料依据：Microsoft Learn · CreateFile access, sharing and creation disposition"
+  },
+  {
+    "id": "350",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "跨进程传递句柄时，继承和 DuplicateHandle 应如何选择？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "继承只适合创建子进程时传递预先标记且列入白名单的句柄，关系简单但需要同步传递句柄值。DuplicateHandle 可向已有目标进程创建真实句柄副本，并可缩减访问权；发送方和接收方必须约定谁关闭各自副本以及进程退出时的错误处理。",
+    "source": "资料依据：Microsoft Learn · Handle inheritance and DuplicateHandle between processes"
+  },
+  {
+    "id": "351",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "DuplicateHandle 的源、目标进程权限和关闭责任如何划分？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "调用者需要能以 PROCESS_DUP_HANDLE 访问源进程和目标进程，dwDesiredAccess 可限制新句柄权限，DUPLICATE_SAME_ACCESS 则复制原访问权。复制成功后两个句柄相互独立，除非明确使用 DUPLICATE_CLOSE_SOURCE，否则源端和目标端各自负责关闭自己的句柄。",
+    "source": "资料依据：Microsoft Learn · DuplicateHandle access rights and ownership"
+  },
+  {
+    "id": "352",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "ReadFile 与 WriteFile 的同步、偏移和缓冲区生命周期如何处理？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "同步句柄通常使用并更新文件指针；以 FILE_FLAG_OVERLAPPED 打开的句柄应为每个操作提供独立 OVERLAPPED，并在 Offset 和 OffsetHigh 中指定位置。缓冲区和 OVERLAPPED 在操作最终完成前必须保持有效，返回 ERROR_IO_PENDING 只表示请求已经排队。",
+    "source": "资料依据：Microsoft Learn · Synchronous and asynchronous ReadFile and WriteFile"
+  },
+  {
+    "id": "353",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "FlushFileBuffers 保证到哪一层持久性，调用频率如何权衡？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "FlushFileBuffers 请求把指定文件句柄的缓冲信息写向存储设备，但最终耐久性仍受硬件缓存和设备实现影响，网络文件系统也可能有不同语义。它会显著增加延迟和写放大，事务系统通常按提交边界批量刷新，而不是每个小写入都调用。",
+    "source": "资料依据：Microsoft Learn · FlushFileBuffers durability and performance"
+  },
+  {
+    "id": "354",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "CreateFileMapping 的保护属性、映射大小和命名冲突如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "映射保护必须与底层文件句柄的访问权兼容，最大大小为零时采用当前文件长度，非零大小可能扩展可写文件。命名映射与其他命名内核对象共享命名空间，创建后用 GetLastError 检查 ERROR_ALREADY_EXISTS，并验证既有对象的大小、协议和权限。",
+    "source": "资料依据：Microsoft Learn · CreateFileMapping protection, size and named objects"
+  },
+  {
+    "id": "355",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "MapViewOfFile 的偏移对齐、视图权限和解除映射顺序是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "映射偏移必须按系统分配粒度对齐，视图访问标志还要与 CreateFileMapping 的保护方式兼容。使用结束后先停止所有访问并调用 UnmapViewOfFile，再关闭映射句柄和文件句柄；关闭映射句柄本身不会自动解除仍存在的视图。",
+    "source": "资料依据：Microsoft Learn · MapViewOfFile offset alignment and view lifetime"
+  },
+  {
+    "id": "356",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "跨进程共享内存的同步、版本布局和异常退出清理如何保证？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "共享区应使用固定宽度字段、偏移和显式版本，不能存放只在某一进程有效的裸指针或进程私有对象布局。读写通过命名同步对象或无锁协议协调，并在头部记录状态与代际；进程异常退出后内核句柄会回收，但半写数据仍需校验和恢复。",
+    "source": "资料依据：Microsoft Learn · Creating named shared memory and synchronization objects"
+  },
+  {
+    "id": "357",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "Windows 宽字符 API 与 UTF-8 转换时如何处理长度和非法字符？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "Windows 的 Unicode API 使用 UTF-16，边界转换应调用 MultiByteToWideChar 和 WideCharToMultiByte 并显式指定 CP_UTF8、输入长度和错误标志。先查询所需长度再分配缓冲区，并明确结果是否包含终止零；使用系统活动代码页会让不可表示字符发生丢失。",
+    "source": "资料依据：Microsoft Learn · MultiByteToWideChar and WideCharToMultiByte UTF-8 conversion"
+  },
+  {
+    "id": "358",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "命名内核对象的 Unicode、命名空间和权限边界有哪些陷阱？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "事件、互斥体和文件映射等命名对象通过对象管理器命名，Global\\ 与 Local\\ 前缀决定会话范围，名称比较和类型冲突也必须处理。创建时提供最小权限 DACL，并检查 ERROR_ALREADY_EXISTS，防止低权限进程预创建同名对象造成劫持或拒绝服务。",
+    "source": "资料依据：Microsoft Learn · Kernel object namespaces and named object security"
+  },
+  {
+    "id": "359",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "如何避免 CloseHandle 的重复关闭、伪句柄和复用风险？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "CloseHandle 不是幂等操作，成功关闭后句柄值可能很快被系统复用，第二次关闭可能误伤另一个对象，调试器也会报告无效句柄。所有权应封装在唯一句柄类型中并在移动后置空；GetCurrentProcess 等伪句柄不需要也不应按普通句柄关闭。",
+    "source": "资料依据：Microsoft Learn · CloseHandle and pseudo handle rules"
+  },
+  {
+    "id": "360",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "GetCurrentProcess 和 GetCurrentThread 伪句柄何时需要转换为真实句柄？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "伪句柄是调用上下文解释的特殊常量，不可继承，也不需要关闭；GetCurrentThread 在另一个线程中会表示那个调用线程。需要跨进程传递，或让其他线程长期引用原线程对象时，应使用 DuplicateHandle 生成具有明确访问权且必须关闭的真实句柄。",
+    "source": "资料依据：Microsoft Learn · GetCurrentProcess and GetCurrentThread pseudo handles"
+  },
+  {
+    "id": "361",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "使用 C 运行库的线程为什么通常由 _beginthreadex 创建并正常返回？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "_beginthreadex 为线程建立 C 运行库所需的每线程状态，入口函数返回或调用 _endthreadex 时运行库能够释放这些状态。TerminateThread 会跳过栈展开、运行库和 DLL 的正常清理，只能视为进程已无法恢复时的最后手段。",
+    "source": "资料依据：Microsoft Learn · _beginthreadex thread termination and CRT cleanup"
+  },
+  {
+    "id": "362",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "线程句柄关闭后如何继续观察线程退出而不泄漏资源？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "关闭最后一个可用线程句柄后，线程仍继续运行，但调用方失去通过该句柄等待和查询退出码的能力。需要观察退出的组件应保留或 DuplicateHandle 一份专用句柄，等待结束后立即关闭；线程对象会在终止且所有句柄关闭后由系统删除。",
+    "source": "资料依据：Microsoft Learn · Thread handles, waiting and object lifetime"
+  },
+  {
+    "id": "363",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "SRWLock 从共享模式升级到独占模式有什么限制？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "SRWLock 没有共享到独占的原子升级，持有共享锁时直接申请独占锁会造成死锁或未定义的协议行为。正确做法是释放共享锁、获取独占锁后重新验证条件，或者从设计上始终以独占模式保护需要升级的事务。",
+    "source": "资料依据：Microsoft Learn · Slim Reader Writer lock acquisition rules"
+  },
+  {
+    "id": "364",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "Wait Chain Traversal 如何定位互斥体导致的线程阻塞？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "OpenThreadWaitChainSession 建立查询会话，GetThreadWaitChain 从目标线程返回线程与同步对象组成的等待链，并标记可检测到的死锁环。结果只是诊断快照，线程状态可能立即变化，实际修复仍要结合转储、锁所有者和代码中的锁顺序确认。",
+    "source": "资料依据：Microsoft Learn · Wait Chain Traversal API"
+  },
+  {
+    "id": "365",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "Job Object 如何统一回收子进程和限制资源？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "父进程把相关子进程分配到同一个 Job 后，可集中限制活跃进程数、内存、CPU 和 UI 能力，并用完成端口观察成员变化。设置 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 后，最后一个 Job 句柄关闭会终止仍在其中的进程，适合实现进程树级兜底回收。",
+    "source": "资料依据：Microsoft Learn · Job Object resource limits and kill-on-close"
+  },
+  {
+    "id": "366",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "AcceptEx 的预投递模型如何安排地址缓冲区和完成通知？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "AcceptEx 需要预先创建接受 socket，并提供足够容纳初始数据及本地、远端地址的输出缓冲区，两个地址区都要为 sockaddr 额外预留 16 字节。完成后用 SO_UPDATE_ACCEPT_CONTEXT 更新接受 socket 的上下文，再解析地址、关联 IOCP 并投递首个接收操作。",
+    "source": "资料依据：Microsoft Learn · AcceptEx buffer layout and accept context"
+  },
+  {
+    "id": "367",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "ConnectEx 在绑定本地地址和重用 socket 时有哪些前置条件？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "调用 ConnectEx 前 socket 必须先显式 bind 到本地地址，即使使用通配地址和零端口也不能省略。连接完成后设置 SO_UPDATE_CONNECT_CONTEXT 才能正常使用部分 socket API；若要复用断开的句柄，还要按 DisconnectEx 的 TF_REUSE_SOCKET 契约处理。",
+    "source": "资料依据：Microsoft Learn · ConnectEx prerequisites and SO_UPDATE_CONNECT_CONTEXT"
+  },
+  {
+    "id": "368",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "IOCP 工作线程数量如何结合阻塞调用和 CPU 核数设定？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "完成端口的并发值限制同时运行关联工作线程的数量，零值让系统以处理器数量为默认，适合主要执行短 CPU 工作的完成处理。可以创建更多等待线程吸收调度波动，但回调中若频繁做阻塞 I/O，会占住并发槽，应把这类工作移出 IOCP 处理路径再测量调参。",
+    "source": "资料依据：Microsoft Learn · I/O completion port threads and concurrency value"
+  },
+  {
+    "id": "369",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "WSARecv 的部分完成如何与消息边界和缓冲区所有权协调？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "在流式 socket 上 WSARecv 完成的字节数可能小于缓冲区容量，连接层要把数据追加到帧解析器，不能把一次完成当成一条消息。WSABUF 数组、数据区和 OVERLAPPED 在最终完成前保持稳定，报文 socket 则额外根据 flags 和 WSAEMSGSIZE 处理边界与截断。",
+    "source": "资料依据：Microsoft Learn · WSARecv overlapped buffers and message semantics"
+  },
+  {
+    "id": "370",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "CancelIoEx 取消重叠 I/O 后如何判断回调和句柄状态？",
+    "difficulty": 4,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "CancelIoEx 成功只表示找到了可请求取消的操作，不保证它尚未正常完成，失败为 ERROR_NOT_FOUND 也可能是完成竞态。无论哪条路径，都以事件、回调或 IOCP 收到最终完成为准，再根据 ERROR_OPERATION_ABORTED 区分取消并释放操作状态。",
+    "source": "资料依据：Microsoft Learn · CancelIoEx completion and ERROR_OPERATION_ABORTED"
+  },
+  {
+    "id": "371",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "TCP 半关闭后继续发送为什么可能造成应用协议状态错乱？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "TCP 允许一端收到 FIN 后继续向对端发送，所以传输层半关闭本身是合法状态。若应用协议把 EOF 定义为整个会话结束，继续发送就会与对端状态机冲突；双方必须约定请求结束、响应结束和最终 closesocket 的顺序。",
+    "source": "资料依据：IETF RFC · RFC 9293 TCP half-closed connection state"
+  },
+  {
+    "id": "372",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "LoadLibraryEx 的搜索路径选项如何降低 DLL 劫持风险？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "应用可用 SetDefaultDllDirectories 建立安全的进程级搜索策略，并在 LoadLibraryEx 中组合 LOAD_LIBRARY_SEARCH_SYSTEM32、APPLICATION_DIR 或 DLL_LOAD_DIR 等明确范围。插件目录应通过 AddDllDirectory 临时加入并妥善移除，避免依赖当前工作目录或可由低权限用户写入的路径。",
+    "source": "资料依据：Microsoft Learn · Dynamic-link library search order and safe search flags"
+  },
+  {
+    "id": "373",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "GetProcAddress 找不到装饰名时如何处理 C 与 C++ 导出？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "C++ 导出名会受编译器、重载、命名空间和调用约定修饰，GetProcAddress 必须使用导出表中的精确字节串，不能用源码函数名猜测。稳定插件接口通常通过 extern \"C\" 加 .def 或显式导出宏固定名称，并用版本化结构传递能力，避免直接暴露编译器 ABI。",
+    "source": "资料依据：Microsoft Learn · Exporting from a DLL and GetProcAddress names"
+  },
+  {
+    "id": "374",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "CreateFileMapping 与 MapViewOfFile 的权限如何保持一致？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "PAGE_READONLY、PAGE_READWRITE 等映射保护不能超过底层文件句柄取得的权限，MapViewOfFile 的 FILE_MAP_* 访问也不能超过映射对象保护。权限组合不一致会让创建或映射失败，跨进程打开命名映射时还要让 DACL 授予目标进程所需的最小访问权。",
+    "source": "资料依据：Microsoft Learn · File mapping protection and view access rights"
+  },
+  {
+    "id": "375",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "FlushViewOfFile 后为什么还可能需要 FlushFileBuffers？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "FlushViewOfFile 把指定视图范围内的脏页写向底层文件，但不会刷新所有文件元数据，也不保证物理磁盘缓存已经提交。需要更强提交边界时，刷新视图后再用具有适当权限的文件句柄调用 FlushFileBuffers，并接受相应性能成本。",
+    "source": "资料依据：Microsoft Learn · FlushViewOfFile and FlushFileBuffers persistence"
+  },
+  {
+    "id": "376",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "宽字符 API 与 UTF-8 边界如何避免路径转换丢失信息？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "进程内部可保留 UTF-16 路径并调用带 W 后缀的文件 API，只在网络、配置或跨平台边界按严格 UTF-8 转换。转换使用 CP_UTF8 和错误检测标志，不经系统 ANSI 代码页中转；还要保留规范化、长路径前缀和大小写语义，避免把显示等价误当成同一文件。",
+    "source": "资料依据：Microsoft Learn · Unicode in the Windows API and file path conversion"
+  },
+  {
+    "id": "377",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "DuplicateHandle 跨进程传递时如何限制访问权限和关闭责任？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "复制时不设置 DUPLICATE_SAME_ACCESS，改用 dwDesiredAccess 只授予接收方实际需要的权限，可以减少目标进程滥用句柄的能力。IPC 消息必须携带对象类型、句柄值和所有权约定，接收成功后由目标关闭副本，发送失败时发送方仍负责原句柄。",
+    "source": "资料依据：Microsoft Learn · DuplicateHandle desired access and cross-process ownership"
+  },
+  {
+    "id": "378",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "命名事件和命名互斥体的安全描述符如何设计？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "创建命名同步对象时应提供显式 DACL，只允许目标用户、服务 SID 或完整性级别取得 SYNCHRONIZE 和必要的修改权限。调用 CreateEvent 或 CreateMutex 后检查 ERROR_ALREADY_EXISTS，并验证打开的是预期协议对象，避免预创建攻击和跨会话名称碰撞。",
+    "source": "资料依据：Microsoft Learn · Synchronization object security and access rights"
+  },
+  {
+    "id": "379",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "WaitForMultipleObjects 超过最大句柄数时如何拆分等待协议？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "WaitForMultipleObjects 一次最多等待 MAXIMUM_WAIT_OBJECTS 个句柄，简单分批会改变 wait-all 原子性，也可能让早批次长期偏置。大规模等待可改用线程池等待、IOCP，或让辅助等待者汇总到少量事件，并明确取消、退出和失败传播协议。",
+    "source": "资料依据：Microsoft Learn · WaitForMultipleObjects limits and thread pool waits"
+  },
+  {
+    "id": "380",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "SO_KEEPALIVE 参数与应用层心跳分别解决什么故障？",
+    "difficulty": 3,
+    "scopes": [
+      "Win32",
+      "Winsock"
+    ],
+    "answer": "SO_KEEPALIVE 关注 TCP 对端或路径在长时间无流量时是否仍可达，探测成功并不表示远端业务线程健康。应用层心跳可验证会话、负载和业务超时，还能携带版本信息；它需要自行处理抖动、拥塞和误判，不能把一次超时直接等同于网络断开。",
+    "source": "资料依据：Microsoft Learn · TCP keepalive settings in Winsock；IETF RFC · RFC 9293 TCP keep-alive considerations"
+  }
+];

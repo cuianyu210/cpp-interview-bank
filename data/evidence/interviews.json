@@ -1,0 +1,146 @@
+[
+  {
+    "id": "evidence-cpp-001",
+    "company": "腾讯",
+    "role": "TEG C++ 后台开发实习生",
+    "sourceTitle": "腾讯C++后台开发实习面经（已拿offer）",
+    "url": "https://www.nowcoder.com/discuss/353156254812020736",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "深拷贝与浅拷贝；析构函数为什么是虚的；重载怎么实现的（名字翻译）；虚函数"
+  },
+  {
+    "id": "evidence-cpp-002",
+    "company": "字节跳动",
+    "role": "飞书后端、抖音图像 C++ 实习生",
+    "sourceTitle": "字节跳动C/C++飞书二面+抖音三面面经",
+    "url": "https://www.nowcoder.com/discuss/353157665280958464",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "指针数组和数组指针定义一下；虚函数的机制，具体对象和类是怎么存的；带虚函数的类占用空间的大小；C 和 C++ 的区别，模板函数怎么实现的，是编译期间确定的还是运行时确定的"
+  },
+  {
+    "id": "evidence-cpp-003",
+    "company": "阿里巴巴",
+    "role": "智能信息业务研发 C++ 实习生",
+    "sourceTitle": "阿里智能信息业务研发 C++ 一二三+HR面经",
+    "url": "https://www.nowcoder.com/discuss/353159474431074304",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "ringbuff 模拟，要求多线程安全；weak_ptr的理解，为啥是线程安全的；讲讲智能指针；什么是内存泄漏；内存泄漏检测软件假如是你你怎么设计；如何检测内存泄漏"
+  },
+  {
+    "id": "evidence-cpp-004",
+    "company": "华为",
+    "role": "OD C++ 社招开发",
+    "sourceTitle": "华为 OD 社招C++面经",
+    "url": "https://www.nowcoder.com/discuss/682267142162501632",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "C++，引用和指针有什么区别；数组和指针有什么区别；深浅拷贝讲一下；C++基类和派生类构造和析构的顺序；函数对象有了解吗？lambda 表达式，lambda 表达式内部捕获变量了解不"
+  },
+  {
+    "id": "evidence-gof-001",
+    "company": "网易互娱",
+    "role": "C++ 游戏开发",
+    "sourceTitle": "网易互娱一二面，字节安全二面（C++)",
+    "url": "https://www.nowcoder.com/discuss/353156660908728320",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "设计模式知道哪些（工厂单例之外的）"
+  },
+  {
+    "id": "evidence-gof-002",
+    "company": "字节跳动",
+    "role": "小荷健康测试开发工程师",
+    "sourceTitle": "字节跳动测试开发工程师一面面经（小荷健康2021.7.20）",
+    "url": "https://www.nowcoder.com/discuss/353158117586313216",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "spring用到哪些设计模式？bean的生成通过哪种方式？；还听过哪些模式？说了代理、抽象工厂模式、模板方法模式、单例模式；手写单例模式，写完介绍饿汉式和懒汉式"
+  },
+  {
+    "id": "evidence-gof-003",
+    "company": "百度",
+    "role": "Java 后端开发（提前批）",
+    "sourceTitle": "百度二面，大概率凉",
+    "url": "https://www.nowcoder.com/discuss/382184734011547648",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "介绍设计模式除了单列和工厂；springAOP怎么做的；怎么自己实现一个动态代理；cglib 和 jdk动态代理有什么区别"
+  },
+  {
+    "id": "evidence-gof-004",
+    "company": "腾讯、阿里巴巴、网易等",
+    "role": "Android 工程师",
+    "sourceTitle": "面试经验｜腾讯、阿里巴巴、网易、唯品会、卓望面试经历",
+    "url": "https://leetcode.cn/discuss/post/3162816/teng-xun-a-li-ba-ba-wang-yi-wei-pin-hui-1hnpr/comments/2712265/",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "了解那些设计模式？；工厂设计模式的优点在于什么？；外观设计模式和策略模式的是如何在项目中应用的？；手写一个单例实现"
+  },
+  {
+    "id": "evidence-ue5-001",
+    "company": "腾讯",
+    "role": "客户端算法岗（UE4）",
+    "sourceTitle": "腾讯客户端算法岗面试经验",
+    "url": "https://leetcode.cn/discuss/post/3152349/teng-xun-ke-hu-duan-suan-fa-gang-mian-sh-zh7r/",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "Pawn和character的区别是什么？；Ue4蓝图和c++如何相互调用（宏）；运行时生成物体的函数是什么？；我创建了一个uobject对象，在没有其他引用的情况下请问我该如何保证它不会被gc？；Actorcomponent和scenecomponent的区别"
+  },
+  {
+    "id": "evidence-ue5-002",
+    "company": "库洛游戏",
+    "role": "游戏开发工程师",
+    "sourceTitle": "库洛游戏-游戏开发工程师笔面经(已挂，已补全)",
+    "url": "https://ac.nowcoder.com/discuss/610955",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "你觉得学UE4过程中遇到什么困难吗？；场景内有许多需要交互的物体，怎么编程；UE4和unity哪个用的比较多？；UE4和unity哪个用的比较难？"
+  },
+  {
+    "id": "evidence-ue5-003",
+    "company": "哔哩哔哩",
+    "role": "游戏客户端工程师",
+    "sourceTitle": "b站 游戏客户端面经-一面",
+    "url": "https://www.nowcoder.com/discuss/353155229384384512",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "你为什么要学虚幻4引擎？；我看你游戏用UE4 做的绝地求生，你说下这个游戏实现了哪些功能？；你说下UE4的蓝图和C++是怎么通信的？；知道计算机图形学么，随便说点计算机图形学的知识？"
+  },
+  {
+    "id": "evidence-ue5-004",
+    "company": "英雄游戏",
+    "role": "UE4 客户端开发实习生",
+    "sourceTitle": "英雄游戏|凉经|UE4客户端开发|暑期实习（4.2更新）",
+    "url": "https://leetcode.cn/discuss/post/3303364/shu-qi-shi-xi-mian-jing-ying-xiong-you-x-64gl/",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "之前有接触过UE4吗？大概了解到什么程度，用C++还是用蓝图开发的？；你知道游戏开发中常用的设计模式是哪几种吗？；单例模式一般都是怎么用的呢？"
+  },
+  {
+    "id": "evidence-windows-001",
+    "company": "微软",
+    "role": "技术支持工程师",
+    "sourceTitle": "微软技术支持工程师一、二面面经",
+    "url": "https://www.nowcoder.com/discuss/353156368704151552",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "堆和栈的区别，如何分配内存？；TCP三次握手的原理？；项目中的后端三个服务器怎么通信？；进程和线程的区别？；进程同步的机制有哪些？"
+  },
+  {
+    "id": "evidence-windows-002",
+    "company": "腾讯",
+    "role": "TEG C++ 后端开发",
+    "sourceTitle": "腾讯TEG C++后端开发 面经 （补）",
+    "url": "https://ac.nowcoder.com/discuss/342356",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "UDP 和 TCP 的区别？分别适用什么场景？；TCP 建立连接和断开连接的过程？如果 server 没有 accept，连接会怎样？；对端异常掉线，本端调用 write 函数向 socket 写入数据，会出现什么情况？；shutdown() 和 close() 有什么区别？如何优雅关闭 socket？"
+  },
+  {
+    "id": "evidence-windows-003",
+    "company": "华为",
+    "role": "C++ 工程师（社招）",
+    "sourceTitle": "华为、上海麦信c++工程师社招面经",
+    "url": "https://www.nowcoder.com/discuss/353156454796435456",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "tcp/ip原理，问了TCP状态变迁图，TCP/IP接受发送缓冲区相关概念；编写高效服务器程序，需考虑的因素？；Epoll机制相关概念(Epoll与Select机制区别)"
+  },
+  {
+    "id": "evidence-windows-004",
+    "company": "字节跳动",
+    "role": "网络开发工程师-系统架构",
+    "sourceTitle": "字节跳动2023秋招提前批面经（三轮面试，已意向）",
+    "url": "https://www.nowcoder.com/discuss/382135751327252480",
+    "accessedAt": "2026-08-09",
+    "reportedQuestion": "HTTP/2有哪些特质；TCP如何实现可靠传输；HTTP连接中，SERVER端如何判断Client端出现错误，出现了哪些错误？；TIME_WAIT和CLOSE_WAIT分别出现在哪个阶段；DNS的递归访问？举例子，比如你现在发一个DNS请求怎么访问？；有哪些拥塞控制？分别的原理是什么？有什么不同的应用场景？"
+  }
+]

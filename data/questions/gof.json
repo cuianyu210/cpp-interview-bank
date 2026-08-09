@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "151",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 如何创建一组相互匹配的产品？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "抽象工厂定义创建相关产品族的接口，让客户端只依赖抽象产品并保持同一族的兼容性。它适合产品族会整体替换的场景，但新增一种产品会迫使工厂接口及各具体工厂一起扩展。",
+    "pattern": "Abstract Factory",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Abstract Factory intent and product-family consistency"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "152",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "切换 Abstract Factory 产品族时依赖应放在哪里？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "客户端应依赖抽象工厂，具体工厂在组合根或配置边界被选择；同一工厂负责产生彼此匹配的产品。这样切换主题只替换工厂实现，代价是产品种类固定后扩展新产品需要修改全部工厂。",
+    "pattern": "Abstract Factory",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Abstract Factory intent and product-family consistency"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "153",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Adapter 如何把旧接口转换为客户端期待的接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "适配器实现客户端所需的 Target 接口，并把调用转换给已有 Adaptee；对象适配器用组合保存被适配对象。转换层应集中处理参数、错误和所有权差异，避免把旧接口细节泄漏到客户端。",
+    "pattern": "Adapter",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Adapter object and class adapters"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "154",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "对象 Adapter 与类 Adapter 如何选择？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "对象适配器通过组合可适配多个对象，运行时可替换且不受单继承限制；类适配器依赖多重继承并能直接覆盖受保护行为。C++ 中优先组合，只有需要静态复用实现且继承关系稳定时才考虑类适配器。",
+    "pattern": "Adapter",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Adapter object and class adapters"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "155",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Bridge 如何拆开抽象层和实现层的变化轴？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "桥接把抽象层的操作接口与实现层的细节放在两个独立继承层次，并由抽象持有实现接口。两条变化轴可独立扩展，代价是多一个间接层和更复杂的对象装配；若只有一个稳定实现，普通继承更简单。",
+    "pattern": "Bridge",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Bridge abstraction-implementation separation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "156",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Bridge 的实现对象由谁拥有和替换？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "实现对象通常由抽象端以唯一所有权或共享策略持有，构造时注入，必要时通过受控接口替换。替换必须保证旧实现上的未完成操作和资源先收尾，否则桥接只隐藏了生命周期错误而没有解决它。",
+    "pattern": "Bridge",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Bridge abstraction-implementation separation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "157",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Builder 如何分离复杂对象的构造步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Builder 将构造步骤从最终产品表示中分离，Director 可按固定顺序调用步骤而不暴露内部布局。产品有许多可选部件或需多种表示时适用；简单对象使用构造函数或工厂更直接。",
+    "pattern": "Builder",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Builder construction process and representation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "158",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "可复用 Builder 怎样避免上一次状态泄漏？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可复用 Builder 必须在开始新构造时清空产品或创建新的产品实例，并明确哪些配置是默认值。复用同一实例若不重置会把前一次选项带入后续结果；不可变 Builder 或一次性 Builder 能减少这种状态污染。",
+    "pattern": "Builder",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Builder construction process and representation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "159",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Chain of Responsibility 如何沿处理者链传递请求？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "责任链把请求沿一组可替换处理者传递，每个处理者决定处理或交给后继者，发送者不依赖具体接收者。链适合运行时组合处理步骤，但请求可能无人处理或顺序敏感，因此应定义终止处理者和可观察的拒绝结果。",
+    "pattern": "Chain of Responsibility",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Chain of Responsibility successor handling"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "160",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "处理者链如何表达处理、继续和拒绝三种结果？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "处理者接口应明确返回已处理、继续传递或拒绝并报错等结果，不能只依赖隐含的副作用。调用端据此决定是否继续链、记录未处理请求或触发降级；链越长，调试和最坏延迟越难控制。",
+    "pattern": "Chain of Responsibility",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Chain of Responsibility successor handling"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "161",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Command 如何把一次操作封装成可排队对象？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "命令对象把接收者、操作参数和执行入口封装起来，使调用者能把请求排队、记录或延迟执行。队列拥有命令对象的生命周期，接收者只负责实际业务；异步队列还要定义取消、失败和重试语义。",
+    "pattern": "Command",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Command request encapsulation and undo"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "162",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "支持撤销时 Command 需要保存哪些状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可撤销命令需要保存执行前足以恢复不变量的状态，或设计可逆的反向操作；只保存“上一步”标志通常不够。外部资源和并发副作用难以回滚，命令应限制事务边界并说明撤销失败如何处理。",
+    "pattern": "Command",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Command request encapsulation and undo"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "163",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Composite 如何让叶子和组合对象共享操作接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "组合模式把叶子与容器放进同一组件接口，客户端可对单个对象和整棵部分—整体树使用相同操作。透明接口便于递归处理但可能让叶子暴露无意义的 add/remove；安全接口则需在易用性与类型检查之间取舍。",
+    "pattern": "Composite",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Composite part-whole hierarchy"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "164",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Composite 遍历子节点时如何处理生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "组合对象应明确子节点的所有权，拥有型树可由父节点通过 RAII 管理，观察型关系则不能在遍历时假定子节点仍存活。删除或移动节点时必须使迭代器、父指针和缓存失效规则一致，否则递归访问会读到悬空对象。",
+    "pattern": "Composite",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Composite part-whole hierarchy"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "165",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 与 Builder 如何共同构造可配置产品？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "抽象工厂先决定兼容的产品族，Builder 再按步骤配置该族中的一个复杂产品；两者的边界分别是“选哪一族”和“怎样组装”。组合能同时支持主题替换与可选部件，但接口数量、测试夹具和装配代码都会增加。",
+    "pattern": "Cross-pattern",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF pattern relationships and creation tradeoffs"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "166",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 与 Prototype 在复制和创建之间如何选择？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Factory Method 通过虚拟创建钩子让派生类决定新对象，Prototype 则复制已配置实例以绕过具体构造过程。构造成本高且类型在运行时注册时适合原型；复制语义不清或资源不可复制时，工厂方法更容易维持不变量。",
+    "pattern": "Cross-pattern",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF pattern relationships and creation tradeoffs"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "167",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Decorator 如何在不修改原类的情况下叠加职责？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "装饰器实现与被装饰对象相同的接口，并在转发调用前后附加职责，因此可以运行时叠加功能而不修改原类。它适合职责组合细粒度变化，代价是调用链变长、调试困难，且装饰器顺序可能改变结果。",
+    "pattern": "Decorator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Decorator dynamic responsibility attachment"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "168",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "多层 Decorator 的析构与异常传播如何保证？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "每层装饰器应以 RAII 管理自己拥有的下层对象，并让析构保持不抛；异常从转发调用向外传播时不能跳过已构造层的清理。若某层需要吞掉或转换异常，边界必须写入接口契约，否则多层包装会掩盖失败来源。",
+    "pattern": "Decorator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Decorator dynamic responsibility attachment"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "169",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Facade 如何为多个子系统提供稳定入口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "外观为一组子系统提供面向用例的窄接口，隐藏初始化顺序和协作细节，但不替子系统定义新的业务模型。它降低调用方耦合，代价是外观可能膨胀成上帝对象；复杂用例应拆成多个门面或保留受控的子系统访问。",
+    "pattern": "Facade",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Facade subsystem interface"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "170",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Facade 是否应该管理子系统对象生命周期？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "外观是否拥有子系统取决于创建边界：应用级外观可管理一次性资源，注入已有服务的外观只协调调用并不负责销毁。把两种责任混在一起会造成双重释放或静态生命周期依赖，接口应明确借用与拥有关系。",
+    "pattern": "Facade",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Facade subsystem interface"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "171",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 如何把具体产品决定延迟到派生类？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "工厂方法在抽象产品接口中定义创建点，由具体创建者覆盖该方法来选择具体产品，业务流程仍写在基类中。它适合产品类型由子类或配置变化决定的框架，新增产品通常需要新增创建者而不是修改调用流程。",
+    "pattern": "Factory Method",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Factory Method product creation hook"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "172",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Factory Method 的扩展点应如何控制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "扩展点应只暴露创建所需的最小产品接口，并让基类保证创建后不变量；把业务分支全部塞进工厂方法会退化为大型 switch。若产品族需要同时保持配套关系，应改用抽象工厂而不是无限增加创建者子类。",
+    "pattern": "Factory Method",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Factory Method product creation hook"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "173",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Flyweight 如何区分内在状态和外在状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "享元把可共享的内在状态放入池中，把位置、颜色等每次使用才确定的外在状态交给调用者。共享前必须证明内在状态不可变或有同步保护，否则节省内存会换来跨对象状态污染。",
+    "pattern": "Flyweight",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Flyweight intrinsic and extrinsic state"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "174",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Flyweight 工厂怎样保证共享键和生命周期一致？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "享元工厂应以完整的内在状态作为规范化键，命中时返回同一个共享对象，并定义池的所有权和淘汰策略。弱引用或清晰的缓存生命周期可避免池无限增长；键遗漏字段会让不同语义错误地共享状态。",
+    "pattern": "Flyweight",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Flyweight intrinsic and extrinsic state"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "175",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Interpreter 如何用类层次表达小型语法规则？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "解释器模式把文法规则表示为表达式对象，每个非终结符组合子递归解释上下文，终结符读取输入或变量。它适合小而稳定的 DSL；文法规模或性能要求上升后，解析器生成器和专用 AST 通常更可维护。",
+    "pattern": "Interpreter",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Interpreter grammar representation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "176",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Interpreter 上下文对象应保存哪些运行期信息？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Context 保存解释过程中共享的输入游标、变量环境或诊断信息，表达式只通过约定接口读写这些状态。上下文若混入线程局部或全局数据会破坏可重入性，多个解释任务应拥有独立上下文。",
+    "pattern": "Interpreter",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Interpreter grammar representation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "177",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Iterator 如何隐藏集合内部表示并提供统一访问协议？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "迭代器把遍历位置和递增规则封装起来，聚合对象只暴露 begin/end 或等价协议，客户端无需知道存储结构。不同迭代器可提供不同遍历策略，但必须清楚比较、终止和失效规则，不能把抽象迭代器当成永不失效的指针。",
+    "pattern": "Iterator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Iterator aggregate traversal"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "178",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "自定义 Iterator 的失效条件和所有权如何说明？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "自定义迭代器要声明其拥有的是容器的观察权而非元素所有权，并规定插入、删除、移动或容器销毁后的有效性。若迭代器跨线程或异步保存，容器和节点寿命必须由更高层契约保证，失效后继续递增或解引用属于未定义行为。",
+    "pattern": "Iterator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Iterator aggregate traversal"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "179",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Mediator 如何把同事对象间的网状依赖集中起来？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "中介者让同事对象只依赖协调接口，由中介者编排交互而不是彼此直接调用，从而把网状依赖变成星形依赖。它适合协作规则集中且变化频繁的场景，但中介者会承载过多业务时应按用例拆分或引入领域服务。",
+    "pattern": "Mediator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Mediator colleague collaboration"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "180",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Mediator 过度膨胀时怎样重划协作边界？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "当中介者同时知道所有同事的细节、状态和异常分支时，它已成为难以测试的上帝对象。可以按协作场景拆成多个中介者，或把稳定规则下沉回同事；拆分边界应由消息流和事务一致性决定。",
+    "pattern": "Mediator",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Mediator colleague collaboration"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "181",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Memento 如何在不暴露内部表示时保存状态？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "备忘录由发起者创建并保存内部状态快照，管理者只持有不透明句柄，从而恢复状态而不暴露表示细节。快照必须定义一致性时点和容量成本；包含外部资源句柄时不能假设恢复能重新建立资源。",
+    "pattern": "Memento",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Memento encapsulation boundary"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "182",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Memento 快照的所有权和版本号由谁维护？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "发起者应决定快照的格式与版本，管理者只负责保存、排序和淘汰，避免依赖私有字段。版本不兼容时应拒绝恢复或执行明确迁移，快照的拥有者还要保证底层数据在恢复前一直有效。",
+    "pattern": "Memento",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Memento encapsulation boundary"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "183",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Observer 注册和取消订阅时如何避免悬空回调？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "观察者注册关系应有明确的取消机制，订阅令牌或弱引用可避免被通知对象销毁后仍调用回调。通知线程与取消线程并发时需要同步快照和回调状态，不能只从容器里删除指针就宣称安全。",
+    "pattern": "Observer",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Observer subject notification"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "184",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Observer 通知期间修改订阅集合会发生什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "通知期间直接修改订阅容器可能使迭代器失效、跳过观察者或重复调用，常见做法是遍历快照并把增删操作延迟到通知结束。回调抛异常时还要决定继续通知还是终止，并避免让一个观察者破坏发布者的不变量。",
+    "pattern": "Observer",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Observer subject notification"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "185",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Prototype 复制对象时如何处理深拷贝和共享资源？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原型的 clone 操作应按对象语义决定深拷贝、共享不可变资源或复制所有权，不能由默认指针拷贝推断结果。多态复制通常要求虚拟 clone 返回拥有型指针，并为每个资源定义复制失败时的清理路径。",
+    "pattern": "Prototype",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Prototype cloning"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "186",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "原型注册表如何管理复制入口？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原型注册表把类型键映射到可复制的原型对象，客户端按键请求 clone 而不依赖具体类名。注册表需规定替换、并发读写和对象所有权，未知键应返回可诊断错误而不是空指针继续执行。",
+    "pattern": "Prototype",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Prototype cloning"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "187",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "Proxy 如何在不改变真实对象接口的情况下增加访问控制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "代理实现与真实主题相同的接口，可在转发前后加入权限、缓存、远程传输或日志，因此客户端无需改写调用协议。代理不应伪装成同步本地对象来掩盖网络延迟和失败，远程代理尤其要明确超时、重试和资源所有权。",
+    "pattern": "Proxy",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Proxy subject access control"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "188",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "虚拟 Proxy 延迟创建资源时如何报告失败？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "虚拟代理首次收到需要真实主题的请求时才创建它，创建失败应通过与主题一致的错误通道返回，并保持代理可再次尝试或进入终止状态。延迟初始化减小首屏成本，却把故障推迟到业务调用，调用方必须能区分未加载与已加载失败。",
+    "pattern": "Proxy",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Proxy subject access control"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "189",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Singleton 的唯一实例如何保证线程安全初始化？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "C++11 的函数内静态对象在首次控制流经过声明时初始化，并由语言保证并发初始化只发生一次；这通常比手写双重检查更可靠。Singleton 仍引入全局可变状态和隐藏依赖，测试替换与析构顺序是采用前必须接受的代价。",
+    "pattern": "Singleton",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Singleton sole instance and global access"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "190",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Singleton 生命周期与静态析构顺序有何风险？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "函数内静态 Singleton 的销毁顺序与其他静态对象的跨翻译单元顺序可能不匹配，析构阶段访问已销毁依赖会产生未定义行为。可通过显式生命周期管理、泄漏到进程结束或把依赖注入使用方规避，但每种选择都改变资源回收和测试策略。",
+    "pattern": "Singleton",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Singleton sole instance and global access"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "191",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "State 如何把状态行为从大型条件分支中拆出？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "状态模式把每个状态相关行为放入独立对象，由上下文委托当前状态处理事件并在需要时切换。状态数量或转移规则增长时它能替代巨型条件分支，但对象切换、共享数据和转移合法性需要额外契约。",
+    "pattern": "State",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF State state-dependent behavior"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "192",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "共享 State 对象时如何隔离瞬时数据？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "可共享的无状态 State 可以放入注册表，但用户输入、超时等瞬时数据必须保存在上下文或事件对象中，不能写进共享状态实例。若状态含可变字段，就应按上下文隔离或加同步，否则一个会话的转移会污染另一个会话。",
+    "pattern": "State",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF State state-dependent behavior"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "193",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Strategy 如何把可替换行为封装成稳定接口？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "策略模式把一组可互换算法封装成共同接口，由上下文持有并委托当前策略，从而把选择与算法实现分离。它适合运行时或配置驱动的算法变化，但策略类过多会增加装配和间接调用成本，固定且简单的分支可能更清楚。",
+    "pattern": "Strategy",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Strategy interchangeable algorithm"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "194",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "运行时选择 Strategy 时依赖和生命周期如何管理？",
+    "difficulty": 4,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "运行时策略可由依赖注入提供，拥有关系应由上下文、调用者或共享指针中的一个边界明确承担。切换策略时要处理正在执行的调用、线程安全和旧策略释放，不能只替换裸指针。",
+    "pattern": "Strategy",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Strategy interchangeable algorithm"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "195",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Template Method 如何固定流程骨架并开放可变步骤？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "模板方法在基类中固定算法骨架，通过受保护的原语操作或钩子把可变步骤交给子类；调用者只看到稳定的公共流程。它利用继承实现编译期复用，代价是基类控制反转且子类组合受限，需要防止钩子破坏骨架不变量。",
+    "pattern": "Template Method",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Template Method algorithm skeleton and hooks"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "196",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Template Method 钩子函数如何处理异常和默认行为？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "钩子通常提供无操作或保守默认实现，子类只覆盖确有需要的步骤；异常是否向上冒泡由模板方法的事务契约决定。模板方法若在中途吞掉异常或继续使用半完成状态，会让子类无法判断提交边界，应保持失败后的对象不变量。",
+    "pattern": "Template Method",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Template Method algorithm skeleton and hooks"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  },
+  {
+    "id": "197",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "Visitor 如何在不修改元素层次时增加新操作？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "访问者把操作放进独立对象，元素通过 accept 将自身类型分派给对应 visit，从而新增操作无需修改元素类。它适合元素层次稳定而操作经常增加的系统；新增元素则要求修改所有访问者，类型安全与扩展方向存在明确取舍。",
+    "pattern": "Visitor",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Visitor double dispatch and operation extension"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-001",
+      "evidence-gof-002"
+    ]
+  },
+  {
+    "id": "198",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "双重分派在 Visitor 中解决了什么类型限制？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "第一次分派选择元素的动态类型，accept 内部的第二次分派选择具体访问者重载，这正是双重分派绕过单次虚调用类型限制的机制。实现需要为每种元素维护 visit 重载，接口变更会带来较大的编译影响，且跨模块 ABI 要保持一致。",
+    "pattern": "Visitor",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Visitor double dispatch and operation extension"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-002",
+      "evidence-gof-003"
+    ]
+  },
+  {
+    "id": "199",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Abstract Factory 与依赖注入如何保持接口稳定？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "依赖注入把抽象工厂作为构造或启动边界的依赖，业务对象只调用抽象产品接口，不直接实例化具体工厂。这样测试可以注入替身并整体切换产品族，但工厂接口仍会随新增产品扩张，不能把依赖注入误当成消除产品族约束。",
+    "pattern": "Abstract Factory",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Abstract Factory intent and product-family consistency"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-003",
+      "evidence-gof-004"
+    ]
+  },
+  {
+    "id": "200",
+    "group": "gof",
+    "category": "gof/creation",
+    "title": "Builder 与命名构造函数如何取舍？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "命名构造函数适合少量互斥选项，能保持调用点短且直接返回完整对象；Builder 更适合许多可选步骤、校验或多种表示。Builder 会增加类型和状态管理，若没有复杂构造过程，采用它反而扩大 API 和维护成本。",
+    "pattern": "Builder",
+    "answerSources": [
+      {
+        "authority": "gof",
+        "topic": "GoF Builder construction process and representation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-gof-004",
+      "evidence-gof-001"
+    ]
+  }
+]
