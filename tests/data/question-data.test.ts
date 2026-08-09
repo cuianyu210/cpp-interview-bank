@@ -50,6 +50,17 @@ const expectedCounts: Record<Group, number> = {
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
 const commonCppAbbreviations = ['ODR', 'ADL', 'PImpl', 'RAII', 'EBO', 'SFINAE', 'NRVO', 'ABI'];
+const referenceStyleCppTitlePhrases = /有哪些约束|链接语义|函数候选|表示同一实体|引用限定|对象存储|可移植语义|何时|如何|怎样因为|分别表达什么|分别保证什么|哪些状态|哪些性质|哪些成本|生命周期取舍|二进制边界|适用边界|最终得到什么类型|动态类型|路径表示|可能丢精度的方向|underflow 和 overflow/u;
+const commonCppInterviewTitles = new Map([
+  ['031', '基类析构函数为什么通常要写成 virtual？'],
+  ['043', '什么是 RAII（资源获取即初始化）？'],
+  ['062', 'shared_ptr 循环引用怎么解决？'],
+  ['096', 'reserve 和 resize 有什么区别？'],
+  ['103', 'vector 和 list 有什么区别？'],
+  ['107', 'emplace_back 一定比 push_back 快吗？'],
+  ['119', 'C++ 异常为什么建议按值抛出、按 const 引用捕获？'],
+  ['129', 'lock_guard 和 unique_lock 有什么区别？']
+]);
 const allowedAuthorities = new Set([
   'cppreference',
   'iso-cpp',
@@ -202,6 +213,18 @@ describe('authoring question data', () => {
       if (commonCppAbbreviations.some((abbreviation) => question.title.includes(abbreviation))) {
         expect(question.title, question.id).toMatch(/[（(].*[）)]/);
       }
+    }
+  });
+
+  it('uses common C++ interview phrasing instead of reference-style titles', () => {
+    const cppQuestions = questions.filter((entry) => entry.group === 'cpp');
+    const titleById = new Map(cppQuestions.map((question) => [question.id, question.title]));
+
+    for (const [id, title] of commonCppInterviewTitles) {
+      expect(titleById.get(id), id).toBe(title);
+    }
+    for (const question of cppQuestions) {
+      expect(question.title, question.id).not.toMatch(referenceStyleCppTitlePhrases);
     }
   });
 
