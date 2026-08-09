@@ -45,7 +45,7 @@ const questionFiles: Record<Group, string> = {
 const expectedCounts: Record<Group, number> = {
   cpp: 150,
   gof: 50,
-  ue5: 112,
+  ue5: 122,
   windows: 80
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
@@ -69,6 +69,7 @@ const allowedAuthorities = new Set([
   'gnu-libstdcxx',
   'gof',
   'epic-games',
+  'meta-developers',
   'microsoft-learn',
   'ietf-rfc'
 ]);
@@ -132,7 +133,7 @@ describe('authoring question data', () => {
   const evidenceById = new Map(evidence.map((record) => [record.id, record]));
 
   it('publishes the requested group counts and one continuous id sequence', () => {
-    expect(questions).toHaveLength(392);
+    expect(questions).toHaveLength(402);
     for (const group of Object.keys(expectedCounts) as Group[]) {
       expect(questions.filter((question) => question.group === group)).toHaveLength(expectedCounts[group]);
     }
@@ -146,7 +147,7 @@ describe('authoring question data', () => {
   it('adds a practical UE5 XR and VR interview category backed by Epic topics', () => {
     const xrQuestions = questions.filter((question) => question.category === 'ue5/xr-vr');
 
-    expect(xrQuestions).toHaveLength(12);
+    expect(xrQuestions).toHaveLength(22);
     expect(xrQuestions.every((question) => question.group === 'ue5')).toBe(true);
     expect(xrQuestions.every((question) => question.scopes.includes('UE5'))).toBe(true);
     expect(xrQuestions.every((question) => question.answerSources.some((source) => source.authority === 'epic-games'))).toBe(true);
@@ -159,6 +160,14 @@ describe('authoring question data', () => {
     expect(titles).toMatch(/FOV|视场角/);
     expect(titles).toMatch(/手柄|Motion Controller/);
     expect(titles).toMatch(/Quest|移动 VR/);
+    expect(titles).toMatch(/手部追踪|Hand Tracking/);
+    expect(titles).toMatch(/大空间|Room-scale|Stage/);
+    expect(titles).toMatch(/透视|Passthrough/);
+    expect(titles).toMatch(/全身 IK|FBIK/);
+    expect(titles).toMatch(/VROrigin|XR Origin|连续移动|Locomotion/);
+    expect(xrQuestions.some((question) =>
+      question.answerSources.some((source) => source.authority === 'meta-developers')
+    )).toBe(true);
   });
 
   it('groups intermediate C++ STL and standard-library questions under a dedicated category', () => {

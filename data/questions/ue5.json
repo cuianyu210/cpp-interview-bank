@@ -2350,5 +2350,231 @@
       "evidence-ue5-006",
       "evidence-ue5-007"
     ]
+  },
+  {
+    "id": "393",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "Hand Tracking（手部追踪）和手柄输入同时支持时接口怎么抽象？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "玩法层不应该直接依赖某一种设备，而是把抓取、指向、确认和取消抽象成动作，再把手柄、手势或手部骨骼映射到这些动作。手部追踪还要暴露追踪置信度、左右手状态和降级路径，追踪丢失时能自然回退到手柄或空手状态。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Input and Hand Tracking"
+      },
+      {
+        "authority": "meta-developers",
+        "topic": "Meta Quest Hand Tracking in Unreal"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "394",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "手部追踪做抓取或手势识别时为什么不能只看单帧骨骼？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "手部骨骼数据会受遮挡、光照和预测影响，单帧判断很容易在临界姿态附近抖动。更稳的做法是用连续帧、阈值滞回、置信度和手势优先级确认状态，交互结果只在稳定后触发。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Hand Tracking"
+      },
+      {
+        "authority": "meta-developers",
+        "topic": "Hand Tracking Quality and Gesture Input"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "395",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "大空间 Room-scale VR 为什么要区分 Tracking Origin（追踪原点）？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Tracking Origin 决定 HMD 和控制器坐标是相对设备启动点、地面还是舞台空间解释。大空间体验通常更关心地面高度、玩家真实位移和可行走边界，所以要明确使用 Floor 或 Stage 语义，并把虚拟角色根节点和追踪空间对齐。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "XR Tracking Origin and Room Scale"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "396",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "大空间 VR 中玩家真实走动和虚拟移动怎么叠加？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "真实走动来自追踪系统更新 HMD 在 XR 空间中的相对位置，虚拟移动通常作用在 VROrigin 或 Pawn 根节点上。两者叠加时要保持胶囊碰撞、地面高度和安全边界一致，重定位或回正时也要同步手柄、身体和交互射线。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Pawn, Locomotion and Tracking Space"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "397",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "XR 透视 Passthrough 和普通相机背景有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Passthrough 是由 XR 运行时把设备摄像头画面和虚拟内容合成到头显里，开发者通常拿到的是可配置的透视层或相关 API。普通游戏相机背景只是引擎渲染内容，不能自动代表真实世界，也不等于可以自由读取原始摄像头图像。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Passthrough"
+      },
+      {
+        "authority": "meta-developers",
+        "topic": "Meta XR Passthrough"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "398",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "XR 透视交互里如何处理虚实遮挡和安全边界？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "透视画面本身只提供真实世界背景，遮挡关系还需要深度、场景理解、锚点或手动放置的代理几何来参与判断。安全边界不能只靠视觉效果提示，移动、抓取和生成物体都要考虑玩家可活动区域和平台权限。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Passthrough and XR Scene Understanding"
+      },
+      {
+        "authority": "meta-developers",
+        "topic": "Passthrough and Scene API"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "399",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 全身 IK（FBIK）通常用哪些输入目标？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "VR 全身 IK 通常把 HMD 作为头部目标，把左右控制器或手部追踪作为手目标，再根据项目需要加入骨盆、脚和膝盖约束。FBIK 负责在骨骼链上分配误差和保持姿态，目标点不是直接等同于最终骨骼变换。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Full-Body IK in Control Rig"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "400",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 全身 IK 为什么必须做身高、臂展和骨骼比例校准？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "不同玩家的真实身高、肩宽和臂长差异很大，直接把同一套骨架套到所有人身上会导致手够不到、肩膀塌陷或脚底漂浮。校准阶段用 HMD、手柄和可选站姿数据估计比例，再让 IK 在合理约束内求解，动画表现会稳定很多。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "IK Rig, Retargeting and Full-Body IK"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "401",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 移动处理为什么通常移动 VROrigin 或 XR Origin，而不是直接改 Camera？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Camera 的相对位姿由 HMD 追踪实时驱动，直接改 Camera 会和设备追踪结果互相覆盖。虚拟移动应作用在 VROrigin、XR Origin 或 Pawn 根节点上，让头显、手柄、碰撞体和交互射线保持同一个空间基准。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Pawn and XR Origin Movement"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "402",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "连续移动、传送和碰撞修正怎么避免眩晕和穿墙？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "连续移动要控制加速度、转向方式和速度上限，传送要验证 NavMesh、落点空间和玩家朝向。碰撞修正应移动玩家根节点或胶囊并保留 HMD 相对偏移，不能把相机强行推回墙外造成突兀画面跳变。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Template Locomotion and Player Collision"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
   }
 ]

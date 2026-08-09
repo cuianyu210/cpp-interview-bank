@@ -29,6 +29,7 @@ const authorityLabels: Record<AnswerAuthority, string> = {
   'gnu-libstdcxx': 'GNU libstdc++',
   gof: 'GoF',
   'epic-games': 'Epic Games',
+  'meta-developers': 'Meta Developers',
   'microsoft-learn': 'Microsoft Learn',
   'ietf-rfc': 'IETF RFC'
 };

@@ -7,7 +7,7 @@ import type {
 const answerAuthorities: Record<QuestionGroup, ReadonlySet<AnswerAuthority>> = {
   cpp: new Set(['cppreference', 'iso-cpp', 'wg21', 'cpp-core-guidelines', 'gnu-libstdcxx']),
   gof: new Set(['gof']),
-  ue5: new Set(['epic-games']),
+  ue5: new Set(['epic-games', 'meta-developers']),
   windows: new Set(['microsoft-learn', 'ietf-rfc'])
 };
 

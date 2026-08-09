@@ -10,6 +10,7 @@ const authorities = [
   'gnu-libstdcxx',
   'gof',
   'epic-games',
+  'meta-developers',
   'microsoft-learn',
   'ietf-rfc'
 ] as const;

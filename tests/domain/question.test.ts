@@ -99,6 +99,25 @@ describe('question domain contracts', () => {
     expect(() => (runtime.scopes as string[]).push('C++20')).toThrow(TypeError);
   });
 
+  it('accepts Meta Developers as an authoritative XR platform source', () => {
+    const authoring = createAuthoringQuestion({
+      ...validInput,
+      group: 'ue5',
+      category: 'ue5/xr-vr',
+      scopes: ['UE5'],
+      answerSources: [
+        { authority: 'epic-games', topic: 'OpenXR Passthrough' },
+        { authority: 'meta-developers', topic: 'Meta XR Passthrough' }
+      ],
+      evidenceIds: ['evidence-001', 'evidence-002']
+    });
+
+    expect(authoring.answerSources.map((item) => item.authority)).toEqual([
+      'epic-games',
+      'meta-developers'
+    ]);
+  });
+
   it.each([
     ['group', { group: 'invalid' }],
     ['difficulty', { difficulty: 6 }],
