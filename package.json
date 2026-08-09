@@ -14,7 +14,8 @@
     "build:questions": "pnpm questions build",
     "build:app": "esbuild src/main.ts --bundle --format=iife --target=es2020 --outfile=app.js",
     "build:css": "esbuild src/styles/main.css --bundle --outfile=styles.css",
-    "build": "pnpm run build:questions && pnpm run build:app && pnpm run build:css && pnpm run questions:check",
+    "build:index": "tsx tools/update-asset-versions.ts",
+    "build": "pnpm run build:questions && pnpm run build:app && pnpm run build:css && pnpm run build:index && pnpm run questions:check",
     "check": "pnpm run typecheck && pnpm run lint && pnpm run test:coverage && pnpm run questions:check",
     "test:e2e": "playwright test",
     "verify": "pnpm run build && pnpm run check && pnpm run test:e2e"

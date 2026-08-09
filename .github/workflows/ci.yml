@@ -36,4 +36,4 @@ jobs:
         run: pnpm verify
 
       - name: Check generated assets
-        run: git diff --exit-code -- app.js styles.css questions.js
+        run: git diff --exit-code -- index.html app.js styles.css questions.js
