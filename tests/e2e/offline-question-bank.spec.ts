@@ -40,13 +40,13 @@ test('loads the offline page on desktop and mobile without http requests', async
   expect(externalRequests).toEqual([]);
 });
 
-test('orders questions by difficulty before group and id', async ({ page }) => {
+test('orders questions by study path before difficulty and id', async ({ page }) => {
   await page.goto(pageUrl);
 
   await expect(page.locator('#question-list h2')).toHaveText([
     'RAII manages ownership',
-    'UObject lifecycle',
     'ADL expands candidate functions',
+    'UObject lifecycle',
     'LoadLibraryEx chooses a DLL search path',
     'IOCP completion ordering'
   ]);
