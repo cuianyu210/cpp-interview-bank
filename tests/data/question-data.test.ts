@@ -49,6 +49,7 @@ const expectedCounts: Record<Group, number> = {
   windows: 80
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
+const commonCppAbbreviations = ['ODR', 'ADL', 'PImpl', 'RAII', 'EBO', 'SFINAE', 'NRVO', 'ABI'];
 const allowedAuthorities = new Set([
   'cppreference',
   'iso-cpp',
@@ -192,6 +193,14 @@ describe('authoring question data', () => {
         expect(source.topic.trim()).not.toBe('');
         expect(source.locator).toBeUndefined();
         expect(source.url).toBeUndefined();
+      }
+    }
+  });
+
+  it('annotates common C++ abbreviations in the question title', () => {
+    for (const question of questions.filter((entry) => entry.group === 'cpp')) {
+      if (commonCppAbbreviations.some((abbreviation) => question.title.includes(abbreviation))) {
+        expect(question.title, question.id).toMatch(/[（(].*[）)]/);
       }
     }
   });

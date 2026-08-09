@@ -3,7 +3,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "001",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "ODR 对跨翻译单元的声明和定义有哪些约束？",
+    "title": "什么是 ODR（单一定义规则）？它对跨翻译单元的声明和定义有哪些约束？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -31,7 +31,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "003",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "内部链接和外部链接如何决定名字是否表示同一实体？",
+    "title": "什么是内部链接和外部链接？它们怎么决定名字是否表示同一实体？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -59,7 +59,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "005",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "ADL 如何向普通名字查找结果中加入函数候选？",
+    "title": "什么是 ADL（实参依赖查找）？它如何把函数候选加入普通名字查找？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -73,7 +73,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "006",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "using 声明和 using 指令对名字查找有什么不同？",
+    "title": "using 声明和 using 指令有什么区别？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -87,7 +87,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "007",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "constexpr 函数在编译期和运行期调用时有什么区别？",
+    "title": "什么是 constexpr 函数？它在编译期和运行期有什么区别？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -101,7 +101,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "008",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "if constexpr 为什么能避免实例化无效的模板分支？",
+    "title": "if constexpr 为什么能跳过无效的模板分支？",
     "difficulty": 3,
     "scopes": [
       "C++17"
@@ -127,7 +127,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "010",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "decltype 对变量名和带括号表达式为何可能得到不同类型？",
+    "title": "decltype 为什么会因为变量名和带括号表达式不同而得到不同类型？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -141,7 +141,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "011",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "decltype(auto) 返回局部变量时为什么要警惕额外括号？",
+    "title": "decltype(auto) 返回局部变量时为什么要小心额外括号？",
     "difficulty": 4,
     "scopes": [
       "C++14",
@@ -168,7 +168,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "013",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "enum class 如何避免枚举值污染作用域和隐式转整数？",
+    "title": "什么是 enum class？它为什么能避免枚举值污染作用域和隐式转整数？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -196,7 +196,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "015",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "不同翻译单元中的静态对象初始化顺序为何不可靠？",
+    "title": "为什么不同翻译单元中的静态对象初始化顺序不可靠？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -210,7 +210,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "016",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "thread_local 对象何时初始化并在何时析构？",
+    "title": "thread_local 对象什么时候初始化、什么时候析构？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -224,7 +224,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "017",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "整型提升会怎样影响小整数类型的表达式结果？",
+    "title": "什么是整型提升？它会怎样影响小整数类型的表达式结果？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -238,7 +238,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "018",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "有符号数和无符号数混合比较为什么容易得到反直觉结果？",
+    "title": "有符号数和无符号数混合比较为什么容易出问题？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -280,7 +280,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "021",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "聚合初始化在 C++17 中如何处理基类和默认成员初始化器？",
+    "title": "C++17 里的聚合初始化怎么处理基类和默认成员初始化器？",
     "difficulty": 3,
     "scopes": [
       "C++17"
@@ -292,7 +292,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "022",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "临时对象绑定到 const 引用时寿命一定会延长吗？",
+    "title": "临时对象绑定到 const 引用时，生命周期一定会延长吗？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -306,7 +306,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "023",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "数组在什么上下文中不会退化为指针？",
+    "title": "数组在哪些上下文里不会退化成指针？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -320,7 +320,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "024",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "模板按值参数为什么会丢弃实参的顶层 const？",
+    "title": "模板按值参数为什么会丢掉实参的顶层 const？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -334,7 +334,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "025",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "严格别名规则允许通过哪些类型访问对象存储？",
+    "title": "什么是严格别名规则？哪些类型可以访问对象存储？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -362,7 +362,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "027",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "memcpy 何时可以安全复制一个对象的表示？",
+    "title": "memcpy 什么时候可以安全复制一个对象？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -376,7 +376,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "028",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "C++17 对函数实参求值顺序提供了什么保证？",
+    "title": "C++17 对函数实参求值顺序有什么保证？",
     "difficulty": 3,
     "scopes": [
       "C++17"
@@ -388,7 +388,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "029",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "声明析构函数后编译器还会隐式生成移动操作吗？",
+    "title": "声明析构函数后，编译器还会隐式生成移动操作吗？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -402,7 +402,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "030",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "零法则为什么优于手写五个特殊成员函数？",
+    "title": "什么是零法则？为什么它比手写五个特殊成员函数更好？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -416,7 +416,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "031",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "通过基类指针删除派生对象时为什么需要虚析构函数？",
+    "title": "为什么通过基类指针删除派生对象时需要虚析构函数？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -430,7 +430,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "032",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "纯虚析构函数为什么仍然必须提供定义？",
+    "title": "纯虚析构函数为什么还要提供定义？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -486,7 +486,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "036",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "多重继承中的同名成员歧义如何消解？",
+    "title": "多重继承中的同名成员歧义怎么解决？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -500,7 +500,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "037",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "虚基类由谁负责初始化？",
+    "title": "虚基类由谁来初始化？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -514,7 +514,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "038",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "standard-layout 和 trivially copyable 分别保证什么？",
+    "title": "什么是 standard-layout 和 trivially copyable？它们分别保证什么？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -528,7 +528,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "039",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "成员初始化列表的书写顺序会改变实际初始化顺序吗？",
+    "title": "成员初始化列表的书写顺序会影响实际初始化顺序吗？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -542,7 +542,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "040",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "空基类优化为什么不能当成所有对象布局的保证？",
+    "title": "什么是 EBO（空基类优化）？为什么不能把它当成所有对象布局的保证？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -556,7 +556,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "041",
     "group": "cpp",
     "category": "cpp/classes-object-model",
-    "title": "PImpl 如何降低头文件依赖并稳定二进制边界？",
+    "title": "什么是 PImpl（实现指针）？它如何降低头文件依赖并稳定二进制边界？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -584,7 +584,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "043",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
-    "title": "RAII 如何让异常路径自动释放资源？",
+    "title": "什么是 RAII（资源获取即初始化）？它如何让异常路径自动释放资源？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -706,7 +706,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "052",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
-    "title": "copy-and-swap 如何提供强异常保证？",
+    "title": "什么是 copy-and-swap？它如何提供强异常保证？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -971,7 +971,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "071",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
-    "title": "转发引用与普通右值引用怎样区分？",
+    "title": "转发引用和普通右值引用有什么区别？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -1053,7 +1053,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "077",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
-    "title": "NRVO 未发生时返回局部对象会怎样选择移动或复制？",
+    "title": "什么是 NRVO（命名返回值优化）？未发生时返回局部对象会怎样选择移动或复制？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -1165,7 +1165,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "085",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "类模板偏特化如何选择最匹配的特化？",
+    "title": "类模板偏特化怎么选出最匹配的特化？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -1179,7 +1179,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "086",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "显式全特化为什么必须遵守声明可见性和 ODR？",
+    "title": "为什么显式全特化必须遵守声明可见性和 ODR（单一定义规则）？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -1207,7 +1207,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "088",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "哪些替换错误会被 SFINAE 排除而不是直接报错？",
+    "title": "什么是 SFINAE（替换失败并非错误）？哪些替换错误会被它排除而不是直接报错？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -1247,7 +1247,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "091",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "检测惯用法如何同时返回真假和检测到的类型？",
+    "title": "检测惯用法怎么同时返回真假和检测到的类型？",
     "difficulty": 4,
     "scopes": [
       "C++17"
@@ -1259,7 +1259,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "092",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "if constexpr 与 SFINAE 的适用边界有什么不同？",
+    "title": "if constexpr 与 SFINAE（替换失败并非错误）的适用边界有什么不同？",
     "difficulty": 3,
     "scopes": [
       "C++17"
@@ -1283,7 +1283,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "094",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "C++17 的非类型模板参数仍有哪些类型限制？",
+    "title": "C++17 的非类型模板参数有哪些类型限制？",
     "difficulty": 3,
     "scopes": [
       "C++17"
@@ -1489,7 +1489,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "109",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
-    "title": "Lambda 按值捕获和按引用捕获怎样影响对象生命周期？",
+    "title": "lambda 按值捕获和按引用捕获怎样影响对象生命周期？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -1503,7 +1503,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "110",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
-    "title": "C++14 初始化捕获如何移动一个只移动对象？",
+    "title": "C++14 初始化捕获如何转移只移动对象的所有权？",
     "difficulty": 2,
     "scopes": [
       "C++14",
@@ -1529,7 +1529,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "112",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
-    "title": "mutable Lambda 为什么能修改按值捕获的副本？",
+    "title": "mutable lambda 为什么能修改按值捕获的副本？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -1719,7 +1719,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "126",
     "group": "cpp",
     "category": "cpp/exceptions-rtti",
-    "title": "跨共享库抛出 C++ 异常为什么存在 ABI 风险？",
+    "title": "跨共享库抛出 C++ 异常为什么存在 ABI（应用程序二进制接口）风险？",
     "difficulty": 5,
     "scopes": [
       "C++11",
@@ -1871,7 +1871,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "137",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "顺序一致原子操作提供了怎样的全局顺序？",
+    "title": "顺序一致原子操作能保证什么全局顺序？",
     "difficulty": 4,
     "scopes": [
       "C++11",
@@ -1951,7 +1951,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "143",
     "group": "cpp",
     "category": "cpp/strings-time-files-streams",
-    "title": "标准是否保证 std::string 使用小字符串优化？",
+    "title": "C++ 标准是否保证 std::string 一定有小字符串优化？",
     "difficulty": 1,
     "scopes": [
       "C++11",
@@ -2005,7 +2005,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "147",
     "group": "cpp",
     "category": "cpp/strings-time-files-streams",
-    "title": "chrono::duration 的隐式转换为何会拒绝可能丢精度的方向？",
+    "title": "chrono::duration 的隐式转换为什么会拒绝可能丢精度的方向？",
     "difficulty": 3,
     "scopes": [
       "C++11",
