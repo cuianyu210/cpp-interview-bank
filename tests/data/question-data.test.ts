@@ -48,7 +48,7 @@ const expectedCounts: Record<Group, number> = {
   ue5: 100,
   windows: 80
 };
-const minimumSpokenAnswerLength = 90;
+const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
 const allowedAuthorities = new Set([
   'cppreference',
   'iso-cpp',
@@ -211,7 +211,6 @@ describe('authoring question data', () => {
     for (const question of questions) {
       expect(question.difficulty).toBeGreaterThanOrEqual(1);
       expect(question.difficulty).toBeLessThanOrEqual(5);
-      expect(question.answer.trim().length, question.id).toBeGreaterThanOrEqual(minimumSpokenAnswerLength);
       expect(sentenceCount(question.answer)).toBeGreaterThanOrEqual(2);
       expect(sentenceCount(question.answer)).toBeLessThanOrEqual(5);
       expect(question.scopes.length).toBeGreaterThan(0);
@@ -223,6 +222,12 @@ describe('authoring question data', () => {
       } else {
         expect(question.scopes.some((scope) => ['Win32', 'Winsock', 'IOCP'].includes(scope))).toBe(true);
       }
+    }
+  });
+
+  it('keeps spoken answers free of generic padding sentences', () => {
+    for (const question of questions) {
+      expect(question.answer, question.id).not.toMatch(genericAnswerPadding);
     }
   });
 

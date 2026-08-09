@@ -13,8 +13,8 @@ const answerAuthorities: Record<QuestionGroup, ReadonlySet<AnswerAuthority>> = {
 
 const generatedPrompt = /在编译、链接和运行时分别由哪些规则决定|放在头文件并跨翻译单元使用时|与最接近的.*边界在哪里|面试中常见误区是什么/;
 const coachingAnswer = /回答中应|成功路径|失败路径|调用方必须承担|给出(?:一个)?例子|最小复现|先(?:说明|区分|界定|确定|按)/;
+const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
 const sentenceEnding = /[。！？!?]/g;
-const minimumSpokenAnswerLength = 90;
 
 export function checkQuestionContent(question: AuthoringQuestion): string[] {
   return [
@@ -22,7 +22,7 @@ export function checkQuestionContent(question: AuthoringQuestion): string[] {
     idError(question),
     patternError(question),
     phrasingError(question),
-    answerCompletenessError(question),
+    genericPaddingError(question),
     sentenceCountError(question),
     categoryError(question)
   ].filter((error): error is string => Boolean(error));
@@ -70,10 +70,10 @@ function sentenceCountError(question: AuthoringQuestion): string | undefined {
     : `${question.id}: answer must contain between two and five sentences`;
 }
 
-function answerCompletenessError(question: AuthoringQuestion): string | undefined {
-  return question.answer.trim().length >= minimumSpokenAnswerLength
-    ? undefined
-    : `${question.id}: answer must be a complete spoken explanation`;
+function genericPaddingError(question: AuthoringQuestion): string | undefined {
+  return genericAnswerPadding.test(question.answer)
+    ? `${question.id}: generic answer padding is not allowed`
+    : undefined;
 }
 
 function categoryError(question: AuthoringQuestion): string | undefined {

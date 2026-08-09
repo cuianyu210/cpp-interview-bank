@@ -41,7 +41,12 @@ const question = {
 
 describe('question maintenance tools', () => {
   it('accepts a valid set and reports group statistics', () => {
-    const report = validateQuestionSet([question], evidence);
+    const conciseQuestion = {
+      ...question,
+      answer: 'RAII 把资源获取放进构造函数，把释放放进析构函数。对象离开作用域时会自动清理，所以异常路径也不需要重复写释放代码。'
+    };
+
+    const report = validateQuestionSet([conciseQuestion], evidence);
 
     expect(report.errors).toEqual([]);
     expect(report.counts).toEqual({ cpp: 1 });
@@ -81,6 +86,16 @@ describe('question maintenance tools', () => {
     expect(generatedErrors).toContain('001: generated or coaching phrasing is not allowed');
     expect(validateQuestionSet([oneSentence], evidence).errors)
       .toContain('001: answer must contain between two and five sentences');
+  });
+
+  it('rejects generic padding that makes an answer longer without making it more specific', () => {
+    const padded = {
+      ...question,
+      answer: 'RAII 把资源获取放进构造函数，把释放放进析构函数。对象离开作用域时会自动清理，所以异常路径也不需要重复写释放代码。这类规则常常不会在小例子里立刻失败。'
+    };
+
+    expect(validateQuestionSet([padded], evidence).errors)
+      .toContain('001: generic answer padding is not allowed');
   });
 
   it('rejects duplicate stable ids even when question text differs', () => {
