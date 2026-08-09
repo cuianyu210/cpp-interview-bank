@@ -10,7 +10,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "同一实体可以有多次声明，但被 ODR-use 的非 inline 实体通常只能有一个定义。inline 函数、inline 变量和模板可在多个翻译单元出现等价定义，违反一致性要求会形成未定义行为。",
+    "answer": "同一实体可以有多次声明。但是被 ODR-use 的非 inline 实体通常只能有一个定义。inline 函数、inline 变量和模板可以在多个翻译单元出现等价定义，违反一致性要求会形成未定义行为。",
     "source": "资料依据：cppreference · One Definition Rule"
   },
   {
@@ -24,7 +24,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "inline 的语言语义主要是允许实体在多个翻译单元中出现等价定义，并不强制机器码展开。是否执行调用内联属于优化决定，编译器可以忽略 inline，也可以内联未标记的函数。",
+    "answer": "inline 的语言语义主要是允许实体在多个翻译单元中出现等价定义，并不强制机器码展开。是否执行调用内联属于优化决定，编译器可以忽略 inline，也可以内联未标记的函数。这类规则常常不会在小例子里立刻失败，但一旦跨翻译单元或跨模块就会变成难排查的问题。",
     "source": "资料依据：cppreference · inline specifier"
   },
   {
@@ -38,7 +38,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "内部链接的名字在每个翻译单元中表示独立实体，外部链接的名字可以在多个翻译单元中指向同一实体。匿名命名空间和命名空间作用域 const 常用于获得内部链接，extern 可用于声明具有外部链接的实体。",
+    "answer": "内部链接的名字在每个翻译单元中表示独立实体，外部链接的名字可以在多个翻译单元中指向同一实体。匿名命名空间和命名空间作用域 const 常用于获得内部链接，extern 可以用于声明具有外部链接的实体。",
     "source": "资料依据：cppreference · storage duration and linkage"
   },
   {
@@ -52,7 +52,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "extern \"C\" 指定 C 语言链接，主要影响函数名的链接方式以及实现定义的调用约定。它不会把 C++ 类型、重载或异常自动变成 C ABI 可用形式，因此接口仍应限制为双方都能表示的数据布局。",
+    "answer": "extern \"C\" 指定 C 语言链接，主要影响函数名的链接方式以及实现定义的调用约定。它不会把 C++ 类型、重载或异常自动变成 C ABI 可用形式。因此接口仍然应该限制为双方都能表示的数据布局。",
     "source": "资料依据：cppreference · language linkage"
   },
   {
@@ -66,7 +66,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对未限定函数调用，ADL 会根据实参类型的关联命名空间和关联类加入候选。它不会作用于限定调用，隐藏友元可只通过 ADL 被找到，因此泛型代码需要谨慎控制 using 和限定名。",
+    "answer": "对未限定函数调用，ADL 会根据实参类型的关联命名空间和关联类加入候选。它不会作用于限定调用，隐藏友元可以只通过 ADL 被找到。因此泛型代码需要谨慎控制 using 和限定名。这类规则常常不会在小例子里立刻失败，但一旦跨翻译单元或跨模块就会变成难排查的问题。",
     "source": "资料依据：cppreference · argument-dependent lookup"
   },
   {
@@ -80,7 +80,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "using 声明把指定名字引入当前作用域，而 using 指令让名字查找考虑整个命名空间。头文件中的 using namespace 会影响所有包含者的候选集，容易造成歧义，所以通常只在局部实现作用域使用。",
+    "answer": "using 声明把指定名字引入当前作用域，而 using 指令让名字查找考虑整个命名空间。头文件中的 using namespace 会影响所有包含者的候选集，容易造成歧义。所以通常只在局部实现作用域使用。",
     "source": "资料依据：cppreference · namespace using-directives"
   },
   {
@@ -94,7 +94,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "constexpr 函数具备参与常量求值的资格，但只有实参和执行路径满足常量表达式规则时才必须在编译期求值。C++14 放宽了函数体限制；不满足常量求值条件的调用仍可作为普通运行期调用。",
+    "answer": "constexpr 函数具备参与常量求值的资格。但是只有实参和执行路径满足常量表达式规则时才必须在编译期求值。C++14 放宽了函数体限制。不满足常量求值条件的调用仍可以作为普通运行期调用。",
     "source": "资料依据：cppreference · constexpr specifier"
   },
   {
@@ -106,7 +106,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "if constexpr 的条件必须可转为常量表达式，未选择的分支会成为 discarded statement。依赖模板参数的丢弃分支不会在该实例中完成实例化，但分支仍必须满足基本语法并通过非依赖名字检查。",
+    "answer": "if constexpr 的条件必须可转为常量表达式，未选择的分支会成为 discarded statement。依赖模板参数的丢弃分支不会在该实例中完成实例化。但是分支仍必须满足基本语法并通过非依赖名字检查。",
     "source": "资料依据：cppreference · constexpr if"
   },
   {
@@ -134,7 +134,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对未加括号的名字或成员访问，decltype 直接得到声明类型。对一般表达式，lvalue 得到 T&、xvalue 得到 T&&、prvalue 得到 T，因此额外括号可能把变量名从 T 变成 T&。",
+    "answer": "对未加括号的名字或成员访问，decltype 直接得到声明类型。对一般表达式，lvalue 得到 T&、xvalue 得到 T&&、prvalue 得到 T。因此额外括号可能把变量名从 T 变成 T&。",
     "source": "资料依据：cppreference · decltype specifier"
   },
   {
@@ -147,7 +147,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "decltype(auto) 完全采用 decltype 的规则，return (local) 会推导为局部变量的左值引用。函数返回后该引用悬空，而 return local 通常按声明类型返回值，所以括号会实质改变接口。",
+    "answer": "decltype(auto) 完全采用 decltype 的规则，return (local) 会推导为局部变量的左值引用。函数返回后该引用悬空，而 return local 通常按声明类型返回值。所以括号会实质改变接口。",
     "source": "资料依据：cppreference · placeholder type specifiers decltype(auto)"
   },
   {
@@ -161,7 +161,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "nullptr 的类型是 std::nullptr_t，可以转换为任意指针和成员指针，但不会按普通整数参与重载。0 或实现为整数的 NULL 可能选择整型重载，从而产生歧义或调用错误接口。",
+    "answer": "nullptr 的类型是 std::nullptr_t，可以转换为任意指针和成员指针。但是不会按普通整数参与重载。0 或实现为整数的 NULL 可能选择整型重载，从而产生歧义或调用错误接口。",
     "source": "资料依据：cppreference · pointer literals"
   },
   {
@@ -175,7 +175,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "作用域枚举的枚举值必须通过枚举类型限定访问，并且不会隐式转换为整数。可以显式指定底层类型以控制存储和 ABI，但跨接口时仍应固定编译器和布局约定。",
+    "answer": "作用域枚举的枚举值必须通过枚举类型限定访问，并且不会隐式转换为整数。可以显式指定底层类型以控制存储和 ABI。但是跨接口时仍然应该固定编译器和布局约定。工程里更稳妥的做法，是让接口直接表达这些边界，而不是依赖调用方记住隐含前提。",
     "source": "资料依据：cppreference · enumeration declaration"
   },
   {
@@ -189,7 +189,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "alignas 可以提高对象或类型的对齐要求，不能用更小的非零值削弱自然对齐。多个 alignas 同时出现时采用最严格的有效要求，不满足实现支持范围会使程序不符合规则。",
+    "answer": "alignas 可以提高对象或类型的对齐要求，不能用更小的非零值削弱自然对齐。多个 alignas 同时出现时采用最严格的有效要求，不满足实现支持范围会使程序不符合规则。这类规则常常不会在小例子里立刻失败，但一旦跨翻译单元或跨模块就会变成难排查的问题。",
     "source": "资料依据：cppreference · alignment specifier"
   },
   {
@@ -203,7 +203,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "同一翻译单元内的有序动态初始化按定义顺序进行，但不同翻译单元之间通常没有可依赖的全局顺序。用函数内静态对象按需初始化可以把依赖关系转移到首次调用，并从 C++11 起获得线程安全初始化。",
+    "answer": "同一翻译单元内的有序动态初始化按定义顺序进行。但是不同翻译单元之间通常没有可依赖的全局顺序。用函数内静态对象按需初始化可以把依赖关系转移到首次调用，并从 C++11 起获得线程安全初始化。",
     "source": "资料依据：cppreference · non-local initialization"
   },
   {
@@ -231,7 +231,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "bool、char、short 等小整数类型参与大多数算术运算前会提升为 int 或 unsigned int。运算结果类型由提升后的操作数决定，因此溢出和重载选择不能按原始变量类型判断。",
+    "answer": "bool、char、short 等小整数类型参与大多数算术运算前会提升为 int 或 unsigned int。运算结果类型由提升后的操作数决定。因此溢出和重载选择不能按原始变量类型判断。",
     "source": "资料依据：cppreference · implicit conversions integral promotions"
   },
   {
@@ -245,7 +245,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "通常算术转换可能把有符号操作数转换成同等级的无符号类型，负数随后表现为很大的无符号值。比较前应统一到能表达双方范围的类型，不能只在结果异常后再做强制转换。",
+    "answer": "通常算术转换可能把有符号操作数转换成同等级的无符号类型，负数随后表现为很大的无符号值。比较前应该统一到能表达双方范围的类型，不能只在结果异常后再做强制转换。因此，写代码时要让类型和初始化形式尽量明确，避免把隐式转换留到重载解析里碰运气。",
     "source": "资料依据：cppreference · usual arithmetic conversions"
   },
   {
@@ -259,7 +259,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "花括号初始化会拒绝可能丢失范围或精度的整型、浮点和浮点到整型转换，只有部分可证明安全的常量表达式例外。这个检查发生在编译期，因此比圆括号初始化更适合暴露隐式截断。",
+    "answer": "花括号初始化会拒绝可能丢失范围或精度的整型、浮点和浮点到整型转换，只有部分可证明安全的常量表达式例外。这个检查发生在编译期。因此比圆括号初始化更适合暴露隐式截断。这类问题的重点是类型系统的规则，而不是某个表达式在当前编译器上看起来能不能工作。",
     "source": "资料依据：cppreference · list-initialization narrowing conversions"
   },
   {
@@ -285,7 +285,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "C++17 允许满足聚合条件的类包含公开基类，初始化顺序先基类后成员。未显式提供的成员使用默认成员初始化器或值初始化，但用户提供构造函数等条件会使类型失去聚合资格。",
+    "answer": "C++17 允许满足聚合条件的类包含公开基类，初始化顺序先基类后成员。未显式提供的成员使用默认成员初始化器或值初始化。但是用户提供构造函数等条件会使类型失去聚合资格。因此，写代码时要让类型和初始化形式尽量明确，避免把隐式转换留到重载解析里碰运气。",
     "source": "资料依据：cppreference · aggregate initialization"
   },
   {
@@ -299,7 +299,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "临时对象直接绑定到局部 const 引用时，寿命通常延长到该引用的作用域结束。通过函数参数、new 初始化器或返回引用等场景有不同边界，不能把寿命延长沿着另一个引用继续传递。",
+    "answer": "临时对象直接绑定到局部 const 引用时，寿命通常延长到该引用的作用域结束。通过函数参数、new 初始化器或返回引用等场景有不同边界，不能把寿命延长沿着另一个引用继续传递。这类问题的重点是类型系统的规则，而不是某个表达式在当前编译器上看起来能不能工作。",
     "source": "资料依据：cppreference · reference initialization temporary lifetime"
   },
   {
@@ -313,7 +313,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "数组在大多数值上下文中转换为指向首元素的指针，但作为 sizeof、alignof、取地址和引用绑定的操作数时不会退化。模板按引用接收数组也能保留长度信息。",
+    "answer": "数组在大多数值上下文中转换为指向首元素的指针。但是作为 sizeof、alignof、取地址和引用绑定的操作数时不会退化。模板按引用接收数组也能保留长度信息。如果边界没有写清楚，问题通常会表现为重载选错、生命周期错误或窄化转换被拒绝。",
     "source": "资料依据：cppreference · array-to-pointer conversion"
   },
   {
@@ -327,7 +327,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "按值形参会复制一个新的对象，模板推导因此忽略实参类型的顶层 cv 限定。指针所指对象的 const 属于低层限定并会保留，按引用形参也能观察原对象的 cv 属性。",
+    "answer": "按值形参会复制一个新的对象，模板推导因此忽略实参类型的顶层 cv 限定。指针所指对象的 const 属于低层限定并会保留，按引用形参也能观察原对象的 cv 属性。因此，写代码时要让类型和初始化形式尽量明确，避免把隐式转换留到重载解析里碰运气。",
     "source": "资料依据：cppreference · template argument deduction cv qualifiers"
   },
   {
@@ -341,7 +341,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对象通常只能通过与其动态类型兼容的 glvalue 访问，char、unsigned char 和 std::byte 可用于检查对象表示。用不相关指针 reinterpret_cast 后解引用可能违反严格别名并导致未定义行为，复制字节应优先使用 memcpy。",
+    "answer": "对象通常只能通过与其动态类型兼容的 glvalue 访问，char、unsigned char 和 std::byte 可以用于检查对象表示。用不相关指针 reinterpret_cast 后解引用可能违反严格别名并导致未定义行为，复制字节应该优先使用 memcpy。",
     "source": "资料依据：cppreference · object type-aliasing"
   },
   {
@@ -355,7 +355,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "标准通常只允许读取当前活动成员，切换活动成员需要开始新成员的生命周期。某些实现扩展允许类型双关，但可移植代码应使用显式转换、memcpy 或 C++17 的 variant。",
+    "answer": "标准通常只允许读取当前活动成员，切换活动成员需要开始新成员的生命周期。某些实现扩展允许类型双关。但是可移植代码应该使用显式转换、memcpy 或 C++17 的 variant。如果边界没有写清楚，问题通常会表现为重载选错、生命周期错误或窄化转换被拒绝。",
     "source": "资料依据：cppreference · union declaration active member"
   },
   {
@@ -369,7 +369,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对 trivially copyable 类型，可以把对象表示复制到字节数组并复制回来，原值应得到恢复。把字节解释成另一个不兼容类型仍受生命周期、对齐和别名规则约束，memcpy 不是任意类型转换许可证。",
+    "answer": "对 trivially copyable 类型，可以把对象表示复制到字节数组并复制回来，原值应该得到恢复。把字节解释成另一个不兼容类型仍受生命周期、对齐和别名规则约束，memcpy 不是任意类型转换许可证。",
     "source": "资料依据：cppreference · object representation and trivially copyable types"
   },
   {
@@ -381,7 +381,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "C++17 保证不同实参的求值彼此不交错，即一个实参完整求值后才开始另一个。具体先算哪个实参仍通常未指定，所以程序不能依赖从左到右的调用顺序。",
+    "answer": "C++17 保证不同实参的求值彼此不交错，即一个实参完整求值后才开始另一个。具体先算哪个实参仍通常未指定。所以程序不能依赖从左到右的调用顺序。这类问题的重点是类型系统的规则，而不是某个表达式在当前编译器上看起来能不能工作。",
     "source": "资料依据：cppreference · order of evaluation"
   },
   {
@@ -395,7 +395,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "用户声明析构函数会抑制隐式移动构造和移动赋值的生成，但复制操作可能仍存在。资源管理类型应显式决定五个特殊成员的语义，纯组合类型则优先遵循零法则。",
+    "answer": "用户声明析构函数会抑制隐式移动构造和移动赋值的生成。但是复制操作可能仍存在。资源管理类型应该显式决定五个特殊成员的语义，纯组合类型则优先遵循零法则。工程上应该把构造、销毁和动态类型关系说清楚，否则代码容易在维护时被误用。",
     "source": "资料依据：cppreference · special member functions"
   },
   {
@@ -409,7 +409,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "零法则把资源所有权交给标准容器和智能指针，使编译器生成的复制、移动和析构自然组合。只有类型直接拥有非 RAII 资源或需要特殊复制语义时，才应显式实现五法则。",
+    "answer": "零法则把资源所有权交给标准容器和智能指针，使编译器生成的复制、移动和析构自然组合。只有类型直接拥有非 RAII 资源或需要特殊复制语义时，才应该显式实现五法则。因此，类的接口要明确表达所有权、继承关系和对象状态，不能只依赖调用者按约定使用。",
     "source": "资料依据：cppreference · rule of zero"
   },
   {
@@ -423,7 +423,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "若基类析构函数非虚，通过基类指针 delete 一个派生对象会产生未定义行为。虚析构保证从最终派生类开始逐层析构；不允许多态删除的基类可采用 protected 非虚析构。",
+    "answer": "若基类析构函数非虚，通过基类指针 delete 一个派生对象会产生未定义行为。虚析构保证从最终派生类开始逐层析构。不允许多态删除的基类可采用 protected 非虚析构。这类问题经常在复制、析构或多态调用时暴露，所以对象模型边界比语法形式更重要。",
     "source": "资料依据：C++ Core Guidelines · virtual destructor"
   },
   {
@@ -437,7 +437,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "纯虚析构函数可以让类保持抽象，但派生对象销毁时仍会调用基类析构部分。链接器因此需要找到该析构函数的定义，即使它被声明为 = 0。",
+    "answer": "纯虚析构函数可以让类保持抽象。但是派生对象销毁时仍会调用基类析构部分。链接器因此需要找到该析构函数的定义，即使它被声明为 = 0。工程上应该把构造、销毁和动态类型关系说清楚，否则代码容易在维护时被误用。",
     "source": "资料依据：cppreference · pure virtual destructor"
   },
   {
@@ -451,7 +451,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "override 要求当前声明确实覆盖某个基类虚函数，签名或 cv/ref 限定不匹配会直接报错。final 可以禁止继续覆盖函数或继承类，把设计意图变成编译期约束。",
+    "answer": "override 要求当前声明确实覆盖某个基类虚函数，签名或 cv/ref 限定不匹配会直接报错。final 可以禁止继续覆盖函数或继承类，把设计意图变成编译期约束。因此，类的接口要明确表达所有权、继承关系和对象状态，不能只依赖调用者按约定使用。",
     "source": "资料依据：cppreference · override specifier"
   },
   {
@@ -465,7 +465,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "构造或析构某一层基类期间，虚调用只分派到当前正在构造或析构的层次，不会进入尚未构造或已经销毁的派生部分。依赖完整派生状态的逻辑应放到对象完成构造后的显式阶段。",
+    "answer": "构造或析构某一层基类期间，虚调用只分派到当前正在构造或析构的层次，不会进入尚未构造或已经销毁的派生部分。依赖完整派生状态的逻辑应该放到对象完成构造后的显式阶段。这类问题经常在复制、析构或多态调用时暴露，所以对象模型边界比语法形式更重要。",
     "source": "资料依据：cppreference · virtual function during construction"
   },
   {
@@ -479,7 +479,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "按值构造基类对象只复制派生对象中的基类子对象，派生新增状态被切掉，这就是对象切片。需要保留动态类型时应使用引用、指针或具备值语义的多态封装。",
+    "answer": "按值构造基类对象只复制派生对象中的基类子对象，派生新增状态被切掉，这就是对象切片。需要保留动态类型时应该使用引用、指针或具备值语义的多态封装。工程上应该把构造、销毁和动态类型关系说清楚，否则代码容易在维护时被误用。",
     "source": "资料依据：C++ Core Guidelines · object slicing"
   },
   {
@@ -493,7 +493,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "若多个基类都提供同名成员，未限定访问可能产生歧义，即使其中实现完全相同。可以用限定名、using 声明或重新设计公共虚基类来明确选择，但还要检查转换路径是否唯一。",
+    "answer": "若多个基类都提供同名成员，未限定访问可能产生歧义，即使其中实现完全相同。可以用限定名、using 声明或重新设计公共虚基类来明确选择。但是还要检查转换路径是否唯一。因此，类的接口要明确表达所有权、继承关系和对象状态，不能只依赖调用者按约定使用。",
     "source": "资料依据：cppreference · multiple inheritance"
   },
   {
@@ -507,7 +507,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "虚基类只在最终派生对象中存在一个共享子对象，并由最派生类负责初始化。中间类初始化列表中对虚基类的初始化在构造更深派生对象时会被忽略。",
+    "answer": "虚基类只在最终派生对象中存在一个共享子对象，并由最派生类负责初始化。中间类初始化列表中对虚基类的初始化在构造更深派生对象时会被忽略。这类问题经常在复制、析构或多态调用时暴露，所以对象模型边界比语法形式更重要。",
     "source": "资料依据：cppreference · virtual base classes"
   },
   {
@@ -535,7 +535,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "成员始终按类中声明顺序初始化，基类则先于成员，初始化列表的排列不会改变这个顺序。若一个成员初始化依赖另一个成员，声明顺序错误会导致读取尚未初始化的数据。",
+    "answer": "成员始终按类中声明顺序初始化，基类则先于成员，初始化列表的排列不会改变这个顺序。若一个成员初始化依赖另一个成员，声明顺序错误会导致读取尚未初始化的数据。因此，类的接口要明确表达所有权、继承关系和对象状态，不能只依赖调用者按约定使用。",
     "source": "资料依据：cppreference · constructors initialization order"
   },
   {
@@ -549,7 +549,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "实现通常允许空基类不占额外空间，但相同类型的不同子对象仍需满足地址可区分等规则。标准只在特定布局关系下提供保证，普通空成员在 C++17 中仍通常占用空间。",
+    "answer": "实现通常允许空基类不占额外空间。但是相同类型的不同子对象仍然需要满足地址可区分等规则。标准只在特定布局关系下提供保证，普通空成员在 C++17 中仍通常占用空间。这类问题经常在复制、析构或多态调用时暴露，所以对象模型边界比语法形式更重要。",
     "source": "资料依据：cppreference · empty base optimization"
   },
   {
@@ -563,7 +563,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "PImpl 让公开类只持有指向私有实现的指针，调用方无需看到成员布局，修改实现通常不要求重新编译用户代码。析构和移动操作应在实现类型完整的源文件中定义，并明确跨模块分配释放责任。",
+    "answer": "PImpl 让公开类只持有指向私有实现的指针，调用方无需看到成员布局，修改实现通常不要求重新编译用户代码。析构和移动操作应该在实现类型完整的源文件中定义，并明确跨模块分配释放责任。工程上应该把构造、销毁和动态类型关系说清楚，否则代码容易在维护时被误用。",
     "source": "资料依据：C++ Core Guidelines · pImpl idiom"
   },
   {
@@ -577,7 +577,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "覆盖函数可以把返回的类指针或引用收窄为基类返回类型的派生类指针或引用。该规则不适用于按值返回，也要求目标类型在覆盖点具备可访问且无歧义的继承转换。",
+    "answer": "覆盖函数可以把返回的类指针或引用收窄为基类返回类型的派生类指针或引用。该规则不适用于按值返回，也要求目标类型在覆盖点具备可以访问且无歧义的继承转换。因此，类的接口要明确表达所有权、继承关系和对象状态，不能只依赖调用者按约定使用。",
     "source": "资料依据：cppreference · virtual function covariant return"
   },
   {
@@ -591,7 +591,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "RAII 把资源获取绑定到对象构造，把释放绑定到析构，因此正常返回和栈展开都会执行同一清理路径。资源拥有者必须具备明确的移动或复制语义，析构还应保持不抛异常。",
+    "answer": "RAII 把资源获取绑定到对象构造，把释放绑定到析构。因此正常返回和栈展开都会执行同一清理路径。资源拥有者必须具备明确的移动或复制语义，析构还应该保持不抛异常。真正要避免的是资源和对象状态分离，因为异常路径和提前返回最容易漏掉这类清理。",
     "source": "资料依据：cppreference · RAII"
   },
   {
@@ -605,7 +605,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "基本保证要求失败后对象仍有效且没有资源泄漏，强保证要求操作要么成功要么保持原状态。不抛保证承诺操作不会传播异常，常用于析构、swap 和移动路径。",
+    "answer": "基本保证要求失败后对象仍有效且没有资源泄漏，强保证要求操作要么成功要么保持原状态。不抛保证承诺操作不会传播异常，常用于析构、swap 和移动路径。这类规则的工程价值在于把错误路径也纳入同一套生命周期约束。",
     "source": "资料依据：cppreference · exception safety"
   },
   {
@@ -619,7 +619,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "已经完成构造的基类和成员会按逆序析构，尚未完成的最外层对象本身不会调用析构函数。构造函数直接获得的裸资源若未交给已构造成员管理，可能在此路径泄漏。",
+    "answer": "已经完成构造的基类和成员会按逆序析构，尚未完成的最外层对象本身不会调用析构函数。构造函数直接获得的裸资源若未交给已构造成员管理，可能在此路径泄漏。因此，资源管理代码应该把所有权交给对象生命周期，而不是散落在多个手写清理分支里。",
     "source": "资料依据：cppreference · constructors exceptions"
   },
   {
@@ -633,7 +633,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "若已有异常正在传播，析构函数再让异常逃逸会触发 std::terminate。析构函数默认 noexcept，清理失败通常应被记录、转成状态，或交由显式 close 操作处理。",
+    "answer": "若已有异常正在传播，析构函数再让异常逃逸会触发 std::terminate。析构函数默认 noexcept，清理失败通常应被记录、转成状态，或交由显式 close 操作处理。真正要避免的是资源和对象状态分离，因为异常路径和提前返回最容易漏掉这类清理。",
     "source": "资料依据：cppreference · destructors noexcept"
   },
   {
@@ -647,7 +647,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "placement new 只在给定存储上构造对象，不负责释放存储，也不会自动调用原对象析构。重用非平凡对象的存储前应结束旧生命周期，并保证对齐、大小和后续访问满足新对象类型。",
+    "answer": "placement new 只在给定存储上构造对象，不负责释放存储，也不会自动调用原对象析构。重用非平凡对象的存储前应该结束旧生命周期，并保证对齐、大小和后续访问满足新对象类型。这类规则的工程价值在于把错误路径也纳入同一套生命周期约束。",
     "source": "资料依据：cppreference · new expression placement new"
   },
   {
@@ -659,7 +659,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "在同一存储中构造新对象后，旧指针有时不能直接用于访问新对象，尤其涉及 const 成员或完整对象替换边界时。std::launder 返回可用于指向新对象的指针，但不会修复错误的对齐、生命周期或类型别名。",
+    "answer": "在同一存储中构造新对象后，旧指针有时不能直接用于访问新对象，尤其涉及 const 成员或完整对象替换边界时。std::launder 返回可以用于指向新对象的指针。但是不会修复错误的对齐、生命周期或类型别名。",
     "source": "资料依据：cppreference · std::launder"
   },
   {
@@ -673,7 +673,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "函数返回时局部对象和大多数局部临时对象的生命周期结束，引用本身不会延长它们到调用方。编译器可能接受该代码，但任何后续解引用都访问已结束生命周期的对象。",
+    "answer": "函数返回时局部对象和大多数局部临时对象的生命周期结束，引用本身不会延长它们到调用方。编译器可能接受该代码。但是任何后续解引用都访问已结束生命周期的对象。真正要避免的是资源和对象状态分离，因为异常路径和提前返回最容易漏掉这类清理。",
     "source": "资料依据：cppreference · reference initialization lifetime"
   },
   {
@@ -685,7 +685,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "string_view 不拥有字符存储，只保存指针和长度。源 string 析构、移动或发生重新分配后，已有 view 可能悬空，接口应让拥有者寿命明显长于所有观察者。",
+    "answer": "string_view 不拥有字符存储，只保存指针和长度。源 string 析构、移动或发生重新分配后，已有 view 可能悬空，接口应该让拥有者寿命明显长于所有观察者。这类知识点的重点是说清标准库契约，而不是只记住某个类型的表面 API。",
     "source": "资料依据：cppreference · std::basic_string_view"
   },
   {
@@ -699,7 +699,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "除非具体类型另有说明，移动后的对象处于有效但未指定状态，可以析构、赋值或调用不依赖特定值的操作。代码不能假设它一定为空，应在需要确定状态时显式重新赋值。",
+    "answer": "除非具体类型另有说明，移动后的对象处于有效但未指定状态，可以析构、赋值或调用不依赖特定值的操作。代码不能假设它一定为空，应该在需要确定状态时显式重新赋值。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · move constructors moved-from state"
   },
   {
@@ -713,7 +713,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "赋值先在临时对象中完成可能抛异常的复制，成功后再用不抛的 swap 提交状态。复制失败时原对象保持不变，代价是额外临时对象，并且 swap 必须正确处理所有不变量。",
+    "answer": "赋值先在临时对象中完成可能抛异常的复制，成功后再用不抛的 swap 提交状态。复制失败时原对象保持不变，代价是额外临时对象，并且 swap 必须正确处理所有不变量。真正要避免的是资源和对象状态分离，因为异常路径和提前返回最容易漏掉这类清理。",
     "source": "资料依据：cppreference · copy assignment copy-and-swap"
   },
   {
@@ -727,7 +727,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "良好设计的复制赋值应在 x = x 时保持正确，但不一定需要显式比较地址。copy-and-swap 天然处理自赋值；手写先释放后复制的实现则可能必须检测或重新安排顺序。",
+    "answer": "良好设计的复制赋值应该在 x = x 时保持正确。但是不一定需要显式比较地址。copy-and-swap 天然处理自赋值。手写先释放后复制的实现则可能必须检测或重新安排顺序。这类规则的工程价值在于把错误路径也纳入同一套生命周期约束。",
     "source": "资料依据：cppreference · copy assignment operator"
   },
   {
@@ -755,7 +755,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "delete 表达式通过静态基类指针释放派生对象时，需要虚析构才能找到最终析构链和正确释放函数。缺少虚析构不仅会漏掉派生成员清理，标准直接把这种删除定义为未定义行为。",
+    "answer": "delete 表达式通过静态基类指针释放派生对象时，需要虚析构才能找到最终析构链和正确释放函数。缺少虚析构不仅会漏掉派生成员清理，标准直接把这种删除定义为未定义行为。真正要避免的是资源和对象状态分离，因为异常路径和提前返回最容易漏掉这类清理。",
     "source": "资料依据：cppreference · delete expression polymorphic"
   },
   {
@@ -769,7 +769,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "可以用自定义 RAII guard 在构造时保存清理函数，并在析构时执行，移动时必须确保只有一个活动拥有者。清理函数不应让异常逃出析构，提交成功后则需要显式 release 取消执行。",
+    "answer": "可以用自定义 RAII guard 在构造时保存清理函数，并在析构时执行，移动时必须确保只有一个活动拥有者。清理函数不应该让异常逃出析构，提交成功后则需要显式 release 取消执行。",
     "source": "资料依据：C++ Core Guidelines · RAII scope guard"
   },
   {
@@ -810,7 +810,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "make_unique 在一个函数调用中完成对象构造和 unique_ptr 建立，避免裸指针暴露在其他可能抛异常的实参求值之间。它还减少重复类型名，但需要自定义删除器时仍要显式构造 unique_ptr。",
+    "answer": "make_unique 在一个函数调用中完成对象构造和 unique_ptr 建立，避免裸指针暴露在其他可能抛异常的实参求值之间。它还减少重复类型名。但是需要自定义删除器时仍要显式构造 unique_ptr。",
     "source": "资料依据：cppreference · std::make_unique"
   },
   {
@@ -824,7 +824,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "控制块通常保存强引用计数、弱引用计数、删除器和可能的分配器，被管理对象不一定与 get() 返回的地址相同。计数操作具有规定的线程安全性，但多个线程读写被管理对象仍需自行同步。",
+    "answer": "控制块通常保存强引用计数、弱引用计数、删除器和可能的分配器，被管理对象不一定与 get() 返回的地址相同。计数操作具有规定的线程安全性。但是多个线程读写被管理对象仍然需要自行同步。",
     "source": "资料依据：cppreference · std::shared_ptr implementation notes"
   },
   {
@@ -838,7 +838,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "make_shared 通常把对象和控制块放在一次分配中，减少分配次数并提高局部性。若仍有 weak_ptr 存在，整块存储可能在对象析构后继续保留；它也不能直接接受自定义删除器。",
+    "answer": "make_shared 通常把对象和控制块放在一次分配中，减少分配次数并提高局部性。若仍有 weak_ptr 存在，整块存储可能在对象析构后继续保留。它也不能直接接受自定义删除器。",
     "source": "资料依据：cppreference · std::make_shared"
   },
   {
@@ -852,7 +852,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "weak_ptr 不增加强引用计数，因此把环上的非拥有边改为 weak_ptr 后，强引用归零时对象仍可析构。访问前必须调用 lock 获取临时 shared_ptr，并处理对象已经过期的情况。",
+    "answer": "weak_ptr 不增加强引用计数。因此把环上的非拥有边改为 weak_ptr 后，强引用归零时对象仍可析构。访问前必须调用 lock 获取临时 shared_ptr，并处理对象已经过期的情况。",
     "source": "资料依据：cppreference · std::weak_ptr"
   },
   {
@@ -880,7 +880,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "别名构造共享另一个 shared_ptr 的控制块，却保存一个不同的观察指针。它可让成员子对象随宿主一起存活，但销毁的始终是控制块原本管理的对象，不是 get() 指向的地址。",
+    "answer": "别名构造共享另一个 shared_ptr 的控制块，却保存一个不同的观察指针。它可以让成员子对象随宿主一起存活。但是销毁的始终是控制块原本管理的对象，不是 get() 指向的地址。工程上还要把所有权、失效规则和复杂度预期写清楚，否则 STL 代码很容易看着简单却埋下边界问题。",
     "source": "资料依据：cppreference · std::shared_ptr aliasing constructor"
   },
   {
@@ -922,7 +922,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "atomic_load、atomic_store 等自由函数允许多个线程原子替换和读取同一个 shared_ptr 对象，避免对该句柄本身的数据竞争。它们只同步智能指针值，被管理对象的可变状态仍需独立同步。",
+    "answer": "atomic_load、atomic_store 等自由函数允许多个线程原子替换和读取同一个 shared_ptr 对象，避免对该句柄本身的数据竞争。它们只同步智能指针值，被管理对象的可变状态仍然需要独立同步。",
     "source": "资料依据：cppreference · atomic operations for shared_ptr"
   },
   {
@@ -936,7 +936,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "不同模块可能使用不同运行库、堆或编译选项，在另一侧直接 delete 会跨越不兼容的分配边界。接口应携带由分配模块提供的删除器，或暴露成对的创建和销毁函数。",
+    "answer": "不同模块可能使用不同运行库、堆或编译选项，在另一侧直接 delete 会跨越不兼容的分配边界。接口应该携带由分配模块提供的删除器，或暴露成对的创建和销毁函数。因此，智能指针接口要把所有权和删除方式说清楚，尤其不能让分配端和释放端的约定分离。",
     "source": "资料依据：C++ Core Guidelines · resource ownership across ABI"
   },
   {
@@ -964,7 +964,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "只要组合中出现左值引用，T& 与任何 & 或 && 折叠后都是 T&。只有 T&& 与 T&& 组合仍为 T&&，这条规则让转发引用能够保留实参值类别。",
+    "answer": "只要组合中出现左值引用，T& 与任何 & 或 && 折叠后都是 T&。只有 T&& 与 T&& 组合仍为 T&&，这条规则让转发引用能够保留实参值类别。这类问题的核心是表达式类别和引用折叠规则，不能只把 std::move 理解成一次拷贝优化。",
     "source": "资料依据：cppreference · reference collapsing"
   },
   {
@@ -978,7 +978,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "函数模板中形如 T&& 且 T 由该实参推导时是转发引用，auto&& 也遵循类似规则。若 T 已固定、带 const，或不是发生推导的位置，它就是普通右值引用。",
+    "answer": "函数模板中形如 T&& 且 T 由该实参推导时是转发引用，auto&& 也遵循类似规则。若 T 已固定、带 const，或不是发生推导的位置，它就是普通右值引用。因此，移动和转发代码要先保护值类别，再谈性能，否则很容易把对象状态或重载选择弄错。",
     "source": "资料依据：cppreference · forwarding references"
   },
   {
@@ -992,7 +992,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "std::move 只是把表达式转换为对应的右值引用类型，从而允许重载选择移动操作。真正的资源转移发生在随后调用的移动构造、移动赋值或其他接收右值的函数中。",
+    "answer": "std::move 只是把表达式转换为对应的右值引用类型，从而允许重载选择移动操作。真正的资源转移发生在随后调用的移动构造、移动赋值或其他接收右值的函数中。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · std::move"
   },
   {
@@ -1006,7 +1006,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "std::forward<T> 根据模板参数 T 把形参恢复为原来的左值或右值类别。T 必须来自转发引用的推导结果，手工指定错误类型可能把左值错误地转换成右值。",
+    "answer": "std::forward<T> 根据模板参数 T 把形参恢复为原来的左值或右值类别。T 必须来自转发引用的推导结果，手工指定错误类型可能把左值错误地转换成右值。工程上还要把所有权、失效规则和复杂度预期写清楚，否则 STL 代码很容易看着简单却埋下边界问题。",
     "source": "资料依据：cppreference · std::forward"
   },
   {
@@ -1034,7 +1034,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "vector 为保持强异常保证，在移动可能抛异常且类型可复制时通常选择复制旧元素。将确实不抛的移动构造标记 noexcept 后，容器可以安全使用移动并避免昂贵复制。",
+    "answer": "vector 为保持强异常保证，在移动可能抛异常且类型可复制时通常选择复制旧元素。将确实不抛的移动构造标记 noexcept 后，容器可以安全使用移动并避免昂贵复制。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · move constructor noexcept"
   },
   {
@@ -1046,7 +1046,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "当 prvalue 直接初始化同类型结果对象时，C++17 把它构造在最终存储中，不要求存在可访问的复制或移动构造。具名局部变量的 NRVO 仍是允许但不强制的优化。",
+    "answer": "当 prvalue 直接初始化同类型结果对象时，C++17 把它构造在最终存储中，不要求存在可以访问的复制或移动构造。具名局部变量的 NRVO 仍是允许但不强制的优化。这类问题的核心是表达式类别和引用折叠规则，不能只把 std::move 理解成一次拷贝优化。",
     "source": "资料依据：cppreference · copy elision"
   },
   {
@@ -1060,7 +1060,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "返回满足条件的自动存储局部对象时，即使表达式是名字，重载解析也会先把它当作右值尝试移动。移动不可行时再尝试复制，但 NRVO 本身并不由标准强制。",
+    "answer": "返回满足条件的自动存储局部对象时，即使表达式是名字，重载解析也会先把它当作右值尝试移动。移动不可行时再尝试复制。但是 NRVO 本身并不由标准强制。因此，移动和转发代码要先保护值类别，再谈性能，否则很容易把对象状态或重载选择弄错。",
     "source": "资料依据：cppreference · copy elision NRVO"
   },
   {
@@ -1074,7 +1074,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "NRVO 要求返回表达式直接是具名局部对象，包一层 std::move 后表达式变成转换结果，不再满足该形式。编译器仍可调用移动构造，但失去了原地构造的机会。",
+    "answer": "NRVO 要求返回表达式直接是具名局部对象，包一层 std::move 后表达式变成转换结果，不再满足该形式。编译器仍可以调用移动构造。但是失去了原地构造的机会。这类问题的核心是表达式类别和引用折叠规则，不能只把 std::move 理解成一次拷贝优化。",
     "source": "资料依据：cppreference · copy elision return std::move"
   },
   {
@@ -1088,7 +1088,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对象仍满足类型不变量，可以安全析构、赋新值，并调用不要求特定旧值的操作。标准没有普遍保证容器一定为空，只有具体类型文档给出的额外后置条件可以依赖。",
+    "answer": "对象仍满足类型不变量，可以安全析构、赋新值，并调用不要求特定旧值的操作。标准没有普遍保证容器一定为空，只有具体类型文档给出的额外后置条件可以依赖。因此，移动和转发代码要先保护值类别，再谈性能，否则很容易把对象状态或重载选择弄错。",
     "source": "资料依据：cppreference · moved-from state"
   },
   {
@@ -1102,7 +1102,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "不受约束的模板 T&& 对某些非 const 左值能形成比 const T& 更好的匹配，从而抢在复制构造前被选择。应使用 SFINAE 排除本类型及其派生类型，或提供更窄的显式重载。",
+    "answer": "不受约束的模板 T&& 对某些非 const 左值能形成比 const T& 更好的匹配，从而抢在复制构造前被选择。应该使用 SFINAE 排除本类型及其派生类型，或提供更窄的显式重载。",
     "source": "资料依据：cppreference · forwarding constructor overload resolution"
   },
   {
@@ -1116,7 +1116,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "类型参数代表一个类型，非类型参数代表满足版本限制的编译期值，模板模板参数代表能按指定形状实例化的模板。选择参数种类应反映调用方需要替换的是类型、值还是类型构造器。",
+    "answer": "类型参数代表一个类型，非类型参数代表满足版本限制的编译期值，模板模板参数代表能按指定形状实例化的模板。选择参数种类应反映调用方需要替换的是类型、值还是类型构造器。这类规则的重点是编译期选择机制，不能把模板当成普通函数重载的简单放大版。",
     "source": "资料依据：cppreference · template parameters"
   },
   {
@@ -1130,7 +1130,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "按值形参推导时，数组和函数会分别退化为指针，顶层 cv 也会被忽略。按引用形参推导可以保留数组长度、函数类型和 cv 限定。",
+    "answer": "按值形参推导时，数组和函数会分别退化为指针，顶层 cv 也会被忽略。按引用形参推导可以保留数组长度、函数类型和 cv 限定。因此，模板代码要把替换失败、实例化时机和约束条件分开看，否则错误信息会很难定位。",
     "source": "资料依据：cppreference · template argument deduction"
   },
   {
@@ -1144,7 +1144,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "模板定义阶段，依赖限定名默认不被当作类型，除非语法上下文已经明确。typename 告诉解析器该名字在实例化后应表示类型，类似地调用依赖模板成员时可能需要 template 消歧义符。",
+    "answer": "模板定义阶段，依赖限定名默认不被当作类型，除非语法上下文已经明确。typename 告诉解析器该名字在实例化后应该表示类型，类似地调用依赖模板成员时可能需要 template 消歧义符。",
     "source": "资料依据：cppreference · dependent names typename"
   },
   {
@@ -1158,7 +1158,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "非依赖名字在模板定义时完成查找，实例化点后来声明的普通重载不会自动加入。依赖调用会在实例化时结合 ADL 查找关联命名空间，因此声明位置和关联类型会改变候选集。",
+    "answer": "非依赖名字在模板定义时完成查找，实例化点后来声明的普通重载不会自动加入。依赖调用会在实例化时结合 ADL 查找关联命名空间。因此声明位置和关联类型会改变候选集。因此，模板代码要把替换失败、实例化时机和约束条件分开看，否则错误信息会很难定位。",
     "source": "资料依据：cppreference · two-phase name lookup"
   },
   {
@@ -1172,7 +1172,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "编译器先找出所有可匹配偏特化，再按类似函数模板偏序的规则选择更专门者。若两个偏特化互不更专门，实例化会产生歧义而不会回退到主模板。",
+    "answer": "编译器先找出所有可匹配偏特化，再按类似函数模板偏序的规则选择更专门者。若两个偏特化互不更专门，实例化会产生歧义而不会回退到主模板。这类规则的重点是编译期选择机制，不能把模板当成普通函数重载的简单放大版。",
     "source": "资料依据：cppreference · partial template specialization"
   },
   {
@@ -1186,7 +1186,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "全特化必须在第一次会导致对应实例化的使用之前声明，并放在允许的命名空间作用域。跨翻译单元的定义仍受 ODR 约束，头文件定义通常需要 inline 或只保留声明。",
+    "answer": "全特化必须在第一次会导致对应实例化的使用之前声明，并放在允许的命名空间作用域。跨翻译单元的定义仍受 ODR 约束，头文件定义通常需要 inline 或只保留声明。因此，模板代码要把替换失败、实例化时机和约束条件分开看，否则错误信息会很难定位。",
     "source": "资料依据：cppreference · explicit specialization"
   },
   {
@@ -1200,7 +1200,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "语言只允许函数模板显式全特化，不允许偏特化。需要按类型族定制行为时通常使用函数重载、类模板偏特化辅助器或 SFINAE。",
+    "answer": "语言只允许函数模板显式全特化，不允许偏特化。需要按类型族定制行为时通常使用函数重载、类模板偏特化辅助器或 SFINAE。这类规则的重点是编译期选择机制，不能把模板当成普通函数重载的简单放大版。",
     "source": "资料依据：cppreference · function template overloading"
   },
   {
@@ -1214,7 +1214,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "只有在模板参数替换的立即上下文中形成的无效类型或表达式才会使候选被丢弃。函数体实例化、访问后的副作用以及已选候选内部的错误不属于 SFINAE，仍会产生诊断。",
+    "answer": "只有在模板参数替换的立即上下文中形成的无效类型或表达式才会使候选被丢弃。函数体实例化、访问后的副作用以及已选候选内部的错误不属于 SFINAE，仍会产生诊断。因此，模板代码要把替换失败、实例化时机和约束条件分开看，否则错误信息会很难定位。",
     "source": "资料依据：cppreference · SFINAE"
   },
   {
@@ -1228,7 +1228,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "放在返回类型中不参与普通参数推导，但构造函数没有可用返回类型。放在默认模板参数中更通用，却要避免多个声明只因默认值不同而被视为同一模板。",
+    "answer": "放在返回类型中不参与普通参数推导。但是构造函数没有可用返回类型。放在默认模板参数中更通用，却要避免多个声明只因默认值不同而被视为同一模板。这类规则的重点是编译期选择机制，不能把模板当成普通函数重载的简单放大版。",
     "source": "资料依据：cppreference · std::enable_if"
   },
   {
@@ -1264,7 +1264,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "SFINAE 控制函数或特化是否进入候选集，适合约束公开接口。if constexpr 在已经选中的函数体内丢弃不适用分支，适合共享接口后的实现分派。",
+    "answer": "SFINAE 控制函数或特化是否进入候选集，适合约束公开接口。if constexpr 在已经选中的函数体内丢弃不适用分支，适合共享接口后的实现分派。这类规则的重点是编译期选择机制，不能把模板当成普通函数重载的简单放大版。",
     "source": "资料依据：cppreference · constexpr if and SFINAE"
   },
   {
@@ -1276,7 +1276,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "一元折叠只有 &&、|| 和逗号对空包有规定的单位值，其他运算符对空包不成立。二元折叠提供显式初始值，因此可以为加法等操作定义空包结果。",
+    "answer": "一元折叠只有 &&、|| 和逗号对空包有规定的单位值，其他运算符对空包不成立。二元折叠提供显式初始值。因此可以为加法等操作定义空包结果。因此，模板代码要把替换失败、实例化时机和约束条件分开看，否则错误信息会很难定位。",
     "source": "资料依据：cppreference · fold expressions"
   },
   {
@@ -1302,7 +1302,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "发生重新分配时，所有指向元素的迭代器、指针和引用都会失效。未重新分配的插入仍会使插入点及其后的迭代器失效，因此保留元素地址前要确认容量和操作位置。",
+    "answer": "发生重新分配时，所有指向元素的迭代器、指针和引用都会失效。未重新分配的插入仍会使插入点及其后的迭代器失效。因此保留元素地址前要确认容量和操作位置。这类知识点的重点是说清标准库契约，而不是只记住某个类型的表面 API。",
     "source": "资料依据：cppreference · std::vector iterator invalidation"
   },
   {
@@ -1316,7 +1316,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "reserve 只保证容量至少达到给定值，不改变 size，也不构造新元素。resize 改变元素数量，会构造或销毁元素，并可能因为容量不足触发重新分配。",
+    "answer": "reserve 只保证容量至少达到给定值，不改变 size，也不构造新元素。resize 改变元素数量，会构造或销毁元素，并可能因为容量不足触发重新分配。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · std::vector capacity"
   },
   {
@@ -1330,7 +1330,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "vector<bool> 允许按位压缩存储，operator[] 返回代理对象而不是 bool&。依赖真实地址、引用类型或并发独立元素写入的泛型代码不应假设它与普通 vector<T> 完全一致。",
+    "answer": "vector<bool> 允许按位压缩存储，operator[] 返回代理对象而不是 bool&。依赖真实地址、引用类型或并发独立元素写入的泛型代码不应该假设它与普通 vector<T> 完全一致。",
     "source": "资料依据：cppreference · std::vector bool specialization"
   },
   {
@@ -1344,7 +1344,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "deque 的分段存储使首尾插入通常不会移动已有元素，因此元素引用通常保持有效。迭代器可能因内部映射调整而失效，中间插入或删除还可能使更多引用失效，必须按具体操作规则判断。",
+    "answer": "deque 的分段存储使首尾插入通常不会移动已有元素。因此元素引用通常保持有效。迭代器可能因内部映射调整而失效，中间插入或删除还可能使更多引用失效，必须按具体操作规则判断。这类知识点的重点是说清标准库契约，而不是只记住某个类型的表面 API。",
     "source": "资料依据：cppreference · std::deque iterator invalidation"
   },
   {
@@ -1358,7 +1358,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "splice 重新连接链表节点而不移动或复制元素，同一 allocator 条件满足时可保持指向被转移元素的迭代器有效。跨不同容器转移后，迭代器归属新的容器，源容器不再包含这些节点。",
+    "answer": "splice 重新连接链表节点而不移动或复制元素，同一 allocator 条件满足时可以保持指向被转移元素的迭代器有效。跨不同容器转移后，迭代器归属新的容器，源容器不再包含这些节点。",
     "source": "资料依据：cppreference · std::list splice"
   },
   {
@@ -1372,7 +1372,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "单向链表只有指向下一节点的链接，删除当前节点需要持有前驱。before_begin 提供首元素之前的哨兵位置，使头部插入和 erase_after 能使用统一接口。",
+    "answer": "单向链表只有指向下一节点的链接，删除当前节点需要持有前驱。before_begin 提供首元素之前的哨兵位置，使头部插入和 erase_after 能使用统一接口。工程上还要把所有权、失效规则和复杂度预期写清楚，否则 STL 代码很容易看着简单却埋下边界问题。",
     "source": "资料依据：cppreference · std::forward_list"
   },
   {
@@ -1386,7 +1386,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "比较器必须满足非自反、非对称和传递性，并让不可互相小于的键形成传递的等价类。违反这些性质会破坏树结构假设，查找、插入结果将不再可靠。",
+    "answer": "比较器必须满足非自反、非对称和传递性，并让不可互相小于的键形成传递的等价类。违反这些性质会破坏树结构假设，查找、插入结果将不再可靠。这类知识点的重点是说清标准库契约，而不是只记住某个类型的表面 API。",
     "source": "资料依据：cppreference · Compare named requirement"
   },
   {
@@ -1400,7 +1400,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "若 KeyEqual 判定两个键等价，Hash 必须为它们产生相同哈希值，否则查找可能进入错误桶。rehash 会改变桶布局并使迭代器失效，但元素引用和指针通常保持有效。",
+    "answer": "若 KeyEqual 判定两个键等价，Hash 必须为它们产生相同哈希值。否则查找可能进入错误桶。rehash 会改变桶布局并使迭代器失效。但是元素引用和指针通常保持有效。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · UnorderedAssociativeContainer requirements"
   },
   {
@@ -1412,7 +1412,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "vector 连续存储，随机访问是常数时间，尾部追加通常是摊还常数时间，但中间插入删除需要移动元素并可能使迭代器失效。list 是节点式存储，不支持随机访问，已知位置插入删除为常数时间，但缓存局部性和额外指针开销更差。面试中通常先看访问模式：遍历和随机访问多选 vector，频繁在中间稳定位置 splice 或 erase 才考虑 list。",
+    "answer": "vector 连续存储，随机访问是常数时间，尾部追加通常是摊还常数时间。但是中间插入删除需要移动元素并可能使迭代器失效。list 是节点式存储，不支持随机访问，已知位置插入删除为常数时间。但是缓存局部性和额外指针开销更差。面试中通常先看访问模式：遍历和随机访问多选 vector，频繁在中间稳定位置 splice 或 erase 才考虑 list。",
     "source": "资料依据：cppreference · std::vector；cppreference · std::list"
   },
   {
@@ -1440,7 +1440,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "输入迭代器只保证单遍读取，前向迭代器支持多遍，双向迭代器增加递减，随机访问迭代器支持常数时间跳转。算法根据最低类别决定可用操作和复杂度，伪造更强类别会破坏契约。",
+    "answer": "输入迭代器只保证单遍读取，前向迭代器支持多遍，双向迭代器增加递减，随机访问迭代器支持常数时间跳转。算法根据最低类别决定可用操作和复杂度，伪造更强类别会破坏契约。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · iterator concepts legacy categories"
   },
   {
@@ -1454,7 +1454,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "remove 只把保留元素前移并返回新的逻辑结尾，不会改变容器 size。随后调用容器 erase 才真正销毁尾部多余元素；关联容器则应使用自身的 erase 接口。",
+    "answer": "remove 只把保留元素前移并返回新的逻辑结尾，不会改变容器 size。随后调用容器 erase 才真正销毁尾部多余元素。关联容器则应该使用自身的 erase 接口。工程上还要把所有权、失效规则和复杂度预期写清楚，否则 STL 代码很容易看着简单却埋下边界问题。",
     "source": "资料依据：cppreference · erase-remove idiom"
   },
   {
@@ -1468,7 +1468,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "emplace_back 在容器存储中直接用实参构造元素，但若调用方已经有一个 T 对象，push_back(T&&) 同样可以移动构造。emplace 还可能接受意外的隐式构造参数，性能和可读性应按实际调用比较。",
+    "answer": "emplace_back 在容器存储中直接用实参构造元素。但是若调用方已经有一个 T 对象，push_back(T&&) 同样可以移动构造。emplace 还可能接受意外的隐式构造参数，性能和可读性应该按实际调用比较。",
     "source": "资料依据：cppreference · std::vector emplace_back"
   },
   {
@@ -1496,7 +1496,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "按值捕获把当时的值存进闭包，闭包寿命独立于原局部变量；按引用捕获只保存引用关系。若闭包逃出作用域或跨线程执行，引用捕获很容易悬空。",
+    "answer": "按值捕获把当时的值存进闭包，闭包寿命独立于原局部变量。按引用捕获只保存引用关系。若闭包逃出作用域或跨线程执行，引用捕获很容易悬空。因此，使用这些工具类型时要明确捕获、所有权和空状态，避免把便利语法当成没有成本的包装。",
     "source": "资料依据：cppreference · lambda capture"
   },
   {
@@ -1509,7 +1509,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "初始化捕获允许在捕获列表中定义闭包成员，例如 p = std::move(ptr)。该成员随闭包移动或销毁，不再依赖原局部变量，因此可安全转移 unique_ptr 所有权。",
+    "answer": "初始化捕获允许在捕获列表中定义闭包成员，例如 p = std::move(ptr)。该成员随闭包移动或销毁，不再依赖原局部变量。因此可以安全转移 unique_ptr 所有权。因此，使用这些工具类型时要明确捕获、所有权和空状态，避免把便利语法当成没有成本的包装。",
     "source": "资料依据：cppreference · lambda init-capture"
   },
   {
@@ -1536,7 +1536,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "Lambda 的 operator() 默认是 const，因此不能修改普通按值捕获成员。mutable 移除该 const 限定，只改变闭包内部副本，不会反向修改原变量。",
+    "answer": "Lambda 的 operator() 默认是 const。因此不能修改普通按值捕获成员。mutable 移除该 const 限定，只改变闭包内部副本，不会反向修改原变量。因此，使用这些工具类型时要明确捕获、所有权和空状态，避免把便利语法当成没有成本的包装。",
     "source": "资料依据：cppreference · lambda mutable"
   },
   {
@@ -1550,7 +1550,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "无捕获 Lambda 可以转换为具有兼容参数和返回类型的函数指针。带捕获闭包需要对象状态，无法转换成普通函数指针，通常改用模板回调或 std::function。",
+    "answer": "无捕获 Lambda 可以转换为具有兼容参数和返回类型的函数指针。带捕获闭包需要对象状态，无法转换成普通函数指针，通常改用模板回调或 std::function。工程上要把对象是否仍然有效说清楚，尤其是回调、延迟执行和类型擦除场景。",
     "source": "资料依据：cppreference · lambda function pointer conversion"
   },
   {
@@ -1564,7 +1564,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "捕获 this 只保存裸指针，不会延长所属对象生命周期。异步执行前对象若已销毁，成员访问会产生未定义行为，应捕获受控所有权或 weak_ptr 并在回调中提升检查。",
+    "answer": "捕获 this 只保存裸指针，不会延长所属对象生命周期。异步执行前对象若已销毁，成员访问会产生未定义行为，应捕获受控所有权或 weak_ptr 并在回调中提升检查。因此，使用这些工具类型时要明确捕获、所有权和空状态，避免把便利语法当成没有成本的包装。",
     "source": "资料依据：cppreference · lambda capture this"
   },
   {
@@ -1578,7 +1578,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "std::function 通过统一调用接口保存不同可调用对象，可能产生间接调用和动态分配。它要求目标可复制，移动专用闭包不能直接放入 C++17 的 std::function。",
+    "answer": "std::function 通过统一调用接口保存不同可以调用对象，可能产生间接调用和动态分配。它要求目标可复制，移动专用闭包不能直接放入 C++17 的 std::function。",
     "source": "资料依据：cppreference · std::function"
   },
   {
@@ -1602,7 +1602,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "optional 在对象内部保存是否已构造 T 的状态，无值时不会存在一个可访问的 T。value 在无值时抛 bad_optional_access，value_or 则返回值或提供的后备值。",
+    "answer": "optional 在对象内部保存是否已构造 T 的状态，无值时不会存在一个可以访问的 T。value 在无值时抛 bad_optional_access，value_or 则返回值或提供的后备值。",
     "source": "资料依据：cppreference · std::optional"
   },
   {
@@ -1628,7 +1628,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "按值抛出会把异常对象复制或移动到异常存储，避免引用局部对象。按 const 引用捕获不会再次复制，并能通过虚函数保留派生异常的动态行为而避免切片。",
+    "answer": "按值抛出会把异常对象复制或移动到异常存储，避免引用局部对象。按 const 引用捕获不会再次复制，并能通过虚函数保留派生异常的动态行为而避免切片。这类机制解决的是运行时类型和错误传播问题，接口需要明确哪些情况会传播、哪些情况必须本地处理。",
     "source": "资料依据：cppreference · throw expression and catch handler"
   },
   {
@@ -1642,7 +1642,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "处理器按源代码顺序匹配，第一个可处理异常类型的 catch 会被选择。若基类处理器在前，它会截获派生异常，使更具体的处理器永远不可达。",
+    "answer": "处理器按源代码顺序匹配，第一个可处理异常类型的 catch 会被选择。若基类处理器在前，它会截获派生异常，使更具体的处理器永远不可达。这类机制解决的是运行时类型和错误传播问题，接口需要明确哪些情况会传播、哪些情况必须本地处理。",
     "source": "资料依据：cppreference · catch handler matching"
   },
   {
@@ -1656,7 +1656,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "从抛出点到匹配处理器之间，已经完成构造的自动对象按构造的逆序析构。动态分配但未交给 RAII 对象的资源不会自动释放，因此异常安全依赖所有权对象。",
+    "answer": "从抛出点到匹配处理器之间，已经完成构造的自动对象按构造的逆序析构。动态分配但未交给 RAII 对象的资源不会自动释放。因此异常安全依赖所有权对象。因此，异常和 RTTI 代码要把失败边界写清楚，不能让错误处理依赖调用栈上的偶然顺序。",
     "source": "资料依据：cppreference · stack unwinding"
   },
   {
@@ -1684,7 +1684,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "析构函数不适合传播错误，因为它可能在另一个异常的栈展开中执行。需要报告失败的资源应提供显式 close 或 commit 操作，析构只做不抛的兜底清理。",
+    "answer": "析构函数不适合传播错误，因为它可能在另一个异常的栈展开中执行。需要报告失败的资源应该提供显式 close 或 commit 操作，析构只做不抛的兜底清理。因此，异常和 RTTI 代码要把失败边界写清楚，不能让错误处理依赖调用栈上的偶然顺序。",
     "source": "资料依据：C++ Core Guidelines · destructor exception safety"
   },
   {
@@ -1698,7 +1698,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对指针做运行期向下或横向转换失败会返回 nullptr。对引用转换失败会抛 std::bad_cast，且源类型必须是多态类型才能执行需要运行期检查的转换。",
+    "answer": "对指针做运行期向下或横向转换失败会返回 nullptr。对引用转换失败会抛 std::bad_cast，且源类型必须是多态类型才能执行需要运行期检查的转换。这类机制解决的是运行时类型和错误传播问题，接口需要明确哪些情况会传播、哪些情况必须本地处理。",
     "source": "资料依据：cppreference · dynamic_cast conversion"
   },
   {
@@ -1712,7 +1712,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "当操作数是多态类型的 glvalue 时，typeid 返回实际最派生对象的 type_info。对非多态表达式只反映静态类型；解引用空的多态指针作为操作数会抛 std::bad_typeid。",
+    "answer": "当操作数是多态类型的 glvalue 时，typeid 返回实际最派生对象的 type_info。对非多态表达式只反映静态类型。解引用空的多态指针作为操作数会抛 std::bad_typeid。",
     "source": "资料依据：cppreference · typeid operator"
   },
   {
@@ -1726,7 +1726,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "异常对象布局、RTTI、运行库和展开机制都必须在模块间兼容，否则匹配和销毁可能失败。稳定插件接口通常不让异常跨边界，而是在边界内捕获并转换成错误码或结果对象。",
+    "answer": "异常对象布局、RTTI、运行库和展开机制都必须在模块间兼容。否则匹配和销毁可能失败。稳定插件接口通常不让异常跨边界，而是在边界内捕获并转换成错误码或结果对象。这类机制解决的是运行时类型和错误传播问题，接口需要明确哪些情况会传播、哪些情况必须本地处理。",
     "source": "资料依据：C++ Core Guidelines · exceptions across ABI"
   },
   {
@@ -1794,7 +1794,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "scoped_lock 接收多把互斥量时使用与 std::lock 等价的死锁避免机制，并在析构时统一释放。它不可手动解锁，适合整个作用域都持锁的多锁临界区。",
+    "answer": "scoped_lock 接收多把互斥量时使用与 std::lock 等价的死锁避免机制，并在析构时统一释放。它不可手动解锁，适合整个作用域都持锁的多锁临界区。这类问题的难点通常不在 API 名字，而在 happens-before 关系和错误路径是否完整。",
     "source": "资料依据：cppreference · std::scoped_lock"
   },
   {
@@ -1808,7 +1808,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "条件变量允许虚假唤醒，通知到达也不保证业务条件仍成立。wait(lock, predicate) 会在持锁状态检查谓词并在不满足时继续等待，从而把共享状态而非通知次数作为依据。",
+    "answer": "条件变量允许虚假唤醒，通知到达也不保证业务条件仍成立。wait(lock, predicate) 会在持锁状态检查谓词并在不满足时继续等待，从而把共享状态而非通知次数作为依据。并发代码还要写出明确的同步关系，否则一次测试通过并不能证明不存在数据竞争。",
     "source": "资料依据：cppreference · std::condition_variable wait"
   },
   {
@@ -1822,7 +1822,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "条件状态必须存放在受同一 mutex 保护的共享变量中，等待方先检查状态再原子地释放锁并阻塞。通知本身不保存历史，只有状态谓词能让后来开始等待的线程观察已经发生的事件。",
+    "answer": "条件状态必须存放在受同一 mutex 保护的共享变量中，等待方先检查状态再原子地释放锁并阻塞。通知本身不保存历史，只有状态谓词能让后来开始等待的线程观察已经发生的事件。工程上应该把等待、唤醒和共享状态的所有权说清楚，避免把调度时机当成同步保证。",
     "source": "资料依据：cppreference · condition variable lost wakeup"
   },
   {
@@ -1836,7 +1836,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "两个线程并发访问同一内存位置、至少一个写入且没有 happens-before 关系时形成数据竞争。除原子对象外，数据竞争使整个程序行为未定义，不能依赖硬件上看似原子的读写。",
+    "answer": "两个线程并发访问同一内存位置、至少一个写入且没有 happens-before 关系时形成数据竞争。除原子对象外，数据竞争使整个程序行为未定义，不能依赖硬件上看似原子的读写。这类问题的难点通常不在 API 名字，而在 happens-before 关系和错误路径是否完整。",
     "source": "资料依据：cppreference · memory model data races"
   },
   {
@@ -1850,7 +1850,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "relaxed 操作保证该原子对象自身的修改顺序和读写原子性，不建立其他普通内存访问的跨线程同步。它适合独立计数等场景，不能单独发布另一个对象的初始化结果。",
+    "answer": "relaxed 操作保证该原子对象自身的修改顺序和读写原子性，不建立其他普通内存访问的跨线程同步。它适合独立计数等场景，不能单独发布另一个对象的初始化结果。并发代码还要写出明确的同步关系，否则一次测试通过并不能证明不存在数据竞争。",
     "source": "资料依据：cppreference · std::memory_order relaxed"
   },
   {
@@ -1878,7 +1878,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "memory_order_seq_cst 除 acquire/release 语义外，还要求所有顺序一致操作可放入一个与各线程程序顺序一致的单一总序。它更易推理，但可能限制某些架构上的优化。",
+    "answer": "memory_order_seq_cst 除 acquire/release 语义外，还要求所有顺序一致操作可放入一个与各线程程序顺序一致的单一总序。它更易推理。但是可能限制某些架构上的优化。",
     "source": "资料依据：cppreference · std::memory_order sequentially-consistent"
   },
   {
@@ -1892,7 +1892,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "promise 在共享状态仍需要结果时被销毁，会把 broken_promise 异常存入共享状态。future::get 随后抛出 future_error，并且 get 通常只能消费结果一次。",
+    "answer": "promise 在共享状态仍然需要要结果时被销毁，会把 broken_promise 异常存入共享状态。future::get 随后抛出 future_error，并且 get 通常只能消费结果一次。",
     "source": "资料依据：cppreference · std::promise"
   },
   {
@@ -1932,7 +1932,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "string_view 不拥有字符数据，返回它只安全于底层存储在调用方使用期间持续有效。不能返回指向局部 string、临时拼接结果或随后可能扩容的缓冲区的 view。",
+    "answer": "string_view 不拥有字符数据，返回它只安全于底层存储在调用方使用期间持续有效。不能返回指向局部 string、临时拼接结果或随后可能扩容的缓冲区的 view。使用标准库时，关键是尊重容器、迭代器和对象状态的契约，不要依赖某个实现的偶然表现。",
     "source": "资料依据：cppreference · std::basic_string_view"
   },
   {
@@ -1944,7 +1944,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "C++17 为非 const string 提供返回 char* 的 data，可在不改变 size 的前提下修改已有字符。写越过 size、破坏结尾空字符约束或把指针保留到会失效的修改之后仍然不合法。",
+    "answer": "C++17 为非 const string 提供返回 char* 的 data，可以在不改变 size 的前提下修改已有字符。写越过 size、破坏结尾空字符约束或把指针保留到会失效的修改之后仍然不合法。",
     "source": "资料依据：cppreference · std::basic_string data"
   },
   {
@@ -1958,7 +1958,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "标准没有要求 small string optimization，也不规定阈值或对象布局。代码不能根据短字符串假设零分配，性能判断应基于目标标准库和实测。",
+    "answer": "标准没有要求 small string optimization，也不规定阈值或对象布局。代码不能根据短字符串假设零分配，性能判断应该基于目标标准库和实测。因此，使用这类库接口时要明确输入格式、状态保持和错误处理，不能只看一次调用是否返回成功。",
     "source": "资料依据：cppreference · std::basic_string implementation notes"
   },
   {
@@ -1972,7 +1972,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "std::string 只是 char 序列，不记录编码，也不会验证 UTF-8。接口必须约定字节编码和错误处理，按字符截断、大小写转换或索引时还要区分字节、码点和用户感知字符。",
+    "answer": "std::string 只是 char 序列，不记录编码，也不会验证 UTF-8。接口必须约定字节编码和错误处理，按字符截断、大小写转换或索引时还要区分字节、码点和用户感知字符。这类接口看起来日常，但边界条件往往来自环境差异和状态保持，所以需要把前提说完整。",
     "source": "资料依据：cppreference · strings and encodings"
   },
   {
@@ -1984,7 +1984,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "C++17"
     ],
-    "answer": "path 保存平台原生路径格式，并提供 generic 格式用于跨平台表达。路径拼接应使用 operator/，字符串编码转换和根目录语义仍取决于平台，失败可通过异常或 error_code 重载报告。",
+    "answer": "path 保存平台原生路径格式，并提供 generic 格式用于跨平台表达。路径拼接应该使用 operator/，字符串编码转换和根目录语义仍取决于平台，失败可以通过异常或 error_code 重载报告。",
     "source": "资料依据：cppreference · std::filesystem::path"
   },
   {
@@ -1998,7 +1998,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "system_clock 可与日历时间互转，但可能因系统校时向前或向后跳变。steady_clock 保证单调递增，更适合测量超时和耗时，不能直接当作墙上时间显示。",
+    "answer": "system_clock 可与日历时间互转。但是可能因系统校时向前或向后跳变。steady_clock 保证单调递增，更适合测量超时和耗时，不能直接当作墙上时间显示。这类接口看起来日常，但边界条件往往来自环境差异和状态保持，所以需要把前提说完整。",
     "source": "资料依据：cppreference · chrono clocks"
   },
   {
@@ -2012,7 +2012,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "从细粒度到粗粒度且不能保证整除的转换可能截断，因此通常需要 duration_cast 显式表达。反向扩大精度在表示类型兼容时可隐式完成，但还要考虑计数值溢出。",
+    "answer": "从细粒度到粗粒度且不能保证整除的转换可能截断。因此通常需要 duration_cast 显式表达。反向扩大精度在表示类型兼容时可隐式完成。但是还要考虑计数值溢出。因此，使用这类库接口时要明确输入格式、状态保持和错误处理，不能只看一次调用是否返回成功。",
     "source": "资料依据：cppreference · std::chrono::duration"
   },
   {
@@ -2054,7 +2054,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "标准规定匹配语义和接口，但没有统一保证实现算法、编译缓存或最坏时间复杂度。对输入可控性和延迟敏感的场景应测量目标标准库，并考虑专用解析器或受限模式。",
+    "answer": "标准规定匹配语义和接口。但是没有统一保证实现算法、编译缓存或最坏时间复杂度。对输入可控性和延迟敏感的场景应该测量目标标准库，并考虑专用解析器或受限模式。因此，使用这类库接口时要明确输入格式、状态保持和错误处理，不能只看一次调用是否返回成功。",
     "source": "资料依据：cppreference · regular expressions library"
   },
   {
@@ -2068,7 +2068,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "抽象工厂定义创建相关产品族的接口，让客户端只依赖抽象产品并保持同一族的兼容性。它适合产品族会整体替换的场景，但新增一种产品会迫使工厂接口及各具体工厂一起扩展。",
+    "answer": "抽象工厂定义创建相关产品族的接口，让客户端只依赖抽象产品并保持同一族的兼容性。它适合产品族会整体替换的场景。但是新增一种产品会迫使工厂接口及各具体工厂一起扩展。它的价值在于稳定客户端依赖，同时把具体对象的创建细节放到可替换的位置。",
     "pattern": "Abstract Factory",
     "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
   },
@@ -2083,7 +2083,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "客户端应依赖抽象工厂，具体工厂在组合根或配置边界被选择；同一工厂负责产生彼此匹配的产品。这样切换主题只替换工厂实现，代价是产品种类固定后扩展新产品需要修改全部工厂。",
+    "answer": "客户端应依赖抽象工厂，具体工厂在组合根或配置边界被选择。同一工厂负责产生彼此匹配的产品。这样切换主题只替换工厂实现，代价是产品种类固定后扩展新产品需要修改全部工厂。如果创建过程并不复杂，直接构造通常比套用模式更清楚。",
     "pattern": "Abstract Factory",
     "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
   },
@@ -2098,7 +2098,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "适配器实现客户端所需的 Target 接口，并把调用转换给已有 Adaptee；对象适配器用组合保存被适配对象。转换层应集中处理参数、错误和所有权差异，避免把旧接口细节泄漏到客户端。",
+    "answer": "适配器实现客户端所需的 Target 接口，并把调用转换给已有 Adaptee。对象适配器用组合保存被适配对象。转换层应集中处理参数、错误和所有权差异，避免把旧接口细节泄漏到客户端。",
     "pattern": "Adapter",
     "source": "资料依据：GoF · GoF Adapter object and class adapters"
   },
@@ -2113,7 +2113,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "对象适配器通过组合可适配多个对象，运行时可替换且不受单继承限制；类适配器依赖多重继承并能直接覆盖受保护行为。C++ 中优先组合，只有需要静态复用实现且继承关系稳定时才考虑类适配器。",
+    "answer": "对象适配器通过组合可适配多个对象，运行时可替换且不受单继承限制。类适配器依赖多重继承并能直接覆盖受保护行为。C++ 中优先组合，只有需要静态复用实现且继承关系稳定时才考虑类适配器。",
     "pattern": "Adapter",
     "source": "资料依据：GoF · GoF Adapter object and class adapters"
   },
@@ -2128,7 +2128,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "桥接把抽象层的操作接口与实现层的细节放在两个独立继承层次，并由抽象持有实现接口。两条变化轴可独立扩展，代价是多一个间接层和更复杂的对象装配；若只有一个稳定实现，普通继承更简单。",
+    "answer": "桥接把抽象层的操作接口与实现层的细节放在两个独立继承层次，并由抽象持有实现接口。两条变化轴可独立扩展，代价是多一个间接层和更复杂的对象装配。若只有一个稳定实现，普通继承更简单。如果只是简单转发，模式本身可能会让代码比问题更复杂。",
     "pattern": "Bridge",
     "source": "资料依据：GoF · GoF Bridge abstraction-implementation separation"
   },
@@ -2143,7 +2143,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "实现对象通常由抽象端以唯一所有权或共享策略持有，构造时注入，必要时通过受控接口替换。替换必须保证旧实现上的未完成操作和资源先收尾，否则桥接只隐藏了生命周期错误而没有解决它。",
+    "answer": "实现对象通常由抽象端以唯一所有权或共享策略持有，构造时注入，必要时通过受控接口替换。替换必须保证旧实现上的未完成操作和资源先收尾。否则桥接只隐藏了生命周期错误而没有解决它。判断是否使用结构型模式时，要看对象之间的组合边界是否需要稳定下来，而不是只看类图是否复杂。",
     "pattern": "Bridge",
     "source": "资料依据：GoF · GoF Bridge abstraction-implementation separation"
   },
@@ -2158,7 +2158,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "Builder 将构造步骤从最终产品表示中分离，Director 可按固定顺序调用步骤而不暴露内部布局。产品有许多可选部件或需多种表示时适用；简单对象使用构造函数或工厂更直接。",
+    "answer": "Builder 将构造步骤从最终产品表示中分离，Director 可按固定顺序调用步骤而不暴露内部布局。产品有许多可选部件或需多种表示时适用。简单对象使用构造函数或工厂更直接。它的价值在于稳定客户端依赖，同时把具体对象的创建细节放到可替换的位置。",
     "pattern": "Builder",
     "source": "资料依据：GoF · GoF Builder construction process and representation"
   },
@@ -2173,7 +2173,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "可复用 Builder 必须在开始新构造时清空产品或创建新的产品实例，并明确哪些配置是默认值。复用同一实例若不重置会把前一次选项带入后续结果；不可变 Builder 或一次性 Builder 能减少这种状态污染。",
+    "answer": "可复用 Builder 必须在开始新构造时清空产品或创建新的产品实例，并明确哪些配置是默认值。复用同一实例若不重置会把前一次选项带入后续结果。不可变 Builder 或一次性 Builder 能减少这种状态污染。",
     "pattern": "Builder",
     "source": "资料依据：GoF · GoF Builder construction process and representation"
   },
@@ -2188,7 +2188,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "责任链把请求沿一组可替换处理者传递，每个处理者决定处理或交给后继者，发送者不依赖具体接收者。链适合运行时组合处理步骤，但请求可能无人处理或顺序敏感，因此应定义终止处理者和可观察的拒绝结果。",
+    "answer": "责任链把请求沿一组可替换处理者传递，每个处理者决定处理或交给后继者，发送者不依赖具体接收者。链适合运行时组合处理步骤。但是请求可能无人处理或顺序敏感。因此应定义终止处理者和可观察的拒绝结果。",
     "pattern": "Chain of Responsibility",
     "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
   },
@@ -2203,7 +2203,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "处理者接口应明确返回已处理、继续传递或拒绝并报错等结果，不能只依赖隐含的副作用。调用端据此决定是否继续链、记录未处理请求或触发降级；链越长，调试和最坏延迟越难控制。",
+    "answer": "处理者接口应该明确返回已处理、继续传递或拒绝并报错等结果，不能只依赖隐含的副作用。调用端据此决定是否继续链、记录未处理请求或触发降级。链越长，调试和最坏延迟越难控制。它的价值在于把容易变化的行为从调用方剥离出来，让协作规则更稳定。",
     "pattern": "Chain of Responsibility",
     "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
   },
@@ -2218,7 +2218,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "命令对象把接收者、操作参数和执行入口封装起来，使调用者能把请求排队、记录或延迟执行。队列拥有命令对象的生命周期，接收者只负责实际业务；异步队列还要定义取消、失败和重试语义。",
+    "answer": "命令对象把接收者、操作参数和执行入口封装起来，使调用者能把请求排队、记录或延迟执行。队列拥有命令对象的生命周期，接收者只负责实际业务。异步队列还要定义取消、失败和重试语义。如果变化点并不存在，套用模式只会增加理解成本。",
     "pattern": "Command",
     "source": "资料依据：GoF · GoF Command request encapsulation and undo"
   },
@@ -2233,7 +2233,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "可撤销命令需要保存执行前足以恢复不变量的状态，或设计可逆的反向操作；只保存“上一步”标志通常不够。外部资源和并发副作用难以回滚，命令应限制事务边界并说明撤销失败如何处理。",
+    "answer": "可撤销命令需要保存执行前足以恢复不变量的状态，或设计可逆的反向操作。只保存“上一步”标志通常不够。外部资源和并发副作用难以回滚，命令应限制事务边界并说明撤销失败如何处理。判断是否使用行为型模式时，要看变化的是算法、状态还是对象之间的通知关系。",
     "pattern": "Command",
     "source": "资料依据：GoF · GoF Command request encapsulation and undo"
   },
@@ -2248,7 +2248,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "组合模式把叶子与容器放进同一组件接口，客户端可对单个对象和整棵部分—整体树使用相同操作。透明接口便于递归处理但可能让叶子暴露无意义的 add/remove；安全接口则需在易用性与类型检查之间取舍。",
+    "answer": "组合模式把叶子与容器放进同一组件接口，客户端可对单个对象和整棵部分—整体树使用相同操作。透明接口便于递归处理但可能让叶子暴露无意义的 add/remove。安全接口则需在易用性与类型检查之间取舍。",
     "pattern": "Composite",
     "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
   },
@@ -2263,7 +2263,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "组合对象应明确子节点的所有权，拥有型树可由父节点通过 RAII 管理，观察型关系则不能在遍历时假定子节点仍存活。删除或移动节点时必须使迭代器、父指针和缓存失效规则一致，否则递归访问会读到悬空对象。",
+    "answer": "组合对象应该明确子节点的所有权，拥有型树可以由父节点通过 RAII 管理，观察型关系则不能在遍历时假定子节点仍存活。删除或移动节点时必须使迭代器、父指针和缓存失效规则一致。否则递归访问会读到悬空对象。",
     "pattern": "Composite",
     "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
   },
@@ -2278,7 +2278,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "抽象工厂先决定兼容的产品族，Builder 再按步骤配置该族中的一个复杂产品；两者的边界分别是“选哪一族”和“怎样组装”。组合能同时支持主题替换与可选部件，但接口数量、测试夹具和装配代码都会增加。",
+    "answer": "抽象工厂先决定兼容的产品族，Builder 再按步骤配置该族中的一个复杂产品。两者的边界分别是“选哪一族”和“怎样组装”。组合能同时支持主题替换与可选部件。但是接口数量、测试夹具和装配代码都会增加。",
     "pattern": "Cross-pattern",
     "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
   },
@@ -2293,7 +2293,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "Factory Method 通过虚拟创建钩子让派生类决定新对象，Prototype 则复制已配置实例以绕过具体构造过程。构造成本高且类型在运行时注册时适合原型；复制语义不清或资源不可复制时，工厂方法更容易维持不变量。",
+    "answer": "Factory Method 通过虚拟创建钩子让派生类决定新对象，Prototype 则复制已配置实例以绕过具体构造过程。构造成本高且类型在运行时注册时适合原型。复制语义不清或资源不可复制时，工厂方法更容易维持不变量。",
     "pattern": "Cross-pattern",
     "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
   },
@@ -2308,7 +2308,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "装饰器实现与被装饰对象相同的接口，并在转发调用前后附加职责，因此可以运行时叠加功能而不修改原类。它适合职责组合细粒度变化，代价是调用链变长、调试困难，且装饰器顺序可能改变结果。",
+    "answer": "装饰器实现与被装饰对象相同的接口，并在转发调用前后附加职责。因此可以运行时叠加功能而不修改原类。它适合职责组合细粒度变化，代价是调用链变长、调试困难，且装饰器顺序可能改变结果。如果只是简单转发，模式本身可能会让代码比问题更复杂。",
     "pattern": "Decorator",
     "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
   },
@@ -2323,7 +2323,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "每层装饰器应以 RAII 管理自己拥有的下层对象，并让析构保持不抛；异常从转发调用向外传播时不能跳过已构造层的清理。若某层需要吞掉或转换异常，边界必须写入接口契约，否则多层包装会掩盖失败来源。",
+    "answer": "每层装饰器应以 RAII 管理自己拥有的下层对象，并让析构保持不抛。异常从转发调用向外传播时不能跳过已构造层的清理。若某层需要吞掉或转换异常，边界必须写入接口契约。否则多层包装会掩盖失败来源。",
     "pattern": "Decorator",
     "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
   },
@@ -2338,7 +2338,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "外观为一组子系统提供面向用例的窄接口，隐藏初始化顺序和协作细节，但不替子系统定义新的业务模型。它降低调用方耦合，代价是外观可能膨胀成上帝对象；复杂用例应拆成多个门面或保留受控的子系统访问。",
+    "answer": "外观为一组子系统提供面向用例的窄接口，隐藏初始化顺序和协作细节。但是不替子系统定义新的业务模型。它降低调用方耦合，代价是外观可能膨胀成上帝对象。复杂用例应拆成多个门面或保留受控的子系统访问。",
     "pattern": "Facade",
     "source": "资料依据：GoF · GoF Facade subsystem interface"
   },
@@ -2353,7 +2353,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "外观是否拥有子系统取决于创建边界：应用级外观可管理一次性资源，注入已有服务的外观只协调调用并不负责销毁。把两种责任混在一起会造成双重释放或静态生命周期依赖，接口应明确借用与拥有关系。",
+    "answer": "外观是否拥有子系统取决于创建边界：应用级外观可管理一次性资源，注入已有服务的外观只协调调用并不负责销毁。把两种责任混在一起会造成双重释放或静态生命周期依赖，接口应该明确借用与拥有关系。",
     "pattern": "Facade",
     "source": "资料依据：GoF · GoF Facade subsystem interface"
   },
@@ -2383,7 +2383,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "扩展点应只暴露创建所需的最小产品接口，并让基类保证创建后不变量；把业务分支全部塞进工厂方法会退化为大型 switch。若产品族需要同时保持配套关系，应改用抽象工厂而不是无限增加创建者子类。",
+    "answer": "扩展点应只暴露创建所需的最小产品接口，并让基类保证创建后不变量。把业务分支全部塞进工厂方法会退化为大型 switch。若产品族需要同时保持配套关系，应改用抽象工厂而不是无限增加创建者子类。",
     "pattern": "Factory Method",
     "source": "资料依据：GoF · GoF Factory Method product creation hook"
   },
@@ -2398,7 +2398,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "享元把可共享的内在状态放入池中，把位置、颜色等每次使用才确定的外在状态交给调用者。共享前必须证明内在状态不可变或有同步保护，否则节省内存会换来跨对象状态污染。",
+    "answer": "享元把可共享的内在状态放入池中，把位置、颜色等每次使用才确定的外在状态交给调用者。共享前必须证明内在状态不可变或有同步保护。否则节省内存会换来跨对象状态污染。如果只是简单转发，模式本身可能会让代码比问题更复杂。",
     "pattern": "Flyweight",
     "source": "资料依据：GoF · GoF Flyweight intrinsic and extrinsic state"
   },
@@ -2413,7 +2413,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "享元工厂应以完整的内在状态作为规范化键，命中时返回同一个共享对象，并定义池的所有权和淘汰策略。弱引用或清晰的缓存生命周期可避免池无限增长；键遗漏字段会让不同语义错误地共享状态。",
+    "answer": "享元工厂应以完整的内在状态作为规范化键，命中时返回同一个共享对象，并定义池的所有权和淘汰策略。弱引用或清晰的缓存生命周期可以避免池无限增长。键遗漏字段会让不同语义错误地共享状态。判断是否使用结构型模式时，要看对象之间的组合边界是否需要稳定下来，而不是只看类图是否复杂。",
     "pattern": "Flyweight",
     "source": "资料依据：GoF · GoF Flyweight intrinsic and extrinsic state"
   },
@@ -2428,7 +2428,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "解释器模式把文法规则表示为表达式对象，每个非终结符组合子递归解释上下文，终结符读取输入或变量。它适合小而稳定的 DSL；文法规模或性能要求上升后，解析器生成器和专用 AST 通常更可维护。",
+    "answer": "解释器模式把文法规则表示为表达式对象，每个非终结符组合子递归解释上下文，终结符读取输入或变量。它适合小而稳定的 DSL。文法规模或性能要求上升后，解析器生成器和专用 AST 通常更可维护。",
     "pattern": "Interpreter",
     "source": "资料依据：GoF · GoF Interpreter grammar representation"
   },
@@ -2443,7 +2443,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "Context 保存解释过程中共享的输入游标、变量环境或诊断信息，表达式只通过约定接口读写这些状态。上下文若混入线程局部或全局数据会破坏可重入性，多个解释任务应拥有独立上下文。",
+    "answer": "Context 保存解释过程中共享的输入游标、变量环境或诊断信息，表达式只通过约定接口读写这些状态。上下文若混入线程局部或全局数据会破坏可重入性，多个解释任务应该拥有独立上下文。如果变化点并不存在，套用模式只会增加理解成本。",
     "pattern": "Interpreter",
     "source": "资料依据：GoF · GoF Interpreter grammar representation"
   },
@@ -2458,7 +2458,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "迭代器把遍历位置和递增规则封装起来，聚合对象只暴露 begin/end 或等价协议，客户端无需知道存储结构。不同迭代器可提供不同遍历策略，但必须清楚比较、终止和失效规则，不能把抽象迭代器当成永不失效的指针。",
+    "answer": "迭代器把遍历位置和递增规则封装起来，聚合对象只暴露 begin/end 或等价协议，客户端无需知道存储结构。不同迭代器可提供不同遍历策略。但是必须清楚比较、终止和失效规则，不能把抽象迭代器当成永不失效的指针。",
     "pattern": "Iterator",
     "source": "资料依据：GoF · GoF Iterator aggregate traversal"
   },
@@ -2488,7 +2488,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "中介者让同事对象只依赖协调接口，由中介者编排交互而不是彼此直接调用，从而把网状依赖变成星形依赖。它适合协作规则集中且变化频繁的场景，但中介者会承载过多业务时应按用例拆分或引入领域服务。",
+    "answer": "中介者让同事对象只依赖协调接口，由中介者编排交互而不是彼此直接调用，从而把网状依赖变成星形依赖。它适合协作规则集中且变化频繁的场景。但是中介者会承载过多业务时应该按用例拆分或引入领域服务。",
     "pattern": "Mediator",
     "source": "资料依据：GoF · GoF Mediator colleague collaboration"
   },
@@ -2503,7 +2503,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "当中介者同时知道所有同事的细节、状态和异常分支时，它已成为难以测试的上帝对象。可以按协作场景拆成多个中介者，或把稳定规则下沉回同事；拆分边界应由消息流和事务一致性决定。",
+    "answer": "当中介者同时知道所有同事的细节、状态和异常分支时，它已成为难以测试的上帝对象。可以按协作场景拆成多个中介者，或把稳定规则下沉回同事。拆分边界应由消息流和事务一致性决定。判断是否使用行为型模式时，要看变化的是算法、状态还是对象之间的通知关系。",
     "pattern": "Mediator",
     "source": "资料依据：GoF · GoF Mediator colleague collaboration"
   },
@@ -2518,7 +2518,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "备忘录由发起者创建并保存内部状态快照，管理者只持有不透明句柄，从而恢复状态而不暴露表示细节。快照必须定义一致性时点和容量成本；包含外部资源句柄时不能假设恢复能重新建立资源。",
+    "answer": "备忘录由发起者创建并保存内部状态快照，管理者只持有不透明句柄，从而恢复状态而不暴露表示细节。快照必须定义一致性时点和容量成本。包含外部资源句柄时不能假设恢复能重新建立资源。它的价值在于把容易变化的行为从调用方剥离出来，让协作规则更稳定。",
     "pattern": "Memento",
     "source": "资料依据：GoF · GoF Memento encapsulation boundary"
   },
@@ -2533,7 +2533,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "发起者应决定快照的格式与版本，管理者只负责保存、排序和淘汰，避免依赖私有字段。版本不兼容时应拒绝恢复或执行明确迁移，快照的拥有者还要保证底层数据在恢复前一直有效。",
+    "answer": "发起者应决定快照的格式与版本，管理者只负责保存、排序和淘汰，避免依赖私有字段。版本不兼容时应该拒绝恢复或执行明确迁移，快照的拥有者还要保证底层数据在恢复前一直有效。如果变化点并不存在，套用模式只会增加理解成本。",
     "pattern": "Memento",
     "source": "资料依据：GoF · GoF Memento encapsulation boundary"
   },
@@ -2548,7 +2548,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "观察者注册关系应有明确的取消机制，订阅令牌或弱引用可避免被通知对象销毁后仍调用回调。通知线程与取消线程并发时需要同步快照和回调状态，不能只从容器里删除指针就宣称安全。",
+    "answer": "观察者注册关系应有明确的取消机制，订阅令牌或弱引用可以避免被通知对象销毁后仍调用回调。通知线程与取消线程并发时需要同步快照和回调状态，不能只从容器里删除指针就宣称安全。判断是否使用行为型模式时，要看变化的是算法、状态还是对象之间的通知关系。",
     "pattern": "Observer",
     "source": "资料依据：GoF · GoF Observer subject notification"
   },
@@ -2578,7 +2578,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "原型的 clone 操作应按对象语义决定深拷贝、共享不可变资源或复制所有权，不能由默认指针拷贝推断结果。多态复制通常要求虚拟 clone 返回拥有型指针，并为每个资源定义复制失败时的清理路径。",
+    "answer": "原型的 clone 操作应该按对象语义决定深拷贝、共享不可变资源或复制所有权，不能由默认指针拷贝推断结果。多态复制通常要求虚拟 clone 返回拥有型指针，并为每个资源定义复制失败时的清理路径。",
     "pattern": "Prototype",
     "source": "资料依据：GoF · GoF Prototype cloning"
   },
@@ -2593,7 +2593,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "原型注册表把类型键映射到可复制的原型对象，客户端按键请求 clone 而不依赖具体类名。注册表需规定替换、并发读写和对象所有权，未知键应返回可诊断错误而不是空指针继续执行。",
+    "answer": "原型注册表把类型键映射到可复制的原型对象，客户端按键请求 clone 而不依赖具体类名。注册表需规定替换、并发读写和对象所有权，未知键应返回可诊断错误而不是空指针继续执行。判断是否使用创建型模式时，要看对象创建的变化点是否真的需要隔离，而不是只为了增加一层工厂。",
     "pattern": "Prototype",
     "source": "资料依据：GoF · GoF Prototype cloning"
   },
@@ -2608,7 +2608,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "代理实现与真实主题相同的接口，可在转发前后加入权限、缓存、远程传输或日志，因此客户端无需改写调用协议。代理不应伪装成同步本地对象来掩盖网络延迟和失败，远程代理尤其要明确超时、重试和资源所有权。",
+    "answer": "代理实现与真实主题相同的接口，可以在转发前后加入权限、缓存、远程传输或日志。因此客户端无需改写调用协议。代理不应该伪装成同步本地对象来掩盖网络延迟和失败，远程代理尤其要明确超时、重试和资源所有权。",
     "pattern": "Proxy",
     "source": "资料依据：GoF · GoF Proxy subject access control"
   },
@@ -2623,7 +2623,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "虚拟代理首次收到需要真实主题的请求时才创建它，创建失败应通过与主题一致的错误通道返回，并保持代理可再次尝试或进入终止状态。延迟初始化减小首屏成本，却把故障推迟到业务调用，调用方必须能区分未加载与已加载失败。",
+    "answer": "虚拟代理首次收到需要真实主题的请求时才创建它，创建失败应该通过与主题一致的错误通道返回，并保持代理可再次尝试或进入终止状态。延迟初始化减小首屏成本，却把故障推迟到业务调用，调用方必须能区分未加载与已加载失败。",
     "pattern": "Proxy",
     "source": "资料依据：GoF · GoF Proxy subject access control"
   },
@@ -2638,7 +2638,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "C++11 的函数内静态对象在首次控制流经过声明时初始化，并由语言保证并发初始化只发生一次；这通常比手写双重检查更可靠。Singleton 仍引入全局可变状态和隐藏依赖，测试替换与析构顺序是采用前必须接受的代价。",
+    "answer": "C++11 的函数内静态对象在首次控制流经过声明时初始化，并由语言保证并发初始化只发生一次。这通常比手写双重检查更可靠。Singleton 仍引入全局可变状态和隐藏依赖，测试替换与析构顺序是采用前必须接受的代价。",
     "pattern": "Singleton",
     "source": "资料依据：GoF · GoF Singleton sole instance and global access"
   },
@@ -2653,7 +2653,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "函数内静态 Singleton 的销毁顺序与其他静态对象的跨翻译单元顺序可能不匹配，析构阶段访问已销毁依赖会产生未定义行为。可通过显式生命周期管理、泄漏到进程结束或把依赖注入使用方规避，但每种选择都改变资源回收和测试策略。",
+    "answer": "函数内静态 Singleton 的销毁顺序与其他静态对象的跨翻译单元顺序可能不匹配，析构阶段访问已销毁依赖会产生未定义行为。可以通过显式生命周期管理、泄漏到进程结束或把依赖注入使用方规避。但是每种选择都改变资源回收和测试策略。",
     "pattern": "Singleton",
     "source": "资料依据：GoF · GoF Singleton sole instance and global access"
   },
@@ -2668,7 +2668,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "状态模式把每个状态相关行为放入独立对象，由上下文委托当前状态处理事件并在需要时切换。状态数量或转移规则增长时它能替代巨型条件分支，但对象切换、共享数据和转移合法性需要额外契约。",
+    "answer": "状态模式把每个状态相关行为放入独立对象，由上下文委托当前状态处理事件并在需要时切换。状态数量或转移规则增长时它能替代巨型条件分支。但是对象切换、共享数据和转移合法性需要额外契约。如果变化点并不存在，套用模式只会增加理解成本。",
     "pattern": "State",
     "source": "资料依据：GoF · GoF State state-dependent behavior"
   },
@@ -2683,7 +2683,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "可共享的无状态 State 可以放入注册表，但用户输入、超时等瞬时数据必须保存在上下文或事件对象中，不能写进共享状态实例。若状态含可变字段，就应按上下文隔离或加同步，否则一个会话的转移会污染另一个会话。",
+    "answer": "可共享的无状态 State 可以放入注册表。但是用户输入、超时等瞬时数据必须保存在上下文或事件对象中，不能写进共享状态实例。若状态含可变字段，就应该按上下文隔离或加同步。否则一个会话的转移会污染另一个会话。",
     "pattern": "State",
     "source": "资料依据：GoF · GoF State state-dependent behavior"
   },
@@ -2698,7 +2698,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "策略模式把一组可互换算法封装成共同接口，由上下文持有并委托当前策略，从而把选择与算法实现分离。它适合运行时或配置驱动的算法变化，但策略类过多会增加装配和间接调用成本，固定且简单的分支可能更清楚。",
+    "answer": "策略模式把一组可互换算法封装成共同接口，由上下文持有并委托当前策略，从而把选择与算法实现分离。它适合运行时或配置驱动的算法变化。但是策略类过多会增加装配和间接调用成本，固定且简单的分支可能更清楚。",
     "pattern": "Strategy",
     "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
   },
@@ -2713,7 +2713,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "运行时策略可由依赖注入提供，拥有关系应由上下文、调用者或共享指针中的一个边界明确承担。切换策略时要处理正在执行的调用、线程安全和旧策略释放，不能只替换裸指针。",
+    "answer": "运行时策略可以由依赖注入提供，拥有关系应由上下文、调用者或共享指针中的一个边界明确承担。切换策略时要处理正在执行的调用、线程安全和旧策略释放，不能只替换裸指针。如果变化点并不存在，套用模式只会增加理解成本。",
     "pattern": "Strategy",
     "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
   },
@@ -2728,7 +2728,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "模板方法在基类中固定算法骨架，通过受保护的原语操作或钩子把可变步骤交给子类；调用者只看到稳定的公共流程。它利用继承实现编译期复用，代价是基类控制反转且子类组合受限，需要防止钩子破坏骨架不变量。",
+    "answer": "模板方法在基类中固定算法骨架，通过受保护的原语操作或钩子把可变步骤交给子类。调用者只看到稳定的公共流程。它利用继承实现编译期复用，代价是基类控制反转且子类组合受限，需要防止钩子破坏骨架不变量。",
     "pattern": "Template Method",
     "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
   },
@@ -2743,7 +2743,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "钩子通常提供无操作或保守默认实现，子类只覆盖确有需要的步骤；异常是否向上冒泡由模板方法的事务契约决定。模板方法若在中途吞掉异常或继续使用半完成状态，会让子类无法判断提交边界，应保持失败后的对象不变量。",
+    "answer": "钩子通常提供无操作或保守默认实现，子类只覆盖确有需要的步骤。异常是否向上冒泡由模板方法的事务契约决定。模板方法若在中途吞掉异常或继续使用半完成状态，会让子类无法判断提交边界，应该保持失败后的对象不变量。",
     "pattern": "Template Method",
     "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
   },
@@ -2758,7 +2758,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "访问者把操作放进独立对象，元素通过 accept 将自身类型分派给对应 visit，从而新增操作无需修改元素类。它适合元素层次稳定而操作经常增加的系统；新增元素则要求修改所有访问者，类型安全与扩展方向存在明确取舍。",
+    "answer": "访问者把操作放进独立对象，元素通过 accept 将自身类型分派给对应 visit，从而新增操作无需修改元素类。它适合元素层次稳定而操作经常增加的系统。新增元素则要求修改所有访问者，类型安全与扩展方向存在明确取舍。",
     "pattern": "Visitor",
     "source": "资料依据：GoF · GoF Visitor double dispatch and operation extension"
   },
@@ -2788,7 +2788,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "依赖注入把抽象工厂作为构造或启动边界的依赖，业务对象只调用抽象产品接口，不直接实例化具体工厂。这样测试可以注入替身并整体切换产品族，但工厂接口仍会随新增产品扩张，不能把依赖注入误当成消除产品族约束。",
+    "answer": "依赖注入把抽象工厂作为构造或启动边界的依赖，业务对象只调用抽象产品接口，不直接实例化具体工厂。这样测试可以注入替身并整体切换产品族。但是工厂接口仍会随新增产品扩张，不能把依赖注入误当成消除产品族约束。",
     "pattern": "Abstract Factory",
     "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
   },
@@ -2803,7 +2803,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "C++14",
       "C++17"
     ],
-    "answer": "命名构造函数适合少量互斥选项，能保持调用点短且直接返回完整对象；Builder 更适合许多可选步骤、校验或多种表示。Builder 会增加类型和状态管理，若没有复杂构造过程，采用它反而扩大 API 和维护成本。",
+    "answer": "命名构造函数适合少量互斥选项，能保持调用点短且直接返回完整对象。Builder 更适合许多可选步骤、校验或多种表示。Builder 会增加类型和状态管理，若没有复杂构造过程，采用它反而扩大 API 和维护成本。",
     "pattern": "Builder",
     "source": "资料依据：GoF · GoF Builder construction process and representation"
   },
@@ -2816,7 +2816,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应直接依赖 Intermediate 下的生成符号和文件布局。",
+    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应该使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应该直接依赖 Intermediate 下的生成符号和文件布局。",
     "source": "资料依据：Epic Games · Unreal Header Tool and UObject Reflection System"
   },
   {
@@ -2852,7 +2852,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
+    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应该读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
     "source": "资料依据：Epic Games · Unreal Header Tool Parsing and Generated Headers"
   },
   {
@@ -2864,7 +2864,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
+    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应该通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
     "source": "资料依据：Epic Games · GENERATED_BODY and Generated Code"
   },
   {
@@ -2888,7 +2888,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍需通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
+    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍然需要通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
     "source": "资料依据：Epic Games · UObject Outer and Object Ownership Hierarchy"
   },
   {
@@ -2900,7 +2900,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
+    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可以从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
     "source": "资料依据：Epic Games · UObject Instance Creation with NewObject"
   },
   {
@@ -2924,7 +2924,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图，因此必须改用受跟踪引用或显式引用收集。",
+    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图。因此必须改用受跟踪引用或显式引用收集。",
     "source": "资料依据：Epic Games · Garbage Collection and Reflected Object References"
   },
   {
@@ -2936,7 +2936,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可被反射系统跟踪，但未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
+    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可以被反射系统跟踪。但是未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
     "source": "资料依据：Epic Games · Object Pointers and TObjectPtr"
   },
   {
@@ -2948,7 +2948,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用；对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应在游戏线程取得 Get 结果并立即重新校验。",
+    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用。对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应该在游戏线程取得 Get 结果并立即重新校验。",
     "source": "资料依据：Epic Games · Weak Object Pointers and TWeakObjectPtr"
   },
   {
@@ -2972,7 +2972,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可被反射和序列化但不会作为独立 GC 对象；其中的 UObject 引用仍需用 UPROPERTY 等方式暴露给引用收集器。",
+    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可以被反射和序列化但不会作为独立 GC 对象。其中的 UObject 引用仍然需要用 UPROPERTY 等方式暴露给引用收集器。",
     "source": "资料依据：Epic Games · Choosing UObjects versus UStructs"
   },
   {
@@ -2984,7 +2984,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应只依赖热重载来验证。",
+    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应该只依赖热重载来验证。",
     "source": "资料依据：Epic Games · UHT Generated Code for UFunctions and Properties"
   },
   {
@@ -2996,7 +2996,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要正确的 Build.cs 依赖、可见头文件和 API 导出，否则生成代码会在编译或链接阶段缺少注册符号。",
+    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要要正确的 Build.cs 依赖、可见头文件和 API 导出。否则生成代码会在编译或链接阶段缺少注册符号。",
     "source": "资料依据：Epic Games · Unreal Header Tool Limitations and Module Visibility"
   },
   {
@@ -3044,7 +3044,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
+    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应该在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
     "source": "资料依据：Epic Games · Creating and Duplicating UObject Instances"
   },
   {
@@ -3068,7 +3068,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "后台任务不应靠裸指针延长 UObject 寿命，可由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
+    "answer": "后台任务不应该靠裸指针延长 UObject 寿命，可以由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
     "source": "资料依据：Epic Games · Garbage Collection with Async Tasks"
   },
   {
@@ -3092,7 +3092,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction，因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应放到 BeginPlay 或显式命令，而不是构造阶段。",
+    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction。因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应该放到 BeginPlay 或显式命令，而不是构造阶段。",
     "source": "资料依据：Epic Games · OnConstruction and Construction Script Reruns"
   },
   {
@@ -3104,7 +3104,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达，但所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应使用相应回调并通过日志验证时序。",
+    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达。但是所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应该使用相应回调并通过日志验证时序。",
     "source": "资料依据：Epic Games · Actor Lifecycle and BeginPlay Networking"
   },
   {
@@ -3116,7 +3116,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "SpawnCollisionHandlingOverride 可让生成因碰撞失败、调整位置或强制生成，因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因；它们都不会自动建立组件附加关系。",
+    "answer": "SpawnCollisionHandlingOverride 可以让生成因碰撞失败、调整位置或强制生成。因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因。它们都不会自动建立组件附加关系。",
     "source": "资料依据：Epic Games · Spawning Actors and FActorSpawnParameters"
   },
   {
@@ -3140,7 +3140,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
+    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应该通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
     "source": "资料依据：Epic Games · Scene Component Attachment and Root Components"
   },
   {
@@ -3164,7 +3164,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应在所有依赖和初始属性就绪后设置。",
+    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应该在所有依赖和初始属性就绪后设置。",
     "source": "资料依据：Epic Games · Runtime Component Creation"
   },
   {
@@ -3212,7 +3212,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应长期强引用旧 World 的 Actor 和组件，世界切换时应通过委托更新或清理这些引用。",
+    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应该长期强引用旧 World 的 Actor 和组件，世界切换时应该通过委托更新或清理这些引用。",
     "source": "资料依据：Epic Games · Programming Subsystems: UGameInstanceSubsystem"
   },
   {
@@ -3224,7 +3224,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍应由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
+    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可以通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍然应该由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
     "source": "资料依据：Epic Games · Subsystem Initialization and Dependencies"
   },
   {
@@ -3236,7 +3236,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应在重建后重新获取并让组件负责创建和销毁流程。",
+    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应该在重建后重新获取并让组件负责创建和销毁流程。",
     "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
   },
   {
@@ -3248,7 +3248,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。",
+    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。落到工程里，要把创建时机、注册状态和销毁顺序一起看，避免只盯着某一个回调。",
     "source": "资料依据：Epic Games · Component Templates and Class Default Objects"
   },
   {
@@ -3260,7 +3260,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托；OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应承担主要玩法清理。",
+    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托。OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应该承担主要玩法清理。",
     "source": "资料依据：Epic Games · Actor Lifecycle: EndPlay and Destroyed"
   },
   {
@@ -3284,7 +3284,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造，因此逻辑必须可重复且不依赖固定调用次数。",
+    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造。因此逻辑必须可重复且不依赖固定调用次数。",
     "source": "资料依据：Epic Games · Construction Script for Placed and Spawned Actors"
   },
   {
@@ -3296,7 +3296,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "单播 Delegate 只保存一个可调用目标，执行有返回值的委托前应检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
+    "answer": "单播 Delegate 只保存一个可以调用目标，执行有返回值的委托前应该检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
     "source": "资料依据：Epic Games · Delegates: Single-Cast Delegates"
   },
   {
@@ -3308,7 +3308,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
+    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应该保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
     "source": "资料依据：Epic Games · Delegates: Multicast Delegates"
   },
   {
@@ -3320,7 +3320,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可被蓝图使用并支持序列化，但签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
+    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可以被蓝图使用并支持序列化。但是签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
     "source": "资料依据：Epic Games · Delegates: Dynamic Delegates"
   },
   {
@@ -3344,7 +3344,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目；Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
+    "answer": "绑定长寿命发布者时应该保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行。但是仍然应该清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
     "source": "资料依据：Epic Games · Removing Delegate Bindings"
   },
   {
@@ -3356,7 +3356,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
+    "answer": "BlueprintNativeEvent 会生成可以从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应该调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
     "source": "资料依据：Epic Games · UFunctions: BlueprintNativeEvent"
   },
   {
@@ -3368,7 +3368,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用，但要支持蓝图实现时应使用反射检查和生成的 Execute_ 函数。",
+    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用。但是要支持蓝图实现时应该使用反射检查和生成的 Execute_ 函数。",
     "source": "资料依据：Epic Games · Unreal Interfaces"
   },
   {
@@ -3392,7 +3392,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
+    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应该通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
     "source": "资料依据：Epic Games · AsyncTask and Game Thread UObject Access"
   },
   {
@@ -3404,7 +3404,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "线程池任务应按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
+    "answer": "线程池任务应该按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
     "source": "资料依据：Epic Games · Async Work and Thread Pool Tasks"
   },
   {
@@ -3428,7 +3428,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
+    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应该检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
     "source": "资料依据：Epic Games · Latent Actions and FLatentActionManager"
   },
   {
@@ -3440,7 +3440,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "异步资源加载应保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
+    "answer": "异步资源加载应该保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
     "source": "资料依据：Epic Games · Asynchronous Asset Loading"
   },
   {
@@ -3452,7 +3452,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
+    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应该通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
     "source": "资料依据：Epic Games · Cancelling Async Tasks"
   },
   {
@@ -3476,7 +3476,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发；服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
+    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发。服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
     "source": "资料依据：Epic Games · Replicate Actor Properties with RepNotify"
   },
   {
@@ -3488,7 +3488,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册；运行时差异应使用条件、Active Override 或 Push Model 的脏标记机制。",
+    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册。运行时差异应该使用条件、Active Override 或 Push Model 的脏标记机制。",
     "source": "资料依据：Epic Games · Replicate Actor Properties"
   },
   {
@@ -3500,7 +3500,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应在确认拥有关系后使用。",
+    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应该在确认拥有关系后使用。",
     "source": "资料依据：Epic Games · Conditional Property Replication"
   },
   {
@@ -3524,7 +3524,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史，因此持久状态仍应使用属性复制。",
+    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史。因此持久状态仍然应该使用属性复制。",
     "source": "资料依据：Epic Games · Remote Procedure Calls: NetMulticast"
   },
   {
@@ -3548,7 +3548,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
+    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应该把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
     "source": "资料依据：Epic Games · Remote Procedure Calls: Client RPC"
   },
   {
@@ -3560,7 +3560,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序，但前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态，所以连续状态仍应交给属性复制。",
+    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序。但是前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态。所以连续状态仍然应该交给属性复制。",
     "source": "资料依据：Epic Games · Remote Procedure Calls: Reliability"
   },
   {
@@ -3584,7 +3584,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需评估通道和带宽成本。",
+    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需要评估通道和带宽成本。",
     "source": "资料依据：Epic Games · Replicating UObjects and Subobjects"
   },
   {
@@ -3620,7 +3620,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志；网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
+    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志。网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应该保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
     "source": "资料依据：Epic Games · Serialization, SaveGame, and Network Replication"
   },
   {
@@ -3632,7 +3632,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
+    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应该保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
     "source": "资料依据：Epic Games · Saving and Loading Your Game"
   },
   {
@@ -3644,7 +3644,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
+    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应该明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
     "source": "资料依据：Epic Games · SaveGame Versioning and Migration"
   },
   {
@@ -3752,7 +3752,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
+    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需要从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
     "source": "资料依据：Epic Games · Integrating Third-Party Libraries"
   },
   {
@@ -3764,7 +3764,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
+    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应该避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
     "source": "资料依据：Epic Games · Module API Specifiers"
   },
   {
@@ -3788,7 +3788,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除；新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
+    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除。新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
     "source": "资料依据：Epic Games · Fast TArray Replication and Reconnects"
   },
   {
@@ -3848,7 +3848,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造，但 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
+    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造。但是 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可以在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
     "source": "资料依据：Epic Games · Deferred Actor Spawning"
   },
   {
@@ -3872,7 +3872,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove；涉及 UObject 时可选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
+    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove。涉及 UObject 时可以选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
     "source": "资料依据：Epic Games · Dynamic and Native Multicast Delegates"
   },
   {
@@ -3884,7 +3884,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
+    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应该下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
     "source": "资料依据：Epic Games · Separating Runtime and Editor Modules"
   },
   {
@@ -3908,7 +3908,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "RepNotify 应把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
+    "answer": "RepNotify 应该把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
     "source": "资料依据：Epic Games · RepNotify Initial and Subsequent Updates"
   },
   {
@@ -3920,7 +3920,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍需随地图切换更新。",
+    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应该使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍然需要随地图切换更新。",
     "source": "资料依据：Epic Games · Choosing WorldSubsystem versus GameInstanceSubsystem"
   },
   {
@@ -3932,7 +3932,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄；保留路径也允许后续重试。",
+    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄。保留路径也允许后续重试。",
     "source": "资料依据：Epic Games · Asynchronous Asset Loading with Soft Object References"
   },
   {
@@ -3944,7 +3944,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
+    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可以由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
     "source": "资料依据：Epic Games · Client Prediction and Server Reconciliation"
   },
   {
@@ -3956,7 +3956,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需等待工作结束或安全放弃结果。",
+    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需要等待工作结束或安全放弃结果。",
     "source": "资料依据：Epic Games · Task Cancellation and Single Completion"
   },
   {
@@ -3968,7 +3968,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接；单纯调整链接顺序不能补上未导出的 DLL 符号。",
+    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接。单纯调整链接顺序不能补上未导出的 DLL 符号。",
     "source": "资料依据：Epic Games · Module API Specifiers and Link Errors"
   },
   {
@@ -3992,7 +3992,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "EndPlay 或 BeginDestroy 时应标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
+    "answer": "EndPlay 或 BeginDestroy 时应该标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
     "source": "资料依据：Epic Games · UObject Destruction and Async Callback Races"
   },
   {
@@ -4004,7 +4004,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "UE5"
     ],
-    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
+    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应该提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
     "source": "资料依据：Epic Games · Custom NetSerialize Version Compatibility"
   },
   {
@@ -4016,7 +4016,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "CreateProcessW 会把 lpCommandLine 当作可写缓冲区，STARTUPINFO 的 cb 必须正确设置；Unicode 环境块还要与 CREATE_UNICODE_ENVIRONMENT 配套。句柄继承应优先用 STARTUPINFOEX 的句柄列表收窄范围，创建成功后父进程及时关闭不再持有的线程、进程和管道句柄。",
+    "answer": "CreateProcessW 会把 lpCommandLine 当作可写缓冲区，STARTUPINFO 的 cb 必须正确设置。Unicode 环境块还要与 CREATE_UNICODE_ENVIRONMENT 配套。句柄继承应该优先用 STARTUPINFOEX 的句柄列表收窄范围，创建成功后父进程及时关闭不再持有的线程、进程和管道句柄。",
     "source": "资料依据：Microsoft Learn · CreateProcessW and STARTUPINFOEX handle inheritance"
   },
   {
@@ -4052,7 +4052,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "进程加入 Job 后，可通过 SetInformationJobObject 设置进程数、CPU、内存以及 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等限制。把 Job 关联到完成端口可接收新进程、退出和资源限制消息，但消息通知不能代替对 API 返回值与进程退出状态的检查。",
+    "answer": "进程加入 Job 后，可以通过 SetInformationJobObject 设置进程数、CPU、内存以及 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等限制。把 Job 关联到完成端口可接收新进程、退出和资源限制消息。但是消息通知不能代替对 API 返回值与进程退出状态的检查。",
     "source": "资料依据：Microsoft Learn · Job Objects limits and completion port notifications"
   },
   {
@@ -4064,7 +4064,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "WAIT_OBJECT_0 表示对象已满足，WAIT_TIMEOUT 只是本次等待超时，WAIT_FAILED 后必须读取 GetLastError；等待互斥体还可能得到 WAIT_ABANDONED。等待尚未结束时关闭该句柄会产生未定义行为，而且 GUI 线程长期无限等待会阻塞消息泵。",
+    "answer": "WAIT_OBJECT_0 表示对象已满足，WAIT_TIMEOUT 只是本次等待超时，WAIT_FAILED 后必须读取 GetLastError。等待互斥体还可能得到 WAIT_ABANDONED。等待尚未结束时关闭该句柄会产生未定义行为，而且 GUI 线程长期无限等待会阻塞消息泵。",
     "source": "资料依据：Microsoft Learn · WaitForSingleObject return values and waitable objects"
   },
   {
@@ -4076,7 +4076,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "TlsAlloc 只分配索引，TlsSetValue 保存的是每线程指针，系统不会替应用释放该指针指向的对象。需要退出回调时可使用 FLS，或者让受控线程在返回前执行清理；最后还要由进程级所有者调用 TlsFree 或 FlsFree 释放索引。",
+    "answer": "TlsAlloc 只分配索引，TlsSetValue 保存的是每线程指针，系统不会替应用释放该指针指向的对象。需要退出回调时可使用 FLS，或者让受控线程在返回前执行清理。最后还要由进程级所有者调用 TlsFree 或 FlsFree 释放索引。",
     "source": "资料依据：Microsoft Learn · Thread Local Storage and Fiber Local Storage callbacks"
   },
   {
@@ -4088,7 +4088,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "会调用 C 运行库的线程入口通常使用 _beginthreadex，使运行库能够建立并在返回或 _endthreadex 时释放线程状态。CreateThread 适合不依赖这类运行库状态的纯 Win32 入口；无论用哪一种，创建方仍要等待或关闭返回的线程句柄。",
+    "answer": "会调用 C 运行库的线程入口通常使用 _beginthreadex，使运行库能够建立并在返回或 _endthreadex 时释放线程状态。CreateThread 适合不依赖这类运行库状态的纯 Win32 入口。无论用哪一种，创建方仍要等待或关闭返回的线程句柄。",
     "source": "资料依据：Microsoft Learn · _beginthreadex and CreateThread runtime-library ownership"
   },
   {
@@ -4100,7 +4100,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "Windows 用进程优先级类和线程相对优先级计算基础优先级，动态提升也会影响实际调度，因此设置值不是确定的执行时限。长期提高优先级可能让输入、I/O 或其他工作线程饥饿，硬实时要求不能依赖普通 Windows 线程优先级来保证。",
+    "answer": "Windows 用进程优先级类和线程相对优先级计算基础优先级，动态提升也会影响实际调度。因此设置值不是确定的执行时限。长期提高优先级可能让输入、I/O 或其他工作线程饥饿，硬实时要求不能依赖普通 Windows 线程优先级来保证。",
     "source": "资料依据：Microsoft Learn · Scheduling priorities and thread priority levels"
   },
   {
@@ -4124,7 +4124,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "CRITICAL_SECTION 只能用于同一进程，允许同一线程递归进入，但每次进入都必须有对应的 LeaveCriticalSection。DeleteCriticalSection 前必须确保没有线程持有或等待它，删除后再次进入属于未定义行为，因此锁对象应比所有使用线程活得更久。",
+    "answer": "CRITICAL_SECTION 只能用于同一进程，允许同一线程递归进入。但是每次进入都必须有对应的 LeaveCriticalSection。DeleteCriticalSection 前必须确保没有线程持有或等待它，删除后再次进入属于未定义行为。因此锁对象应比所有使用线程活得更久。",
     "source": "资料依据：Microsoft Learn · Critical section objects and lifecycle"
   },
   {
@@ -4136,7 +4136,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "Mutex 是可命名、可跨进程等待的内核对象，创建和打开受安全描述符控制，同一拥有线程可以递归获取。拥有线程异常结束时等待者会收到 WAIT_ABANDONED；临界区或 SRW lock 更轻量但限于进程内，也没有这套 abandoned 语义。",
+    "answer": "Mutex 是可命名、可跨进程等待的内核对象，创建和打开受安全描述符控制，同一拥有线程可以递归获取。拥有线程异常结束时等待者会收到 WAIT_ABANDONED。临界区或 SRW lock 更轻量但限于进程内，也没有这套 abandoned 语义。",
     "source": "资料依据：Microsoft Learn · Mutex objects, ownership and abandoned state"
   },
   {
@@ -4148,7 +4148,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，增加后超过创建时最大值会失败且计数不变。代码应只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
+    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，增加后超过创建时最大值会失败且计数不变。代码应该只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
     "source": "资料依据：Microsoft Learn · Semaphore objects and ReleaseSemaphore limits"
   },
   {
@@ -4160,7 +4160,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "自动重置事件通常释放一个等待者后自动回到无信号态，手动重置事件会保持有信号态，直到调用 ResetEvent，并可唤醒所有现有等待者。事件只保存一个信号位，连续 SetEvent 不会累计次数；需要计数语义时应使用信号量或受锁保护的条件状态。",
+    "answer": "自动重置事件通常释放一个等待者后自动回到无信号态，手动重置事件会保持有信号态，直到调用 ResetEvent，并可唤醒所有现有等待者。事件只保存一个信号位，连续 SetEvent 不会累计次数。需要计数语义时应该使用信号量或受锁保护的条件状态。",
     "source": "资料依据：Microsoft Learn · Event objects, manual-reset and auto-reset semantics"
   },
   {
@@ -4172,7 +4172,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "SRW lock 支持共享读和独占写，体积小且无需显式销毁，但不保证公平，也不能递归获取独占锁。API 没有原子升级或降级操作，释放共享锁再获取独占锁之间状态可能变化，必须重新检查受保护条件。",
+    "answer": "SRW lock 支持共享读和独占写，体积小且无需显式销毁。但是不保证公平，也不能递归获取独占锁。API 没有原子升级或降级操作，释放共享锁再获取独占锁之间状态可能变化，必须重新检查受保护条件。",
     "source": "资料依据：Microsoft Learn · Slim Reader Writer locks"
   },
   {
@@ -4184,7 +4184,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "SleepConditionVariableCS 或 SleepConditionVariableSRW 会原子释放锁并进入等待，返回前重新取得锁，但返回可能来自虚假或被其他线程抢先消费的唤醒。等待方必须在同一把锁下用循环重新检查谓词，超时和错误也要作为独立结果处理。",
+    "answer": "SleepConditionVariableCS 或 SleepConditionVariableSRW 会原子释放锁并进入等待，返回前重新取得锁。但是返回可能来自虚假或被其他线程抢先消费的唤醒。等待方必须在同一把锁下用循环重新检查谓词，超时和错误也要作为独立结果处理。",
     "source": "资料依据：Microsoft Learn · Condition variables with critical sections and SRW locks"
   },
   {
@@ -4196,7 +4196,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "常规 Interlocked 操作对目标值提供原子读改写，并在 Windows 支持的平台上形成完整内存屏障；带 Acquire、Release 或 NoFence 后缀的变体只提供标明的排序。比较交换只比较位模式，值从 A 变到 B 又回到 A 时仍会成功，版本计数、带标签指针或受锁回收才能处理 ABA。",
+    "answer": "常规 Interlocked 操作对目标值提供原子读改写，并在 Windows 支持的平台上形成完整内存屏障。带 Acquire、Release 或 NoFence 后缀的变体只提供标明的排序。比较交换只比较位模式，值从 A 变到 B 又回到 A 时仍会成功，版本计数、带标签指针或受锁回收才能处理 ABA。",
     "source": "资料依据：Microsoft Learn · Interlocked variable access and memory barriers"
   },
   {
@@ -4208,7 +4208,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "WaitOnAddress 仅在目标内存与给定比较值相等时阻塞，返回后仍须重新读取状态，因为可能发生虚假唤醒或条件已被别的线程改变。修改状态的线程应在写入后调用 WakeByAddressSingle 或 WakeByAddressAll；它适合进程内轻量等待，但没有可继承或跨进程的内核事件句柄。",
+    "answer": "WaitOnAddress 仅在目标内存与给定比较值相等时阻塞，返回后仍须重新读取状态，因为可能发生虚假唤醒或条件已被别的线程改变。修改状态的线程应该在写入后调用 WakeByAddressSingle 或 WakeByAddressAll。它适合进程内轻量等待。但是没有可继承或跨进程的内核事件句柄。",
     "source": "资料依据：Microsoft Learn · WaitOnAddress and WakeByAddress functions"
   },
   {
@@ -4220,7 +4220,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "INIT_ONCE 以 INIT_ONCE_STATIC_INIT 或 InitOnceInitialize 建立状态，多个调用者只会让一个线程执行同步初始化回调。回调返回 FALSE 时本次初始化不提交，其他调用可以重试，因此失败产生的临时资源必须由回调自己回滚。",
+    "answer": "INIT_ONCE 以 INIT_ONCE_STATIC_INIT 或 InitOnceInitialize 建立状态，多个调用者只会让一个线程执行同步初始化回调。回调返回 FALSE 时本次初始化不提交，其他调用可以重试。因此失败产生的临时资源必须由回调自己回滚。",
     "source": "资料依据：Microsoft Learn · One-time initialization with InitOnceExecuteOnce"
   },
   {
@@ -4244,7 +4244,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "所有代码路径应按稳定键定义同一获取顺序，例如对象地址、层级编号或资源 ID，并以逆序释放。锁守卫把释放绑定到作用域，批量操作则先排序并在任一获取失败时回滚已经持有的锁，避免异常分支破坏约定。",
+    "answer": "所有代码路径应该按稳定键定义同一获取顺序，例如对象地址、层级编号或资源 ID，并以逆序释放。锁守卫把释放绑定到作用域，批量操作则先排序并在任一获取失败时回滚已经持有的锁，避免异常分支破坏约定。",
     "source": "资料依据：Microsoft Learn · Synchronization best practices and lock ordering"
   },
   {
@@ -4268,7 +4268,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "正常返回或 ExitProcess 会终止其他线程并执行进程分离通知，但通知运行在受限的加载器环境中，不适合复杂协作式清理。TerminateProcess 会直接终止所有线程而不执行附加 DLL 的正常退出代码，系统只保证回收内核拥有的进程资源，应用数据可能未提交。",
+    "answer": "正常返回或 ExitProcess 会终止其他线程并执行进程分离通知。但是通知运行在受限的加载器环境中，不适合复杂协作式清理。TerminateProcess 会直接终止所有线程而不执行附加 DLL 的正常退出代码，系统只保证回收内核拥有的进程资源，应用数据可能未提交。",
     "source": "资料依据：Microsoft Learn · Terminating a process and DLL process detach behavior"
   },
   {
@@ -4281,7 +4281,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "WSAStartup 返回的 WSADATA 给出实际协商版本，调用方应检查该版本是否满足需求，失败时不能继续调用 Winsock。每次成功的 WSAStartup 都要有一次 WSACleanup 配对，库或模块应明确由谁持有这段进程级初始化生命周期。",
+    "answer": "WSAStartup 返回的 WSADATA 给出实际协商版本，调用方应该检查该版本是否满足需求，失败时不能继续调用 Winsock。每次成功的 WSAStartup 都要有一次 WSACleanup 配对，库或模块应该明确由谁持有这段进程级初始化生命周期。",
     "source": "资料依据：Microsoft Learn · WSAStartup version negotiation and WSACleanup"
   },
   {
@@ -4294,7 +4294,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "阻塞 socket 可让调用线程等待，非阻塞 socket 在暂时无法推进时返回 SOCKET_ERROR 和 WSAEWOULDBLOCK，调用方依赖 readiness 通知重试。重叠 I/O 则让每个操作携带 OVERLAPPED 和稳定缓冲区，WSA_IO_PENDING 表示稍后通过事件、回调或 IOCP 报告完成，它与非阻塞模式不是同一概念。",
+    "answer": "阻塞 socket 可以让调用线程等待，非阻塞 socket 在暂时无法推进时返回 SOCKET_ERROR 和 WSAEWOULDBLOCK，调用方依赖 readiness 通知重试。重叠 I/O 则让每个操作携带 OVERLAPPED 和稳定缓冲区，WSA_IO_PENDING 表示稍后通过事件、回调或 IOCP 报告完成，它与非阻塞模式不是同一概念。",
     "source": "资料依据：Microsoft Learn · Winsock blocking, nonblocking and overlapped I/O"
   },
   {
@@ -4307,7 +4307,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "服务端依次 bind 本地地址、listen 建立等待队列，再由 accept 为每个连接返回新的 socket；监听 socket 本身继续接收后续连接。backlog 是实现可调整的待处理连接提示，accept 失败时只处理对应错误并继续或停止监听，不能把监听句柄当成已连接句柄关闭。",
+    "answer": "服务端依次 bind 本地地址、listen 建立等待队列，再由 accept 为每个连接返回新的 socket。监听 socket 本身继续接收后续连接。backlog 是实现可调整的待处理连接提示，accept 失败时只处理对应错误并继续或停止监听，不能把监听句柄当成已连接句柄关闭。",
     "source": "资料依据：Microsoft Learn · Binding, listening and accepting Winsock connections"
   },
   {
@@ -4333,7 +4333,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP 只提供有序字节流，一次 send 与一次 recv 没有对应关系，应用协议必须用固定长度、长度前缀或可靠分隔符完成帧解析。recv 返回 0 表示对端完成有序关闭，仍应按协议处理已缓存的完整帧，并用 shutdown 表达本端不再发送或接收的方向。",
+    "answer": "TCP 只提供有序字节流，一次 send 与一次 recv 没有对应关系，应用协议必须用固定长度、长度前缀或可靠分隔符完成帧解析。recv 返回 0 表示对端完成有序关闭，仍然应该按协议处理已缓存的完整帧，并用 shutdown 表达本端不再发送或接收的方向。",
     "source": "资料依据：IETF RFC · RFC 9293 TCP byte stream and connection closing"
   },
   {
@@ -4346,7 +4346,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "Windows 的 SO_REUSEADDR 可能允许套接字强制绑定已被占用的地址，多个套接字收到流量的行为并不可靠，因此不应照搬其他系统的服务器习惯。需要独占监听端口时使用 SO_EXCLUSIVEADDRUSE，并在 bind 前设置，权限和重启策略也要纳入部署设计。",
+    "answer": "Windows 的 SO_REUSEADDR 可能允许套接字强制绑定已被占用的地址，多个套接字收到流量的行为并不可靠。因此不应该照搬其他系统的服务器习惯。需要独占监听端口时使用 SO_EXCLUSIVEADDRUSE，并在 bind 前设置，权限和重启策略也要纳入部署设计。",
     "source": "资料依据：Microsoft Learn · SO_REUSEADDR and SO_EXCLUSIVEADDRUSE"
   },
   {
@@ -4359,7 +4359,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "select 每次都扫描 fd_set，Windows 默认 FD_SETSIZE 还限制集合容量，调用后集合会被改写，下一轮必须重建。WSAPoll 也按数组扫描，接口更适合动态集合但仍是 readiness 模型；大规模并发 I/O 通常转向 IOCP，而不是把轮询数组无限放大。",
+    "answer": "select 每次都扫描 fd_set，Windows 默认 FD_SETSIZE 还限制集合容量，调用后集合会被改写，下一轮必须重建。WSAPoll 也按数组扫描，接口更适合动态集合但仍是 readiness 模型。大规模并发 I/O 通常转向 IOCP，而不是把轮询数组无限放大。",
     "source": "资料依据：Microsoft Learn · select, fd_set and WSAPoll"
   },
   {
@@ -4372,7 +4372,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象，并自动把 socket 置为非阻塞模式。事件被置位后应调用 WSAEnumNetworkEvents 读取每一位及其错误码，同时完成事件状态重置；只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
+    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象，并自动把 socket 置为非阻塞模式。事件被置位后应该调用 WSAEnumNetworkEvents 读取每一位及其错误码，同时完成事件状态重置。只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
     "source": "资料依据：Microsoft Learn · WSAEventSelect and WSAEnumNetworkEvents"
   },
   {
@@ -4398,7 +4398,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "对面向连接的字节流，正数是实际收到的字节数，0 表示对端已经有序关闭发送方向，SOCKET_ERROR 后用 WSAGetLastError 判断可重试或致命错误。无连接报文可以合法携带零长度数据，因此不能在所有 socket 类型上把 0 一律解释为断线。",
+    "answer": "对面向连接的字节流，正数是实际收到的字节数，0 表示对端已经有序关闭发送方向，SOCKET_ERROR 后用 WSAGetLastError 判断可重试或致命错误。无连接报文可以合法携带零长度数据。因此不能在所有 socket 类型上把 0 一律解释为断线。",
     "source": "资料依据：Microsoft Learn · Winsock recv return values and graceful close"
   },
   {
@@ -4411,7 +4411,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "shutdown(SD_SEND) 禁止后续发送，并在已排队数据发出后启动 TCP 的有序关闭，接收方向仍可继续读取对端数据。shutdown 不是 closesocket，协议交换结束后仍要关闭句柄；SD_RECEIVE 和 SD_BOTH 的选择也必须与应用层状态机一致。",
+    "answer": "shutdown(SD_SEND) 禁止后续发送，并在已排队数据发出后启动 TCP 的有序关闭，接收方向仍可继续读取对端数据。shutdown 不是 closesocket，协议交换结束后仍要关闭句柄。SD_RECEIVE 和 SD_BOTH 的选择也必须与应用层状态机一致。",
     "source": "资料依据：Microsoft Learn · Winsock shutdown and graceful connection closure；IETF RFC · RFC 9293 TCP half-close"
   },
   {
@@ -4424,7 +4424,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "SO_KEEPALIVE 在连接长时间空闲后用传输层探测判断对端是否仍可达，默认周期通常不适合快速故障发现，具体参数还依赖系统配置或 SIO_KEEPALIVE_VALS。应用层心跳可以携带会话语义并设置业务超时，但会增加流量；二者解决的层次不同，可以按场景组合。",
+    "answer": "SO_KEEPALIVE 在连接长时间空闲后用传输层探测判断对端是否仍可达，默认周期通常不适合快速故障发现，具体参数还依赖系统配置或 SIO_KEEPALIVE_VALS。应用层心跳可以携带会话语义并设置业务超时。但是会增加流量。二者解决的层次不同，可以按场景组合。",
     "source": "资料依据：Microsoft Learn · SO_KEEPALIVE and SIO_KEEPALIVE_VALS"
   },
   {
@@ -4437,7 +4437,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "UDP 保留每个数据报的边界，但不保证送达、顺序、唯一性或拥塞控制，可靠性需要应用协议自己定义序号、重传和去重。接收缓冲区小于报文时 Winsock 可能返回 WSAEMSGSIZE 并截断数据，协议应限制最大报文并把分片风险纳入设计。",
+    "answer": "UDP 保留每个数据报的边界。但是不保证送达、顺序、唯一性或拥塞控制，可靠性需要应用协议自己定义序号、重传和去重。接收缓冲区小于报文时 Winsock 可能返回 WSAEMSGSIZE 并截断数据，协议应限制最大报文并把分片风险纳入设计。",
     "source": "资料依据：IETF RFC · RFC 768 User Datagram Protocol semantics；Microsoft Learn · Winsock datagram sockets and WSAEMSGSIZE"
   },
   {
@@ -4463,7 +4463,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "hints 用 family、socktype 和 protocol 限定结果，调用方应遍历链表逐个尝试创建与连接，而不是只使用第一项。每个失败的 socket 都要关闭，结果用 freeaddrinfo 释放；不能阻塞的线程可使用 GetAddrInfoEx 等异步接口并区分解析错误与连接错误。",
+    "answer": "hints 用 family、socktype 和 protocol 限定结果，调用方应该遍历链表逐个尝试创建与连接，而不是只使用第一项。每个失败的 socket 都要关闭，结果用 freeaddrinfo 释放。不能阻塞的线程可使用 GetAddrInfoEx 等异步接口并区分解析错误与连接错误。",
     "source": "资料依据：Microsoft Learn · getaddrinfo and GetAddrInfoEx name resolution"
   },
   {
@@ -4476,7 +4476,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "每个未完成操作需要独立且稳定的 OVERLAPPED，相关 WSABUF、数据内存和连接上下文都必须保留到最终完成通知到达。函数立即返回成功也不能随意复用这些对象，因为完成通知策略可能仍会投递；释放时应以观察到该操作的最终完成为边界。",
+    "answer": "每个未完成操作需要独立且稳定的 OVERLAPPED，相关 WSABUF、数据内存和连接上下文都必须保留到最终完成通知到达。函数立即返回成功也不能随意复用这些对象，因为完成通知策略可能仍会投递。释放时应该以观察到该操作的最终完成为边界。",
     "source": "资料依据：Microsoft Learn · Overlapped I/O and completion notification lifecycle"
   },
   {
@@ -4502,7 +4502,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "返回 TRUE 表示取到成功完成；返回 FALSE 且 lpOverlapped 非空表示取到失败的 I/O 完成，此时 GetLastError 是该操作错误。返回 FALSE 且 lpOverlapped 为空通常是超时或端口错误，退出工作线程可用 PostQueuedCompletionStatus 投递约定的专用哨兵包。",
+    "answer": "返回 TRUE 表示取到成功完成。返回 FALSE 且 lpOverlapped 非空表示取到失败的 I/O 完成，此时 GetLastError 是该操作错误。返回 FALSE 且 lpOverlapped 为空通常是超时或端口错误，退出工作线程可用 PostQueuedCompletionStatus 投递约定的专用哨兵包。",
     "source": "资料依据：Microsoft Learn · GetQueuedCompletionStatus result interpretation"
   },
   {
@@ -4515,7 +4515,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "每个 WSARecv 都要有独立的 OVERLAPPED 和缓冲区，直到对应完成包被处理前都不能移动或复用。即使传输层按序提供字节，多个工作线程取得完成包和执行回调的时间仍可能交错，连接层应按操作序号串行提交解析结果。",
+    "answer": "每个 WSARecv 都要有独立的 OVERLAPPED 和缓冲区，直到对应完成包被处理前都不能移动或复用。即使传输层按序提供字节，多个工作线程取得完成包和执行回调的时间仍可能交错，连接层应该按操作序号串行提交解析结果。",
     "source": "资料依据：Microsoft Learn · Overlapped WSARecv ordering and buffer ownership"
   },
   {
@@ -4528,7 +4528,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "CancelIoEx 只请求取消指定句柄上的匹配操作，操作可能已经完成、无法找到或最终以 ERROR_OPERATION_ABORTED 完成。closesocket 也会触发未完成操作结束，但应用仍要排空完成通知后再释放 OVERLAPPED、缓冲区和连接对象，不能把发出取消当成生命周期终点。",
+    "answer": "CancelIoEx 只请求取消指定句柄上的匹配操作，操作可能已经完成、无法找到或最终以 ERROR_OPERATION_ABORTED 完成。closesocket 也会触发未完成操作结束。但是应用仍要排空完成通知后再释放 OVERLAPPED、缓冲区和连接对象，不能把发出取消当成生命周期终点。",
     "source": "资料依据：Microsoft Learn · CancelIoEx and cancellation of overlapped Winsock I/O"
   },
   {
@@ -4541,7 +4541,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP_NODELAY 禁用 Nagle 算法，可减少小写入等待未确认数据的延迟，但可能产生更多小包并降低链路效率。实时交互可以启用它，同时仍应在应用层合并同一帧可一起发送的数据；批处理吞吐场景通常不必默认关闭 Nagle。",
+    "answer": "TCP_NODELAY 禁用 Nagle 算法，可减少小写入等待未确认数据的延迟。但是可能产生更多小包并降低链路效率。实时交互可以启用它，同时仍然应该在应用层合并同一帧可一起发送的数据。批处理吞吐场景通常不必默认关闭 Nagle。",
     "source": "资料依据：Microsoft Learn · TCP_NODELAY socket option；IETF RFC · RFC 9293 Nagle algorithm"
   },
   {
@@ -4554,7 +4554,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "TLS 层应把 Schannel 或其他实现的握手状态、加密缓冲区与底层 socket 的收发状态分开，非阻塞握手可能需要多轮读写才能完成。客户端必须验证证书链、主机名和策略，关闭时尽量发送 close_notify，随后再结束 socket，并让所有异步操作完成后释放两层状态。",
+    "answer": "TLS 层应该把 Schannel 或其他实现的握手状态、加密缓冲区与底层 socket 的收发状态分开，非阻塞握手可能需要多轮读写才能完成。客户端必须验证证书链、主机名和策略，关闭时尽量发送 close_notify，随后再结束 socket，并让所有异步操作完成后释放两层状态。",
     "source": "资料依据：Microsoft Learn · Schannel TLS handshake and certificate validation；IETF RFC · RFC 8446 TLS 1.3 closure alerts"
   },
   {
@@ -4566,7 +4566,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "LoadLibraryEx 应使用绝对路径或 LOAD_LIBRARY_SEARCH_* 标志限定依赖搜索目录，避免依赖当前目录和旧式默认顺序。每次成功加载通常增加模块引用计数，拥有该引用的代码用 FreeLibrary 配对；GetModuleHandle 得到的句柄不增加计数，不能按同样方式释放。",
+    "answer": "LoadLibraryEx 应该使用绝对路径或 LOAD_LIBRARY_SEARCH_* 标志限定依赖搜索目录，避免依赖当前目录和旧式默认顺序。每次成功加载通常增加模块引用计数，拥有该引用的代码用 FreeLibrary 配对。GetModuleHandle 得到的句柄不增加计数，不能按同样方式释放。",
     "source": "资料依据：Microsoft Learn · LoadLibraryEx search flags and module reference counts"
   },
   {
@@ -4578,7 +4578,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "GetProcAddress 按导出表中的精确名称或序号查找，不会替调用方推断 C++ 名字修饰；序号还可能在稀疏导出表中得到无效的非空地址。调用端 typedef 必须与导出函数的参数、返回值和调用约定完全一致，跨编译器边界通常使用 extern \"C\" 和稳定的 C ABI。",
+    "answer": "GetProcAddress 按导出表中的精确名称或序号查找，不会替调用方推断 C++ 名字修饰。序号还可能在稀疏导出表中得到无效的非空地址。调用端 typedef 必须与导出函数的参数、返回值和调用约定完全一致，跨编译器边界通常使用 extern \"C\" 和稳定的 C ABI。",
     "source": "资料依据：Microsoft Learn · GetProcAddress exported names and calling conventions"
   },
   {
@@ -4590,7 +4590,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "DllMain 在 loader lock 下运行，不能调用可能再次加载 DLL、等待其他线程或取得与加载器顺序冲突的锁的代码，复杂的 COM、线程和同步初始化也应避免。入口只保留无依赖的最小状态设置，把可能失败的工作放到导出的显式 Initialize 或首次使用路径。",
+    "answer": "DllMain 在 loader lock 下运行，不能调用可能再次加载 DLL、等待其他线程或取得与加载器顺序冲突的锁的代码，复杂的 COM、线程和同步初始化也应该避免。入口只保留无依赖的最小状态设置，把可能失败的工作放到导出的显式 Initialize 或首次使用路径。",
     "source": "资料依据：Microsoft Learn · Dynamic-link library best practices and loader lock"
   },
   {
@@ -4602,7 +4602,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "卸载前必须停止新调用、取消并等待异步工作、解绑回调，确认没有线程的指令指针或对象虚表仍指向该模块。执行模块代码的线程若自行卸载，应使用 FreeLibraryAndExitThread 原子完成两步，避免 FreeLibrary 返回后线程又执行已经解除映射的代码。",
+    "answer": "卸载前必须停止新调用、取消并等待异步工作、解绑回调，确认没有线程的指令指针或对象虚表仍指向该模块。执行模块代码的线程若自行卸载，应该使用 FreeLibraryAndExitThread 原子完成两步，避免 FreeLibrary 返回后线程又执行已经解除映射的代码。",
     "source": "资料依据：Microsoft Learn · FreeLibraryAndExitThread and DLL unloading"
   },
   {
@@ -4626,7 +4626,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "继承只适合创建子进程时传递预先标记且列入白名单的句柄，关系简单但需要同步传递句柄值。DuplicateHandle 可向已有目标进程创建真实句柄副本，并可缩减访问权；发送方和接收方必须约定谁关闭各自副本以及进程退出时的错误处理。",
+    "answer": "继承只适合创建子进程时传递预先标记且列入白名单的句柄，关系简单但需要同步传递句柄值。DuplicateHandle 可向已有目标进程创建真实句柄副本，并可缩减访问权。发送方和接收方必须约定谁关闭各自副本以及进程退出时的错误处理。",
     "source": "资料依据：Microsoft Learn · Handle inheritance and DuplicateHandle between processes"
   },
   {
@@ -4638,7 +4638,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "调用者需要能以 PROCESS_DUP_HANDLE 访问源进程和目标进程，dwDesiredAccess 可限制新句柄权限，DUPLICATE_SAME_ACCESS 则复制原访问权。复制成功后两个句柄相互独立，除非明确使用 DUPLICATE_CLOSE_SOURCE，否则源端和目标端各自负责关闭自己的句柄。",
+    "answer": "调用者需要能以 PROCESS_DUP_HANDLE 访问源进程和目标进程，dwDesiredAccess 可限制新句柄权限，DUPLICATE_SAME_ACCESS 则复制原访问权。复制成功后两个句柄相互独立，除非明确使用 DUPLICATE_CLOSE_SOURCE。否则源端和目标端各自负责关闭自己的句柄。",
     "source": "资料依据：Microsoft Learn · DuplicateHandle access rights and ownership"
   },
   {
@@ -4650,7 +4650,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "同步句柄通常使用并更新文件指针；以 FILE_FLAG_OVERLAPPED 打开的句柄应为每个操作提供独立 OVERLAPPED，并在 Offset 和 OffsetHigh 中指定位置。缓冲区和 OVERLAPPED 在操作最终完成前必须保持有效，返回 ERROR_IO_PENDING 只表示请求已经排队。",
+    "answer": "同步句柄通常使用并更新文件指针。以 FILE_FLAG_OVERLAPPED 打开的句柄应为每个操作提供独立 OVERLAPPED，并在 Offset 和 OffsetHigh 中指定位置。缓冲区和 OVERLAPPED 在操作最终完成前必须保持有效，返回 ERROR_IO_PENDING 只表示请求已经排队。",
     "source": "资料依据：Microsoft Learn · Synchronous and asynchronous ReadFile and WriteFile"
   },
   {
@@ -4662,7 +4662,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "FlushFileBuffers 请求把指定文件句柄的缓冲信息写向存储设备，但最终耐久性仍受硬件缓存和设备实现影响，网络文件系统也可能有不同语义。它会显著增加延迟和写放大，事务系统通常按提交边界批量刷新，而不是每个小写入都调用。",
+    "answer": "FlushFileBuffers 请求把指定文件句柄的缓冲信息写向存储设备。但是最终耐久性仍受硬件缓存和设备实现影响，网络文件系统也可能有不同语义。它会显著增加延迟和写放大，事务系统通常按提交边界批量刷新，而不是每个小写入都调用。",
     "source": "资料依据：Microsoft Learn · FlushFileBuffers durability and performance"
   },
   {
@@ -4686,7 +4686,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "映射偏移必须按系统分配粒度对齐，视图访问标志还要与 CreateFileMapping 的保护方式兼容。使用结束后先停止所有访问并调用 UnmapViewOfFile，再关闭映射句柄和文件句柄；关闭映射句柄本身不会自动解除仍存在的视图。",
+    "answer": "映射偏移必须按系统分配粒度对齐，视图访问标志还要与 CreateFileMapping 的保护方式兼容。使用结束后先停止所有访问并调用 UnmapViewOfFile，再关闭映射句柄和文件句柄。关闭映射句柄本身不会自动解除仍存在的视图。",
     "source": "资料依据：Microsoft Learn · MapViewOfFile offset alignment and view lifetime"
   },
   {
@@ -4698,7 +4698,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "共享区应使用固定宽度字段、偏移和显式版本，不能存放只在某一进程有效的裸指针或进程私有对象布局。读写通过命名同步对象或无锁协议协调，并在头部记录状态与代际；进程异常退出后内核句柄会回收，但半写数据仍需校验和恢复。",
+    "answer": "共享区应该使用固定宽度字段、偏移和显式版本，不能存放只在某一进程有效的裸指针或进程私有对象布局。读写通过命名同步对象或无锁协议协调，并在头部记录状态与代际。进程异常退出后内核句柄会回收。但是半写数据仍然需要校验和恢复。",
     "source": "资料依据：Microsoft Learn · Creating named shared memory and synchronization objects"
   },
   {
@@ -4710,7 +4710,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "Windows 的 Unicode API 使用 UTF-16，边界转换应调用 MultiByteToWideChar 和 WideCharToMultiByte 并显式指定 CP_UTF8、输入长度和错误标志。先查询所需长度再分配缓冲区，并明确结果是否包含终止零；使用系统活动代码页会让不可表示字符发生丢失。",
+    "answer": "Windows 的 Unicode API 使用 UTF-16，边界转换应该调用 MultiByteToWideChar 和 WideCharToMultiByte 并显式指定 CP_UTF8、输入长度和错误标志。先查询所需长度再分配缓冲区，并明确结果是否包含终止零。使用系统活动代码页会让不可表示字符发生丢失。",
     "source": "资料依据：Microsoft Learn · MultiByteToWideChar and WideCharToMultiByte UTF-8 conversion"
   },
   {
@@ -4734,7 +4734,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "CloseHandle 不是幂等操作，成功关闭后句柄值可能很快被系统复用，第二次关闭可能误伤另一个对象，调试器也会报告无效句柄。所有权应封装在唯一句柄类型中并在移动后置空；GetCurrentProcess 等伪句柄不需要也不应按普通句柄关闭。",
+    "answer": "CloseHandle 不是幂等操作，成功关闭后句柄值可能很快被系统复用，第二次关闭可能误伤另一个对象，调试器也会报告无效句柄。所有权应封装在唯一句柄类型中并在移动后置空。GetCurrentProcess 等伪句柄不需要也不应该按普通句柄关闭。",
     "source": "资料依据：Microsoft Learn · CloseHandle and pseudo handle rules"
   },
   {
@@ -4746,7 +4746,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "伪句柄是调用上下文解释的特殊常量，不可继承，也不需要关闭；GetCurrentThread 在另一个线程中会表示那个调用线程。需要跨进程传递，或让其他线程长期引用原线程对象时，应使用 DuplicateHandle 生成具有明确访问权且必须关闭的真实句柄。",
+    "answer": "伪句柄是调用上下文解释的特殊常量，不可继承，也不需要关闭。GetCurrentThread 在另一个线程中会表示那个调用线程。需要跨进程传递，或让其他线程长期引用原线程对象时，应该使用 DuplicateHandle 生成具有明确访问权且必须关闭的真实句柄。",
     "source": "资料依据：Microsoft Learn · GetCurrentProcess and GetCurrentThread pseudo handles"
   },
   {
@@ -4770,7 +4770,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "关闭最后一个可用线程句柄后，线程仍继续运行，但调用方失去通过该句柄等待和查询退出码的能力。需要观察退出的组件应保留或 DuplicateHandle 一份专用句柄，等待结束后立即关闭；线程对象会在终止且所有句柄关闭后由系统删除。",
+    "answer": "关闭最后一个可用线程句柄后，线程仍继续运行。但是调用方失去通过该句柄等待和查询退出码的能力。需要观察退出的组件应该保留或 DuplicateHandle 一份专用句柄，等待结束后立即关闭。线程对象会在终止且所有句柄关闭后由系统删除。",
     "source": "资料依据：Microsoft Learn · Thread handles, waiting and object lifetime"
   },
   {
@@ -4832,7 +4832,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "调用 ConnectEx 前 socket 必须先显式 bind 到本地地址，即使使用通配地址和零端口也不能省略。连接完成后设置 SO_UPDATE_CONNECT_CONTEXT 才能正常使用部分 socket API；若要复用断开的句柄，还要按 DisconnectEx 的 TF_REUSE_SOCKET 契约处理。",
+    "answer": "调用 ConnectEx 前 socket 必须先显式 bind 到本地地址，即使使用通配地址和零端口也不能省略。连接完成后设置 SO_UPDATE_CONNECT_CONTEXT 才能正常使用部分 socket API。若要复用断开的句柄，还要按 DisconnectEx 的 TF_REUSE_SOCKET 契约处理。",
     "source": "资料依据：Microsoft Learn · ConnectEx prerequisites and SO_UPDATE_CONNECT_CONTEXT"
   },
   {
@@ -4845,7 +4845,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "完成端口的并发值限制同时运行关联工作线程的数量，零值让系统以处理器数量为默认，适合主要执行短 CPU 工作的完成处理。可以创建更多等待线程吸收调度波动，但回调中若频繁做阻塞 I/O，会占住并发槽，应把这类工作移出 IOCP 处理路径再测量调参。",
+    "answer": "完成端口的并发值限制同时运行关联工作线程的数量，零值让系统以处理器数量为默认，适合主要执行短 CPU 工作的完成处理。可以创建更多等待线程吸收调度波动。但是回调中若频繁做阻塞 I/O，会占住并发槽，应该把这类工作移出 IOCP 处理路径再测量调参。",
     "source": "资料依据：Microsoft Learn · I/O completion port threads and concurrency value"
   },
   {
@@ -4884,7 +4884,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP 允许一端收到 FIN 后继续向对端发送，所以传输层半关闭本身是合法状态。若应用协议把 EOF 定义为整个会话结束，继续发送就会与对端状态机冲突；双方必须约定请求结束、响应结束和最终 closesocket 的顺序。",
+    "answer": "TCP 允许一端收到 FIN 后继续向对端发送。所以传输层半关闭本身是合法状态。若应用协议把 EOF 定义为整个会话结束，继续发送就会与对端状态机冲突。双方必须约定请求结束、响应该结束和最终 closesocket 的顺序。",
     "source": "资料依据：IETF RFC · RFC 9293 TCP half-closed connection state"
   },
   {
@@ -4896,7 +4896,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "应用可用 SetDefaultDllDirectories 建立安全的进程级搜索策略，并在 LoadLibraryEx 中组合 LOAD_LIBRARY_SEARCH_SYSTEM32、APPLICATION_DIR 或 DLL_LOAD_DIR 等明确范围。插件目录应通过 AddDllDirectory 临时加入并妥善移除，避免依赖当前工作目录或可由低权限用户写入的路径。",
+    "answer": "应用可用 SetDefaultDllDirectories 建立安全的进程级搜索策略，并在 LoadLibraryEx 中组合 LOAD_LIBRARY_SEARCH_SYSTEM32、APPLICATION_DIR 或 DLL_LOAD_DIR 等明确范围。插件目录应该通过 AddDllDirectory 临时加入并妥善移除，避免依赖当前工作目录或可以由低权限用户写入的路径。",
     "source": "资料依据：Microsoft Learn · Dynamic-link library search order and safe search flags"
   },
   {
@@ -4932,7 +4932,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "FlushViewOfFile 把指定视图范围内的脏页写向底层文件，但不会刷新所有文件元数据，也不保证物理磁盘缓存已经提交。需要更强提交边界时，刷新视图后再用具有适当权限的文件句柄调用 FlushFileBuffers，并接受相应性能成本。",
+    "answer": "FlushViewOfFile 把指定视图范围内的脏页写向底层文件。但是不会刷新所有文件元数据，也不保证物理磁盘缓存已经提交。需要更强提交边界时，刷新视图后再用具有适当权限的文件句柄调用 FlushFileBuffers，并接受相应性能成本。",
     "source": "资料依据：Microsoft Learn · FlushViewOfFile and FlushFileBuffers persistence"
   },
   {
@@ -4944,7 +4944,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "进程内部可保留 UTF-16 路径并调用带 W 后缀的文件 API，只在网络、配置或跨平台边界按严格 UTF-8 转换。转换使用 CP_UTF8 和错误检测标志，不经系统 ANSI 代码页中转；还要保留规范化、长路径前缀和大小写语义，避免把显示等价误当成同一文件。",
+    "answer": "进程内部可以保留 UTF-16 路径并调用带 W 后缀的文件 API，只在网络、配置或跨平台边界按严格 UTF-8 转换。转换使用 CP_UTF8 和错误检测标志，不经系统 ANSI 代码页中转。还要保留规范化、长路径前缀和大小写语义，避免把显示等价误当成同一文件。",
     "source": "资料依据：Microsoft Learn · Unicode in the Windows API and file path conversion"
   },
   {
@@ -4968,7 +4968,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "scopes": [
       "Win32"
     ],
-    "answer": "创建命名同步对象时应提供显式 DACL，只允许目标用户、服务 SID 或完整性级别取得 SYNCHRONIZE 和必要的修改权限。调用 CreateEvent 或 CreateMutex 后检查 ERROR_ALREADY_EXISTS，并验证打开的是预期协议对象，避免预创建攻击和跨会话名称碰撞。",
+    "answer": "创建命名同步对象时应该提供显式 DACL，只允许目标用户、服务 SID 或完整性级别取得 SYNCHRONIZE 和必要的修改权限。调用 CreateEvent 或 CreateMutex 后检查 ERROR_ALREADY_EXISTS，并验证打开的是预期协议对象，避免预创建攻击和跨会话名称碰撞。",
     "source": "资料依据：Microsoft Learn · Synchronization object security and access rights"
   },
   {
@@ -4993,7 +4993,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
       "Win32",
       "Winsock"
     ],
-    "answer": "SO_KEEPALIVE 关注 TCP 对端或路径在长时间无流量时是否仍可达，探测成功并不表示远端业务线程健康。应用层心跳可验证会话、负载和业务超时，还能携带版本信息；它需要自行处理抖动、拥塞和误判，不能把一次超时直接等同于网络断开。",
+    "answer": "SO_KEEPALIVE 关注 TCP 对端或路径在长时间无流量时是否仍可达，探测成功并不表示远端业务线程健康。应用层心跳可验证会话、负载和业务超时，还能携带版本信息。它需要自行处理抖动、拥塞和误判，不能把一次超时直接等同于网络断开。",
     "source": "资料依据：Microsoft Learn · TCP keepalive settings in Winsock；IETF RFC · RFC 9293 TCP keep-alive considerations"
   }
 ];

@@ -4,7 +4,7 @@ import { QuestionCommandRunner } from '../../tools/questions/question-command-ru
 const question = {
   id: '001', group: 'cpp', category: 'cpp/lifetime-raii', title: 'RAII 如何管理资源？',
   difficulty: 2, scopes: ['C++11', 'C++14', 'C++17'],
-  answer: '资源绑定对象生命周期。析构函数负责释放资源。',
+  answer: 'RAII 会把资源绑定到对象生命周期中，由构造函数建立有效状态，并由析构函数负责释放资源。这样正常返回和异常展开都会走同一条清理路径，调用方不需要在每个分支里手写释放代码，所有权边界也更清楚。',
   answerSources: [{ authority: 'cppreference', topic: 'RAII' }], evidenceIds: ['e-1', 'e-2']
 };
 const evidence = [

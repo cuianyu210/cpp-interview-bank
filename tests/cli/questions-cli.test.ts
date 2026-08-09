@@ -7,13 +7,13 @@ const questions = [
     id: '001', group: 'cpp', category: 'cpp/lifetime-raii',
     title: 'RAII 如何管理资源？', difficulty: 2,
     scopes: ['C++11', 'C++14', 'C++17'],
-    answer: '资源绑定对象生命周期。析构函数负责释放资源。',
+    answer: 'RAII 会把资源绑定到对象生命周期中，由构造函数建立有效状态，并由析构函数负责释放资源。这样正常返回和异常展开都会走同一条清理路径，资源所有权也更容易检查，调用方不需要分散写清理代码。',
     answerSources: [source], evidenceIds: ['e-1', 'e-2']
   },
   {
     id: '002', group: 'ue5', category: 'ue5/uobject-reflection-gc',
     title: 'UObject 如何参与 GC？', difficulty: 3, scopes: ['UE5'],
-    answer: '反射系统记录引用。GC 从根集合分析可达性。',
+    answer: '反射系统会记录 UObject 之间可被追踪的引用，GC 再从根集合出发分析对象可达性。仍然可达的对象会被保留，普通裸指针引用不能替代引擎能够识别的属性关系，生命周期也要交给引擎规则处理。',
     answerSources: [{ authority: 'epic-games', topic: 'Garbage Collection' }],
     evidenceIds: ['e-1', 'e-2']
   }
@@ -96,7 +96,7 @@ describe('question maintenance CLI search and evidence', () => {
     fileSystem.files.set('data/questions/windows.json', JSON.stringify([{
       id: '003', group: 'windows', category: 'windows/dll-files-mmap-unicode-handles',
       title: 'LoadLibraryEx 如何选择 DLL 搜索路径？', difficulty: 3, scopes: ['Win32'],
-      answer: '调用方选择受控搜索目录。安全标志可以降低 DLL 劫持风险。',
+      answer: '调用方应该选择受控的 DLL 搜索目录，并避免依赖当前工作目录这类容易被污染的位置。LoadLibraryEx 的安全搜索标志可以缩小查找范围，从而降低 DLL 劫持风险，失败时也应该按明确路径记录原因。',
       answerSources: [{ authority: 'microsoft-learn', topic: 'LoadLibraryEx' }],
       evidenceIds: ['e-1', 'e-2']
     }]));

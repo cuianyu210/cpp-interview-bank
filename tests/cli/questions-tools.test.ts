@@ -34,7 +34,7 @@ const question = {
   title: 'RAII 如何绑定资源与对象生命周期？',
   difficulty: 1 as const,
   scopes: ['C++11', 'C++14', 'C++17'],
-  answer: '构造函数取得资源，析构函数释放资源。这样即使异常离开作用域也会执行清理。',
+  answer: 'RAII 会在构造函数中取得资源，并在析构函数中释放资源。这样即使异常让控制流提前离开作用域，对象析构也会沿同一条清理路径执行。代码因此不需要在每个返回分支里重复写释放逻辑，资源所有权也更清楚。',
   answerSources: [source],
   evidenceIds: ['e-1', 'e-2']
 };
@@ -87,7 +87,7 @@ describe('question maintenance tools', () => {
     const duplicateId = {
       ...question,
       title: '析构函数如何完成资源清理？',
-      answer: '析构函数释放对象拥有的资源。作用域结束和异常展开都会触发析构。'
+      answer: '析构函数会释放对象已经拥有的资源，并把清理动作绑定到对象生命周期末尾。作用域正常结束和异常展开都会触发析构，因此资源管理逻辑不需要散落在每个返回路径里，所有权边界也更容易检查和复查。'
     };
 
     expect(validateQuestionSet([question, duplicateId], evidence).errors)

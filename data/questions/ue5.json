@@ -8,7 +8,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应直接依赖 Intermediate 下的生成符号和文件布局。",
+    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应该使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应该直接依赖 Intermediate 下的生成符号和文件布局。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -71,7 +71,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
+    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应该读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -92,7 +92,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
+    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应该通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -134,7 +134,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍需通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
+    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍然需要通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -155,7 +155,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
+    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可以从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -197,7 +197,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图，因此必须改用受跟踪引用或显式引用收集。",
+    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图。因此必须改用受跟踪引用或显式引用收集。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -218,7 +218,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可被反射系统跟踪，但未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
+    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可以被反射系统跟踪。但是未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -239,7 +239,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用；对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应在游戏线程取得 Get 结果并立即重新校验。",
+    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用。对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应该在游戏线程取得 Get 结果并立即重新校验。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -281,7 +281,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可被反射和序列化但不会作为独立 GC 对象；其中的 UObject 引用仍需用 UPROPERTY 等方式暴露给引用收集器。",
+    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可以被反射和序列化但不会作为独立 GC 对象。其中的 UObject 引用仍然需要用 UPROPERTY 等方式暴露给引用收集器。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -302,7 +302,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应只依赖热重载来验证。",
+    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应该只依赖热重载来验证。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -323,7 +323,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要正确的 Build.cs 依赖、可见头文件和 API 导出，否则生成代码会在编译或链接阶段缺少注册符号。",
+    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要要正确的 Build.cs 依赖、可见头文件和 API 导出。否则生成代码会在编译或链接阶段缺少注册符号。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -407,7 +407,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
+    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应该在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -449,7 +449,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "后台任务不应靠裸指针延长 UObject 寿命，可由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
+    "answer": "后台任务不应该靠裸指针延长 UObject 寿命，可以由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -491,7 +491,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction，因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应放到 BeginPlay 或显式命令，而不是构造阶段。",
+    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction。因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应该放到 BeginPlay 或显式命令，而不是构造阶段。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -512,7 +512,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达，但所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应使用相应回调并通过日志验证时序。",
+    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达。但是所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应该使用相应回调并通过日志验证时序。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -533,7 +533,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "SpawnCollisionHandlingOverride 可让生成因碰撞失败、调整位置或强制生成，因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因；它们都不会自动建立组件附加关系。",
+    "answer": "SpawnCollisionHandlingOverride 可以让生成因碰撞失败、调整位置或强制生成。因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因。它们都不会自动建立组件附加关系。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -575,7 +575,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
+    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应该通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -617,7 +617,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应在所有依赖和初始属性就绪后设置。",
+    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应该在所有依赖和初始属性就绪后设置。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -701,7 +701,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应长期强引用旧 World 的 Actor 和组件，世界切换时应通过委托更新或清理这些引用。",
+    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应该长期强引用旧 World 的 Actor 和组件，世界切换时应该通过委托更新或清理这些引用。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -722,7 +722,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍应由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
+    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可以通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍然应该由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -743,7 +743,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应在重建后重新获取并让组件负责创建和销毁流程。",
+    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应该在重建后重新获取并让组件负责创建和销毁流程。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -764,7 +764,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。",
+    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。落到工程里，要把创建时机、注册状态和销毁顺序一起看，避免只盯着某一个回调。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -785,7 +785,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托；OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应承担主要玩法清理。",
+    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托。OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应该承担主要玩法清理。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -827,7 +827,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造，因此逻辑必须可重复且不依赖固定调用次数。",
+    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造。因此逻辑必须可重复且不依赖固定调用次数。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -848,7 +848,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "单播 Delegate 只保存一个可调用目标，执行有返回值的委托前应检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
+    "answer": "单播 Delegate 只保存一个可以调用目标，执行有返回值的委托前应该检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -869,7 +869,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
+    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应该保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -890,7 +890,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可被蓝图使用并支持序列化，但签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
+    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可以被蓝图使用并支持序列化。但是签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -932,7 +932,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目；Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
+    "answer": "绑定长寿命发布者时应该保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行。但是仍然应该清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -953,7 +953,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
+    "answer": "BlueprintNativeEvent 会生成可以从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应该调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -974,7 +974,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用，但要支持蓝图实现时应使用反射检查和生成的 Execute_ 函数。",
+    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用。但是要支持蓝图实现时应该使用反射检查和生成的 Execute_ 函数。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1016,7 +1016,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
+    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应该通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1037,7 +1037,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "线程池任务应按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
+    "answer": "线程池任务应该按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1079,7 +1079,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
+    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应该检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1100,7 +1100,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "异步资源加载应保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
+    "answer": "异步资源加载应该保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1121,7 +1121,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
+    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应该通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1163,7 +1163,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发；服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
+    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发。服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1184,7 +1184,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册；运行时差异应使用条件、Active Override 或 Push Model 的脏标记机制。",
+    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册。运行时差异应该使用条件、Active Override 或 Push Model 的脏标记机制。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1205,7 +1205,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应在确认拥有关系后使用。",
+    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应该在确认拥有关系后使用。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1247,7 +1247,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史，因此持久状态仍应使用属性复制。",
+    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史。因此持久状态仍然应该使用属性复制。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1289,7 +1289,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
+    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应该把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1310,7 +1310,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序，但前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态，所以连续状态仍应交给属性复制。",
+    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序。但是前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态。所以连续状态仍然应该交给属性复制。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1352,7 +1352,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需评估通道和带宽成本。",
+    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需要评估通道和带宽成本。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1415,7 +1415,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志；网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
+    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志。网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应该保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1436,7 +1436,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
+    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应该保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1457,7 +1457,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
+    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应该明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1646,7 +1646,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
+    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需要从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1667,7 +1667,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
+    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应该避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1709,7 +1709,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除；新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
+    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除。新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1814,7 +1814,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造，但 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
+    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造。但是 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可以在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1856,7 +1856,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove；涉及 UObject 时可选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
+    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove。涉及 UObject 时可以选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1877,7 +1877,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
+    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应该下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1919,7 +1919,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "RepNotify 应把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
+    "answer": "RepNotify 应该把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1940,7 +1940,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍需随地图切换更新。",
+    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应该使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍然需要随地图切换更新。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1961,7 +1961,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄；保留路径也允许后续重试。",
+    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄。保留路径也允许后续重试。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -1982,7 +1982,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
+    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可以由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -2003,7 +2003,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需等待工作结束或安全放弃结果。",
+    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需要等待工作结束或安全放弃结果。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -2024,7 +2024,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接；单纯调整链接顺序不能补上未导出的 DLL 符号。",
+    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接。单纯调整链接顺序不能补上未导出的 DLL 符号。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -2066,7 +2066,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "EndPlay 或 BeginDestroy 时应标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
+    "answer": "EndPlay 或 BeginDestroy 时应该标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -2087,7 +2087,7 @@
     "scopes": [
       "UE5"
     ],
-    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
+    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应该提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
     "answerSources": [
       {
         "authority": "epic-games",

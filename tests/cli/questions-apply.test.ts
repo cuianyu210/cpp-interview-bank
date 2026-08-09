@@ -5,13 +5,13 @@ const initial = [
   {
     id: '001', group: 'cpp', category: 'cpp/lifetime-raii', title: 'RAII 如何管理资源？',
     difficulty: 2, scopes: ['C++11', 'C++14', 'C++17'],
-    answer: '资源绑定对象生命周期。析构函数负责释放资源。',
+    answer: 'RAII 会把资源绑定到对象生命周期中，由构造函数建立有效状态，并由析构函数负责释放资源。这样正常返回和异常展开都会走同一条清理路径，调用方不需要在每个分支里手写释放代码，所有权边界也更清楚。',
     answerSources: [{ authority: 'cppreference', topic: 'RAII' }], evidenceIds: ['e-1', 'e-2']
   },
   {
     id: '002', group: 'ue5', category: 'ue5/uobject-reflection-gc', title: 'UObject 如何参与 GC？',
     difficulty: 3, scopes: ['UE5'],
-    answer: '反射系统记录引用。GC 从根集合分析可达性。',
+    answer: '反射系统会记录 UObject 之间可被追踪的引用，GC 再从根集合出发分析对象可达性。只有仍然可达的对象会被保留，所以裸指针引用不能替代可被反射系统识别的属性，生命周期也要交给引擎规则管理。',
     answerSources: [{ authority: 'epic-games', topic: 'Garbage Collection' }], evidenceIds: ['e-1', 'e-2']
   }
 ];
@@ -73,7 +73,7 @@ describe('question maintenance CLI apply', () => {
           question: {
             group: 'windows', category: 'windows/process-thread-sync',
             title: '进程句柄如何安全关闭？', difficulty: 3, scopes: ['Win32'],
-            answer: '先明确所有权。最后一个拥有者负责关闭句柄。',
+            answer: '进程句柄传递前需要先明确所有权和访问权限，避免接收方拿到超出需要的能力。最后一个拥有者负责调用 CloseHandle，错误路径也要保持同一条关闭规则，不能让双方都误以为对方会清理。',
             answerSources: [{ authority: 'microsoft-learn', topic: 'Process Handles' }],
             evidenceIds: ['e-3', 'e-4']
           }
@@ -105,7 +105,7 @@ describe('question maintenance CLI apply', () => {
     fs.files.set('data/questions/windows.json', JSON.stringify([{
       id: '010', group: 'windows', category: 'windows/process-thread-sync',
       title: 'Windows 句柄的所有权如何管理？', difficulty: 2, scopes: ['Win32'],
-      answer: '句柄所有权必须明确。最后一个所有者负责关闭句柄。',
+      answer: '句柄所有权必须在跨进程传递前说明清楚，否则双方都可能误以为对方负责关闭。最后一个所有者负责调用 CloseHandle，并且错误路径也要遵守同一条释放规则，避免内核对象长期泄漏和排查困难。',
       answerSources: [{ authority: 'microsoft-learn', topic: 'CloseHandle function' }],
       evidenceIds: ['e-1', 'e-2']
     }]));
@@ -118,7 +118,7 @@ describe('question maintenance CLI apply', () => {
           question: {
             group: 'cpp', category: 'cpp/lifetime-raii',
             title: '智能指针如何表达独占所有权？', difficulty: 2, scopes: ['C++11'],
-            answer: 'unique_ptr 表达独占所有权。移动操作可以转移所有权。',
+            answer: 'std::unique_ptr 表达独占所有权，同一时刻只有一个对象负责释放被管理资源。移动操作可以转移所有权，源指针随后进入可析构、可赋值但不应继续解引用的状态，这让接口的所有权语义更明确。',
             answerSources: [{ authority: 'cppreference', topic: 'std::unique_ptr' }],
             evidenceIds: ['e-3', 'e-4']
           }
@@ -128,7 +128,7 @@ describe('question maintenance CLI apply', () => {
           question: {
             group: 'ue5', category: 'ue5/uobject-reflection-gc',
             title: 'UPROPERTY 如何帮助垃圾回收跟踪引用？', difficulty: 2, scopes: ['UE5'],
-            answer: '反射系统记录 UPROPERTY 引用。可达性分析据此保留仍被引用的对象。',
+            answer: 'UPROPERTY 会让反射系统记录 UObject 引用，使垃圾回收可以从根集合继续追踪这些对象。可达性分析据此保留仍被引用的对象，而普通裸指针不会自动提供这种保护，生命周期也不能绕开引擎规则。',
             answerSources: [{ authority: 'epic-games', topic: 'Unreal Object Handling' }],
             evidenceIds: ['e-3', 'e-4']
           }

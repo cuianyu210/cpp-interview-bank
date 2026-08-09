@@ -5,7 +5,7 @@ const question = {
   id: '001', group: 'cpp' as const, category: 'cpp/lifetime-raii',
   title: 'RAII 如何绑定资源与对象生命周期？', difficulty: 1 as const,
   scopes: ['C++11', 'C++14', 'C++17'],
-  answer: '构造函数取得资源，析构函数释放资源。异常离开作用域时也会执行清理。',
+  answer: 'RAII 会把资源获取放在构造函数中，把资源释放放在析构函数中。这样即使异常让控制流提前离开作用域，已经构造完成的对象也会执行清理，资源所有权不会散落在多个分支里，接口语义也更清楚。',
   answerSources: [{ authority: 'cppreference' as const, topic: 'RAII' }],
   evidenceIds: ['e-1', 'e-2']
 };

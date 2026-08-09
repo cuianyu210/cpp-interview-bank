@@ -14,6 +14,7 @@ const answerAuthorities: Record<QuestionGroup, ReadonlySet<AnswerAuthority>> = {
 const generatedPrompt = /在编译、链接和运行时分别由哪些规则决定|放在头文件并跨翻译单元使用时|与最接近的.*边界在哪里|面试中常见误区是什么/;
 const coachingAnswer = /回答中应|成功路径|失败路径|调用方必须承担|给出(?:一个)?例子|最小复现|先(?:说明|区分|界定|确定|按)/;
 const sentenceEnding = /[。！？!?]/g;
+const minimumSpokenAnswerLength = 90;
 
 export function checkQuestionContent(question: AuthoringQuestion): string[] {
   return [
@@ -21,6 +22,7 @@ export function checkQuestionContent(question: AuthoringQuestion): string[] {
     idError(question),
     patternError(question),
     phrasingError(question),
+    answerCompletenessError(question),
     sentenceCountError(question),
     categoryError(question)
   ].filter((error): error is string => Boolean(error));
@@ -66,6 +68,12 @@ function sentenceCountError(question: AuthoringQuestion): string | undefined {
   return sentences >= 2 && sentences <= 5
     ? undefined
     : `${question.id}: answer must contain between two and five sentences`;
+}
+
+function answerCompletenessError(question: AuthoringQuestion): string | undefined {
+  return question.answer.trim().length >= minimumSpokenAnswerLength
+    ? undefined
+    : `${question.id}: answer must be a complete spoken explanation`;
 }
 
 function categoryError(question: AuthoringQuestion): string | undefined {

@@ -48,6 +48,7 @@ const expectedCounts: Record<Group, number> = {
   ue5: 100,
   windows: 80
 };
+const minimumSpokenAnswerLength = 90;
 const allowedAuthorities = new Set([
   'cppreference',
   'iso-cpp',
@@ -206,10 +207,11 @@ describe('authoring question data', () => {
     expect(repeatedSuffixes).toHaveLength(0);
   });
 
-  it('requires answer length, real difficulty, and version-appropriate scopes', () => {
+  it('requires complete spoken answers, real difficulty, and version-appropriate scopes', () => {
     for (const question of questions) {
       expect(question.difficulty).toBeGreaterThanOrEqual(1);
       expect(question.difficulty).toBeLessThanOrEqual(5);
+      expect(question.answer.trim().length, question.id).toBeGreaterThanOrEqual(minimumSpokenAnswerLength);
       expect(sentenceCount(question.answer)).toBeGreaterThanOrEqual(2);
       expect(sentenceCount(question.answer)).toBeLessThanOrEqual(5);
       expect(question.scopes.length).toBeGreaterThan(0);

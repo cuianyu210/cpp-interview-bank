@@ -8,7 +8,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "CreateProcessW 会把 lpCommandLine 当作可写缓冲区，STARTUPINFO 的 cb 必须正确设置；Unicode 环境块还要与 CREATE_UNICODE_ENVIRONMENT 配套。句柄继承应优先用 STARTUPINFOEX 的句柄列表收窄范围，创建成功后父进程及时关闭不再持有的线程、进程和管道句柄。",
+    "answer": "CreateProcessW 会把 lpCommandLine 当作可写缓冲区，STARTUPINFO 的 cb 必须正确设置。Unicode 环境块还要与 CREATE_UNICODE_ENVIRONMENT 配套。句柄继承应该优先用 STARTUPINFOEX 的句柄列表收窄范围，创建成功后父进程及时关闭不再持有的线程、进程和管道句柄。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -71,7 +71,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "进程加入 Job 后，可通过 SetInformationJobObject 设置进程数、CPU、内存以及 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等限制。把 Job 关联到完成端口可接收新进程、退出和资源限制消息，但消息通知不能代替对 API 返回值与进程退出状态的检查。",
+    "answer": "进程加入 Job 后，可以通过 SetInformationJobObject 设置进程数、CPU、内存以及 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等限制。把 Job 关联到完成端口可接收新进程、退出和资源限制消息。但是消息通知不能代替对 API 返回值与进程退出状态的检查。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -92,7 +92,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "WAIT_OBJECT_0 表示对象已满足，WAIT_TIMEOUT 只是本次等待超时，WAIT_FAILED 后必须读取 GetLastError；等待互斥体还可能得到 WAIT_ABANDONED。等待尚未结束时关闭该句柄会产生未定义行为，而且 GUI 线程长期无限等待会阻塞消息泵。",
+    "answer": "WAIT_OBJECT_0 表示对象已满足，WAIT_TIMEOUT 只是本次等待超时，WAIT_FAILED 后必须读取 GetLastError。等待互斥体还可能得到 WAIT_ABANDONED。等待尚未结束时关闭该句柄会产生未定义行为，而且 GUI 线程长期无限等待会阻塞消息泵。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -113,7 +113,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "TlsAlloc 只分配索引，TlsSetValue 保存的是每线程指针，系统不会替应用释放该指针指向的对象。需要退出回调时可使用 FLS，或者让受控线程在返回前执行清理；最后还要由进程级所有者调用 TlsFree 或 FlsFree 释放索引。",
+    "answer": "TlsAlloc 只分配索引，TlsSetValue 保存的是每线程指针，系统不会替应用释放该指针指向的对象。需要退出回调时可使用 FLS，或者让受控线程在返回前执行清理。最后还要由进程级所有者调用 TlsFree 或 FlsFree 释放索引。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -134,7 +134,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "会调用 C 运行库的线程入口通常使用 _beginthreadex，使运行库能够建立并在返回或 _endthreadex 时释放线程状态。CreateThread 适合不依赖这类运行库状态的纯 Win32 入口；无论用哪一种，创建方仍要等待或关闭返回的线程句柄。",
+    "answer": "会调用 C 运行库的线程入口通常使用 _beginthreadex，使运行库能够建立并在返回或 _endthreadex 时释放线程状态。CreateThread 适合不依赖这类运行库状态的纯 Win32 入口。无论用哪一种，创建方仍要等待或关闭返回的线程句柄。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -155,7 +155,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "Windows 用进程优先级类和线程相对优先级计算基础优先级，动态提升也会影响实际调度，因此设置值不是确定的执行时限。长期提高优先级可能让输入、I/O 或其他工作线程饥饿，硬实时要求不能依赖普通 Windows 线程优先级来保证。",
+    "answer": "Windows 用进程优先级类和线程相对优先级计算基础优先级，动态提升也会影响实际调度。因此设置值不是确定的执行时限。长期提高优先级可能让输入、I/O 或其他工作线程饥饿，硬实时要求不能依赖普通 Windows 线程优先级来保证。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -197,7 +197,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "CRITICAL_SECTION 只能用于同一进程，允许同一线程递归进入，但每次进入都必须有对应的 LeaveCriticalSection。DeleteCriticalSection 前必须确保没有线程持有或等待它，删除后再次进入属于未定义行为，因此锁对象应比所有使用线程活得更久。",
+    "answer": "CRITICAL_SECTION 只能用于同一进程，允许同一线程递归进入。但是每次进入都必须有对应的 LeaveCriticalSection。DeleteCriticalSection 前必须确保没有线程持有或等待它，删除后再次进入属于未定义行为。因此锁对象应比所有使用线程活得更久。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -218,7 +218,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "Mutex 是可命名、可跨进程等待的内核对象，创建和打开受安全描述符控制，同一拥有线程可以递归获取。拥有线程异常结束时等待者会收到 WAIT_ABANDONED；临界区或 SRW lock 更轻量但限于进程内，也没有这套 abandoned 语义。",
+    "answer": "Mutex 是可命名、可跨进程等待的内核对象，创建和打开受安全描述符控制，同一拥有线程可以递归获取。拥有线程异常结束时等待者会收到 WAIT_ABANDONED。临界区或 SRW lock 更轻量但限于进程内，也没有这套 abandoned 语义。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -239,7 +239,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，增加后超过创建时最大值会失败且计数不变。代码应只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
+    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，增加后超过创建时最大值会失败且计数不变。代码应该只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -260,7 +260,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "自动重置事件通常释放一个等待者后自动回到无信号态，手动重置事件会保持有信号态，直到调用 ResetEvent，并可唤醒所有现有等待者。事件只保存一个信号位，连续 SetEvent 不会累计次数；需要计数语义时应使用信号量或受锁保护的条件状态。",
+    "answer": "自动重置事件通常释放一个等待者后自动回到无信号态，手动重置事件会保持有信号态，直到调用 ResetEvent，并可唤醒所有现有等待者。事件只保存一个信号位，连续 SetEvent 不会累计次数。需要计数语义时应该使用信号量或受锁保护的条件状态。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -281,7 +281,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "SRW lock 支持共享读和独占写，体积小且无需显式销毁，但不保证公平，也不能递归获取独占锁。API 没有原子升级或降级操作，释放共享锁再获取独占锁之间状态可能变化，必须重新检查受保护条件。",
+    "answer": "SRW lock 支持共享读和独占写，体积小且无需显式销毁。但是不保证公平，也不能递归获取独占锁。API 没有原子升级或降级操作，释放共享锁再获取独占锁之间状态可能变化，必须重新检查受保护条件。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -302,7 +302,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "SleepConditionVariableCS 或 SleepConditionVariableSRW 会原子释放锁并进入等待，返回前重新取得锁，但返回可能来自虚假或被其他线程抢先消费的唤醒。等待方必须在同一把锁下用循环重新检查谓词，超时和错误也要作为独立结果处理。",
+    "answer": "SleepConditionVariableCS 或 SleepConditionVariableSRW 会原子释放锁并进入等待，返回前重新取得锁。但是返回可能来自虚假或被其他线程抢先消费的唤醒。等待方必须在同一把锁下用循环重新检查谓词，超时和错误也要作为独立结果处理。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -323,7 +323,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "常规 Interlocked 操作对目标值提供原子读改写，并在 Windows 支持的平台上形成完整内存屏障；带 Acquire、Release 或 NoFence 后缀的变体只提供标明的排序。比较交换只比较位模式，值从 A 变到 B 又回到 A 时仍会成功，版本计数、带标签指针或受锁回收才能处理 ABA。",
+    "answer": "常规 Interlocked 操作对目标值提供原子读改写，并在 Windows 支持的平台上形成完整内存屏障。带 Acquire、Release 或 NoFence 后缀的变体只提供标明的排序。比较交换只比较位模式，值从 A 变到 B 又回到 A 时仍会成功，版本计数、带标签指针或受锁回收才能处理 ABA。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -344,7 +344,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "WaitOnAddress 仅在目标内存与给定比较值相等时阻塞，返回后仍须重新读取状态，因为可能发生虚假唤醒或条件已被别的线程改变。修改状态的线程应在写入后调用 WakeByAddressSingle 或 WakeByAddressAll；它适合进程内轻量等待，但没有可继承或跨进程的内核事件句柄。",
+    "answer": "WaitOnAddress 仅在目标内存与给定比较值相等时阻塞，返回后仍须重新读取状态，因为可能发生虚假唤醒或条件已被别的线程改变。修改状态的线程应该在写入后调用 WakeByAddressSingle 或 WakeByAddressAll。它适合进程内轻量等待。但是没有可继承或跨进程的内核事件句柄。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -365,7 +365,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "INIT_ONCE 以 INIT_ONCE_STATIC_INIT 或 InitOnceInitialize 建立状态，多个调用者只会让一个线程执行同步初始化回调。回调返回 FALSE 时本次初始化不提交，其他调用可以重试，因此失败产生的临时资源必须由回调自己回滚。",
+    "answer": "INIT_ONCE 以 INIT_ONCE_STATIC_INIT 或 InitOnceInitialize 建立状态，多个调用者只会让一个线程执行同步初始化回调。回调返回 FALSE 时本次初始化不提交，其他调用可以重试。因此失败产生的临时资源必须由回调自己回滚。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -407,7 +407,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "所有代码路径应按稳定键定义同一获取顺序，例如对象地址、层级编号或资源 ID，并以逆序释放。锁守卫把释放绑定到作用域，批量操作则先排序并在任一获取失败时回滚已经持有的锁，避免异常分支破坏约定。",
+    "answer": "所有代码路径应该按稳定键定义同一获取顺序，例如对象地址、层级编号或资源 ID，并以逆序释放。锁守卫把释放绑定到作用域，批量操作则先排序并在任一获取失败时回滚已经持有的锁，避免异常分支破坏约定。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -449,7 +449,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "正常返回或 ExitProcess 会终止其他线程并执行进程分离通知，但通知运行在受限的加载器环境中，不适合复杂协作式清理。TerminateProcess 会直接终止所有线程而不执行附加 DLL 的正常退出代码，系统只保证回收内核拥有的进程资源，应用数据可能未提交。",
+    "answer": "正常返回或 ExitProcess 会终止其他线程并执行进程分离通知。但是通知运行在受限的加载器环境中，不适合复杂协作式清理。TerminateProcess 会直接终止所有线程而不执行附加 DLL 的正常退出代码，系统只保证回收内核拥有的进程资源，应用数据可能未提交。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -471,7 +471,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "WSAStartup 返回的 WSADATA 给出实际协商版本，调用方应检查该版本是否满足需求，失败时不能继续调用 Winsock。每次成功的 WSAStartup 都要有一次 WSACleanup 配对，库或模块应明确由谁持有这段进程级初始化生命周期。",
+    "answer": "WSAStartup 返回的 WSADATA 给出实际协商版本，调用方应该检查该版本是否满足需求，失败时不能继续调用 Winsock。每次成功的 WSAStartup 都要有一次 WSACleanup 配对，库或模块应该明确由谁持有这段进程级初始化生命周期。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -493,7 +493,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "阻塞 socket 可让调用线程等待，非阻塞 socket 在暂时无法推进时返回 SOCKET_ERROR 和 WSAEWOULDBLOCK，调用方依赖 readiness 通知重试。重叠 I/O 则让每个操作携带 OVERLAPPED 和稳定缓冲区，WSA_IO_PENDING 表示稍后通过事件、回调或 IOCP 报告完成，它与非阻塞模式不是同一概念。",
+    "answer": "阻塞 socket 可以让调用线程等待，非阻塞 socket 在暂时无法推进时返回 SOCKET_ERROR 和 WSAEWOULDBLOCK，调用方依赖 readiness 通知重试。重叠 I/O 则让每个操作携带 OVERLAPPED 和稳定缓冲区，WSA_IO_PENDING 表示稍后通过事件、回调或 IOCP 报告完成，它与非阻塞模式不是同一概念。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -515,7 +515,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "服务端依次 bind 本地地址、listen 建立等待队列，再由 accept 为每个连接返回新的 socket；监听 socket 本身继续接收后续连接。backlog 是实现可调整的待处理连接提示，accept 失败时只处理对应错误并继续或停止监听，不能把监听句柄当成已连接句柄关闭。",
+    "answer": "服务端依次 bind 本地地址、listen 建立等待队列，再由 accept 为每个连接返回新的 socket。监听 socket 本身继续接收后续连接。backlog 是实现可调整的待处理连接提示，accept 失败时只处理对应错误并继续或停止监听，不能把监听句柄当成已连接句柄关闭。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -559,7 +559,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP 只提供有序字节流，一次 send 与一次 recv 没有对应关系，应用协议必须用固定长度、长度前缀或可靠分隔符完成帧解析。recv 返回 0 表示对端完成有序关闭，仍应按协议处理已缓存的完整帧，并用 shutdown 表达本端不再发送或接收的方向。",
+    "answer": "TCP 只提供有序字节流，一次 send 与一次 recv 没有对应关系，应用协议必须用固定长度、长度前缀或可靠分隔符完成帧解析。recv 返回 0 表示对端完成有序关闭，仍然应该按协议处理已缓存的完整帧，并用 shutdown 表达本端不再发送或接收的方向。",
     "answerSources": [
       {
         "authority": "ietf-rfc",
@@ -581,7 +581,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "Windows 的 SO_REUSEADDR 可能允许套接字强制绑定已被占用的地址，多个套接字收到流量的行为并不可靠，因此不应照搬其他系统的服务器习惯。需要独占监听端口时使用 SO_EXCLUSIVEADDRUSE，并在 bind 前设置，权限和重启策略也要纳入部署设计。",
+    "answer": "Windows 的 SO_REUSEADDR 可能允许套接字强制绑定已被占用的地址，多个套接字收到流量的行为并不可靠。因此不应该照搬其他系统的服务器习惯。需要独占监听端口时使用 SO_EXCLUSIVEADDRUSE，并在 bind 前设置，权限和重启策略也要纳入部署设计。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -603,7 +603,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "select 每次都扫描 fd_set，Windows 默认 FD_SETSIZE 还限制集合容量，调用后集合会被改写，下一轮必须重建。WSAPoll 也按数组扫描，接口更适合动态集合但仍是 readiness 模型；大规模并发 I/O 通常转向 IOCP，而不是把轮询数组无限放大。",
+    "answer": "select 每次都扫描 fd_set，Windows 默认 FD_SETSIZE 还限制集合容量，调用后集合会被改写，下一轮必须重建。WSAPoll 也按数组扫描，接口更适合动态集合但仍是 readiness 模型。大规模并发 I/O 通常转向 IOCP，而不是把轮询数组无限放大。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -625,7 +625,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象，并自动把 socket 置为非阻塞模式。事件被置位后应调用 WSAEnumNetworkEvents 读取每一位及其错误码，同时完成事件状态重置；只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
+    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象，并自动把 socket 置为非阻塞模式。事件被置位后应该调用 WSAEnumNetworkEvents 读取每一位及其错误码，同时完成事件状态重置。只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -669,7 +669,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "对面向连接的字节流，正数是实际收到的字节数，0 表示对端已经有序关闭发送方向，SOCKET_ERROR 后用 WSAGetLastError 判断可重试或致命错误。无连接报文可以合法携带零长度数据，因此不能在所有 socket 类型上把 0 一律解释为断线。",
+    "answer": "对面向连接的字节流，正数是实际收到的字节数，0 表示对端已经有序关闭发送方向，SOCKET_ERROR 后用 WSAGetLastError 判断可重试或致命错误。无连接报文可以合法携带零长度数据。因此不能在所有 socket 类型上把 0 一律解释为断线。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -691,7 +691,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "shutdown(SD_SEND) 禁止后续发送，并在已排队数据发出后启动 TCP 的有序关闭，接收方向仍可继续读取对端数据。shutdown 不是 closesocket，协议交换结束后仍要关闭句柄；SD_RECEIVE 和 SD_BOTH 的选择也必须与应用层状态机一致。",
+    "answer": "shutdown(SD_SEND) 禁止后续发送，并在已排队数据发出后启动 TCP 的有序关闭，接收方向仍可继续读取对端数据。shutdown 不是 closesocket，协议交换结束后仍要关闭句柄。SD_RECEIVE 和 SD_BOTH 的选择也必须与应用层状态机一致。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -717,7 +717,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "SO_KEEPALIVE 在连接长时间空闲后用传输层探测判断对端是否仍可达，默认周期通常不适合快速故障发现，具体参数还依赖系统配置或 SIO_KEEPALIVE_VALS。应用层心跳可以携带会话语义并设置业务超时，但会增加流量；二者解决的层次不同，可以按场景组合。",
+    "answer": "SO_KEEPALIVE 在连接长时间空闲后用传输层探测判断对端是否仍可达，默认周期通常不适合快速故障发现，具体参数还依赖系统配置或 SIO_KEEPALIVE_VALS。应用层心跳可以携带会话语义并设置业务超时。但是会增加流量。二者解决的层次不同，可以按场景组合。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -739,7 +739,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "UDP 保留每个数据报的边界，但不保证送达、顺序、唯一性或拥塞控制，可靠性需要应用协议自己定义序号、重传和去重。接收缓冲区小于报文时 Winsock 可能返回 WSAEMSGSIZE 并截断数据，协议应限制最大报文并把分片风险纳入设计。",
+    "answer": "UDP 保留每个数据报的边界。但是不保证送达、顺序、唯一性或拥塞控制，可靠性需要应用协议自己定义序号、重传和去重。接收缓冲区小于报文时 Winsock 可能返回 WSAEMSGSIZE 并截断数据，协议应限制最大报文并把分片风险纳入设计。",
     "answerSources": [
       {
         "authority": "ietf-rfc",
@@ -787,7 +787,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "hints 用 family、socktype 和 protocol 限定结果，调用方应遍历链表逐个尝试创建与连接，而不是只使用第一项。每个失败的 socket 都要关闭，结果用 freeaddrinfo 释放；不能阻塞的线程可使用 GetAddrInfoEx 等异步接口并区分解析错误与连接错误。",
+    "answer": "hints 用 family、socktype 和 protocol 限定结果，调用方应该遍历链表逐个尝试创建与连接，而不是只使用第一项。每个失败的 socket 都要关闭，结果用 freeaddrinfo 释放。不能阻塞的线程可使用 GetAddrInfoEx 等异步接口并区分解析错误与连接错误。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -809,7 +809,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "每个未完成操作需要独立且稳定的 OVERLAPPED，相关 WSABUF、数据内存和连接上下文都必须保留到最终完成通知到达。函数立即返回成功也不能随意复用这些对象，因为完成通知策略可能仍会投递；释放时应以观察到该操作的最终完成为边界。",
+    "answer": "每个未完成操作需要独立且稳定的 OVERLAPPED，相关 WSABUF、数据内存和连接上下文都必须保留到最终完成通知到达。函数立即返回成功也不能随意复用这些对象，因为完成通知策略可能仍会投递。释放时应该以观察到该操作的最终完成为边界。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -853,7 +853,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "返回 TRUE 表示取到成功完成；返回 FALSE 且 lpOverlapped 非空表示取到失败的 I/O 完成，此时 GetLastError 是该操作错误。返回 FALSE 且 lpOverlapped 为空通常是超时或端口错误，退出工作线程可用 PostQueuedCompletionStatus 投递约定的专用哨兵包。",
+    "answer": "返回 TRUE 表示取到成功完成。返回 FALSE 且 lpOverlapped 非空表示取到失败的 I/O 完成，此时 GetLastError 是该操作错误。返回 FALSE 且 lpOverlapped 为空通常是超时或端口错误，退出工作线程可用 PostQueuedCompletionStatus 投递约定的专用哨兵包。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -875,7 +875,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "每个 WSARecv 都要有独立的 OVERLAPPED 和缓冲区，直到对应完成包被处理前都不能移动或复用。即使传输层按序提供字节，多个工作线程取得完成包和执行回调的时间仍可能交错，连接层应按操作序号串行提交解析结果。",
+    "answer": "每个 WSARecv 都要有独立的 OVERLAPPED 和缓冲区，直到对应完成包被处理前都不能移动或复用。即使传输层按序提供字节，多个工作线程取得完成包和执行回调的时间仍可能交错，连接层应该按操作序号串行提交解析结果。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -897,7 +897,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "CancelIoEx 只请求取消指定句柄上的匹配操作，操作可能已经完成、无法找到或最终以 ERROR_OPERATION_ABORTED 完成。closesocket 也会触发未完成操作结束，但应用仍要排空完成通知后再释放 OVERLAPPED、缓冲区和连接对象，不能把发出取消当成生命周期终点。",
+    "answer": "CancelIoEx 只请求取消指定句柄上的匹配操作，操作可能已经完成、无法找到或最终以 ERROR_OPERATION_ABORTED 完成。closesocket 也会触发未完成操作结束。但是应用仍要排空完成通知后再释放 OVERLAPPED、缓冲区和连接对象，不能把发出取消当成生命周期终点。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -919,7 +919,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP_NODELAY 禁用 Nagle 算法，可减少小写入等待未确认数据的延迟，但可能产生更多小包并降低链路效率。实时交互可以启用它，同时仍应在应用层合并同一帧可一起发送的数据；批处理吞吐场景通常不必默认关闭 Nagle。",
+    "answer": "TCP_NODELAY 禁用 Nagle 算法，可减少小写入等待未确认数据的延迟。但是可能产生更多小包并降低链路效率。实时交互可以启用它，同时仍然应该在应用层合并同一帧可一起发送的数据。批处理吞吐场景通常不必默认关闭 Nagle。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -945,7 +945,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "TLS 层应把 Schannel 或其他实现的握手状态、加密缓冲区与底层 socket 的收发状态分开，非阻塞握手可能需要多轮读写才能完成。客户端必须验证证书链、主机名和策略，关闭时尽量发送 close_notify，随后再结束 socket，并让所有异步操作完成后释放两层状态。",
+    "answer": "TLS 层应该把 Schannel 或其他实现的握手状态、加密缓冲区与底层 socket 的收发状态分开，非阻塞握手可能需要多轮读写才能完成。客户端必须验证证书链、主机名和策略，关闭时尽量发送 close_notify，随后再结束 socket，并让所有异步操作完成后释放两层状态。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -970,7 +970,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "LoadLibraryEx 应使用绝对路径或 LOAD_LIBRARY_SEARCH_* 标志限定依赖搜索目录，避免依赖当前目录和旧式默认顺序。每次成功加载通常增加模块引用计数，拥有该引用的代码用 FreeLibrary 配对；GetModuleHandle 得到的句柄不增加计数，不能按同样方式释放。",
+    "answer": "LoadLibraryEx 应该使用绝对路径或 LOAD_LIBRARY_SEARCH_* 标志限定依赖搜索目录，避免依赖当前目录和旧式默认顺序。每次成功加载通常增加模块引用计数，拥有该引用的代码用 FreeLibrary 配对。GetModuleHandle 得到的句柄不增加计数，不能按同样方式释放。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -991,7 +991,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "GetProcAddress 按导出表中的精确名称或序号查找，不会替调用方推断 C++ 名字修饰；序号还可能在稀疏导出表中得到无效的非空地址。调用端 typedef 必须与导出函数的参数、返回值和调用约定完全一致，跨编译器边界通常使用 extern \"C\" 和稳定的 C ABI。",
+    "answer": "GetProcAddress 按导出表中的精确名称或序号查找，不会替调用方推断 C++ 名字修饰。序号还可能在稀疏导出表中得到无效的非空地址。调用端 typedef 必须与导出函数的参数、返回值和调用约定完全一致，跨编译器边界通常使用 extern \"C\" 和稳定的 C ABI。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1012,7 +1012,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "DllMain 在 loader lock 下运行，不能调用可能再次加载 DLL、等待其他线程或取得与加载器顺序冲突的锁的代码，复杂的 COM、线程和同步初始化也应避免。入口只保留无依赖的最小状态设置，把可能失败的工作放到导出的显式 Initialize 或首次使用路径。",
+    "answer": "DllMain 在 loader lock 下运行，不能调用可能再次加载 DLL、等待其他线程或取得与加载器顺序冲突的锁的代码，复杂的 COM、线程和同步初始化也应该避免。入口只保留无依赖的最小状态设置，把可能失败的工作放到导出的显式 Initialize 或首次使用路径。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1033,7 +1033,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "卸载前必须停止新调用、取消并等待异步工作、解绑回调，确认没有线程的指令指针或对象虚表仍指向该模块。执行模块代码的线程若自行卸载，应使用 FreeLibraryAndExitThread 原子完成两步，避免 FreeLibrary 返回后线程又执行已经解除映射的代码。",
+    "answer": "卸载前必须停止新调用、取消并等待异步工作、解绑回调，确认没有线程的指令指针或对象虚表仍指向该模块。执行模块代码的线程若自行卸载，应该使用 FreeLibraryAndExitThread 原子完成两步，避免 FreeLibrary 返回后线程又执行已经解除映射的代码。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1075,7 +1075,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "继承只适合创建子进程时传递预先标记且列入白名单的句柄，关系简单但需要同步传递句柄值。DuplicateHandle 可向已有目标进程创建真实句柄副本，并可缩减访问权；发送方和接收方必须约定谁关闭各自副本以及进程退出时的错误处理。",
+    "answer": "继承只适合创建子进程时传递预先标记且列入白名单的句柄，关系简单但需要同步传递句柄值。DuplicateHandle 可向已有目标进程创建真实句柄副本，并可缩减访问权。发送方和接收方必须约定谁关闭各自副本以及进程退出时的错误处理。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1096,7 +1096,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "调用者需要能以 PROCESS_DUP_HANDLE 访问源进程和目标进程，dwDesiredAccess 可限制新句柄权限，DUPLICATE_SAME_ACCESS 则复制原访问权。复制成功后两个句柄相互独立，除非明确使用 DUPLICATE_CLOSE_SOURCE，否则源端和目标端各自负责关闭自己的句柄。",
+    "answer": "调用者需要能以 PROCESS_DUP_HANDLE 访问源进程和目标进程，dwDesiredAccess 可限制新句柄权限，DUPLICATE_SAME_ACCESS 则复制原访问权。复制成功后两个句柄相互独立，除非明确使用 DUPLICATE_CLOSE_SOURCE。否则源端和目标端各自负责关闭自己的句柄。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1117,7 +1117,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "同步句柄通常使用并更新文件指针；以 FILE_FLAG_OVERLAPPED 打开的句柄应为每个操作提供独立 OVERLAPPED，并在 Offset 和 OffsetHigh 中指定位置。缓冲区和 OVERLAPPED 在操作最终完成前必须保持有效，返回 ERROR_IO_PENDING 只表示请求已经排队。",
+    "answer": "同步句柄通常使用并更新文件指针。以 FILE_FLAG_OVERLAPPED 打开的句柄应为每个操作提供独立 OVERLAPPED，并在 Offset 和 OffsetHigh 中指定位置。缓冲区和 OVERLAPPED 在操作最终完成前必须保持有效，返回 ERROR_IO_PENDING 只表示请求已经排队。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1138,7 +1138,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "FlushFileBuffers 请求把指定文件句柄的缓冲信息写向存储设备，但最终耐久性仍受硬件缓存和设备实现影响，网络文件系统也可能有不同语义。它会显著增加延迟和写放大，事务系统通常按提交边界批量刷新，而不是每个小写入都调用。",
+    "answer": "FlushFileBuffers 请求把指定文件句柄的缓冲信息写向存储设备。但是最终耐久性仍受硬件缓存和设备实现影响，网络文件系统也可能有不同语义。它会显著增加延迟和写放大，事务系统通常按提交边界批量刷新，而不是每个小写入都调用。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1180,7 +1180,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "映射偏移必须按系统分配粒度对齐，视图访问标志还要与 CreateFileMapping 的保护方式兼容。使用结束后先停止所有访问并调用 UnmapViewOfFile，再关闭映射句柄和文件句柄；关闭映射句柄本身不会自动解除仍存在的视图。",
+    "answer": "映射偏移必须按系统分配粒度对齐，视图访问标志还要与 CreateFileMapping 的保护方式兼容。使用结束后先停止所有访问并调用 UnmapViewOfFile，再关闭映射句柄和文件句柄。关闭映射句柄本身不会自动解除仍存在的视图。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1201,7 +1201,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "共享区应使用固定宽度字段、偏移和显式版本，不能存放只在某一进程有效的裸指针或进程私有对象布局。读写通过命名同步对象或无锁协议协调，并在头部记录状态与代际；进程异常退出后内核句柄会回收，但半写数据仍需校验和恢复。",
+    "answer": "共享区应该使用固定宽度字段、偏移和显式版本，不能存放只在某一进程有效的裸指针或进程私有对象布局。读写通过命名同步对象或无锁协议协调，并在头部记录状态与代际。进程异常退出后内核句柄会回收。但是半写数据仍然需要校验和恢复。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1222,7 +1222,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "Windows 的 Unicode API 使用 UTF-16，边界转换应调用 MultiByteToWideChar 和 WideCharToMultiByte 并显式指定 CP_UTF8、输入长度和错误标志。先查询所需长度再分配缓冲区，并明确结果是否包含终止零；使用系统活动代码页会让不可表示字符发生丢失。",
+    "answer": "Windows 的 Unicode API 使用 UTF-16，边界转换应该调用 MultiByteToWideChar 和 WideCharToMultiByte 并显式指定 CP_UTF8、输入长度和错误标志。先查询所需长度再分配缓冲区，并明确结果是否包含终止零。使用系统活动代码页会让不可表示字符发生丢失。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1264,7 +1264,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "CloseHandle 不是幂等操作，成功关闭后句柄值可能很快被系统复用，第二次关闭可能误伤另一个对象，调试器也会报告无效句柄。所有权应封装在唯一句柄类型中并在移动后置空；GetCurrentProcess 等伪句柄不需要也不应按普通句柄关闭。",
+    "answer": "CloseHandle 不是幂等操作，成功关闭后句柄值可能很快被系统复用，第二次关闭可能误伤另一个对象，调试器也会报告无效句柄。所有权应封装在唯一句柄类型中并在移动后置空。GetCurrentProcess 等伪句柄不需要也不应该按普通句柄关闭。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1285,7 +1285,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "伪句柄是调用上下文解释的特殊常量，不可继承，也不需要关闭；GetCurrentThread 在另一个线程中会表示那个调用线程。需要跨进程传递，或让其他线程长期引用原线程对象时，应使用 DuplicateHandle 生成具有明确访问权且必须关闭的真实句柄。",
+    "answer": "伪句柄是调用上下文解释的特殊常量，不可继承，也不需要关闭。GetCurrentThread 在另一个线程中会表示那个调用线程。需要跨进程传递，或让其他线程长期引用原线程对象时，应该使用 DuplicateHandle 生成具有明确访问权且必须关闭的真实句柄。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1327,7 +1327,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "关闭最后一个可用线程句柄后，线程仍继续运行，但调用方失去通过该句柄等待和查询退出码的能力。需要观察退出的组件应保留或 DuplicateHandle 一份专用句柄，等待结束后立即关闭；线程对象会在终止且所有句柄关闭后由系统删除。",
+    "answer": "关闭最后一个可用线程句柄后，线程仍继续运行。但是调用方失去通过该句柄等待和查询退出码的能力。需要观察退出的组件应该保留或 DuplicateHandle 一份专用句柄，等待结束后立即关闭。线程对象会在终止且所有句柄关闭后由系统删除。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1434,7 +1434,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "调用 ConnectEx 前 socket 必须先显式 bind 到本地地址，即使使用通配地址和零端口也不能省略。连接完成后设置 SO_UPDATE_CONNECT_CONTEXT 才能正常使用部分 socket API；若要复用断开的句柄，还要按 DisconnectEx 的 TF_REUSE_SOCKET 契约处理。",
+    "answer": "调用 ConnectEx 前 socket 必须先显式 bind 到本地地址，即使使用通配地址和零端口也不能省略。连接完成后设置 SO_UPDATE_CONNECT_CONTEXT 才能正常使用部分 socket API。若要复用断开的句柄，还要按 DisconnectEx 的 TF_REUSE_SOCKET 契约处理。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1456,7 +1456,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "完成端口的并发值限制同时运行关联工作线程的数量，零值让系统以处理器数量为默认，适合主要执行短 CPU 工作的完成处理。可以创建更多等待线程吸收调度波动，但回调中若频繁做阻塞 I/O，会占住并发槽，应把这类工作移出 IOCP 处理路径再测量调参。",
+    "answer": "完成端口的并发值限制同时运行关联工作线程的数量，零值让系统以处理器数量为默认，适合主要执行短 CPU 工作的完成处理。可以创建更多等待线程吸收调度波动。但是回调中若频繁做阻塞 I/O，会占住并发槽，应该把这类工作移出 IOCP 处理路径再测量调参。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1522,7 +1522,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "TCP 允许一端收到 FIN 后继续向对端发送，所以传输层半关闭本身是合法状态。若应用协议把 EOF 定义为整个会话结束，继续发送就会与对端状态机冲突；双方必须约定请求结束、响应结束和最终 closesocket 的顺序。",
+    "answer": "TCP 允许一端收到 FIN 后继续向对端发送。所以传输层半关闭本身是合法状态。若应用协议把 EOF 定义为整个会话结束，继续发送就会与对端状态机冲突。双方必须约定请求结束、响应该结束和最终 closesocket 的顺序。",
     "answerSources": [
       {
         "authority": "ietf-rfc",
@@ -1543,7 +1543,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "应用可用 SetDefaultDllDirectories 建立安全的进程级搜索策略，并在 LoadLibraryEx 中组合 LOAD_LIBRARY_SEARCH_SYSTEM32、APPLICATION_DIR 或 DLL_LOAD_DIR 等明确范围。插件目录应通过 AddDllDirectory 临时加入并妥善移除，避免依赖当前工作目录或可由低权限用户写入的路径。",
+    "answer": "应用可用 SetDefaultDllDirectories 建立安全的进程级搜索策略，并在 LoadLibraryEx 中组合 LOAD_LIBRARY_SEARCH_SYSTEM32、APPLICATION_DIR 或 DLL_LOAD_DIR 等明确范围。插件目录应该通过 AddDllDirectory 临时加入并妥善移除，避免依赖当前工作目录或可以由低权限用户写入的路径。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1606,7 +1606,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "FlushViewOfFile 把指定视图范围内的脏页写向底层文件，但不会刷新所有文件元数据，也不保证物理磁盘缓存已经提交。需要更强提交边界时，刷新视图后再用具有适当权限的文件句柄调用 FlushFileBuffers，并接受相应性能成本。",
+    "answer": "FlushViewOfFile 把指定视图范围内的脏页写向底层文件。但是不会刷新所有文件元数据，也不保证物理磁盘缓存已经提交。需要更强提交边界时，刷新视图后再用具有适当权限的文件句柄调用 FlushFileBuffers，并接受相应性能成本。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1627,7 +1627,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "进程内部可保留 UTF-16 路径并调用带 W 后缀的文件 API，只在网络、配置或跨平台边界按严格 UTF-8 转换。转换使用 CP_UTF8 和错误检测标志，不经系统 ANSI 代码页中转；还要保留规范化、长路径前缀和大小写语义，避免把显示等价误当成同一文件。",
+    "answer": "进程内部可以保留 UTF-16 路径并调用带 W 后缀的文件 API，只在网络、配置或跨平台边界按严格 UTF-8 转换。转换使用 CP_UTF8 和错误检测标志，不经系统 ANSI 代码页中转。还要保留规范化、长路径前缀和大小写语义，避免把显示等价误当成同一文件。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1669,7 +1669,7 @@
     "scopes": [
       "Win32"
     ],
-    "answer": "创建命名同步对象时应提供显式 DACL，只允许目标用户、服务 SID 或完整性级别取得 SYNCHRONIZE 和必要的修改权限。调用 CreateEvent 或 CreateMutex 后检查 ERROR_ALREADY_EXISTS，并验证打开的是预期协议对象，避免预创建攻击和跨会话名称碰撞。",
+    "answer": "创建命名同步对象时应该提供显式 DACL，只允许目标用户、服务 SID 或完整性级别取得 SYNCHRONIZE 和必要的修改权限。调用 CreateEvent 或 CreateMutex 后检查 ERROR_ALREADY_EXISTS，并验证打开的是预期协议对象，避免预创建攻击和跨会话名称碰撞。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
@@ -1712,7 +1712,7 @@
       "Win32",
       "Winsock"
     ],
-    "answer": "SO_KEEPALIVE 关注 TCP 对端或路径在长时间无流量时是否仍可达，探测成功并不表示远端业务线程健康。应用层心跳可验证会话、负载和业务超时，还能携带版本信息；它需要自行处理抖动、拥塞和误判，不能把一次超时直接等同于网络断开。",
+    "answer": "SO_KEEPALIVE 关注 TCP 对端或路径在长时间无流量时是否仍可达，探测成功并不表示远端业务线程健康。应用层心跳可验证会话、负载和业务超时，还能携带版本信息。它需要自行处理抖动、拥塞和误判，不能把一次超时直接等同于网络断开。",
     "answerSources": [
       {
         "authority": "microsoft-learn",
