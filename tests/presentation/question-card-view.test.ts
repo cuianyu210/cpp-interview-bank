@@ -21,7 +21,8 @@ describe('QuestionCardView', () => {
     const card = new QuestionCardView(document).render(question);
     const text = card.textContent ?? '';
 
-    expect(text).toContain('#007');
+    expect(text).not.toContain('#007');
+    expect(card.querySelector('.question-id')).toBeNull();
     expect(text).toContain(question.title);
     expect(card.querySelector('.difficulty-badge')).not.toBeNull();
     expect(text).toContain('C++11');

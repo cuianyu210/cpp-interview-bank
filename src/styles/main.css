@@ -135,22 +135,21 @@ select {
   box-shadow: var(--shadow);
 }
 .question-top { display: flex; align-items: flex-start; gap: 10px; }
-.question-id { flex: none; color: var(--muted); font: 12px ui-monospace, SFMono-Regular, Consolas, monospace; }
 .question h2 { margin: 0; overflow-wrap: anywhere; font-size: 16px; line-height: 1.45; }
-.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0 0 32px; }
+.badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0 0; }
 .badge { padding: 2px 7px; border-radius: 4px; background: var(--tag); color: var(--muted); font-size: 12px; }
 .difficulty-badge { color: #a15c00; }
-.answer { margin: 12px 0 0 32px; padding-top: 10px; border-top: 1px solid var(--line); }
+.answer { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
 .answer h3 { margin: 0 0 4px; font-size: 13px; }
 .answer p { margin: 0; }
 .question-glossary {
-  margin: 6px 0 0 32px;
+  margin: 6px 0 0;
   overflow-wrap: anywhere;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
 }
-.answer-source { margin: 6px 0 0 32px; overflow-wrap: anywhere; color: var(--muted); font-size: 12px; }
+.answer-source { margin: 6px 0 0; overflow-wrap: anywhere; color: var(--muted); font-size: 12px; }
 .empty { padding: 48px; color: var(--muted); text-align: center; }
 .load-sentinel { height: 1px; }
 @media (max-width: 860px) {
@@ -174,7 +173,6 @@ select {
   .scrim { position: fixed; z-index: 15; inset: 0; background: #20252b99; }
   .scrim[hidden] { display: none; }
   .question { padding: 14px; }
-  .badges, .answer, .answer-source, .question-glossary { margin-left: 0; }
   .question h2 { font-size: 15px; }
   select { width: 100%; max-width: none; min-width: 0; }
 }

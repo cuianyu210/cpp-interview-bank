@@ -10,10 +10,7 @@ export class QuestionCardView {
     article.id = `q-${question.id}`;
 
     const heading = this.element('div', 'question-top');
-    heading.append(
-      this.text('span', `#${question.id}`, 'question-id'),
-      this.text('h2', question.title)
-    );
+    heading.append(this.text('h2', question.title));
 
     const badges = this.element('div', 'badges');
     const difficulty = this.text(

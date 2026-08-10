@@ -217,15 +217,6 @@ select {
   align-items: flex-start;
   gap: 10px;
 }
-.question-id {
-  flex: none;
-  color: var(--muted);
-  font:
-    12px ui-monospace,
-    SFMono-Regular,
-    Consolas,
-    monospace;
-}
 .question h2 {
   margin: 0;
   overflow-wrap: anywhere;
@@ -236,7 +227,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 11px 0 0 32px;
+  margin: 11px 0 0;
 }
 .badge {
   padding: 2px 7px;
@@ -249,7 +240,7 @@ select {
   color: #a15c00;
 }
 .answer {
-  margin: 12px 0 0 32px;
+  margin: 12px 0 0;
   padding-top: 10px;
   border-top: 1px solid var(--line);
 }
@@ -261,14 +252,14 @@ select {
   margin: 0;
 }
 .question-glossary {
-  margin: 6px 0 0 32px;
+  margin: 6px 0 0;
   overflow-wrap: anywhere;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
 }
 .answer-source {
-  margin: 6px 0 0 32px;
+  margin: 6px 0 0;
   overflow-wrap: anywhere;
   color: var(--muted);
   font-size: 12px;
@@ -330,12 +321,6 @@ select {
   }
   .question {
     padding: 14px;
-  }
-  .badges,
-  .answer,
-  .answer-source,
-  .question-glossary {
-    margin-left: 0;
   }
   .question h2 {
     font-size: 15px;
