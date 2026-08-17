@@ -715,6 +715,174 @@ window.CPP_INTERVIEW_QUESTIONS = [
   },
   {
     "id": "052",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "数组里两数之和等于目标值，怎么找？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "先用哈希表记录每个数对应的下标，遍历数组时检查目标值与当前数的差是否已经在表中。如果存在就返回两个下标，不存在就把当前数存入表中。这样能把时间复杂度从暴力枚举的 O(n²) 降到 O(n)。",
+    "source": "资料依据：cppreference · hash table based two-sum search"
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "数组中最大连续子数组和怎么求？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用动态规划维护以当前位置结尾的最大子数组和，状态转移是取当前元素本身或者加上前一个位置的最大和。遍历一次就能得到全局最大值，时间复杂度 O(n)，空间可以优化到 O(1)。",
+    "source": "资料依据：cppreference · Kadane algorithm for maximum subarray"
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "有序数组每个元素平方后再排序，怎么做比较快？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原数组已经有序，平方后的最大值一定出现在两端，可以用双指针从两端向中间比较填入结果数组。这样能避免先平方再排序的 O(n log n) 开销，把时间复杂度降到 O(n)。",
+    "source": "资料依据：cppreference · two-pointer sorted squares algorithm"
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "反转单链表有哪些常用做法？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "最常用的是迭代法，用三个指针分别指向前一个节点、当前节点和下一个节点，逐个把当前节点的 next 指向前一个节点。也可以用递归先到达链表尾部再逐层反转指针方向，两种方式时间复杂度都是 O(n)。",
+    "source": "资料依据：cppreference · linked list reversal techniques"
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "合并两个有序链表怎么做？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用哑节点作为新链表头，然后同时遍历两个链表，每次把较小值的节点接到新链表后面。如果某个链表先走完，直接把另一个链表剩余部分接上即可。时间复杂度 O(n+m)，空间复杂度 O(1)。",
+    "source": "资料依据：cppreference · merge two sorted linked lists"
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "链表里有没有环，怎么判断？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "快慢指针是经典做法，快指针每次走两步，慢指针每次走一步，如果相遇说明有环。想找到环入口可以再让两个指针分别从相遇点和头节点同步前进，第二次相遇点即为入口。",
+    "source": "资料依据：cppreference · Floyd cycle detection in linked lists"
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "判断一串括号是否合法，通常怎么实现？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用栈来匹配，遇到左括号就入栈，遇到右括号就检查栈顶是否是对应的左括号。如果栈为空或者不匹配，直接返回不合法。遍历结束后如果栈为空说明全部匹配成功。",
+    "source": "资料依据：cppreference · stack based valid parentheses check"
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "怎么用两个栈模拟一个队列？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "一个栈负责接收入队元素，另一个栈负责出队。当需要出队时，如果出队栈为空，就把入队栈的所有元素依次弹出并压入出队栈，这样最先进入的元素就到了出队栈顶。均摊下来每个操作都是 O(1)。",
+    "source": "资料依据：cppreference · queue implementation using two stacks"
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "设计一个栈，能在 O(1) 内返回当前最小值，怎么实现？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "除了正常的数据栈，再维护一个辅助栈专门保存当前最小值。每次入栈时，把新元素和辅助栈栈顶中较小的那个压入辅助栈；出栈时两个栈一起弹出。这样辅助栈顶就是当前数据栈的最小值。",
+    "source": "资料依据：cppreference · min stack with auxiliary stack"
+  },
+  {
+    "id": "061",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树的前序、中序、后序遍历有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "三种遍历的区别在于访问根节点的时机，前序是先根再左右子树，中序是先左子树再根最后右子树，后序是先左右子树最后根。递归实现最直观，也可以用栈改成迭代版来避免递归栈过深。",
+    "source": "资料依据：cppreference · binary tree depth-first traversals"
+  },
+  {
+    "id": "062",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树按层遍历怎么做？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用队列辅助，先把根节点入队，然后每次取队首节点访问，并把它的左右子节点依次入队。这样就能保证先访问完一层再访问下一层，时间复杂度 O(n)，空间复杂度取决于最宽一层的节点数。",
+    "source": "资料依据：cppreference · binary tree level order traversal"
+  },
+  {
+    "id": "063",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树的最大深度怎么求？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "递归计算左右子树的最大深度，然后取较大值加一就是当前树的高度。也可以用层序遍历，每扫完一层深度加一，直到队列为空。两种方法时间复杂度都是 O(n)。",
+    "source": "资料依据：cppreference · binary tree maximum depth"
+  },
+  {
+    "id": "064",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是单例模式？C++ 中如何保证线程安全的单例？",
@@ -729,7 +897,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Singleton sole instance and global access"
   },
   {
-    "id": "053",
+    "id": "065",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是工厂方法模式？它把创建逻辑延迟到哪里？",
@@ -744,7 +912,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Factory Method product creation hook"
   },
   {
-    "id": "054",
+    "id": "066",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是抽象工厂模式？它解决了什么问题？",
@@ -759,7 +927,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Abstract Factory intent and product-family consistency"
   },
   {
-    "id": "055",
+    "id": "067",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是建造者模式？适用于什么场景？",
@@ -774,7 +942,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Builder construction process and representation"
   },
   {
-    "id": "056",
+    "id": "068",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是原型模式？C++ 中如何处理深拷贝和浅拷贝？",
@@ -789,7 +957,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Prototype cloning and copy semantics"
   },
   {
-    "id": "057",
+    "id": "069",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是适配器模式？对象适配器和类适配器有什么区别？",
@@ -804,7 +972,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Adapter object and class adapters"
   },
   {
-    "id": "058",
+    "id": "070",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是组合模式？如何统一叶子节点和容器节点的操作？",
@@ -819,7 +987,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
   },
   {
-    "id": "059",
+    "id": "071",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是装饰器模式？它和继承相比有什么优势？",
@@ -834,7 +1002,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
   },
   {
-    "id": "060",
+    "id": "072",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是外观模式？它如何降低系统复杂度？",
@@ -849,7 +1017,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Facade subsystem interface"
   },
   {
-    "id": "061",
+    "id": "073",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是代理模式？常见的代理类型有哪些？",
@@ -864,7 +1032,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Proxy subject access control"
   },
   {
-    "id": "062",
+    "id": "074",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是责任链模式？它的优缺点是什么？",
@@ -879,7 +1047,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
   },
   {
-    "id": "063",
+    "id": "075",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是命令模式？如何实现撤销操作？",
@@ -894,7 +1062,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Command request encapsulation and undo"
   },
   {
-    "id": "064",
+    "id": "076",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是迭代器模式？C++ 中如何自定义迭代器？",
@@ -909,7 +1077,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Iterator aggregate traversal"
   },
   {
-    "id": "065",
+    "id": "077",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是观察者模式？如何处理订阅和取消订阅的生命周期？",
@@ -924,7 +1092,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Observer subject notification"
   },
   {
-    "id": "066",
+    "id": "078",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是状态模式？它和策略模式有什么区别？",
@@ -939,7 +1107,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF State state-dependent behavior"
   },
   {
-    "id": "067",
+    "id": "079",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是策略模式？如何封装可互换的算法？",
@@ -954,7 +1122,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
   },
   {
-    "id": "068",
+    "id": "080",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是模板方法模式？钩子函数的作用是什么？",
@@ -969,7 +1137,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
   },
   {
-    "id": "069",
+    "id": "081",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是访问者模式？双重分派解决了什么问题？",
@@ -984,7 +1152,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Visitor double dispatch and operation extension"
   },
   {
-    "id": "070",
+    "id": "082",
     "group": "gof",
     "category": "gof/creation",
     "title": "工厂方法和抽象工厂有什么区别？",
@@ -999,7 +1167,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
   },
   {
-    "id": "071",
+    "id": "083",
     "group": "gof",
     "category": "gof/creation",
     "title": "建造者模式和命名构造函数如何选择？",
@@ -1014,7 +1182,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Builder construction process and representation"
   },
   {
-    "id": "072",
+    "id": "084",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UE5 的反射系统是怎么工作的？UHT 在其中扮演什么角色？",
@@ -1026,7 +1194,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Header Tool and Reflection System"
   },
   {
-    "id": "073",
+    "id": "085",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UCLASS 和 USTRUCT 有什么区别？什么时候用哪个？",
@@ -1038,7 +1206,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UObjects versus UStructs"
   },
   {
-    "id": "074",
+    "id": "086",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UE5 的 GC 机制是什么？哪些引用能被 GC 识别？",
@@ -1050,7 +1218,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Garbage Collection and Reflected References"
   },
   {
-    "id": "075",
+    "id": "087",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UPROPERTY 常用的标记有哪些？",
@@ -1062,7 +1230,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Specifiers and Editor Visibility"
   },
   {
-    "id": "076",
+    "id": "088",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UFUNCTION 常用的几种蓝图标记有什么区别？",
@@ -1074,7 +1242,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UFunction Specifiers and Blueprint Events"
   },
   {
-    "id": "077",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？从创建到开始运行经历了什么？",
@@ -1086,7 +1254,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Lifecycle: Construction and BeginPlay"
   },
   {
-    "id": "078",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -1098,7 +1266,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actors and Components Architecture"
   },
   {
-    "id": "079",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -1110,7 +1278,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Programming Subsystems"
   },
   {
-    "id": "080",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 销毁时的清理顺序是怎样的？",
@@ -1122,7 +1290,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor EndPlay and Destruction"
   },
   {
-    "id": "081",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "生成 Actor 时所有者和发起者有什么区别？",
@@ -1134,7 +1302,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Spawning Actors and SpawnParameters"
   },
   {
-    "id": "082",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -1146,7 +1314,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegates: Single-Cast and Multicast"
   },
   {
-    "id": "083",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -1158,7 +1326,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Dynamic versus Static Delegates"
   },
   {
-    "id": "084",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UE5 的接口和 C++ 纯虚类有什么区别？",
@@ -1170,7 +1338,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Interfaces"
   },
   {
-    "id": "085",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "蓝图可实现事件和原生事件有什么区别？",
@@ -1182,7 +1350,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint Event Specifiers"
   },
   {
-    "id": "086",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -1194,7 +1362,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Replication Overview"
   },
   {
-    "id": "087",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "远程过程调用的三种类型分别在什么场景使用？",
@@ -1206,7 +1374,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Remote Procedure Calls"
   },
   {
-    "id": "088",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "属性复制后怎么触发客户端回调？",
@@ -1218,7 +1386,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Replication and RepNotify"
   },
   {
-    "id": "089",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -1230,7 +1398,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Prediction and Rollback"
   },
   {
-    "id": "090",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "模块依赖怎么管理？公有依赖和私有依赖有什么区别？",
@@ -1242,7 +1410,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Build.cs Module Dependencies"
   },
   {
-    "id": "091",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -1254,7 +1422,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Plugin Structure and Creation"
   },
   {
-    "id": "092",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -1266,7 +1434,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Stereo Rendering"
   },
   {
-    "id": "093",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统怎么使用？",
@@ -1278,7 +1446,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · XR Input and Motion Controllers"
   },
   {
-    "id": "094",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -1290,7 +1458,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Performance Optimization"
   },
   {
-    "id": "095",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -1302,7 +1470,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · OpenXR Integration"
   },
   {
-    "id": "096",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的界面交互怎么实现？",
@@ -1314,7 +1482,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR UI and Widget Interaction"
   },
   {
-    "id": "097",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -1326,7 +1494,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Async Loading and Thread Safety"
   },
   {
-    "id": "098",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "子 Actor 组件使用时有哪些常见坑？",
@@ -1338,7 +1506,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
   },
   {
-    "id": "099",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UObject 的构造和初始化流程是怎样的？",
@@ -1350,7 +1518,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UObject initialization lifecycle"
   },
   {
-    "id": "100",
+    "id": "112",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
@@ -1362,7 +1530,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Component communication patterns"
   },
   {
-    "id": "101",
+    "id": "113",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UE5 中事件和委托有什么区别？各用在什么场景？",
@@ -1374,7 +1542,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegate vs Event usage"
   },
   {
-    "id": "102",
+    "id": "114",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "每帧更新和定时器有什么区别？什么情况下用哪个？",
@@ -1386,7 +1554,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Tick and Timer management"
   },
   {
-    "id": "103",
+    "id": "115",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的碰撞和追踪系统是怎么工作的？",
@@ -1398,7 +1566,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · collision and trace system"
   },
   {
-    "id": "104",
+    "id": "116",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的玩法框架有哪些核心类？各自负责什么？",
@@ -1410,7 +1578,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · gameplay framework classes"
   },
   {
-    "id": "105",
+    "id": "117",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "数据表和自定义数据资产有什么区别？各用在什么场景？",
@@ -1422,7 +1590,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · DataTable and DataAsset usage"
   },
   {
-    "id": "106",
+    "id": "118",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "玩法能力系统的核心概念有哪些？",
@@ -1434,7 +1602,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Gameplay Ability System overview"
   },
   {
-    "id": "107",
+    "id": "119",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的两种界面框架有什么区别？怎么选？",
@@ -1446,7 +1614,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UMG and Slate UI framework"
   },
   {
-    "id": "108",
+    "id": "120",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的大世界分区是什么？和旧的世界组合有什么区别？",
@@ -1458,7 +1626,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · World Partition streaming"
   },
   {
-    "id": "109",
+    "id": "121",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "软引用和硬引用有什么区别？怎么避免资产加载问题？",
@@ -1470,7 +1638,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · soft and hard asset references"
   },
   {
-    "id": "110",
+    "id": "122",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "蓝图和 C++ 之间怎么通信？有哪些方式？",
@@ -1482,7 +1650,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint and C++ communication"
   },
   {
-    "id": "111",
+    "id": "123",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的资产管理系统怎么工作？",

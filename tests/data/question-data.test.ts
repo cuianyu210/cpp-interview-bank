@@ -42,7 +42,7 @@ const questionFiles: Record<Group, string> = {
   ue5: 'data/questions/ue5.json'
 };
 const expectedCounts: Record<Group, number> = {
-  cpp: 51,
+  cpp: 63,
   gof: 20,
   ue5: 40
 };
@@ -124,7 +124,7 @@ describe('authoring question data', () => {
   const evidenceById = new Map(evidence.map((record) => [record.id, record]));
 
   it('publishes the requested group counts and one continuous id sequence', () => {
-    expect(questions).toHaveLength(111);
+    expect(questions).toHaveLength(123);
     for (const group of Object.keys(expectedCounts) as Group[]) {
       expect(questions.filter((question) => question.group === group)).toHaveLength(expectedCounts[group]);
     }

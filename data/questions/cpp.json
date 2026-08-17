@@ -1171,5 +1171,281 @@
       "evidence-cpp-002",
       "evidence-cpp-004"
     ]
+  },
+  {
+    "id": "052",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "数组里两数之和等于目标值，怎么找？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "先用哈希表记录每个数对应的下标，遍历数组时检查目标值与当前数的差是否已经在表中。如果存在就返回两个下标，不存在就把当前数存入表中。这样能把时间复杂度从暴力枚举的 O(n²) 降到 O(n)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "hash table based two-sum search"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "数组中最大连续子数组和怎么求？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用动态规划维护以当前位置结尾的最大子数组和，状态转移是取当前元素本身或者加上前一个位置的最大和。遍历一次就能得到全局最大值，时间复杂度 O(n)，空间可以优化到 O(1)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "Kadane algorithm for maximum subarray"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "有序数组每个元素平方后再排序，怎么做比较快？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "原数组已经有序，平方后的最大值一定出现在两端，可以用双指针从两端向中间比较填入结果数组。这样能避免先平方再排序的 O(n log n) 开销，把时间复杂度降到 O(n)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "two-pointer sorted squares algorithm"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "反转单链表有哪些常用做法？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "最常用的是迭代法，用三个指针分别指向前一个节点、当前节点和下一个节点，逐个把当前节点的 next 指向前一个节点。也可以用递归先到达链表尾部再逐层反转指针方向，两种方式时间复杂度都是 O(n)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "linked list reversal techniques"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "合并两个有序链表怎么做？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用哑节点作为新链表头，然后同时遍历两个链表，每次把较小值的节点接到新链表后面。如果某个链表先走完，直接把另一个链表剩余部分接上即可。时间复杂度 O(n+m)，空间复杂度 O(1)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "merge two sorted linked lists"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "链表里有没有环，怎么判断？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "快慢指针是经典做法，快指针每次走两步，慢指针每次走一步，如果相遇说明有环。想找到环入口可以再让两个指针分别从相遇点和头节点同步前进，第二次相遇点即为入口。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "Floyd cycle detection in linked lists"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "判断一串括号是否合法，通常怎么实现？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用栈来匹配，遇到左括号就入栈，遇到右括号就检查栈顶是否是对应的左括号。如果栈为空或者不匹配，直接返回不合法。遍历结束后如果栈为空说明全部匹配成功。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "stack based valid parentheses check"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "怎么用两个栈模拟一个队列？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "一个栈负责接收入队元素，另一个栈负责出队。当需要出队时，如果出队栈为空，就把入队栈的所有元素依次弹出并压入出队栈，这样最先进入的元素就到了出队栈顶。均摊下来每个操作都是 O(1)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "queue implementation using two stacks"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "设计一个栈，能在 O(1) 内返回当前最小值，怎么实现？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "除了正常的数据栈，再维护一个辅助栈专门保存当前最小值。每次入栈时，把新元素和辅助栈栈顶中较小的那个压入辅助栈；出栈时两个栈一起弹出。这样辅助栈顶就是当前数据栈的最小值。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "min stack with auxiliary stack"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "061",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树的前序、中序、后序遍历有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "三种遍历的区别在于访问根节点的时机，前序是先根再左右子树，中序是先左子树再根最后右子树，后序是先左右子树最后根。递归实现最直观，也可以用栈改成迭代版来避免递归栈过深。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "binary tree depth-first traversals"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "062",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树按层遍历怎么做？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "用队列辅助，先把根节点入队，然后每次取队首节点访问，并把它的左右子节点依次入队。这样就能保证先访问完一层再访问下一层，时间复杂度 O(n)，空间复杂度取决于最宽一层的节点数。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "binary tree level order traversal"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "063",
+    "group": "cpp",
+    "category": "cpp/algorithms",
+    "title": "二叉树的最大深度怎么求？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "递归计算左右子树的最大深度，然后取较大值加一就是当前树的高度。也可以用层序遍历，每扫完一层深度加一，直到队列为空。两种方法时间复杂度都是 O(n)。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "binary tree maximum depth"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
+    ]
   }
 ]

@@ -20,6 +20,7 @@
     "cpp/templates-sfinae-traits-constexpr": "\u6A21\u677F\u3001SFINAE\u3001\u7C7B\u578B\u8403\u53D6\u4E0E constexpr",
     "cpp/exceptions-rtti": "\u5F02\u5E38\u4E0E RTTI",
     "cpp/standard-concurrency": "\u6807\u51C6\u5E76\u53D1",
+    "cpp/algorithms": "\u6570\u7EC4\u3001\u94FE\u8868\u4E0E\u6811",
     "gof/creation": "\u521B\u5EFA\u578B\u6A21\u5F0F",
     "gof/structural": "\u7ED3\u6784\u578B\u6A21\u5F0F",
     "gof/behavioral": "\u884C\u4E3A\u578B\u6A21\u5F0F",
@@ -43,7 +44,8 @@
       "cpp/lambdas-utility-types",
       "cpp/templates-sfinae-traits-constexpr",
       "cpp/exceptions-rtti",
-      "cpp/standard-concurrency"
+      "cpp/standard-concurrency",
+      "cpp/algorithms"
     ],
     gof: ["gof/creation", "gof/structural", "gof/behavioral"],
     ue5: [

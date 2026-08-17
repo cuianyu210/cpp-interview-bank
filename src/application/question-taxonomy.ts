@@ -21,6 +21,7 @@ export const studyPathCategoryLabels: Readonly<Record<string, string>> = {
   'cpp/templates-sfinae-traits-constexpr': '模板、SFINAE、类型萃取与 constexpr',
   'cpp/exceptions-rtti': '异常与 RTTI',
   'cpp/standard-concurrency': '标准并发',
+  'cpp/algorithms': '数组、链表与树',
   'gof/creation': '创建型模式',
   'gof/structural': '结构型模式',
   'gof/behavioral': '行为型模式',
@@ -45,7 +46,8 @@ const categoryOrderByGroup: Readonly<Record<QuestionGroup, readonly string[]>> =
     'cpp/lambdas-utility-types',
     'cpp/templates-sfinae-traits-constexpr',
     'cpp/exceptions-rtti',
-    'cpp/standard-concurrency'
+    'cpp/standard-concurrency',
+    'cpp/algorithms'
   ],
   gof: ['gof/creation', 'gof/structural', 'gof/behavioral'],
   ue5: [

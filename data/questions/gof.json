@@ -1,6 +1,6 @@
 [
   {
-    "id": "052",
+    "id": "064",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是单例模式？C++ 中如何保证线程安全的单例？",
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "id": "053",
+    "id": "065",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是工厂方法模式？它把创建逻辑延迟到哪里？",
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "id": "054",
+    "id": "066",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是抽象工厂模式？它解决了什么问题？",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "id": "055",
+    "id": "067",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是建造者模式？适用于什么场景？",
@@ -96,7 +96,7 @@
     ]
   },
   {
-    "id": "056",
+    "id": "068",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是原型模式？C++ 中如何处理深拷贝和浅拷贝？",
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "id": "057",
+    "id": "069",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是适配器模式？对象适配器和类适配器有什么区别？",
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "id": "058",
+    "id": "070",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是组合模式？如何统一叶子节点和容器节点的操作？",
@@ -168,7 +168,7 @@
     ]
   },
   {
-    "id": "059",
+    "id": "071",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是装饰器模式？它和继承相比有什么优势？",
@@ -192,7 +192,7 @@
     ]
   },
   {
-    "id": "060",
+    "id": "072",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是外观模式？它如何降低系统复杂度？",
@@ -216,7 +216,7 @@
     ]
   },
   {
-    "id": "061",
+    "id": "073",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是代理模式？常见的代理类型有哪些？",
@@ -240,7 +240,7 @@
     ]
   },
   {
-    "id": "062",
+    "id": "074",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是责任链模式？它的优缺点是什么？",
@@ -264,7 +264,7 @@
     ]
   },
   {
-    "id": "063",
+    "id": "075",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是命令模式？如何实现撤销操作？",
@@ -288,7 +288,7 @@
     ]
   },
   {
-    "id": "064",
+    "id": "076",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是迭代器模式？C++ 中如何自定义迭代器？",
@@ -312,7 +312,7 @@
     ]
   },
   {
-    "id": "065",
+    "id": "077",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是观察者模式？如何处理订阅和取消订阅的生命周期？",
@@ -336,7 +336,7 @@
     ]
   },
   {
-    "id": "066",
+    "id": "078",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是状态模式？它和策略模式有什么区别？",
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "id": "067",
+    "id": "079",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是策略模式？如何封装可互换的算法？",
@@ -384,7 +384,7 @@
     ]
   },
   {
-    "id": "068",
+    "id": "080",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是模板方法模式？钩子函数的作用是什么？",
@@ -408,7 +408,7 @@
     ]
   },
   {
-    "id": "069",
+    "id": "081",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是访问者模式？双重分派解决了什么问题？",
@@ -432,7 +432,7 @@
     ]
   },
   {
-    "id": "070",
+    "id": "082",
     "group": "gof",
     "category": "gof/creation",
     "title": "工厂方法和抽象工厂有什么区别？",
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "071",
+    "id": "083",
     "group": "gof",
     "category": "gof/creation",
     "title": "建造者模式和命名构造函数如何选择？",
