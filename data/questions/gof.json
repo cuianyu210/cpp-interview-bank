@@ -1,6 +1,6 @@
 [
   {
-    "id": "061",
+    "id": "052",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是单例模式？C++ 中如何保证线程安全的单例？",
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "id": "062",
+    "id": "053",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是工厂方法模式？它把创建逻辑延迟到哪里？",
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "id": "063",
+    "id": "054",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是抽象工厂模式？它解决了什么问题？",
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "id": "064",
+    "id": "055",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是建造者模式？适用于什么场景？",
@@ -96,7 +96,7 @@
     ]
   },
   {
-    "id": "065",
+    "id": "056",
     "group": "gof",
     "category": "gof/creation",
     "title": "什么是原型模式？C++ 中如何处理深拷贝和浅拷贝？",
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "id": "066",
+    "id": "057",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是适配器模式？对象适配器和类适配器有什么区别？",
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "id": "067",
+    "id": "058",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是组合模式？如何统一叶子节点和容器节点的操作？",
@@ -168,7 +168,7 @@
     ]
   },
   {
-    "id": "068",
+    "id": "059",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是装饰器模式？它和继承相比有什么优势？",
@@ -192,7 +192,7 @@
     ]
   },
   {
-    "id": "069",
+    "id": "060",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是外观模式？它如何降低系统复杂度？",
@@ -216,7 +216,7 @@
     ]
   },
   {
-    "id": "070",
+    "id": "061",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是代理模式？常见的代理类型有哪些？",
@@ -240,7 +240,7 @@
     ]
   },
   {
-    "id": "071",
+    "id": "062",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是责任链模式？它的优缺点是什么？",
@@ -264,7 +264,7 @@
     ]
   },
   {
-    "id": "072",
+    "id": "063",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是命令模式？如何实现撤销操作？",
@@ -288,7 +288,7 @@
     ]
   },
   {
-    "id": "073",
+    "id": "064",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是迭代器模式？C++ 中如何自定义迭代器？",
@@ -312,7 +312,7 @@
     ]
   },
   {
-    "id": "074",
+    "id": "065",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是观察者模式？如何处理订阅和取消订阅的生命周期？",
@@ -336,7 +336,7 @@
     ]
   },
   {
-    "id": "075",
+    "id": "066",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是状态模式？它和策略模式有什么区别？",
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "id": "076",
+    "id": "067",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是策略模式？如何封装可互换的算法？",
@@ -384,7 +384,7 @@
     ]
   },
   {
-    "id": "077",
+    "id": "068",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是模板方法模式？钩子函数的作用是什么？",
@@ -408,7 +408,7 @@
     ]
   },
   {
-    "id": "078",
+    "id": "069",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是访问者模式？双重分派解决了什么问题？",
@@ -432,7 +432,7 @@
     ]
   },
   {
-    "id": "079",
+    "id": "070",
     "group": "gof",
     "category": "gof/creation",
     "title": "工厂方法和抽象工厂有什么区别？",
@@ -456,7 +456,7 @@
     ]
   },
   {
-    "id": "080",
+    "id": "071",
     "group": "gof",
     "category": "gof/creation",
     "title": "建造者模式和命名构造函数如何选择？",
@@ -478,125 +478,5 @@
       "evidence-gof-004",
       "evidence-gof-001"
     ]
-  },
-  {
-    "id": "081",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "观察者模式在事件驱动的系统中如何使用？订阅和取消订阅的生命周期怎么管理？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "观察者模式定义一对多的依赖关系，当被观察对象状态变化时自动通知所有注册的观察者。在 UE 中委托系统和事件分发器就是这种模式的实现。订阅者应在析构时主动取消订阅，否则被观察对象可能持有悬空引用导致崩溃。",
-    "answerSources": [
-      {
-        "authority": "gof",
-        "topic": "GoF Observer publish-subscribe mechanism"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-gof-001",
-      "evidence-gof-004"
-    ],
-    "pattern": "Observer"
-  },
-  {
-    "id": "082",
-    "group": "gof",
-    "category": "gof/structural",
-    "title": "组合模式在树形结构和游戏场景管理中如何使用？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "组合模式把对象组合成树形结构以表示部分-整体层次，使客户端对单个对象和组合对象的使用具有一致性。UE 的 Actor-Component 层级和场景图就是典型应用。所有节点实现统一接口，叶子节点执行业务逻辑，容器节点递归转发给子节点。",
-    "answerSources": [
-      {
-        "authority": "gof",
-        "topic": "GoF Composite uniform treatment of part-whole"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-gof-002",
-      "evidence-gof-003"
-    ],
-    "pattern": "Composite"
-  },
-  {
-    "id": "083",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "命令模式在游戏输入系统和撤销操作中如何使用？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "命令模式将请求封装为对象，使请求的发送者和接收者解耦，支持排队、记录和撤销。游戏中的输入系统把按键映射为命令对象，便于重绑定和录制回放。撤销操作通过保存已执行命令的逆命令或状态快照实现。",
-    "answerSources": [
-      {
-        "authority": "gof",
-        "topic": "GoF Command undoable operations"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-gof-001",
-      "evidence-gof-003"
-    ],
-    "pattern": "Command"
-  },
-  {
-    "id": "084",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "模板方法模式在框架设计和 AI 行为中如何使用？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "模板方法在基类中定义算法骨架，将某些步骤延迟到子类实现，子类可以不改变算法结构而重定义某些步骤。UE 的 Actor Tick、GAS 的 GameplayAbility 生命周期都采用了这种模式。钩子函数允许子类在骨架的特定节点插入自定义逻辑。",
-    "answerSources": [
-      {
-        "authority": "gof",
-        "topic": "GoF Template Method algorithm skeleton"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-gof-002",
-      "evidence-gof-004"
-    ],
-    "pattern": "Template Method"
-  },
-  {
-    "id": "085",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "迭代器模式如何统一不同容器的遍历方式？C++ 中怎么自定义迭代器？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "迭代器模式提供顺序访问聚合对象元素的方法，而不暴露其内部表示。C++ STL 所有容器都提供迭代器接口，算法通过迭代器操作容器，实现算法和数据结构解耦。自定义迭代器需要实现 iterator_traits 中规定的类型别名和操作符。",
-    "answerSources": [
-      {
-        "authority": "gof",
-        "topic": "GoF Iterator sequential access"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-gof-003",
-      "evidence-gof-004"
-    ],
-    "pattern": "Iterator"
   }
 ]
