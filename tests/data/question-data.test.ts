@@ -148,7 +148,7 @@ describe('authoring question data', () => {
 
     const titles = xrQuestions.map((question) => question.title).join('\n');
     expect(titles).toMatch(/OpenXR/);
-    expect(titles).toMatch(/Motion Controller|MotionController/);
+    expect(titles).toMatch(/XR 输入|Motion Controller|MotionController/);
   });
 
   it('groups intermediate C++ STL and standard-library questions under a dedicated category', () => {

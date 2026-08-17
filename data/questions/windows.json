@@ -45,7 +45,7 @@
     "id": "114",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "WaitForSingleObject 的返回值有什么含义？",
+    "title": "等待函数的返回值有什么含义？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -171,7 +171,7 @@
     "id": "120",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "TLS 和 FLS 有什么区别？线程退出时如何清理？",
+    "title": "线程局部存储和纤程局部存储有什么区别？线程退出时怎么清理？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -192,7 +192,7 @@
     "id": "121",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "Winsock 初始化和清理有什么注意事项？",
+    "title": "套接字初始化和清理有什么注意事项？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -258,7 +258,7 @@
     "id": "124",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "select、WSAPoll 和 IOCP 在可扩展性上如何比较？",
+    "title": "几种 IO 模型在可扩展性上怎么比较？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -280,7 +280,7 @@
     "id": "125",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "send 返回小于请求长度时怎么处理？",
+    "title": "发送函数返回小于请求长度时怎么处理？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -302,7 +302,7 @@
     "id": "126",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "recv 的返回值有哪些含义？",
+    "title": "接收函数的返回值有哪些含义？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -324,7 +324,7 @@
     "id": "127",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "shutdown 和 closesocket 有什么区别？什么是半关闭？",
+    "title": "关闭连接和关闭套接字有什么区别？什么是半关闭？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -612,7 +612,7 @@
     "id": "140",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "CreateFile 打开文件时要注意什么？",
+    "title": "打开文件时要注意什么？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -654,7 +654,7 @@
     "id": "142",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "什么是原子操作？Windows 提供的 Interlocked 函数有哪些？",
+    "title": "什么是原子操作？Windows 提供了哪些原子操作函数？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -718,7 +718,7 @@
     "id": "145",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "什么是 Zero Copy？Windows 上有什么实现方式？",
+    "title": "什么是零拷贝？Windows 上有什么实现方式？",
     "difficulty": 3,
     "scopes": [
       "Winsock",

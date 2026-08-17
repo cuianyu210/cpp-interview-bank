@@ -73,7 +73,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "006",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
-    "title": "unique_ptr 和 move 语义怎样配合？",
+    "title": "独占指针和移动语义怎么配合？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -87,7 +87,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "007",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
-    "title": "weak_ptr 解决什么问题？怎样正确使用？",
+    "title": "弱指针解决什么问题？怎样正确使用？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -171,7 +171,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "013",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "std::thread 的基本用法和注意事项有哪些？",
+    "title": "C++ 线程的基本用法和注意事项有哪些？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -591,7 +591,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "043",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "什么是 placement new？它在游戏引擎中有什么用途？",
+    "title": "什么是定位 new？它在游戏引擎中有什么用途？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -1077,7 +1077,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "077",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "Actor 的生命周期是怎样的？从创建到 BeginPlay 经历了什么？",
+    "title": "Actor 的生命周期是怎样的？从创建到开始运行经历了什么？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1125,7 +1125,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "081",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "生成 Actor 时 Owner 和 Instigator 有什么区别？",
+    "title": "生成 Actor 时所有者和发起者有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1197,7 +1197,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "087",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
-    "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
+    "title": "远程过程调用的三种类型分别在什么场景使用？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1209,7 +1209,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "088",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
-    "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
+    "title": "属性复制后怎么触发客户端回调？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1233,7 +1233,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "090",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
-    "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
+    "title": "模块依赖怎么管理？公有依赖和私有依赖有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1269,7 +1269,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "093",
     "group": "ue5",
     "category": "ue5/xr-vr",
-    "title": "XR 输入系统和 MotionController 如何使用？",
+    "title": "XR 输入系统怎么使用？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1305,7 +1305,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "096",
     "group": "ue5",
     "category": "ue5/xr-vr",
-    "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
+    "title": "VR 中的界面交互怎么实现？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1329,7 +1329,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "ChildActorComponent 使用时有哪些常见坑？",
+    "title": "子 Actor 组件使用时有哪些常见坑？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1365,7 +1365,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "101",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "UE5 中 Event 和 Delegate 有什么区别？各用在什么场景？",
+    "title": "UE5 中事件和委托有什么区别？各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1377,7 +1377,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "Tick 和 Timer 有什么区别？什么情况下用哪个？",
+    "title": "每帧更新和定时器有什么区别？什么情况下用哪个？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1401,7 +1401,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "UE5 的 Gameplay 框架有哪些核心类？各自负责什么？",
+    "title": "UE5 的玩法框架有哪些核心类？各自负责什么？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1413,7 +1413,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "105",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "DataTable 和 DataAsset 有什么区别？各用在什么场景？",
+    "title": "数据表和自定义数据资产有什么区别？各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1425,7 +1425,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "106",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "Gameplay Ability System（GAS）的核心概念有哪些？",
+    "title": "玩法能力系统的核心概念有哪些？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1437,7 +1437,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "107",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "UMG 和 Slate 有什么区别？UE5 的 UI 系统怎么选择？",
+    "title": "UE5 的两种界面框架有什么区别？怎么选？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1449,7 +1449,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "108",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "World Partition 是什么？它和旧的世界组合有什么区别？",
+    "title": "UE5 的大世界分区是什么？和旧的世界组合有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1461,7 +1461,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "109",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "Soft Reference 和 Hard Reference 有什么区别？怎么避免资产加载问题？",
+    "title": "软引用和硬引用有什么区别？怎么避免资产加载问题？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1485,7 +1485,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "111",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
-    "title": "UE5 的资产管理系统怎么工作？Asset Manager 有什么作用？",
+    "title": "UE5 的资产管理系统怎么工作？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1521,7 +1521,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "114",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "WaitForSingleObject 的返回值有什么含义？",
+    "title": "等待函数的返回值有什么含义？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1593,7 +1593,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "120",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "TLS 和 FLS 有什么区别？线程退出时如何清理？",
+    "title": "线程局部存储和纤程局部存储有什么区别？线程退出时怎么清理？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -1605,7 +1605,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "121",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "Winsock 初始化和清理有什么注意事项？",
+    "title": "套接字初始化和清理有什么注意事项？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -1644,7 +1644,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "124",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "select、WSAPoll 和 IOCP 在可扩展性上如何比较？",
+    "title": "几种 IO 模型在可扩展性上怎么比较？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -1657,7 +1657,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "125",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "send 返回小于请求长度时怎么处理？",
+    "title": "发送函数返回小于请求长度时怎么处理？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -1670,7 +1670,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "126",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "recv 的返回值有哪些含义？",
+    "title": "接收函数的返回值有哪些含义？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -1683,7 +1683,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "127",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "shutdown 和 closesocket 有什么区别？什么是半关闭？",
+    "title": "关闭连接和关闭套接字有什么区别？什么是半关闭？",
     "difficulty": 3,
     "scopes": [
       "Win32",
@@ -1846,7 +1846,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "140",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "CreateFile 打开文件时要注意什么？",
+    "title": "打开文件时要注意什么？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1870,7 +1870,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "142",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "什么是原子操作？Windows 提供的 Interlocked 函数有哪些？",
+    "title": "什么是原子操作？Windows 提供了哪些原子操作函数？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1907,7 +1907,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "145",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "什么是 Zero Copy？Windows 上有什么实现方式？",
+    "title": "什么是零拷贝？Windows 上有什么实现方式？",
     "difficulty": 3,
     "scopes": [
       "Winsock",

@@ -118,7 +118,7 @@
     "id": "006",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
-    "title": "unique_ptr 和 move 语义怎样配合？",
+    "title": "独占指针和移动语义怎么配合？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -141,7 +141,7 @@
     "id": "007",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
-    "title": "weak_ptr 解决什么问题？怎样正确使用？",
+    "title": "弱指针解决什么问题？怎样正确使用？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -279,7 +279,7 @@
     "id": "013",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "std::thread 的基本用法和注意事项有哪些？",
+    "title": "C++ 线程的基本用法和注意事项有哪些？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -969,7 +969,7 @@
     "id": "043",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "什么是 placement new？它在游戏引擎中有什么用途？",
+    "title": "什么是定位 new？它在游戏引擎中有什么用途？",
     "difficulty": 3,
     "scopes": [
       "C++11",
