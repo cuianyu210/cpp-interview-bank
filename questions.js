@@ -143,7 +143,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "011",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
-    "title": "std::function 和直接使用 lambda 有什么区别？",
+    "title": "std::function 和 lambda 有什么区别？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -185,7 +185,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "014",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "mutex、lock_guard 和 unique_lock 有什么区别？",
+    "title": "C++ 中几种互斥锁的用法有什么区别？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -199,7 +199,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "015",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "condition_variable 怎样避免虚假唤醒？",
+    "title": "条件变量怎么避免虚假唤醒？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -521,7 +521,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "038",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "函数指针和 std::function 有什么区别？回调函数怎么实现？",
+    "title": "函数指针和 std::function 有什么区别？怎么实现回调？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -1065,7 +1065,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "076",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UFUNCTION 的 BlueprintCallable、BlueprintPure 和 BlueprintNativeEvent 有什么区别？",
+    "title": "UFUNCTION 常用的几种蓝图标记有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1125,7 +1125,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "081",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
+    "title": "生成 Actor 时 Owner 和 Instigator 有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1161,7 +1161,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "084",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
+    "title": "UE5 的接口和 C++ 纯虚类有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1173,7 +1173,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "085",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
+    "title": "蓝图可实现事件和原生事件有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1329,7 +1329,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
+    "title": "ChildActorComponent 使用时有哪些常见坑？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1521,7 +1521,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "114",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "WaitForSingleObject 有哪些返回值？各表示什么？",
+    "title": "WaitForSingleObject 的返回值有什么含义？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1533,7 +1533,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "115",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "CreateThread 和 _beginthreadex 有什么区别？",
+    "title": "Windows 下创建线程用 CreateThread 还是 _beginthreadex？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -1557,7 +1557,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "117",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "临界区（CRITICAL_SECTION）和互斥体（Mutex）有什么区别？",
+    "title": "临界区和互斥体有什么区别？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1581,7 +1581,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "119",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "SRW Lock 有什么特点？它支持递归和升级吗？",
+    "title": "读写锁有什么特点？支持递归吗？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -1605,7 +1605,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "121",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "WSAStartup 和 WSACleanup 的配对规则是什么？",
+    "title": "Winsock 初始化和清理有什么注意事项？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -1696,7 +1696,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "128",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "SO_REUSEADDR 和 SO_EXCLUSIVEADDRUSE 有什么区别？",
+    "title": "端口复用相关的套接字选项有什么区别？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -1722,7 +1722,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "130",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "getaddrinfo 的 hints 参数怎么用？解析失败如何处理？",
+    "title": "域名解析失败怎么处理？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -1735,7 +1735,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "131",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "OVERLAPPED 结构的生命周期如何保证？",
+    "title": "重叠 IO 的生命周期怎么保证？",
     "difficulty": 4,
     "scopes": [
       "Win32",
@@ -1748,7 +1748,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "132",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "IOCP 的完成键和 GetQueuedCompletionStatus 如何使用？",
+    "title": "IOCP 的完成端口怎么使用？",
     "difficulty": 4,
     "scopes": [
       "Win32",
@@ -1774,7 +1774,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "134",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "LoadLibrary 的搜索路径有哪些？如何避免 DLL 劫持？",
+    "title": "加载 DLL 时怎么避免被劫持？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -1786,7 +1786,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "135",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "GetProcAddress 如何保证 ABI 一致性？",
+    "title": "GetProcAddress 怎么保证接口兼容？",
     "difficulty": 4,
     "scopes": [
       "Win32"
@@ -1798,7 +1798,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "136",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "DllMain 的通知机制有什么限制？哪些操作不能在 DllMain 中做？",
+    "title": "DllMain 中有哪些限制？",
     "difficulty": 4,
     "scopes": [
       "Win32"
@@ -1846,7 +1846,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "140",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "CreateFile 的关键参数有哪些？如何正确设置共享模式？",
+    "title": "CreateFile 打开文件时要注意什么？",
     "difficulty": 2,
     "scopes": [
       "Win32"

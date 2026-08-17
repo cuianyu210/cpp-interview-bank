@@ -233,7 +233,7 @@
     "id": "011",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
-    "title": "std::function 和直接使用 lambda 有什么区别？",
+    "title": "std::function 和 lambda 有什么区别？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -302,7 +302,7 @@
     "id": "014",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "mutex、lock_guard 和 unique_lock 有什么区别？",
+    "title": "C++ 中几种互斥锁的用法有什么区别？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -325,7 +325,7 @@
     "id": "015",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
-    "title": "condition_variable 怎样避免虚假唤醒？",
+    "title": "条件变量怎么避免虚假唤醒？",
     "difficulty": 3,
     "scopes": [
       "C++11",
@@ -854,7 +854,7 @@
     "id": "038",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "函数指针和 std::function 有什么区别？回调函数怎么实现？",
+    "title": "函数指针和 std::function 有什么区别？怎么实现回调？",
     "difficulty": 2,
     "scopes": [
       "C++11",

@@ -87,7 +87,7 @@
     "id": "076",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UFUNCTION 的 BlueprintCallable、BlueprintPure 和 BlueprintNativeEvent 有什么区别？",
+    "title": "UFUNCTION 常用的几种蓝图标记有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -192,7 +192,7 @@
     "id": "081",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
+    "title": "生成 Actor 时 Owner 和 Instigator 有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -255,7 +255,7 @@
     "id": "084",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
+    "title": "UE5 的接口和 C++ 纯虚类有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -276,7 +276,7 @@
     "id": "085",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
+    "title": "蓝图可实现事件和原生事件有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -549,7 +549,7 @@
     "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
+    "title": "ChildActorComponent 使用时有哪些常见坑？",
     "difficulty": 3,
     "scopes": [
       "UE5"

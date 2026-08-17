@@ -45,7 +45,7 @@
     "id": "114",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "WaitForSingleObject 有哪些返回值？各表示什么？",
+    "title": "WaitForSingleObject 的返回值有什么含义？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -66,7 +66,7 @@
     "id": "115",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "CreateThread 和 _beginthreadex 有什么区别？",
+    "title": "Windows 下创建线程用 CreateThread 还是 _beginthreadex？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -108,7 +108,7 @@
     "id": "117",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "临界区（CRITICAL_SECTION）和互斥体（Mutex）有什么区别？",
+    "title": "临界区和互斥体有什么区别？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -150,7 +150,7 @@
     "id": "119",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "SRW Lock 有什么特点？它支持递归和升级吗？",
+    "title": "读写锁有什么特点？支持递归吗？",
     "difficulty": 2,
     "scopes": [
       "Win32"
@@ -192,7 +192,7 @@
     "id": "121",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "WSAStartup 和 WSACleanup 的配对规则是什么？",
+    "title": "Winsock 初始化和清理有什么注意事项？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -350,7 +350,7 @@
     "id": "128",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "SO_REUSEADDR 和 SO_EXCLUSIVEADDRUSE 有什么区别？",
+    "title": "端口复用相关的套接字选项有什么区别？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -398,7 +398,7 @@
     "id": "130",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "getaddrinfo 的 hints 参数怎么用？解析失败如何处理？",
+    "title": "域名解析失败怎么处理？",
     "difficulty": 2,
     "scopes": [
       "Win32",
@@ -420,7 +420,7 @@
     "id": "131",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "OVERLAPPED 结构的生命周期如何保证？",
+    "title": "重叠 IO 的生命周期怎么保证？",
     "difficulty": 4,
     "scopes": [
       "Win32",
@@ -442,7 +442,7 @@
     "id": "132",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "IOCP 的完成键和 GetQueuedCompletionStatus 如何使用？",
+    "title": "IOCP 的完成端口怎么使用？",
     "difficulty": 4,
     "scopes": [
       "Win32",
@@ -486,7 +486,7 @@
     "id": "134",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "LoadLibrary 的搜索路径有哪些？如何避免 DLL 劫持？",
+    "title": "加载 DLL 时怎么避免被劫持？",
     "difficulty": 3,
     "scopes": [
       "Win32"
@@ -507,7 +507,7 @@
     "id": "135",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "GetProcAddress 如何保证 ABI 一致性？",
+    "title": "GetProcAddress 怎么保证接口兼容？",
     "difficulty": 4,
     "scopes": [
       "Win32"
@@ -528,7 +528,7 @@
     "id": "136",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "DllMain 的通知机制有什么限制？哪些操作不能在 DllMain 中做？",
+    "title": "DllMain 中有哪些限制？",
     "difficulty": 4,
     "scopes": [
       "Win32"
@@ -612,7 +612,7 @@
     "id": "140",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
-    "title": "CreateFile 的关键参数有哪些？如何正确设置共享模式？",
+    "title": "CreateFile 打开文件时要注意什么？",
     "difficulty": 2,
     "scopes": [
       "Win32"
