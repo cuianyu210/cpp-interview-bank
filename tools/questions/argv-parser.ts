@@ -69,7 +69,7 @@ function readOptions(tokens: readonly string[], allowed: ReadonlySet<string>): R
 }
 
 export function isQuestionGroup(value: string): value is QuestionGroup {
-  return ['cpp', 'gof', 'ue5', 'windows'].includes(value);
+  return ['cpp', 'gof', 'ue5'].includes(value);
 }
 
 function parseOptionalGroup(value: string | undefined): QuestionGroup | undefined {

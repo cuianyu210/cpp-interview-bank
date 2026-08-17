@@ -23,8 +23,7 @@ export const DEFAULT_QUESTION_PATHS: QuestionDataPaths = {
   questions: {
     cpp: 'data/questions/cpp.json',
     gof: 'data/questions/gof.json',
-    ue5: 'data/questions/ue5.json',
-    windows: 'data/questions/windows.json'
+    ue5: 'data/questions/ue5.json'
   },
   evidence: 'data/evidence/interviews.json',
   runtime: 'questions.js'

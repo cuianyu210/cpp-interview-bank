@@ -172,9 +172,6 @@ function checkScopes(question: AuthoringQuestion, errors: string[]): void {
     }
   } else if (question.group === 'ue5' && !question.scopes.includes('UE5')) {
     errors.push(`${question.id}: UE5 scope is required`);
-  } else if (question.group === 'windows'
-    && !question.scopes.some((scope) => ['Win32', 'Winsock', 'IOCP'].includes(scope))) {
-    errors.push(`${question.id}: Windows scope is required`);
   }
 }
 

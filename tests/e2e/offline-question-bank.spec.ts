@@ -4,11 +4,11 @@ import { pathToFileURL } from 'node:url';
 
 const pageUrl = pathToFileURL(resolve('index.html')).href;
 const questions = [
-  question('003', 'windows', 'windows/iocp', 'IOCP completion ordering', 4, ['IOCP']),
+  question('003', 'ue5', 'ue5/replication-rpc-serialization', 'Replication condition check', 4, ['UE5']),
   question('002', 'ue5', 'ue5/uobject', 'UObject lifecycle', 1, ['UE5']),
   question('001', 'cpp', 'cpp/lifetime-raii', 'RAII manages ownership', 1, ['C++17']),
   question('004', 'cpp', 'cpp/templates', 'ADL expands candidate functions', 2, ['C++20']),
-  question('005', 'windows', 'windows/dll', 'LoadLibraryEx chooses a DLL search path', 3, ['Win32'])
+  question('005', 'gof', 'gof/creation', 'Factory method creation', 3, ['C++17'])
 ];
 
 test.beforeEach(async ({ page }) => {
@@ -47,8 +47,8 @@ test('orders questions by study path before difficulty and id', async ({ page })
     'RAII manages ownership',
     'ADL expands candidate functions',
     'UObject lifecycle',
-    'LoadLibraryEx chooses a DLL search path',
-    'IOCP completion ordering'
+    'Replication condition check',
+    'Factory method creation'
   ]);
 });
 
@@ -70,10 +70,10 @@ test('uses identifier boundaries without breaking ASCII prefix searches', async 
   await expect(page.locator('#result-count')).toHaveText('1 道题');
   await expect(page.locator('#question-list h2')).toHaveText(['ADL expands candidate functions']);
 
-  await page.locator('#search-input').fill('Load');
+  await page.locator('#search-input').fill('Factory');
 
   await expect(page.locator('#result-count')).toHaveText('1 道题');
-  await expect(page.locator('#question-list h2')).toHaveText(['LoadLibraryEx chooses a DLL search path']);
+  await expect(page.locator('#question-list h2')).toHaveText(['Factory method creation']);
 });
 
 test('filters questions by difficulty', async ({ page }) => {
@@ -82,7 +82,7 @@ test('filters questions by difficulty', async ({ page }) => {
   await page.locator('#difficulty-filter').selectOption('4');
 
   await expect(page.locator('#result-count')).toHaveText('1 道题');
-  await expect(page.locator('#question-list h2')).toHaveText(['IOCP completion ordering']);
+  await expect(page.locator('#question-list h2')).toHaveText(['Replication condition check']);
 });
 
 test('filters questions by scope', async ({ page }) => {
@@ -96,13 +96,13 @@ test('filters questions by scope', async ({ page }) => {
 
 test('restores search and difficulty from the hash', async ({ page }) => {
   const url = new URL(pageUrl);
-  url.hash = 'filters?difficulty=4&q=IOCP';
+  url.hash = 'filters?difficulty=4&q=Replication';
 
   await page.goto(url.href);
 
-  await expect(page.locator('#search-input')).toHaveValue('IOCP');
+  await expect(page.locator('#search-input')).toHaveValue('Replication');
   await expect(page.locator('#difficulty-filter')).toHaveValue('4');
-  await expect(page.locator('#question-list h2')).toHaveText(['IOCP completion ordering']);
+  await expect(page.locator('#question-list h2')).toHaveText(['Replication condition check']);
 });
 
 test('mobile drawer closes after selecting a category', async ({ page }, testInfo) => {
@@ -120,7 +120,7 @@ test('mobile drawer closes after selecting a category', async ({ page }, testInf
 
 function question(
   id: string,
-  group: 'cpp' | 'gof' | 'ue5' | 'windows',
+  group: 'cpp' | 'gof' | 'ue5',
   category: string,
   title: string,
   difficulty: number,

@@ -36,7 +36,6 @@ class MemoryFileSystem {
     ['data/questions/cpp.json', JSON.stringify([questions[0]])],
     ['data/questions/gof.json', '[]'],
     ['data/questions/ue5.json', JSON.stringify([questions[1]])],
-    ['data/questions/windows.json', '[]'],
     ['data/evidence/interviews.json', JSON.stringify(evidence)],
     ['questions.js', 'stale']
   ]);
@@ -93,11 +92,11 @@ describe('question maintenance CLI search and evidence', () => {
 
   it('does not match an ASCII term inside a longer identifier', () => {
     const { runner, fileSystem, output } = setup();
-    fileSystem.files.set('data/questions/windows.json', JSON.stringify([{
-      id: '003', group: 'windows', category: 'windows/dll-files-mmap-unicode-handles',
-      title: 'LoadLibraryEx 如何选择 DLL 搜索路径？', difficulty: 3, scopes: ['Win32'],
-      answer: '调用方应该选择受控的 DLL 搜索目录，并避免依赖当前工作目录这类容易被污染的位置。LoadLibraryEx 的安全搜索标志可以缩小查找范围，从而降低 DLL 劫持风险，失败时也应该按明确路径记录原因。',
-      answerSources: [{ authority: 'microsoft-learn', topic: 'LoadLibraryEx' }],
+    fileSystem.files.set('data/questions/ue5.json', JSON.stringify([{
+      id: '003', group: 'ue5', category: 'ue5/modules-plugins-buildcs',
+      title: 'UE5 插件的基本结构是什么？', difficulty: 3, scopes: ['UE5'],
+      answer: 'UE5 插件由描述文件、模块目录和构建配置组成。描述文件声明插件名称和加载时机，模块目录包含源码和构建文件。插件可以添加新模块或扩展现有功能，编译后通过插件管理器启用。',
+      answerSources: [{ authority: 'epic-games', topic: 'Plugin Structure' }],
       evidenceIds: ['e-1', 'e-2']
     }]));
 

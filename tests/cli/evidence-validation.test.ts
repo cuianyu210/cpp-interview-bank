@@ -168,7 +168,7 @@ describe('interview evidence validation', () => {
   });
 
   it('rejects legacy search-record placeholders for every question group', () => {
-    for (const group of ['C++', 'GoF', 'UE5', 'Windows']) {
+    for (const group of ['C++', 'GoF', 'UE5']) {
       const records = [{
         ...evidence[0],
         sourceTitle: `公开 ${group} 面经检索记录`,

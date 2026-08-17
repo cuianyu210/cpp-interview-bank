@@ -51,7 +51,7 @@ describe('interview evidence quality', () => {
   });
 
   it('keeps at least four distinct interview pages for every question group', () => {
-    for (const group of ['cpp', 'gof', 'ue5', 'windows'] satisfies Group[]) {
+    for (const group of ['cpp', 'gof', 'ue5'] satisfies Group[]) {
       const urls = evidence.filter((record) => groupOf(record) === group).map((record) => record.url);
       expect(new Set(urls).size, group).toBeGreaterThanOrEqual(4);
     }

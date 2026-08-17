@@ -153,9 +153,9 @@ describe('QuestionBankController', () => {
       {
         ...question,
         id: '003',
-        group: 'windows',
-        category: 'windows/winsock-protocol-iocp',
-        scopes: ['Winsock']
+        group: 'ue5',
+        category: 'ue5/delegate-interface-async',
+        scopes: ['UE5']
       },
       {
         ...question,
@@ -192,7 +192,7 @@ describe('QuestionBankController', () => {
       'cpp/core-language': '核心语言',
       'cpp/stl': 'STL/标准库',
       'ue5/uobject-reflection-gc': 'UObject、反射与垃圾回收',
-      'windows/winsock-protocol-iocp': 'Winsock、网络协议与 IOCP'
+      'ue5/delegate-interface-async': '委托、接口与异步'
     });
   });
 
@@ -201,10 +201,10 @@ describe('QuestionBankController', () => {
       {
         ...question,
         id: '001',
-        group: 'windows',
-        category: 'windows/process-thread-sync',
-        title: 'Windows thread basics',
-        scopes: ['Windows']
+        group: 'ue5',
+        category: 'ue5/actor-component-subsystem',
+        title: 'Actor basics',
+        scopes: ['UE5']
       },
       {
         ...question,
@@ -272,7 +272,7 @@ describe('QuestionBankController', () => {
       'cpp/stl',
       'gof/creation',
       'gof/behavioral',
-      'windows/process-thread-sync'
+      'ue5/actor-component-subsystem'
     ]);
   });
 });

@@ -7,7 +7,6 @@ const generatedPaths = [
   'data/questions/cpp.json',
   'data/questions/gof.json',
   'data/questions/ue5.json',
-  'data/questions/windows.json',
   'data/evidence/interviews.json',
   'questions.js'
 ] as const;

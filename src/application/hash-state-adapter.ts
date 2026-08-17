@@ -2,7 +2,7 @@ import { isDifficultyValue, type DifficultyValue } from '../domain/difficulty';
 import { FilterState } from '../domain/filter-state';
 import type { QuestionGroup } from '../domain/question';
 
-const groups = new Set<QuestionGroup>(['cpp', 'gof', 'ue5', 'windows']);
+const groups = new Set<QuestionGroup>(['cpp', 'gof', 'ue5']);
 
 export class HashStateAdapter {
   serialize(state: FilterState): string {

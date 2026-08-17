@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
-type Group = 'cpp' | 'gof' | 'ue5' | 'windows';
+type Group = 'cpp' | 'gof' | 'ue5';
 
 type AnswerSource = {
   authority: string;
@@ -39,14 +39,12 @@ const root = resolve(import.meta.dirname, '../../');
 const questionFiles: Record<Group, string> = {
   cpp: 'data/questions/cpp.json',
   gof: 'data/questions/gof.json',
-  ue5: 'data/questions/ue5.json',
-  windows: 'data/questions/windows.json'
+  ue5: 'data/questions/ue5.json'
 };
 const expectedCounts: Record<Group, number> = {
   cpp: 51,
   gof: 20,
-  ue5: 40,
-  windows: 0
+  ue5: 40
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
 const commonCppAbbreviations = ['ODR', 'ADL', 'PImpl', 'RAII', 'EBO', 'SFINAE', 'NRVO', 'ABI'];
@@ -234,8 +232,6 @@ describe('authoring question data', () => {
         expect(question.title).not.toMatch(/\b(?:constinit|consteval|concepts?|requires|co_await|jthread|std::span|std::format)\b/i);
       } else if (question.group === 'ue5') {
         expect(question.scopes).toContain('UE5');
-      } else {
-        expect(question.scopes.some((scope) => ['Win32', 'Winsock', 'IOCP'].includes(scope))).toBe(true);
       }
     }
   });
@@ -337,21 +333,6 @@ describe('authoring question data', () => {
       expect(question.answerSources.every((source) => source.topic.trim() !== ''), question.id).toBe(true);
       expect(question.answerSources.some((source) => source.authority === 'epic-games'), question.id).toBe(true);
       expect(question.answerSources.every((source) => !/^(?:UE5|Unreal|general)$/i.test(source.topic.trim())), question.id).toBe(true);
-    }
-  });
-
-  it('keeps Windows answers free of generated coaching language', () => {
-    const windowsQuestions = questions.filter((question) => question.group === 'windows');
-    const forbidden = /先说明|先区分|先按|先确定|先界定|回答中应|成功路径|失败路径|资源或状态的建立|调用方必须承担|观察和清理|给出(?:一个)?例子|最小复现/;
-    const repeatedPrefix = /^(?<prefix>[A-Za-z][A-Za-z0-9_ ]{2,}|[\p{Script=Han}]{2,8})\s+\k<prefix>/u;
-
-    for (const question of windowsQuestions) {
-      expect(question.answer, question.id).not.toMatch(forbidden);
-      expect(question.answer.trim(), question.id).not.toContain(question.title.replace(/[？?!]$/, ''));
-      expect(question.title, question.id).not.toMatch(repeatedPrefix);
-      expect(question.answerSources.every((source) =>
-        ['microsoft-learn', 'ietf-rfc'].includes(source.authority)
-        && !/^(?:Windows|Win32|Winsock|network|general)$/i.test(source.topic.trim())), question.id).toBe(true);
     }
   });
 

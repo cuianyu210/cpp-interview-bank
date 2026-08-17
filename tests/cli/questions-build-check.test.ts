@@ -17,7 +17,6 @@ class MemoryFileSystem {
     ['data/questions/cpp.json', JSON.stringify([question])],
     ['data/questions/gof.json', '[]'],
     ['data/questions/ue5.json', '[]'],
-    ['data/questions/windows.json', '[]'],
     ['data/evidence/interviews.json', JSON.stringify(evidence)],
     ['questions.js', 'stale']
   ]);

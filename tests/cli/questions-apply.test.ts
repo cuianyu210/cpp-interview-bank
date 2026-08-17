@@ -29,7 +29,6 @@ class MemoryFileSystem {
     ['data/questions/cpp.json', JSON.stringify([initial[0]])],
     ['data/questions/gof.json', '[]'],
     ['data/questions/ue5.json', JSON.stringify([initial[1]])],
-    ['data/questions/windows.json', '[]'],
     ['data/evidence/interviews.json', JSON.stringify(baseEvidence)],
     ['questions.js', 'old-runtime']
   ]);
@@ -71,10 +70,10 @@ describe('question maintenance CLI apply', () => {
         {
           action: 'add',
           question: {
-            group: 'windows', category: 'windows/process-thread-sync',
-            title: '进程句柄如何安全关闭？', difficulty: 3, scopes: ['Win32'],
-            answer: '进程句柄传递前需要先明确所有权和访问权限，避免接收方拿到超出需要的能力。最后一个拥有者负责调用 CloseHandle，错误路径也要保持同一条关闭规则，不能让双方都误以为对方会清理。',
-            answerSources: [{ authority: 'microsoft-learn', topic: 'Process Handles' }],
+            group: 'ue5', category: 'ue5/actor-component-subsystem',
+            title: 'Actor 生成时所有者和发起者怎么设置？', difficulty: 3, scopes: ['UE5'],
+            answer: '生成 Actor 时需要明确所有者和发起者，所有者负责生命周期管理，发起者记录触发行为的源头。两者设置错误会导致网络复制和伤害归属判断异常。',
+            answerSources: [{ authority: 'epic-games', topic: 'Actor Spawning' }],
             evidenceIds: ['e-3', 'e-4']
           }
         },
@@ -83,10 +82,9 @@ describe('question maintenance CLI apply', () => {
     }));
 
     expect(runner.run(['apply', '--file', 'patch.json'])).toBe(0);
-    expect(fs.writes).toHaveLength(6);
+    expect(fs.writes).toHaveLength(5);
     expect(JSON.parse(fs.files.get('data/questions/cpp.json') ?? '[]')[0].difficulty).toBe(4);
-    expect(JSON.parse(fs.files.get('data/questions/windows.json') ?? '[]')[0].id).toBe('003');
-    expect(JSON.parse(fs.files.get('data/questions/ue5.json') ?? '[]')).toEqual([]);
+    expect(JSON.parse(fs.files.get('data/questions/ue5.json') ?? '[]').length).toBe(1);
     expect(fs.files.get('questions.js')).not.toBe('old-runtime');
     expect(fs.files.get('questions.js')).not.toContain('https://example.test');
   });
@@ -102,11 +100,13 @@ describe('question maintenance CLI apply', () => {
 
   it('keeps stable ids after deletion and allocates additions after the global maximum', () => {
     const { runner, fs, output } = setup();
-    fs.files.set('data/questions/windows.json', JSON.stringify([{
-      id: '010', group: 'windows', category: 'windows/process-thread-sync',
-      title: 'Windows 句柄的所有权如何管理？', difficulty: 2, scopes: ['Win32'],
-      answer: '句柄所有权必须在跨进程传递前说明清楚，否则双方都可能误以为对方负责关闭。最后一个所有者负责调用 CloseHandle，并且错误路径也要遵守同一条释放规则，避免内核对象长期泄漏和排查困难。',
-      answerSources: [{ authority: 'microsoft-learn', topic: 'CloseHandle function' }],
+    fs.files.set('data/questions/ue5.json', JSON.stringify([
+      initial[1],
+      {
+      id: '010', group: 'ue5', category: 'ue5/actor-component-subsystem',
+      title: 'Actor 销毁时的清理顺序是怎样的？', difficulty: 2, scopes: ['UE5'],
+      answer: 'Actor 销毁时先调用 EndPlay 停止运行逻辑，再调用 OnDestroyed 清理事件绑定，最后析构函数释放资源。必须按顺序清理，否则可能访问已销毁的对象。',
+      answerSources: [{ authority: 'epic-games', topic: 'Actor Destruction' }],
       evidenceIds: ['e-1', 'e-2']
     }]));
     fs.files.set('patch.json', JSON.stringify({
@@ -137,12 +137,12 @@ describe('question maintenance CLI apply', () => {
     }));
 
     expect(runner.run(['apply', '--file', 'patch.json'])).toBe(0);
-    const ids = ['cpp', 'gof', 'ue5', 'windows'].flatMap((group) => (
+    const ids = ['cpp', 'gof', 'ue5'].flatMap((group) => (
       JSON.parse(fs.files.get(`data/questions/${group}.json`) ?? '[]')
         .map((question: { id: string }) => question.id)
     ));
     expect(ids.sort()).toEqual(['001', '010', '011', '012']);
-    expect(fs.writes).toHaveLength(6);
+    expect(fs.writes).toHaveLength(5);
     expect(output.logs).toContain(
       JSON.stringify({ dryRun: false, added: 2, updated: 0, deleted: 1, evidenceAdded: 2 })
     );

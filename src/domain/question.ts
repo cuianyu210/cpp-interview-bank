@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import { Difficulty, type DifficultyValue } from './difficulty';
 
-const questionGroups = ['cpp', 'gof', 'ue5', 'windows'] as const;
+const questionGroups = ['cpp', 'gof', 'ue5'] as const;
 const authorities = [
   'cppreference',
   'iso-cpp',

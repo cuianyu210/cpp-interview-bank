@@ -10,10 +10,10 @@ const contentIdentityParameters = new Set([
   'interviewid',
   'detailid'
 ]);
-const genericChinese = /^(?:常见|高频|热门)?\s*(?:c\+\+|cpp|gof|ue5|windows)?\s*(?:面试)?\s*(?:题目?|问题)\s*(?:整理|合集|汇总|大全|列表)?$/iu;
-const genericEnglish = /^(?:(?:common|frequent|high[- ]frequency)\s+)?(?:c\+\+|cpp|gof|ue5|windows)?\s*(?:interview\s*)?(?:questions?|problems?)(?:\s*(?:collection|list|summary))?$/iu;
-const genericSearchRecord = /^公开\s*(?:c\+\+|cpp|gof|ue5|windows)\s*面经检索记录$/iu;
-const genericReportedQuestion = /^该岗位公开面试记录涉及\s*(?:c\+\+|cpp|gof|ue5|windows)\s*的生命周期、边界和故障排查问题$/iu;
+const genericChinese = /^(?:常见|高频|热门)?\s*(?:c\+\+|cpp|gof|ue5)?\s*(?:面试)?\s*(?:题目?|问题)\s*(?:整理|合集|汇总|大全|列表)?$/iu;
+const genericEnglish = /^(?:(?:common|frequent|high[- ]frequency)\s+)?(?:c\+\+|cpp|gof|ue5)?\s*(?:interview\s*)?(?:questions?|problems?)(?:\s*(?:collection|list|summary))?$/iu;
+const genericSearchRecord = /^公开\s*(?:c\+\+|cpp|gof|ue5)\s*面经检索记录$/iu;
+const genericReportedQuestion = /^该岗位公开面试记录涉及\s*(?:c\+\+|cpp|gof|ue5)\s*的生命周期、边界和故障排查问题$/iu;
 
 export function validateInterviewEvidence(
   evidence: InterviewEvidence,

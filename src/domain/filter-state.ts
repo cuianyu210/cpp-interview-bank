@@ -1,7 +1,7 @@
 import { Difficulty, type DifficultyValue } from './difficulty';
 import type { QuestionGroup } from './question';
 
-const questionGroups = new Set<QuestionGroup>(['cpp', 'gof', 'ue5', 'windows']);
+const questionGroups = new Set<QuestionGroup>(['cpp', 'gof', 'ue5']);
 
 export interface FilterStateValues {
   readonly query: string;

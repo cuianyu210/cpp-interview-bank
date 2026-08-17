@@ -22,7 +22,7 @@ const makeQuestion = (
 describe('StudyPathSortStrategy', () => {
   it('sorts by study path, then difficulty, then numeric id without mutating input', () => {
     const input = [
-      makeQuestion('10', 1, 'windows', 'windows/process-thread-sync'),
+      makeQuestion('10', 1, 'ue5', 'ue5/actor-component-subsystem'),
       makeQuestion('2', 5, 'cpp', 'cpp/core-language'),
       makeQuestion('1', 1, 'cpp', 'cpp/core-language'),
       makeQuestion('20', 2, 'cpp', 'cpp/classes-object-model'),

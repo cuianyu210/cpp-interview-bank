@@ -7,8 +7,7 @@ import type {
 const answerAuthorities: Record<QuestionGroup, ReadonlySet<AnswerAuthority>> = {
   cpp: new Set(['cppreference', 'iso-cpp', 'wg21', 'cpp-core-guidelines', 'gnu-libstdcxx']),
   gof: new Set(['gof']),
-  ue5: new Set(['epic-games', 'meta-developers']),
-  windows: new Set(['microsoft-learn', 'ietf-rfc'])
+  ue5: new Set(['epic-games', 'meta-developers'])
 };
 
 const generatedPrompt = /在编译、链接和运行时分别由哪些规则决定|放在头文件并跨翻译单元使用时|与最接近的.*边界在哪里|面试中常见误区是什么/;
