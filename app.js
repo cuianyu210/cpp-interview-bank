@@ -1,12 +1,11 @@
 "use strict";
 (() => {
   // src/application/question-taxonomy.ts
-  var studyPathGroupOrder = ["cpp", "gof", "ue5", "windows"];
+  var studyPathGroupOrder = ["cpp", "gof", "ue5"];
   var studyPathGroupLabels = {
     cpp: "\u6807\u51C6 C++",
     gof: "GoF \u8BBE\u8BA1\u6A21\u5F0F",
-    ue5: "UE5 C++",
-    windows: "Windows \u7528\u6237\u6001\u7CFB\u7EDF\u4E0E\u7F51\u7EDC"
+    ue5: "UE5 C++"
   };
   var studyPathCategoryLabels = {
     "cpp/core-language": "\u6838\u5FC3\u8BED\u8A00",
@@ -29,10 +28,7 @@
     "ue5/delegate-interface-async": "\u59D4\u6258\u3001\u63A5\u53E3\u4E0E\u5F02\u6B65",
     "ue5/replication-rpc-serialization": "\u590D\u5236\u3001RPC \u4E0E\u5E8F\u5217\u5316",
     "ue5/modules-plugins-buildcs": "\u6A21\u5757\u3001\u63D2\u4EF6\u4E0E Build.cs",
-    "ue5/xr-vr": "XR/VR \u4EA4\u4E92\u4E0E\u6027\u80FD",
-    "windows/process-thread-sync": "\u8FDB\u7A0B\u3001\u7EBF\u7A0B\u4E0E\u540C\u6B65",
-    "windows/winsock-protocol-iocp": "Winsock\u3001\u7F51\u7EDC\u534F\u8BAE\u4E0E IOCP",
-    "windows/dll-files-mmap-unicode-handles": "DLL\u3001\u6587\u4EF6\u6620\u5C04\u3001Unicode \u4E0E\u53E5\u67C4"
+    "ue5/xr-vr": "XR/VR \u4EA4\u4E92\u4E0E\u6027\u80FD"
   };
   var categoryOrderByGroup = {
     cpp: [
@@ -57,11 +53,6 @@
       "ue5/replication-rpc-serialization",
       "ue5/modules-plugins-buildcs",
       "ue5/xr-vr"
-    ],
-    windows: [
-      "windows/process-thread-sync",
-      "windows/winsock-protocol-iocp",
-      "windows/dll-files-mmap-unicode-handles"
     ]
   };
   var groupIndexByOrder = new Map(studyPathGroupOrder.map((group2, index) => [group2, index]));
@@ -192,7 +183,7 @@
   };
 
   // src/domain/filter-state.ts
-  var questionGroups = /* @__PURE__ */ new Set(["cpp", "gof", "ue5", "windows"]);
+  var questionGroups = /* @__PURE__ */ new Set(["cpp", "gof", "ue5"]);
   var FilterState = class _FilterState {
     constructor(values = {}) {
       const selection = normalizeSelection(values.group ?? "", values.category ?? "");
@@ -269,7 +260,7 @@
   }
 
   // src/application/hash-state-adapter.ts
-  var groups = /* @__PURE__ */ new Set(["cpp", "gof", "ue5", "windows"]);
+  var groups = /* @__PURE__ */ new Set(["cpp", "gof", "ue5"]);
   var HashStateAdapter = class {
     serialize(state) {
       const values = new URLSearchParams();
@@ -4392,7 +4383,7 @@
   });
 
   // src/domain/question.ts
-  var questionGroups2 = ["cpp", "gof", "ue5", "windows"];
+  var questionGroups2 = ["cpp", "gof", "ue5"];
   var authorities = [
     "cppreference",
     "iso-cpp",
