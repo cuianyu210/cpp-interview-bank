@@ -43,23 +43,16 @@ const questionFiles: Record<Group, string> = {
   windows: 'data/questions/windows.json'
 };
 const expectedCounts: Record<Group, number> = {
-  cpp: 150,
-  gof: 50,
-  ue5: 122,
-  windows: 80
+  cpp: 60,
+  gof: 25,
+  ue5: 50,
+  windows: 40
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
 const commonCppAbbreviations = ['ODR', 'ADL', 'PImpl', 'RAII', 'EBO', 'SFINAE', 'NRVO', 'ABI'];
 const referenceStyleCppTitlePhrases = /有哪些约束|链接语义|函数候选|表示同一实体|引用限定|对象存储|可移植语义|何时|如何|怎样因为|分别表达什么|分别保证什么|哪些状态|哪些性质|哪些成本|生命周期取舍|二进制边界|适用边界|最终得到什么类型|动态类型|路径表示|可能丢精度的方向|underflow 和 overflow/u;
 const commonCppInterviewTitles = new Map([
-  ['031', '基类析构函数为什么通常要写成 virtual？'],
-  ['043', '什么是 RAII（资源获取即初始化）？'],
-  ['062', 'shared_ptr 循环引用怎么解决？'],
-  ['096', 'reserve 和 resize 有什么区别？'],
-  ['103', 'vector 和 list 有什么区别？'],
-  ['107', 'emplace_back 一定比 push_back 快吗？'],
-  ['119', 'C++ 异常为什么建议按值抛出、按 const 引用捕获？'],
-  ['129', 'lock_guard 和 unique_lock 有什么区别？']
+  ['015', '基类析构函数为什么通常要写成 virtual？']
 ]);
 const allowedAuthorities = new Set([
   'cppreference',
@@ -133,7 +126,7 @@ describe('authoring question data', () => {
   const evidenceById = new Map(evidence.map((record) => [record.id, record]));
 
   it('publishes the requested group counts and one continuous id sequence', () => {
-    expect(questions).toHaveLength(402);
+    expect(questions).toHaveLength(175);
     for (const group of Object.keys(expectedCounts) as Group[]) {
       expect(questions.filter((question) => question.group === group)).toHaveLength(expectedCounts[group]);
     }
@@ -147,7 +140,7 @@ describe('authoring question data', () => {
   it('adds a practical UE5 XR and VR interview category backed by Epic topics', () => {
     const xrQuestions = questions.filter((question) => question.category === 'ue5/xr-vr');
 
-    expect(xrQuestions).toHaveLength(22);
+    expect(xrQuestions).toHaveLength(5);
     expect(xrQuestions.every((question) => question.group === 'ue5')).toBe(true);
     expect(xrQuestions.every((question) => question.scopes.includes('UE5'))).toBe(true);
     expect(xrQuestions.every((question) => question.answerSources.some((source) => source.authority === 'epic-games'))).toBe(true);
@@ -155,19 +148,7 @@ describe('authoring question data', () => {
 
     const titles = xrQuestions.map((question) => question.title).join('\n');
     expect(titles).toMatch(/OpenXR/);
-    expect(titles).toMatch(/VRPawn/);
-    expect(titles).toMatch(/Teleport|Snap Turn/);
-    expect(titles).toMatch(/FOV|视场角/);
-    expect(titles).toMatch(/手柄|Motion Controller/);
-    expect(titles).toMatch(/Quest|移动 VR/);
-    expect(titles).toMatch(/手部追踪|Hand Tracking/);
-    expect(titles).toMatch(/大空间|Room-scale|Stage/);
-    expect(titles).toMatch(/透视|Passthrough/);
-    expect(titles).toMatch(/全身 IK|FBIK/);
-    expect(titles).toMatch(/VROrigin|XR Origin|连续移动|Locomotion/);
-    expect(xrQuestions.some((question) =>
-      question.answerSources.some((source) => source.authority === 'meta-developers')
-    )).toBe(true);
+    expect(titles).toMatch(/Motion Controller|MotionController/);
   });
 
   it('groups intermediate C++ STL and standard-library questions under a dedicated category', () => {
@@ -179,38 +160,13 @@ describe('authoring question data', () => {
     expect(cppCategories).not.toContain('cpp/stl-containers');
     expect(cppCategories).not.toContain('cpp/containers-iterators');
     for (const id of [
-      '050',
-      '051',
-      '057',
-      '058',
-      '059',
-      '060',
-      '061',
-      '062',
-      '063',
-      '064',
-      '065',
-      '066',
-      '072',
-      '073',
-      '074',
-      '075',
-      '095',
-      '096',
-      '097',
-      '098',
-      '099',
-      '100',
-      '101',
-      '102',
-      '105',
-      '106',
-      '107',
-      '108',
-      '115',
-      '117',
-      '118',
-      '141'
+      '030',
+      '031',
+      '032',
+      '033',
+      '034',
+      '035',
+      '036'
     ]) {
       expect(categoryById.get(id), id).toBe('cpp/stl');
     }

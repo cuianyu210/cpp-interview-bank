@@ -1,18 +1,18 @@
 [
   {
-    "id": "201",
+    "id": "086",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UObject 反射元数据由谁生成，运行时如何查询并避免依赖生成细节？",
+    "title": "UE5 的反射系统是怎么工作的？UHT 在其中扮演什么角色？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "UHT 在构建阶段读取反射宏并生成注册代码，运行时由 UClass、FProperty 和 UFunction 等对象保存反射信息。查询应该使用 StaticClass、GetClass、FindFunction 或字段迭代 API，不应该直接依赖 Intermediate 下的生成符号和文件布局。",
+    "answer": "UHT 在构建阶段读取 UCLASS、USTRUCT、UFUNCTION、UPROPERTY 等反射宏，生成注册代码和 generated.h 头文件。运行时由 UClass、FProperty、UFunction 等对象保存反射信息，引擎据此实现序列化、蓝图调用和编辑器功能。业务代码应使用 StaticClass、GetClass 等 API 查询，不要直接依赖 Intermediate 目录的生成文件。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Unreal Header Tool and UObject Reflection System"
+        "topic": "Unreal Header Tool and Reflection System"
       }
     ],
     "evidenceIds": [
@@ -21,19 +21,19 @@
     ]
   },
   {
-    "id": "202",
+    "id": "087",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UCLASS 与 USTRUCT 在 UHT 处理、默认构造和序列化能力上有哪些边界？",
-    "difficulty": 4,
+    "title": "UCLASS 和 USTRUCT 有什么区别？什么时候用哪个？",
+    "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "UCLASS 类型由 UHT 注册且实例必须通过 UObject 创建路径产生，具备对象身份、反射引用和 GC 生命周期。USTRUCT 是可按值构造、复制和嵌套的数据类型，只有被反射标记的字段才自动参与属性序列化和编辑器工具。",
+    "answer": "UCLASS 类型由 UHT 注册，实例必须通过 UObject 创建路径产生，具备对象身份、GC 生命周期和反射引用。USTRUCT 是按值构造和复制的数据类型，只有被反射标记的字段才自动参与序列化和编辑器工具。长寿命、需要多态和 GC 引用的对象用 UCLASS，小型数据和值语义传递用 USTRUCT。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "UObjects, UStructs, and Reflection"
+        "topic": "UObjects versus UStructs"
       }
     ],
     "evidenceIds": [
@@ -42,40 +42,19 @@
     ]
   },
   {
-    "id": "203",
+    "id": "088",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "哪些 UFUNCTION 和 UPROPERTY specifier 会改变 Blueprint 暴露、网络复制或编辑器可见性？",
-    "difficulty": 4,
+    "title": "UHT 常见的解析失败原因有哪些？如何定位生成错误？",
+    "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "BlueprintCallable、BlueprintPure、BlueprintNativeEvent 等 UFUNCTION specifier 决定蓝图调用或覆盖方式，EditAnywhere、BlueprintReadWrite、ReplicatedUsing 等 UPROPERTY specifier 分别控制编辑、脚本访问和复制。它们属于独立维度，能在蓝图中看到属性并不代表该属性会保存或同步到网络。",
+    "answer": "常见原因包括缺少或位置错误的 generated.h、反射宏藏在复杂宏内部、不支持的模板签名和括号不匹配。定位时应读取构建日志中最早的 UHT 错误和对应源文件行号，生成目录只用于核对，不能手工修补。移动代码后的异常应通过清理 Intermediate 产物并重新运行 UHT 解决。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "UFunctions and Unreal Property System Specifiers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "204",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "哪些 C++ 声明或 include 写法会让 UHT 解析失败，如何定位生成错误？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UHT 只解析受支持的反射声明，缺少或未放在最后的 generated.h、宏括号错误、把反射宏藏进复杂宏以及不受支持的模板签名都可能中断生成。定位时应该读取构建日志中最早的 UHT 错误和对应源文件行，生成目录只用于核对，不能手工修补。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Unreal Header Tool Parsing and Generated Headers"
+        "topic": "UHT Parsing and Generated Headers"
       }
     ],
     "evidenceIds": [
@@ -84,36 +63,36 @@
     ]
   },
   {
-    "id": "205",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "GENERATED_BODY 的插入位置和声明顺序有什么要求，常见编译错误如何判断？",
-    "difficulty": 3,
+    "title": "UE5 的 GC 机制是什么？哪些引用能被 GC 识别？",
+    "difficulty": 4,
     "scopes": [
       "UE5"
     ],
-    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与该头文件最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后的异常应该通过重新运行 UHT 或清理陈旧 Intermediate 产物解决。",
+    "answer": "UE5 的 GC 基于可达性分析，从根集合出发沿 UPROPERTY、TObjectPtr、反射容器和 AddReferencedObjects 遍历可达对象。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图，必须改用受跟踪引用或显式引用收集。未被任何根可达的 UObject 会在下次 GC 时被回收。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "GENERATED_BODY and Generated Code"
+        "topic": "Garbage Collection and Reflected References"
       }
     ],
     "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
+      "evidence-ue5-002",
+      "evidence-ue5-003"
     ]
   },
   {
-    "id": "206",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "EditAnywhere、VisibleInstanceOnly 等 specifier 如何决定属性编辑器中的修改权限？",
-    "difficulty": 3,
+    "title": "UPROPERTY 的 EditAnywhere、VisibleOnly 等 specifier 分别控制什么？",
+    "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "EditAnywhere 同时允许修改类默认值和实例，EditDefaultsOnly 与 EditInstanceOnly 分别限制到默认对象或关卡实例，Visible 系列只改变详情面板的可编辑性。BlueprintReadOnly、Config、SaveGame 和 Replicated 等规则另行决定脚本访问、配置保存或网络同步，不能由 Edit/Visible specifier 推导。",
+    "answer": "EditAnywhere 允许在类默认值和实例上修改属性，EditDefaultsOnly 和 EditInstanceOnly 分别限制到其中之一，Visible 系列只改变详情面板的可读性。BlueprintReadOnly、Config、Replicated 等规则另行决定脚本访问、配置保存或网络同步，不能由 Edit/Visible specifier 推导其他能力。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -126,19 +105,19 @@
     ]
   },
   {
-    "id": "207",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "Outer 如何参与对象归属、命名和 GC 可达性，什么时候不应随意复用？",
-    "difficulty": 4,
+    "title": "UFUNCTION 的 BlueprintCallable、BlueprintPure 和 BlueprintNativeEvent 有什么区别？",
+    "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "Outer 决定 UObject 的包含关系、完整对象路径和包归属，并影响查找、复制与保存上下文。Outer 不是通用的强 GC 所有权，生命周期较长的对象仍然需要通过反射引用、FGCObject 或根集合保持可达，不能只借用一个看似稳定的 Outer。",
+    "answer": "BlueprintCallable 让函数可以在蓝图中被调用，BlueprintPure 标记为无副作用的纯函数，蓝图节点不显示执行引脚。BlueprintNativeEvent 生成可从蓝图覆盖的入口，C++ 默认行为写在 _Implementation 后缀函数中。调用时应使用无前缀的函数名以经过蓝图分派，直接调用 _Implementation 会绕过蓝图覆盖。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "UObject Outer and Object Ownership Hierarchy"
+        "topic": "UFunction Specifiers and Blueprint Events"
       }
     ],
     "evidenceIds": [
@@ -147,78 +126,15 @@
     ]
   },
   {
-    "id": "208",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "NewObject 的 Outer、模板对象和对象标志参数如何影响初始化与 GC？",
-    "difficulty": 4,
+    "title": "TObjectPtr 和裸 UObject 指针在 GC 和序列化方面有什么差异？",
+    "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "NewObject 使用 Outer 和可选 Name 建立归属与身份，可以从 Template 复制初始属性，并用 EObjectFlags 控制瞬态、公开或事务等对象特征。对象创建完成后是否存活仍由 GC 引用图决定，Outer 和 RF_Transient 都不会自动把它变成根对象。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UObject Instance Creation with NewObject"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "209",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "RF_Transient、RF_Public 等对象标志分别影响哪些保存、复制和 GC 行为？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RF_Transient 阻止对象进入常规包保存，RF_Public 允许对象作为包的公开导出被外部引用，其他标志还描述默认对象、原型和销毁阶段。大多数标志不是 GC 强引用，判断存活性仍要看可达关系并使用 IsValid 等生命周期 API。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "EObjectFlags and UObject Lifecycle"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "210",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "GC root、UPROPERTY 引用和容器引用如何共同决定 UObject 是否可达？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "根集合中的对象以及从根对象沿 UPROPERTY、TObjectPtr、反射容器或 AddReferencedObjects 能遍历到的 UObject 都保持可达。未反射的裸指针和普通 C++ 容器不会自动进入 GC 引用图。因此必须改用受跟踪引用或显式引用收集。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Garbage Collection and Reflected Object References"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "211",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "TObjectPtr 与裸 UObject 指针在 GC、编辑器和序列化场景下有什么差异？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化以及编辑器中的引用跟踪和重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可以被反射系统跟踪。但是未反射的裸指针和未反射的 TObjectPtr 都不能单独充当 GC 根。",
+    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化和编辑器中的引用跟踪与重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可被反射系统跟踪。但无论哪种表示，未反射的指针都不能单独充当 GC 根，对象可能被意外回收。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -231,19 +147,19 @@
     ]
   },
   {
-    "id": "212",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "TWeakObjectPtr 如何表达弱引用，IsValid 与 Pin 的使用边界是什么？",
+    "title": "TWeakObjectPtr 怎么用？IsValid 和裸指针的 Pin 有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用。对象被销毁后 IsValid 为假且 Get 返回空。Pin 是 TWeakPtr 的接口而不是 TWeakObjectPtr 的接口，使用 UObject 弱指针时应该在游戏线程取得 Get 结果并立即重新校验。",
+    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用，对象被回收后 IsValid 返回 false。Pin 是 TWeakPtr（非 UObject 弱指针）的接口，TWeakObjectPtr 应使用 Get 或 IsValid。在游戏线程取得结果后应立即校验，不要在帧间缓存弱引用结果。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Weak Object Pointers and TWeakObjectPtr"
+        "topic": "Weak Object Pointers"
       }
     ],
     "evidenceIds": [
@@ -252,162 +168,15 @@
     ]
   },
   {
-    "id": "213",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UObject 反射信息如何影响序列化、编辑器工具和运行时类型判断？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "反射数据让引擎按 FProperty 枚举字段、序列化资产、生成详情面板、调用蓝图函数，并通过 Cast 或 IsA 判断运行时类型。普通 C++ 成员和函数若没有反射声明就不会自动进入这些管线，需要自定义序列化或工具代码。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UObject Reflection Runtime Services"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "214",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "选择 UCLASS 还是 USTRUCT 时，如何权衡 GC、复制和按值传递？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UCLASS 适合具有身份、继承、多态和 GC 引用关系的长寿命对象，通常通过指针传递而不按值复制。USTRUCT 适合小型数据和值语义传递，可以被反射和序列化但不会作为独立 GC 对象。其中的 UObject 引用仍然需要用 UPROPERTY 等方式暴露给引用收集器。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Choosing UObjects versus UStructs"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "215",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "UFUNCTION 或 UPROPERTY 声明变化后，UHT 生成代码和二进制接口会受到什么影响？",
+    "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "修改 UFUNCTION 或 UPROPERTY 的签名、类型或 specifier 会改变 UHT 生成的注册表、调用桩和属性布局，依赖模块及相关蓝图资产通常需要重新编译。跨模块公开声明还受模块 API 宏和 C++ ABI 影响，布局级变化不应该只依赖热重载来验证。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UHT Generated Code for UFunctions and Properties"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "216",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "UHT 的解析边界如何影响模板、宏和跨模块反射声明？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UHT 不是完整 C++ 编译器，只支持反射系统认可的模板形状、参数类型和宏位置，模板 UCLASS 或隐藏在任意宏中的反射声明通常无法注册。跨模块使用反射类型还需要要正确的 Build.cs 依赖、可见头文件和 API 导出。否则生成代码会在编译或链接阶段缺少注册符号。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Unreal Header Tool Limitations and Module Visibility"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "217",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "迁移或重命名反射类型时，GENERATED_BODY 与生成文件如何保持一致？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "反射类型的源头始终是头文件声明，GENERATED_BODY 和 generated.h 应由 UHT 重新生成而不是随类型手工搬运。重命名已被资产引用的类、结构体或属性时还要配置 Core Redirects，并让依赖蓝图重新加载和编译。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Core Redirects and Generated Reflection Code"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "218",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "属性的编辑器权限与运行时可写性、配置保存和复制是否是同一概念？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Edit 和 Visible specifier 只控制详情面板在哪类对象上允许修改，C++ 运行时仍可按访问权限写入成员。Config、SaveGame、Transient、Replicated 和 BlueprintReadWrite 分别属于配置、存档、持久化排除、网络和蓝图访问规则，彼此不会自动联动。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Property Specifier Semantics"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "219",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "跨关卡或异步加载时，Outer 选择错误会造成哪些生命周期问题？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "错误的 Outer 会把对象放入不合适的 World、Package 或临时对象层级，导致对象路径、保存归属和关卡卸载时机与预期不一致。跨关卡或异步工作应选择与真实寿命匹配的 Outer，保留明确强引用，并在 World 清理时取消回调。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UObject Outer across Worlds and Async Loading"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "220",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "运行时创建 UObject 时，何时应使用 NewObject、DuplicateObject 或 CreateDefaultSubobject？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应该在拥有类构造期间建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表、附加并注册。",
+    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在类构造函数中建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表并注册。混淆三者的使用时机会导致编辑器默认结构异常或运行时组件缺失。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -420,19 +189,19 @@
     ]
   },
   {
-    "id": "221",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "调试 UObject 生命周期时，如何利用对象标志判断对象所处阶段？",
+    "title": "RF_Transient、RF_Public 等对象标志分别影响什么行为？",
     "difficulty": 4,
     "scopes": [
       "UE5"
     ],
-    "answer": "RF_ClassDefaultObject、RF_ArchetypeObject、RF_Transient、RF_BeginDestroyed 和 RF_FinishDestroyed 等标志可辅助判断对象角色与销毁阶段。单个标志不能证明对象安全可用，调试时还要结合 IsValid、GC 引用链、BeginDestroy/FinishDestroy 日志和创建调用栈。",
+    "answer": "RF_Transient 阻止对象进入常规包保存，RF_Public 允许对象作为包的公开导出被外部引用，RF_ClassDefaultObject 和 RF_ArchetypeObject 描述默认对象和原型角色。大多数标志不是 GC 强引用，判断存活性仍要看可达关系。调试生命周期时应结合 IsValid 和 BeginDestroy/FinishDestroy 日志。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "EObjectFlags for UObject Lifecycle Diagnostics"
+        "topic": "EObjectFlags and UObject Lifecycle"
       }
     ],
     "evidenceIds": [
@@ -441,36 +210,36 @@
     ]
   },
   {
-    "id": "222",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "异步任务或非 UPROPERTY 指针持有 UObject 时，怎样避免被 GC 提前回收？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "后台任务不应该靠裸指针延长 UObject 寿命，可以由游戏线程上的 UPROPERTY、TStrongObjectPtr、FGCObject 或受控 Root 引用明确保持对象，且 Root 必须成对移除。更常见的做法是捕获 TWeakObjectPtr，只在切回游戏线程后重新校验对象和 World，再应用纯数据结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Garbage Collection with Async Tasks"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "223",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "Actor 的构造函数、OnConstruction、BeginPlay 分别何时调用，哪些对象此时可用？",
+    "title": "GENERATED_BODY 的位置和声明顺序有什么要求？",
     "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "C++ 构造函数会为 CDO 和实例执行，只适合设置默认值和创建默认子对象，不能假定已有有效 World。OnConstruction 在属性初始化后构建实例并可能在编辑器反复执行，BeginPlay 则在组件注册完成且世界进入游戏后用于一次性的运行时逻辑。",
+    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与头文件中最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后应重新运行 UHT 或清理 Intermediate 产物。缺少 GENERATED_BODY 会导致编译错误和反射信息缺失。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "GENERATED_BODY and Generated Code"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "097",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "C++ 构造函数为 CDO 和每个实例执行，只适合设置默认值和创建默认子对象，此时不能假定已有有效 World。OnConstruction 在属性初始化后执行并可被编辑器多次调用，BeginPlay 在组件注册完成后触发，适合一次性运行时初始化。混淆三者的时机是 Actor 相关 bug 的常见来源。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -483,351 +252,15 @@
     ]
   },
   {
-    "id": "224",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "编辑器修改属性时 OnConstruction 为什么会重复执行，如何避免副作用？",
+    "title": "OnConstruction 在运行时 SpawnActor 和编辑器放置 Actor 时有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "编辑器修改属性、移动 Actor 或重新运行 Construction Script 都可能再次调用 OnConstruction。因此函数必须从当前属性确定性地产生结果。不可逆的存档、网络请求、外部文件写入和一次性玩法事件应该放到 BeginPlay 或显式命令，而不是构造阶段。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OnConstruction and Construction Script Reruns"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "225",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "BeginPlay 与组件注册、网络初始化的先后关系如何确认？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "BeginPlay 发生在 Actor 组件完成注册和初始化之后，组件才具备正常的 World 与 Tick 上下文。复制 Actor 的初始属性通常随初始网络数据到达。但是所有权、Pawn 绑定或后续复制仍可能晚到，依赖它们的代码应该使用相应回调并通过日志验证时序。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Lifecycle and BeginPlay Networking"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "226",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "SpawnCollisionHandlingOverride、Owner、Instigator 等参数如何影响 Actor 生成结果？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "SpawnCollisionHandlingOverride 可以让生成因碰撞失败、调整位置或强制生成。因此必须检查 SpawnActor 的返回值和最终变换。Owner 影响网络所有权、相关性和 RPC 路由，Instigator 用于伤害或行为归因。它们都不会自动建立组件附加关系。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Spawning Actors and FActorSpawnParameters"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "227",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "运行时组件从创建到附加、RegisterComponent 和激活需要遵循什么顺序？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "运行时组件通常以 Actor 为 Outer 创建，需要保存为实例组件时调用 AddInstanceComponent，并在附加关系确定后注册到正确 World。未注册的组件没有渲染、物理或 Tick 状态，注册后再用 Activate 或 SetComponentTickEnabled 控制运行。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Creating and Registering Actor Components"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "228",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "设置 RootComponent、父子附加和相对变换时，如何避免层级与变换错乱？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RootComponent 必须是该 Actor 拥有的 USceneComponent，子组件应该通过 SetupAttachment 或 AttachToComponent 建立层级，而不是直接写 AttachParent。附加时要明确 KeepRelative、KeepWorld 或 SnapToTarget 变换规则，并在运行时动态层级中按根到叶的顺序注册。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Scene Component Attachment and Root Components"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "229",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "CreateDefaultSubobject 创建的默认子对象与运行时组件有什么区别？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "CreateDefaultSubobject 在构造函数中建立 CDO 的默认子对象模板，实例会继承这些组件并在编辑器中获得稳定的默认结构。运行时通过 NewObject 创建的组件只属于当前实例，若未加入实例组件列表并注册，就不会自动获得同样的编辑器显示、复制和保存行为。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Default Subobjects and Instanced Components"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "230",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "动态组件创建后何时注册、设置所有者并加入实例组件列表？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "动态组件应以目标 Actor 为 Outer 创建，按需求调用 AddInstanceComponent 标记实例归属，设置附加关系后调用 RegisterComponent。注册会把组件加入 World 的运行系统，激活和 Tick 开关应该在所有依赖和初始属性就绪后设置。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Runtime Component Creation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "231",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "TickFunction 的前置依赖如何声明，怎样保证组件更新顺序稳定？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "组件可用 AddTickPrerequisiteComponent 或 AddTickPrerequisiteActor 建立细粒度前置关系，TickGroup 只提供更粗的阶段顺序。依赖图应无环且两端 TickFunction 都已注册和启用，不能依赖组件数组或注册偶然顺序。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Ticking and Tick Prerequisites"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "232",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "PrimaryComponentTick 如何控制 Tick、TickGroup 和运行时开关？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "构造阶段通过 PrimaryComponentTick.bCanEverTick、bStartWithTickEnabled、TickGroup 和 TickInterval 定义组件的 Tick 能力与默认调度。运行时使用 SetComponentTickEnabled 或 SetTickInterval 控制已注册 Tick，关闭 bCanEverTick 的组件不能只靠运行时开关获得 Tick。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Component Tick Configuration"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "233",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "WorldSubsystem 的实例范围和初始化时机如何与 UWorld 生命周期对应？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UWorldSubsystem 会为每个符合条件的 UWorld 创建独立实例，并在对应 World 的 Initialize/Deinitialize 区间内有效。它适合世界级缓存和服务，不适合保存无缝跨关卡或跨多个 World 的全局会话状态。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Programming Subsystems: UWorldSubsystem"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "234",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "GameInstanceSubsystem 适合持有哪些跨关卡状态，何时销毁？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UGameInstanceSubsystem 与 GameInstance 同寿命，通常跨普通关卡切换存在，适合账户、会话或不依附具体 World 的服务状态。它不应该长期强引用旧 World 的 Actor 和组件，世界切换时应该通过委托更新或清理这些引用。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Programming Subsystems: UGameInstanceSubsystem"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "235",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "Subsystem 的 Initialize、Deinitialize 与依赖模块加载顺序如何协调？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Subsystem 的 Initialize 和 Deinitialize 是注册委托、创建服务及对称清理的边界，需要其他 Subsystem 时可以通过 FSubsystemCollectionBase::InitializeDependency 声明顺序。所需模块仍然应该由目标和 Build.cs 保证已加载，关闭阶段要取消异步任务并解除跨模块回调。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Subsystem Initialization and Dependencies"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "236",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "ChildActorComponent 的子 Actor 创建、重建和销毁时机有哪些陷阱？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，并可能在编辑器重建 Construction Script 时销毁旧实例。外部代码不能永久缓存 ChildActor 裸指针，应该在重建后重新获取并让组件负责创建和销毁流程。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Child Actor Component Lifecycle"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "237",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "组件模板与实例属性如何区分，编辑器默认值何时复制到实例？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "组件模板存在于 CDO 或蓝图生成类中，实例构造或复制时从模板取得默认属性，实例覆盖随后独立保存。修改模板通常影响新实例和未覆盖的默认值，不能假定会重写关卡中已有实例的显式覆盖。落到工程里，要把创建时机、注册状态和销毁顺序一起看，避免只盯着某一个回调。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Component Templates and Class Default Objects"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "238",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "EndPlay、OnDestroyed 和 Actor 析构函数各自负责什么，如何安排清理顺序？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托。OnDestroyed 更偏向 Actor 被 Destroy 的通知。C++ 析构发生得更晚且此时 World 与 UObject 协作者可能已不可用，不应该承担主要玩法清理。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Lifecycle: EndPlay and Destroyed"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "239",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "Actor 构造函数中创建默认子对象时，为什么不能依赖 World 或运行时状态？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Actor 构造函数也会为 CDO、加载和复制路径执行，此时实例可能尚未关联 World，GameMode、PlayerController 和运行时子系统都不可靠。构造阶段只定义默认属性和默认子对象，依赖 World 的初始化应移到 PostInitializeComponents、BeginPlay 或更具体的生命周期回调。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Constructors and Class Default Objects"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "240",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "OnConstruction 在运行时 SpawnActor 与编辑器放置 Actor 时有何不同？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则在生成流程中使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造。因此逻辑必须可重复且不依赖固定调用次数。",
+    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造。因此 OnConstruction 中的逻辑必须可重复且不依赖固定调用次数。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -840,19 +273,19 @@
     ]
   },
   {
-    "id": "241",
+    "id": "099",
     "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "单播 Delegate 的绑定对象、执行结果和解绑时机如何定义？",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
     "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "单播 Delegate 只保存一个可以调用目标，执行有返回值的委托前应该检查 IsBound，再用 Execute 获取结果。绑定者和发布者必须约定谁持有 FDelegateHandle 或何时 Unbind，避免长寿命发布者继续引用已结束的非 UObject 目标。",
+    "answer": "Actor 是 World 中可生成的顶层实体，具备生命周期和网络复制能力。Component 是附加在 Actor 上的功能模块，负责具体行为如渲染、物理和输入。组件化设计让功能可以灵活组合和复用，避免 Actor 继承层次过深，也便于编辑器中可视化配置。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Delegates: Single-Cast Delegates"
+        "topic": "Actors and Components Architecture"
       }
     ],
     "evidenceIds": [
@@ -861,40 +294,19 @@
     ]
   },
   {
-    "id": "242",
+    "id": "100",
     "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "多播 Delegate 的调用顺序和广播期间订阅变更如何处理？",
+    "category": "ue5/actor-component-subsystem",
+    "title": "运行时创建组件后需要哪些步骤才能正常工作？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "多播 Delegate 向多个绑定广播且不提供聚合返回值，Epic 的委托契约不保证可依赖的调用顺序。广播期间增删绑定会让行为难以推理，通常应该保存 FDelegateHandle 并把变更延迟到本轮 Broadcast 结束。",
+    "answer": "运行时组件应以目标 Actor 为 Outer 创建，需要保存为实例组件时调用 AddInstanceComponent，设置附加关系后调用 RegisterComponent。未注册的组件没有渲染、物理或 Tick 状态。激活和 Tick 开关应在所有依赖和初始属性就绪后设置，而不是注册前就打开。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Delegates: Multicast Delegates"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "243",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "动态 Delegate 在反射、序列化和性能开销之间有什么取舍？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "动态 Delegate 通过反射和 UFUNCTION 名称绑定，可以被蓝图使用并支持序列化。但是签名类型受反射系统限制且调用成本高于原生 Delegate。纯 C++ 高频回调和 Lambda 更适合原生委托，需要资产保存或蓝图绑定时再选择动态委托。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Delegates: Dynamic Delegates"
+        "topic": "Runtime Component Creation and Registration"
       }
     ],
     "evidenceIds": [
@@ -903,61 +315,19 @@
     ]
   },
   {
-    "id": "244",
+    "id": "101",
     "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "AddUObject 记录 UObject 弱绑定并在对象失效后跳过调用，AddRaw 不跟踪普通 C++ 对象寿命，目标析构前必须显式移除。AddLambda 的捕获寿命完全由调用方管理，涉及 UObject 时可用 AddWeakLambda 或捕获弱对象后再校验。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Delegate Binding and UObject Lifetime"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "245",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "对象销毁、EndPlay 或移动后，怎样可靠地清理 Delegate 绑定？",
+    "category": "ue5/actor-component-subsystem",
+    "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "绑定长寿命发布者时应该保存 FDelegateHandle，并在 EndPlay、Deinitialize 或普通 C++ 对象析构前调用 Remove、RemoveAll 或 Unbind。AddUObject 能阻止无效 UObject 被执行。但是仍然应该清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命。",
+    "answer": "UEngineSubsystem 与引擎同寿命，UGameInstanceSubsystem 与 GameInstance 同寿命可跨关卡存在，UWorldSubsystem 为每个 UWorld 创建独立实例，ULocalPlayerSubsystem 绑定到本地玩家。选择时应根据状态的归属范围决定，跨关卡的会话状态用 GameInstance，世界级的缓存用 World。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Removing Delegate Bindings"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "246",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "BlueprintNativeEvent 的 C++ 基类实现、_Implementation 和覆盖规则如何配合？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "BlueprintNativeEvent 会生成可以从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中，业务代码应该调用 FunctionName 以经过蓝图分派。派生 C++ 类覆盖 _Implementation，直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UFunctions: BlueprintNativeEvent"
+        "topic": "Programming Subsystems"
       }
     ],
     "evidenceIds": [
@@ -966,15 +336,204 @@
     ]
   },
   {
-    "id": "247",
+    "id": "102",
     "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "UINTERFACE 与纯 C++ 接口的反射声明、实现类和调用方式有什么区别？",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Tick 和 TickGroup 是什么？如何控制组件的更新顺序？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用。但是要支持蓝图实现时应该使用反射检查和生成的 Execute_ 函数。",
+    "answer": "TickFunction 每帧被引擎调度执行，PrimaryComponentTick 在构造阶段通过 bCanEverTick、TickGroup 和 TickInterval 配置。AddTickPrerequisiteComponent 可建立细粒度的前置依赖关系，TickGroup 提供更粗的阶段顺序。依赖图应无环，不能依赖组件数组或注册的偶然顺序。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Actor Ticking and Tick Prerequisites"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-003",
+      "evidence-ue5-004"
+    ]
+  },
+  {
+    "id": "103",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "RootComponent 和组件附加关系如何正确设置？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "RootComponent 必须是 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级。附加时需明确 KeepRelative、KeepWorld 或 SnapToTarget 等变换规则。在构造函数中使用 SetupAttachment，运行时使用 AttachToComponent 并指定变换保持模式。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Scene Component Attachment"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-004",
+      "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "104",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "EndPlay 覆盖销毁、关卡切换、停止 PIE 等多种离场原因，适合停止 Timer、异步任务和委托。OnDestroyed 更偏向 Actor 被 Destroy 的通知，C++ 析构发生得更晚且此时 World 可能已不可用。主要玩法清理应放在 EndPlay 中，析构函数不应承担依赖 World 的清理逻辑。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Actor EndPlay and Destruction"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "105",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "FActorSpawnParameters 包含 Owner、Instigator、SpawnCollisionHandlingOverride 和 Template 等配置。Owner 影响网络所有权和 RPC 路由，Instigator 用于伤害或行为归因。SpawnCollisionHandlingOverride 控制碰撞冲突时的处理方式，生成后必须检查返回值是否为空。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Spawning Actors and SpawnParameters"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "106",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "PostInitializeComponents 在什么时候调用？适合做什么？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "PostInitializeComponents 在所有组件注册完成后、BeginPlay 之前调用，此时 Actor 的完整组件树已经可用。它适合需要引用其他组件进行初始化的逻辑，例如绑定委托或读取相邻组件的属性。编辑器和运行时都会执行这个回调。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Actor PostInitializeComponents"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "107",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "单播委托和多播委托有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "单播委托只保存一个绑定目标，执行有返回值的委托前需检查 IsBound，用 Execute 获取结果。多播委托向多个绑定广播，不提供聚合返回值，使用 Broadcast 触发所有绑定。Epic 的契约不保证多播委托的调用顺序，广播期间增删绑定应将变更延迟到本轮结束。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Delegates: Single-Cast and Multicast"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "108",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "动态委托通过反射和 UFUNCTION 名称绑定，可以被蓝图使用并支持序列化，但签名类型受限且调用成本更高。静态委托性能更好且类型检查更严格，适合纯 C++ 高频回调。需要资产保存或蓝图绑定时选动态委托，否则优先使用静态委托。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Dynamic versus Static Delegates"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-003",
+      "evidence-ue5-004"
+    ]
+  },
+  {
+    "id": "109",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "AddUObject 记录 UObject 弱绑定，对象失效后自动跳过调用。AddRaw 不跟踪普通 C++ 对象寿命，目标析构前必须显式移除绑定。AddLambda 的捕获寿命完全由调用方管理，涉及 UObject 时可用 AddWeakLambda 或捕获弱引用后校验。混淆这些绑定方式是委托崩溃的常见原因。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Delegate Binding and Lifetime"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-004",
+      "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "110",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "BlueprintNativeEvent 的 C++ 实现规则是什么？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中。业务代码应调用 FunctionName 以经过蓝图分派，派生 C++ 类覆盖 _Implementation。直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口，导致蓝图逻辑不生效。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "BlueprintNativeEvent Implementation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "111",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UINTERFACE 声明反射可见的 U 类，配套的 I 接口承载 C++ 函数契约，实现 UObject 类同时继承 I 接口并在 UCLASS 中声明 ImplementsInterface。纯 C++ 接口可直接虚调用，但要支持蓝图实现时必须使用反射检查和生成的 Execute_ 函数。",
     "answerSources": [
       {
         "authority": "epic-games",
@@ -987,40 +546,19 @@
     ]
   },
   {
-    "id": "248",
+    "id": "112",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "如何在 UObject、UInterface 和实现类指针之间安全转换并检查有效性？",
+    "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "应先用 IsValid 检查 UObject，再用 GetClass()->ImplementsInterface 判断反射接口，并通过 IMyInterface::Execute_Function 调用以兼容蓝图实现。直接 static_cast 或只依赖 Cast<IMyInterface> 可能遗漏蓝图专有实现，TScriptInterface 也要同时保持对象和接口语义正确。",
+    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，在 EndPlay、Deinitialize 或 C++ 对象析构前调用 Remove 或 RemoveAll。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命，必须主动移除。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Calling Unreal Interfaces"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "249",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "AsyncTask 切换线程时如何保证 UObject 访问发生在正确线程？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "后台线程只处理复制出的普通数据，任何 UObject、World、Actor 或组件访问都应该通过 AsyncTask 切回 ENamedThreads::GameThread。回调捕获 TWeakObjectPtr 和任务代次，回到游戏线程后重新检查对象、World 和取消状态再写入结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "AsyncTask and Game Thread UObject Access"
+        "topic": "Removing Delegate Bindings"
       }
     ],
     "evidenceIds": [
@@ -1029,523 +567,19 @@
     ]
   },
   {
-    "id": "250",
+    "id": "113",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "线程池任务怎样管理捕获对象、取消和完成回调以避免竞态？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "线程池任务应该按值捕获不可变输入或受同步保护的共享状态，取消通过原子标志等协作机制完成而不是强杀线程。完成回调用一次性状态门控后投递游戏线程，关闭时等待或失效任务，避免回调与资源销毁并发。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Async Work and Thread Pool Tasks"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "251",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "TFuture 与 TPromise 的结果传递、等待和错误状态如何设计？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TPromise 由生产者设置结果，关联 TFuture 由消费者 Wait、IsReady 或 Get，等待游戏线程会阻塞帧并可能形成死锁。Unreal 常见构建关闭 C++ 异常，失败应放入显式结果类型或状态码，而不是假设 Future 会传递异常对象。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "TFuture and TPromise"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "252",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "Latent Action 的生命周期、World Context 和取消条件如何管理？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Latent Action 由对应 UWorld 的 FLatentActionManager 按 CallbackTarget 和 UUID 跟踪，WorldContextObject 错误会把任务放入错误世界或无法恢复蓝图执行。动作更新时应该检查目标、取消条件和世界清理状态，并保证完成分支只触发一次。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Latent Actions and FLatentActionManager"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "253",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "异步加载完成回调如何持有资源引用并处理加载失败或对象销毁？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "异步资源加载应该保留 FStreamableHandle 或由 Asset Manager 管理活动句柄，软路径只描述资源而不保证已经驻留。完成回调在使用资产前检查加载结果和弱目标，失败、取消或 World 销毁时释放句柄并返回可诊断状态。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Asynchronous Asset Loading"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "254",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "取消异步任务时，如何处理已排队回调、线程安全和资源释放？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "取消通常只是设置协作标志或撤销尚未开始的工作，已经排队的游戏线程回调仍可能到达。任务状态应该通过原子或锁从 Pending 只转移到 Completed/Cancelled 一次，回调再次检查状态并在正确线程释放 UObject 相关资源。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Cancelling Async Tasks"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "255",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "bReplicates、NetLoadOnClient 等网络标志如何决定 Actor 是否复制？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "bReplicates 允许服务器 Actor 建立网络通道，实际发送还受服务器生成、连接相关性、休眠和更新策略影响。NetLoadOnClient 控制关卡放置 Actor 是否由客户端加载，Owner、bAlwaysRelevant 等标志改变相关性或 RPC 路由，客户端自行生成的 Actor 不会因此成为权威复制对象。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Replication Settings"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "256",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "ReplicatedUsing 的 OnRep 回调何时触发，初始同步和服务器修改有何差异？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "ReplicatedUsing 属性在客户端收到网络更新时调用 OnRep，初始同步和重新进入相关范围也可能触发。服务器直接赋值不会自动调用同名回调。共享副作用可抽成幂等函数，由服务器写入后显式调用，客户端则从 OnRep 调用，避免把每次本地赋值当成复制事件。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Replicate Actor Properties with RepNotify"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "257",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "DOREPLIFETIME 与条件复制如何声明属性，成员变化怎样进入复制布局？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "复制属性必须在 GetLifetimeReplicatedProps 中用 DOREPLIFETIME 或条件宏注册，服务器对成员的变化随后由复制系统按连接发送。复制布局按类建立，不能根据某个实例的临时状态跳过注册。运行时差异应该使用条件、Active Override 或 Push Model 的脏标记机制。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Replicate Actor Properties"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "258",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "COND_OwnerOnly、COND_SkipOwner 等条件如何与连接所有权共同生效？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "COND_OwnerOnly 只向 Actor 的拥有连接发送，COND_SkipOwner 排除该连接，条件结果依赖服务器上的 NetOwner 链而不只是一个 Owner 指针名字。所有权尚未建立或刚切换时目标连接可能不同，RPC 和复制条件应该在确认拥有关系后使用。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Conditional Property Replication"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "259",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "服务器权威模型下，客户端输入、验证和状态回写的边界如何划分？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "客户端通过自己拥有的 Actor 发送输入或意图，服务器校验身份、速率、资源和当前状态后才修改权威属性。客户端预测只改善响应，最终状态由服务器复制回来并触发校正，不能信任客户端直接提交的位置、伤害或库存结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Server Authority in Network Multiplayer"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "260",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "NetMulticast RPC 的调用前提、可靠性和非相关客户端行为如何判断？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NetMulticast RPC 只有从服务器调用时才会在服务器和当前相关客户端执行，从客户端调用只产生本地行为。Unreliable 调用可能丢失，Reliable 也不会为晚加入或当时不相关的客户端保存历史。因此持久状态仍然应该使用属性复制。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Remote Procedure Calls: NetMulticast"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "261",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "Server RPC 的拥有者检查、参数验证和可靠性选项如何设计？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "客户端只有对拥有连接可解析的 Actor 才能把 Server RPC 发到服务器，服务端实现仍要验证参数、权限和调用频率。Reliable 适合低频且必须到达的命令，高频输入更适合可丢弃或批量协议，避免可靠队列阻塞。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Remote Procedure Calls: Server RPC"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "262",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "Client RPC 如何定位目标连接，何时会因 Actor 没有正确所有者而失效？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Client RPC 由服务器在具有目标 OwningConnection 的 Actor 上调用，通常发送给该拥有客户端。Actor 没有正确所有者或调用发生在错误端时不会到达预期连接，应该把调用放在 PlayerController、Pawn 或其拥有组件等明确网络所有权链上。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Remote Procedure Calls: Client RPC"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "263",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "Reliable RPC 的顺序与重传保证是什么，为什么不能替代状态复制？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Reliable RPC 在连接存续且通道有效时保证传送并保持同一通道上的可靠顺序。但是前面的包丢失会阻塞后续可靠消息。它不会为重连或晚加入重放历史，也只表达事件而不是最新状态。所以连续状态仍然应该交给属性复制。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Remote Procedure Calls: Reliability"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "264",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "组件复制开关、注册顺序和网络角色如何影响组件状态同步？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "组件状态复制要求拥有 Actor 已复制，组件本身通过 SetIsReplicatedByDefault 或 SetIsReplicated 启用复制，并在服务器以可复制方式创建和注册。组件网络角色来自拥有 Actor 的连接上下文，客户端本地动态组件不会自动与服务器组件配对。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Component Replication"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "265",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "ReplicateSubobjects 如何与子对象生命周期、所有权和带宽协同？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "复制子对象必须由服务器创建并与复制 Actor 保持稳定归属，再通过注册子对象列表或 Actor 的子对象复制路径送入该 ActorChannel。销毁前要从复制列表移除并处理引用失效，频繁创建的大量子对象还需要评估通道和带宽成本。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Replicating UObjects and Subobjects"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "266",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "Fast Array Serializer 的标记、增量变更和删除通知如何工作？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "FFastArraySerializer 的元素继承 FFastArraySerializerItem，服务器修改后调用 MarkItemDirty，结构性清空等操作使用 MarkArrayDirty。客户端通过 PreReplicatedRemove、PostReplicatedAdd 和 PostReplicatedChange 处理增量通知，遗漏脏标记就不会可靠发送变化。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Fast TArray Replication"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "267",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "NetDeltaSerialize 需要满足哪些 traits 和序列化契约，如何处理版本变化？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "自定义结构通过 TStructOpsTypeTraits 声明 WithNetDeltaSerializer，并在 NetDeltaSerialize 中遵守 FNetDeltaSerializeInfo 的映射、基线和成功返回契约。改变字段或位布局时要配合网络版本或兼容分支并提供默认值，不能让新旧端按不同顺序读取同一数据流。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Custom NetDeltaSerialize"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "268",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "FArchive 序列化与网络复制、SaveGame 序列化的边界如何区分？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "FArchive 是通用序列化抽象，包保存、事务和存档会设置不同 Archive 标志。网络复制还使用 PackageMap、NetSerialize 或 NetDeltaSerialize 等连接相关机制。SaveGame 只应该保存可持久化业务数据，不能把磁盘格式、网络线格式和任意 UObject 包序列化当成同一协议。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Serialization, SaveGame, and Network Replication"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "269",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "SaveGame 标记、Transient 属性和对象引用在保存恢复时如何取舍？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "SaveGame specifier 只有在 ArIsSaveGame 的存档流程中才会筛选字段，Transient 属性通常不进入持久化数据。运行时 UObject 指针跨会话往往没有意义，应该保存软路径、主资产 ID 或自定义稳定标识，并在加载后重新解析对象。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Saving and Loading Your Game"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "270",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "USaveGame 数据升级时如何设计版本号、兼容读取和迁移路径？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "USaveGame 数据应包含显式 schema 版本和稳定键，加载旧版本时按版本逐步填充新默认值或迁移结构。未知的更高版本应该明确拒绝或走兼容读取，不能依赖属性顺序和数组索引永远不变。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "SaveGame Versioning and Migration"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "271",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "客户端重连后，哪些状态依靠复制重建，哪些状态需要额外恢复协议？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "重连后仍存在且与连接相关的服务器 Actor 会通过属性复制重建当前权威快照，旧 RPC 和客户端瞬时对象不会自动重放。账户、库存、任务进度和已销毁 Actor 等跨连接状态需要服务器会话、PlayerState 恢复或持久化协议重新注入。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Reconnect State and Actor Replication"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "272",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "NetUpdateFrequency 与优先级、带宽预算和状态延迟之间如何权衡？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NetUpdateFrequency 限制 Actor 被考虑发送的频率，最终延迟还受相关性、优先级、休眠和连接带宽预算影响。只应提高真正延迟敏感对象的频率，其他状态可用休眠、量化、Push Model 或 Replication Graph 减少无效流量。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Relevancy, Priority, and Update Frequency"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "273",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "Runtime 模块的公开 API、依赖和打包边界应如何定义？",
+    "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
     "difficulty": 2,
     "scopes": [
       "UE5"
     ],
-    "answer": "Runtime 模块的 Public 目录只暴露稳定接口和必要反射类型，具体实现与重依赖应放在 Private，并在 Build.cs 中声明最小依赖。模块描述必须是 Runtime 类型且不能依赖 UnrealEd 等编辑器模块，才能进入非编辑器目标和打包产物。",
+    "answer": "BlueprintImplementableEvent 只能在蓝图中实现，C++ 侧不能提供默认实现，调用时如果蓝图未实现则不执行任何操作。BlueprintNativeEvent 可以在 C++ 中提供 _Implementation 默认实现，蓝图可以覆盖它。需要 C++ 默认行为时选 NativeEvent，纯蓝图扩展点选 ImplementableEvent。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Unreal Engine Runtime Modules"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "274",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "Editor 模块如何隔离编辑器依赖，避免运行时目标加载不必要代码？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "编辑器功能应放入 Type 为 Editor 的模块，由该模块依赖 UnrealEd、LevelEditor 等编辑器 API，Runtime 模块只暴露共享契约。非编辑器目标不会编译或加载 Editor 模块，少量条件代码也必须用目标规则和 WITH_EDITOR 边界隔离。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Creating an Editor Module"
+        "topic": "Blueprint Event Specifiers"
       }
     ],
     "evidenceIds": [
@@ -1554,40 +588,19 @@
     ]
   },
   {
-    "id": "275",
+    "id": "114",
     "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "PublicDependencyModuleNames 如何与 Public 头文件暴露的依赖保持一致？",
+    "category": "ue5/delegate-interface-async",
+    "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "若 Public 头文件包含、继承或在公开签名中需要另一个模块的完整类型，该模块应列入 PublicDependencyModuleNames。只在 cpp 或 Private 头文件使用的实现依赖放入 PrivateDependencyModuleNames，前向声明可减少但不能掩盖公开 ABI 所需定义。",
+    "answer": "普通 AddLambda 不跟踪 UObject 生命周期，如果 UObject 被 GC 回收而 Lambda 仍被调用会导致悬空指针。应使用 AddWeakLambda 或手动捕获 TWeakObjectPtr 并在回调中调用 IsValid 校验。异步任务切回游戏线程后必须同时校验对象和 World 有效性。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Module Properties in Build.cs: Public Dependencies"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "276",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "PrivateDependencyModuleNames 何时足够，哪些 include 会迫使依赖升级为 Public？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "PrivateDependencyModuleNames 足以支撑本模块私有源文件中的 include 和链接，不会把依赖传递给包含本模块 Public 头的消费者。公开内联代码、模板、基类、按值成员或必须包含的反射类型若来自该模块，就需要把依赖提升为 Public。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Module Properties in Build.cs: Private Dependencies"
+        "topic": "Lambda Capture and UObject Lifetime"
       }
     ],
     "evidenceIds": [
@@ -1596,187 +609,19 @@
     ]
   },
   {
-    "id": "277",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "UHT 扫描反射类型时，模块依赖和生成代码可见性需要满足什么条件？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UHT 扫描公开反射声明时必须能解析其中引用的 UCLASS、USTRUCT 和 UENUM，生成代码随后还要链接这些类型的注册符号。对应模块应出现在 Build.cs 依赖中，跨模块类需要正确 API 导出，generated.h 仍必须是该头文件最后的 include。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Unreal Header Tool and Module Dependencies"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "278",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "插件 LoadingPhase 与模块启动顺序、编辑器工具可用时机有什么关系？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "LoadingPhase 决定模块在 PreDefault、Default、PostEngineInit 等引擎阶段何时收到 StartupModule，不保证其依赖对象已经完成业务初始化。插件工具应选择满足所需编辑器服务的最晚合理阶段，并用模块依赖或显式加载保证其他模块可用。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Module Descriptors and LoadingPhase"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "279",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "第三方库的库文件、头文件和运行时 DLL 如何在 Build.cs 中稳定接入？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "第三方接入通常在 Build.cs 配置头文件路径、PublicAdditionalLibraries、PublicDefinitions 和 PublicDelayLoadDLLs，并用 RuntimeDependencies 把动态库放入打包暂存。库路径要按平台、架构和配置选择，运行时还需要从可部署位置加载 DLL，而不能依赖开发机绝对路径。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Integrating Third-Party Libraries"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "280",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "模块 API 宏如何控制跨模块符号导出，哪些类型不应直接暴露？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "MYMODULE_API 在构建模块时导出符号、在消费模块时导入符号，跨 DLL 使用的非内联类、函数和反射类型需要正确标记。公开接口应该避免暴露第三方 STL 布局或私有实现类型，可用 Unreal 类型、纯接口或 PImpl 缩小 ABI 面。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Module API Specifiers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "281",
+    "id": "115",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
-    "title": "Replicated subobject 如何随 Actor 所有权和通道状态建立？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "服务器创建的 UObject 子对象应具有稳定的 Actor Outer 或明确归属，并在 ActorChannel 有效时通过注册子对象列表或 ReplicateSubobjects 路径复制。客户端对象由通道创建或解析，服务器销毁前要取消注册并同步引用失效，不能把本地 NewObject 当成同一网络实例。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Replicating UObjects with Actor Channels"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "282",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "FastArraySerializer 如何只同步变化元素并处理重连？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Fast Array 对每个连接维护增量基线，只发送已标脏的新增、修改和删除。新连接或重连会从当前服务器数组建立新的基线。元素应有稳定复制 ID，客户端从回调重建派生状态，不能依赖断线期间每个历史删除事件都会重放。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Fast TArray Replication and Reconnects"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "283",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "Reliable RPC 堆积时怎样避免网络拥塞和顺序阻塞？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Reliable RPC 会在丢包时重传并保持顺序，持续高频发送会造成队首阻塞、通道积压甚至连接超时。每帧状态应改为属性复制或 Unreliable 消息，并通过合并、限频和只发送最新意图控制可靠流量。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Reliable RPC Queues and Network Saturation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "284",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "TObjectPtr 在编辑器、序列化和运行时 GC 中分别提供什么保证？",
+    "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
     "difficulty": 4,
     "scopes": [
       "UE5"
     ],
-    "answer": "TObjectPtr 在编辑器和序列化管线中提供可跟踪的 UObject 引用表示，运行时通过指针式接口访问目标。真正的 GC 保证来自 UPROPERTY、引用收集器或根集合等可达路径，单独把裸指针类型换成 TObjectPtr 并不会让未反射存储自动成为强引用。",
+    "answer": "UE5 使用服务器权威模型，服务器决定 Actor 的最终状态并通过属性复制同步到客户端。Actor 需要设置 bReplicates 为 true，需要同步的属性用 UPROPERTY(Replicated) 标记。服务器按优先级和带宽限制定期发送属性更新，客户端收到后应用 RepNotify 回调或自定义同步逻辑。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Object Pointers and TObjectPtr Guarantees"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "285",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "TWeakObjectPtr 失效后如何安全地恢复或放弃异步结果？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TWeakObjectPtr 失效表示原 UObject 已不能安全访问，它不能把被销毁对象重新变回有效实例。异步结果应携带稳定 ID、软路径或任务代次，回到游戏线程后若弱指针无效就丢弃结果，确需恢复时按稳定标识重新解析或加载新对象。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Weak Object Pointers in Async Work"
+        "topic": "Actor Replication Overview"
       }
     ],
     "evidenceIds": [
@@ -1785,796 +630,423 @@
     ]
   },
   {
-    "id": "286",
+    "id": "116",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Server RPC 从客户端调用在服务器上执行，适合请求服务器执行权威操作。Client RPC 从服务器调用在目标客户端执行，适合向特定玩家发送通知。NetMulticast 在服务器调用后会广播到所有相关客户端执行，适合不可靠的视觉效果和声音触发。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Remote Procedure Calls"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "117",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UPROPERTY(ReplicatedUsing=OnRep_XXX) 标记的属性在客户端收到新值后自动调用 OnRep_XXX 函数。RepNotify 适合在属性变化后更新视觉效果、重新初始化组件或触发本地逻辑。首次复制和后续变化都会触发回调，但服务器自身不会执行 RepNotify。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Property Replication and RepNotify"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-003",
+      "evidence-ue5-004"
+    ]
+  },
+  {
+    "id": "118",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Authority 是服务器上的权威副本，负责状态判定和属性同步。AutonomousProxy 是本地玩家的客户端副本，可以预测移动并接受服务器校正。SimulatedProxy 是其他玩家或 NPC 的客户端副本，只接收服务器同步的位置和动画信息。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Network Roles and Proxy Types"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-004",
+      "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "119",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "条件复制和 SetReplicates 怎么控制 Actor 是否同步？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "SetReplicates 可以在运行时开关 Actor 的复制能力，关闭后服务器不再同步该 Actor 的属性。GetLifetimeReplicatedProps 中可以用 DOREPLIFETIME_CONDITION 设置条件复制，如 COND_OwnerOnly 只同步给拥有者，COND_SkipOwner 跳过拥有者。条件复制能显著减少网络带宽消耗。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Conditional Replication"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "120",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "UE5 的序列化机制是怎么工作的？FArchive 扮演什么角色？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "FArchive 是 UE5 序列化的核心抽象，同一个接口既用于加载也用于保存。反射属性由引擎自动序列化，自定义序列化需要重载 Serialize 函数或使用 FArchive 的按字段操作。USaveGame 配合 SaveGameToSlot/LoadGameFromSlot 提供游戏存档的高层接口。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Serialization and FArchive"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "121",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "客户端在输入后立即预测移动结果以获得流畅体验，服务器收到输入后独立计算权威结果并发送给客户端。客户端收到服务器状态后与本地预测比较，差异超过阈值时执行回滚和重新模拟未确认的输入。CharacterMovementComponent 内置了完整的预测回滚框架。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Network Prediction and Rollback"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-003",
+      "evidence-ue5-004"
+    ]
+  },
+  {
+    "id": "122",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "NetPriority 数值越高的 Actor 越优先获得带宽，NetUpdateFrequency 指定期望的同步频率。Relevancy 判断 Actor 对特定客户端是否可见，超出 NetCullDistanceSquared 的 Actor 不会被同步。bAlwaysRelevant 可强制同步关键 Actor，bOnlyRelevantToOwner 限制只同步给拥有者。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Network Priority and Relevancy"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-004",
+      "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "123",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "PublicDependencyModuleNames 中的模块会暴露给依赖本模块的其他模块，PrivateDependencyModuleNames 中的模块只在本模块编译时可见。选择时应尽量使用 Private 依赖以减少编译耦合，只有当公开头文件引用了依赖的类型时才需要 Public。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Build.cs Module Dependencies"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "124",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UBT 分析 Build.cs 和模块结构生成编译配置，UHT 扫描反射宏并生成注册代码和 generated.h，最后 C++ 编译器编译各模块源文件。修改 Build.cs 或反射声明后通常需要重新编译，UHT 不会自动重跑除非源文件发生变化或手动清理。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Unreal Build Tool and Compilation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "125",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "插件由 .uplugin 描述文件、Source 目录和可选的 Content 目录组成，.uplugin 定义模块、类型和加载阶段。可通过编辑器插件浏览器或手动创建目录结构来创建。插件可以包含编辑器模块和运行时模块，编辑器模块应限制在 Editor Target 中加载。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Plugin Structure and Creation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-003",
+      "evidence-ue5-004"
+    ]
+  },
+  {
+    "id": "126",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "模块可在 Default、PreDefault、PostDefault、PreLoadingScreen 等阶段加载。大多数游戏逻辑模块使用 Default，需要早于其他模块初始化的基础设施用 PreDefault，依赖大量其他模块的高层逻辑用 PostDefault。加载阶段错误会导致依赖模块尚未就绪的运行时崩溃。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Module Loading Phases"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-004",
+      "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "127",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "API 宏和跨模块导出怎么使用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "每个模块在 Build.cs 中定义 MYMODULE_API 宏，导出类和函数前加上该宏使其对其他模块可见。UCLASS、USTRUCT 和 UFUNCTION 标记的类型还需要在对应头文件中声明，且依赖模块的 Build.cs 必须引用该模块。缺少 API 宏会导致链接错误。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "API Macros and Module Exports"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-002"
+    ]
+  },
+  {
+    "id": "128",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "UE5 中如何实现 VR 立体渲染？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UE5 通过 XR 系统自动为 HMD 生成左右眼视口和投影矩阵，StereoRendering 接口负责提交到各平台。Instanced Stereo 渲染在单次 draw call 中完成双眼，减少 CPU 开销。Multi-view 渲染进一步利用 Vulkan 扩展优化移动 VR 平台性能。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Stereo Rendering"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "129",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "XR 输入系统和 MotionController 如何使用？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "MotionControllerComponent 提供手柄位置和旋转跟踪，Input Device 插件映射各平台的按键和轴。UE5 的 Enhanced Input 系统可以统一处理 VR 控制器的输入事件，Action-based 输入更适合跨平台 VR 应用。不同手柄的按键映射差异应由 Input Mapping Context 抽象处理。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "XR Input and Motion Controllers"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "130",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 项目有哪些常见的性能优化手段？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "注视点渲染降低视野边缘的分辨率以节省 GPU 带宽，Fixed Foveated Rendering 在移动 VR 上效果显著。减少 draw call、使用实例化渲染、降低 Overdraw 和启用遮挡剔除是基础优化。VR 对帧率要求严格，应使用 Stat 和 Unreal Insights 定位瓶颈，避免每帧不必要的 Tick。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR Performance Optimization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "131",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "OpenXR 在 UE5 中如何集成和使用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "OpenXR 插件提供标准化的 XR 硬件接口，通过启用 OpenXR 插件可以统一支持各主流头显。XRSystem 和 IHeadMountedDisplay 接口抽象了底层差异，应用代码不直接依赖特定厂商 SDK。切换硬件时只需更换 OpenXR Runtime，无需修改项目代码。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "OpenXR Integration"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-006",
+      "evidence-ue5-007"
+    ]
+  },
+  {
+    "id": "132",
+    "group": "ue5",
+    "category": "ue5/xr-vr",
+    "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "VR 中的 UI 通常使用 UWidgetComponent 以 World Space 模式渲染到 3D 空间中，配合射线检测或手柄光标进行交互。Widget Interaction Component 提供悬停和点击事件的模拟输入。UMG 控件需要适配 VR 的 DPI 和交互方式，平面 UI 在 VR 中会造成深度感知问题。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "VR UI and Widget Interaction"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-006"
+    ]
+  },
+  {
+    "id": "133",
+    "group": "ue5",
+    "category": "ue5/replication-rpc-serialization",
+    "title": "SaveGame 系统怎么使用？如何管理版本兼容性？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "继承 USaveGame 并标记 UPROPERTY 字段，用 SaveGameToSlot 保存和 LoadGameFromSlot 加载。版本兼容需要在序列化时写入版本号，加载时根据版本执行迁移或拒绝加载。复杂项目可自定义 FArchive 或使用 FObjectAndNameAsStringProxyArchive 处理类重命名。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "SaveGame System and Versioning"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "134",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
+    "difficulty": 4,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "StreamableManager 或异步加载回调可能在非游戏线程执行，不应在回调中直接操作 UObject。应在回调中捕获弱引用，切回游戏线程后用 IsValid 校验对象和 World 再执行逻辑。TStrongObjectPtr 或 FGCObject 可在后台保持对象存活，但必须在游戏线程创建和释放。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Async Loading and Thread Safety"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-002",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "135",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "组件注册顺序错误为什么会导致 RootComponent 和 Tick 依赖失效？",
+    "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
     "difficulty": 3,
     "scopes": [
       "UE5"
     ],
-    "answer": "运行时场景组件若在 RootComponent 和附加层级确定前注册，注册时计算的世界变换、渲染和物理状态可能基于错误父级。应先建立根和附件关系，再按层级注册组件，最后添加 Tick 前置关系并启用 Tick，避免把偶然注册顺序当成调度保证。",
+    "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，编辑器的 Construction Script 重建可能销毁旧实例。外部代码不能永久缓存 ChildActor 指针，应在重建后重新获取。组件负责子 Actor 的创建和销毁流程，手动干预可能导致生命周期不一致。",
     "answerSources": [
       {
         "authority": "epic-games",
-        "topic": "Component Registration Order and Tick Dependencies"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "287",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "SpawnActorDeferred 允许调用方在哪个阶段设置初始化参数？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "SpawnActorDeferred 返回的 Actor 已完成原生构造。但是 Construction Script、最终组件初始化和 BeginPlay 尚未完成。调用方可以在此阶段写入 ExposeOnSpawn 数据和初始化依赖，随后必须且只能调用一次 FinishSpawning 提交最终变换。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Deferred Actor Spawning"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "288",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "AsyncTask 回到游戏线程时如何检查 UObject 仍然有效？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "后台任务只保存 TWeakObjectPtr，使用 AsyncTask 投递到游戏线程后再通过 Weak.Get 和 IsValid 取得临时有效对象。还要核对 World、关卡或任务代次，防止对象地址有效但已经属于过期游戏会话。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "AsyncTask Completion on the Game Thread"
+        "topic": "Child Actor Component Lifecycle"
       }
     ],
     "evidenceIds": [
       "evidence-ue5-004",
       "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "289",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "动态多播委托为什么需要区分绑定对象和 Lambda 的解绑方式？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "动态多播委托只支持反射 UFUNCTION 绑定，使用 AddDynamic/RemoveDynamic 按对象和函数管理，并不支持普通 Lambda。原生多播委托的 AddLambda 返回 DelegateHandle，需要显式 Remove。涉及 UObject 时可以选择 AddUObject 或 AddWeakLambda 让寿命语义可追踪。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Dynamic and Native Multicast Delegates"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "290",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "插件的 Runtime 模块依赖 Editor 类型时打包阶段会发生什么？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Runtime 模块引用 Editor 类型会让非编辑器目标缺少模块、头文件或导出符号，UBT、UHT 或链接阶段因此失败，打包也不会携带 Editor 代码。共享接口应该下沉到 Runtime 模块，编辑器实现留在 Editor 模块，并只让编辑器目标声明该依赖。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Separating Runtime and Editor Modules"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "291",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "第三方库的延迟加载和模块卸载怎样避免悬空符号？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "延迟加载只推迟 DLL 解析，模块必须在首次调用外部符号前取得并保存 FPlatformProcess::GetDllHandle 返回的句柄。卸载前要停止线程和回调、销毁库创建的对象并清空函数指针，最后再 FreeDllHandle，避免执行已经卸载的代码。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Third-Party Libraries and Delay Loading"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "292",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "RepNotify 在初始同步和后续属性变化中如何避免重复副作用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RepNotify 应该把视觉或派生状态更新写成可重复执行的函数，因为初始同步、重新相关和真实属性变化都可能进入 OnRep。服务器在权威写入后显式调用同一应用函数，客户端可比较旧值或版本号抑制只应发生一次的声音、奖励等副作用。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "RepNotify Initial and Subsequent Updates"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "293",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "WorldSubsystem 与 GameInstanceSubsystem 的生命周期边界如何选择？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "与单个 UWorld、关卡 Actor 或世界 Tick 同寿命的服务应该使用 WorldSubsystem，与 GameInstance 同寿命且需要跨普通关卡切换的状态使用 GameInstanceSubsystem。后者不能因为寿命更长就硬持有旧世界 Actor，世界引用仍然需要随地图切换更新。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Choosing WorldSubsystem versus GameInstanceSubsystem"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "294",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "软对象引用在异步加载失败时如何保留可诊断状态？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TSoftObjectPtr 和 FSoftObjectPath 在资源未加载或加载失败后仍保留可记录的资产路径，可与 FStreamableHandle 及单独的错误状态一起追踪请求。回调应区分取消、路径不存在和解析为空，记录路径后释放句柄。保留路径也允许后续重试。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Asynchronous Asset Loading with Soft Object References"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "295",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "客户端预测结果回滚时哪些状态必须由服务器重新确认？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "服务器快照必须重新确认会影响规则的权威位置、速度、动作序号、资源、冷却和库存等状态，纯表现插值可以由客户端重建。客户端保存带序号的输入，收到校正后回滚到服务器状态并重放尚未确认的输入，而不是覆盖服务器结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Client Prediction and Server Reconciliation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "296",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "取消一个后台任务时如何让回调只执行一次？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "任务使用原子状态或锁把 Pending 只转换到 Completed 或 Cancelled，赢得转换的一方负责投递唯一终态回调。取消不能强制终止已经运行的代码，排队回调仍要检查状态和任务代次，关闭时还需要等待工作结束或安全放弃结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Task Cancellation and Single Completion"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "297",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "模块 API 宏遗漏时如何区分导出问题和链接顺序问题？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "遗漏 API 宏通常表现为消费模块链接失败，导出表中找不到声明符号，而定义所在模块自身仍可能编译成功。若符号已正确导出，再检查 Build.cs 的 Public/Private 依赖和目标模块是否链接。单纯调整链接顺序不能补上未导出的 DLL 符号。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Module API Specifiers and Link Errors"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "298",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "编辑器 Construction Script 与运行时 BeginPlay 的副作用如何隔离？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Construction Script 和 OnConstruction 可能在编辑器、加载、烘焙与运行时生成过程中重复执行，只应确定性地生成组件和预览状态。一次性玩法、存档、网络请求与外部副作用放在 BeginPlay 或显式运行时流程，并在 EndPlay 对称清理。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Construction Script versus BeginPlay"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "299",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "对象销毁通知与异步回调竞态时如何防止再次访问 UObject？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "EndPlay 或 BeginDestroy 时应该标记任务取消、递增代次并解除委托和 Timer，让旧回调无法再提交结果。后台只捕获 TWeakObjectPtr，回到游戏线程后同时检查对象有效性、World 和一次性完成状态，不能在工作线程触碰 UObject。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UObject Destruction and Async Callback Races"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "300",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "自定义网络序列化怎样兼容旧客户端和字段默认值？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "自定义 NetSerialize 必须用确定的字段顺序和显式版本或特性位读取数据，缺失字段赋稳定默认值并检查 Archive 错误。UE 网络通常会拒绝不兼容协议，修改位布局时应该提升网络版本或保留兼容分支，不能期望旧客户端自动跳过未知数据。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Custom NetSerialize Version Compatibility"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "381",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "UE5 VR 项目为什么通常优先接 OpenXR（开放式 XR 标准）？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "OpenXR 把头显、手柄输入和常见运行时封装成统一接口，UE5 可以用同一套动作映射适配多家设备。平台专有功能仍要查厂商插件或扩展，常规移动、输入和渲染流程不应该一上来就绑死在某个 SDK 上。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Prerequisites and OpenXR Input"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "382",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VRPawn、Camera 和 Motion Controller（运动控制器）通常怎么组织？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "VRPawn 负责承载玩家在场景中的 XR 原点，Camera 跟随 HMD（头戴显示器）追踪，左右 Motion Controller 组件跟随手柄或手部输入。PlayerStart 的朝向会影响玩家初始朝向，抓取、射线和手部网格应挂在控制器下面，避免把普通 Character 的摄像机逻辑直接套进 VR。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Pawn and Motion Controller Components"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "383",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "Teleport（传送）和 Snap Turn（离散转向）为什么适合做 VR 默认移动？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Teleport 用瞬移替代持续推着相机移动，可以减少视觉运动和前庭感受不一致带来的眩晕。Snap Turn 一次转过固定角度，比平滑旋转更容易被多数玩家接受，落点还要受导航网格和碰撞限制。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Locomotion and XR Comfort"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "384",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 中为什么不要随便改 FOV（视场角）？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "VR 的投影和视场角由头显设备和运行时决定，强行改 FOV 会让画面比例、深度和头部转动反馈不匹配。更可靠的做法是保持真实设备投影，通过世界尺度、相机高度、移动方式和交互节奏来处理舒适度。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "XR Best Practices Field of View"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "385",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "World To Meters（世界到米比例）设置错了会出现什么问题？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "World To Meters 决定 Unreal 单位和玩家真实身高、距离感之间的换算，数值错误会让角色像巨人或小人，也会影响抓取距离和空间判断。VR 项目通常保持 1 Unreal Unit 等于 1 厘米，只在明确需要改变体感尺度时成套调整。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "XR Best Practices World Scale"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "386",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "OpenXR 的 Grip Pose（握持姿态）和 Aim Pose（瞄准姿态）有什么区别？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Grip Pose 表示手柄被握持时适合放置物体或手模型的位置，Aim Pose 表示用于射线指向和菜单瞄准的方向。抓取物体通常跟随 Grip，远距离 UI 或传送指示通常跟随 Aim，混用会让手感和视觉方向对不上。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Input Grip Pose and Aim Pose"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "387",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 抓取物体时为什么要把输入、碰撞检测和手部显示分开？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "输入只表达玩家按下抓取动作，碰撞或射线负责确定候选物体，手部网格只是反馈当前姿态和抓取状态。这样同一套交互可以适配不同手柄、手部追踪和网络同步，也能避免用显示模型的位置直接决定玩法结果。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Input and Interaction"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "388",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 里怎样用手柄射线点击 3D UMG（虚幻动态图形界面）？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "常见做法是在世界中放 Widget Component，再把 Widget Interaction Component 挂到手柄或手部射线上。扳机按下时调用对应的 Press Pointer Key，松开时调用 Release Pointer Key，悬停、点击和调试射线都由这个交互组件处理。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Widget Interaction Component"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-007",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "389",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "Quest 或移动 VR 和 PC VR 的性能策略有什么不同？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "移动 VR 的 CPU、GPU、带宽和散热余量都比 PC VR 小，不能把桌面级后处理、动态阴影和高面数场景直接搬过去。UE5 项目需要按目标设备选择移动多视图、LOD、贴图预算、固定注视点渲染等能力，并用真机帧率验证。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Developing for Oculus VR and VR Performance Features"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "390",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 性能优化为什么优先看稳定帧率和延迟？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "VR 中掉帧和高延迟会直接影响舒适度，因为用户头部运动需要尽快反映到画面里。优化时先用 Unreal Insights、stat 和平台工具区分 CPU 或 GPU 瓶颈，再决定用实例化立体渲染、剔除、LOD 或材质降级。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Performance and Profiling"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "391",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "OpenXR 和厂商插件之间怎么取舍，比如 Meta Quest 手部追踪？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "OpenXR 适合作为跨设备基础层，输入和常规 XR 流程尽量走标准接口。手部追踪、固定注视点渲染等厂商特性可能依赖对应插件或扩展，项目要按目标平台确认支持矩阵，避免在 PC VR 和 Quest 上假设功能完全一致。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR and Oculus VR Platform Features"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "392",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR Spectator Screen（旁观者屏幕）适合解决什么问题？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Spectator Screen 用来给不戴头显的人看监视器画面，常用于演示、录制和调试体验流程。它可能需要额外渲染目标或场景捕获，移动 VR 支持也有限，所以正式项目要把它当作展示功能而不是核心玩法链路。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Virtual Reality Spectator Screen"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "393",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "Hand Tracking（手部追踪）和手柄输入同时支持时接口怎么抽象？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "玩法层不应该直接依赖某一种设备，而是把抓取、指向、确认和取消抽象成动作，再把手柄、手势或手部骨骼映射到这些动作。手部追踪还要暴露追踪置信度、左右手状态和降级路径，追踪丢失时能自然回退到手柄或空手状态。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Input and Hand Tracking"
-      },
-      {
-        "authority": "meta-developers",
-        "topic": "Meta Quest Hand Tracking in Unreal"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "394",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "手部追踪做抓取或手势识别时为什么不能只看单帧骨骼？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "手部骨骼数据会受遮挡、光照和预测影响，单帧判断很容易在临界姿态附近抖动。更稳的做法是用连续帧、阈值滞回、置信度和手势优先级确认状态，交互结果只在稳定后触发。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Hand Tracking"
-      },
-      {
-        "authority": "meta-developers",
-        "topic": "Hand Tracking Quality and Gesture Input"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "395",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "大空间 Room-scale VR 为什么要区分 Tracking Origin（追踪原点）？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Tracking Origin 决定 HMD 和控制器坐标是相对设备启动点、地面还是舞台空间解释。大空间体验通常更关心地面高度、玩家真实位移和可行走边界，所以要明确使用 Floor 或 Stage 语义，并把虚拟角色根节点和追踪空间对齐。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "XR Tracking Origin and Room Scale"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "396",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "大空间 VR 中玩家真实走动和虚拟移动怎么叠加？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "真实走动来自追踪系统更新 HMD 在 XR 空间中的相对位置，虚拟移动通常作用在 VROrigin 或 Pawn 根节点上。两者叠加时要保持胶囊碰撞、地面高度和安全边界一致，重定位或回正时也要同步手柄、身体和交互射线。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Pawn, Locomotion and Tracking Space"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "397",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "XR 透视 Passthrough 和普通相机背景有什么区别？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Passthrough 是由 XR 运行时把设备摄像头画面和虚拟内容合成到头显里，开发者通常拿到的是可配置的透视层或相关 API。普通游戏相机背景只是引擎渲染内容，不能自动代表真实世界，也不等于可以自由读取原始摄像头图像。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Passthrough"
-      },
-      {
-        "authority": "meta-developers",
-        "topic": "Meta XR Passthrough"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "398",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "XR 透视交互里如何处理虚实遮挡和安全边界？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "透视画面本身只提供真实世界背景，遮挡关系还需要深度、场景理解、锚点或手动放置的代理几何来参与判断。安全边界不能只靠视觉效果提示，移动、抓取和生成物体都要考虑玩家可活动区域和平台权限。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "OpenXR Passthrough and XR Scene Understanding"
-      },
-      {
-        "authority": "meta-developers",
-        "topic": "Passthrough and Scene API"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "399",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 全身 IK（FBIK）通常用哪些输入目标？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "VR 全身 IK 通常把 HMD 作为头部目标，把左右控制器或手部追踪作为手目标，再根据项目需要加入骨盆、脚和膝盖约束。FBIK 负责在骨骼链上分配误差和保持姿态，目标点不是直接等同于最终骨骼变换。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Full-Body IK in Control Rig"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "400",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 全身 IK 为什么必须做身高、臂展和骨骼比例校准？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "不同玩家的真实身高、肩宽和臂长差异很大，直接把同一套骨架套到所有人身上会导致手够不到、肩膀塌陷或脚底漂浮。校准阶段用 HMD、手柄和可选站姿数据估计比例，再让 IK 在合理约束内求解，动画表现会稳定很多。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "IK Rig, Retargeting and Full-Body IK"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-006"
-    ]
-  },
-  {
-    "id": "401",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "VR 移动处理为什么通常移动 VROrigin 或 XR Origin，而不是直接改 Camera？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Camera 的相对位姿由 HMD 追踪实时驱动，直接改 Camera 会和设备追踪结果互相覆盖。虚拟移动应作用在 VROrigin、XR Origin 或 Pawn 根节点上，让头显、手柄、碰撞体和交互射线保持同一个空间基准。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Pawn and XR Origin Movement"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-005",
-      "evidence-ue5-007"
-    ]
-  },
-  {
-    "id": "402",
-    "group": "ue5",
-    "category": "ue5/xr-vr",
-    "title": "连续移动、传送和碰撞修正怎么避免眩晕和穿墙？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "连续移动要控制加速度、转向方式和速度上限，传送要验证 NavMesh、落点空间和玩家朝向。碰撞修正应移动玩家根节点或胶囊并保留 HMD 相对偏移，不能把相机强行推回墙外造成突兀画面跳变。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "VR Template Locomotion and Player Collision"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-006",
-      "evidence-ue5-007"
     ]
   }
 ]
