@@ -1278,30 +1278,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "091",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "TObjectPtr 和裸 UObject 指针在 GC 和序列化方面有什么差异？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TObjectPtr 是 UE5 推荐的 UObject 成员指针表示，配合 UPROPERTY 时可参与 GC、序列化和编辑器中的引用跟踪与重定向。裸 UObject 指针若同样标记为 UPROPERTY 仍可被反射系统跟踪。但无论哪种表示，未反射的指针都不能单独充当 GC 根，对象可能被意外回收。",
-    "source": "资料依据：Epic Games · Object Pointers and TObjectPtr"
-  },
-  {
-    "id": "092",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "TWeakObjectPtr 怎么用？IsValid 和裸指针的 Pin 有什么区别？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TWeakObjectPtr 通过对象索引和序列号观察 UObject，不增加强引用，对象被回收后 IsValid 返回 false。Pin 是 TWeakPtr（非 UObject 弱指针）的接口，TWeakObjectPtr 应使用 Get 或 IsValid。在游戏线程取得结果后应立即校验，不要在帧间缓存弱引用结果。",
-    "source": "资料依据：Epic Games · Weak Object Pointers"
-  },
-  {
-    "id": "093",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
     "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
     "difficulty": 3,
     "scopes": [
@@ -1311,31 +1287,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Creating and Duplicating UObject Instances"
   },
   {
-    "id": "094",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "RF_Transient、RF_Public 等对象标志分别影响什么行为？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RF_Transient 阻止对象进入常规包保存，RF_Public 允许对象作为包的公开导出被外部引用，RF_ClassDefaultObject 和 RF_ArchetypeObject 描述默认对象和原型角色。大多数标志不是 GC 强引用，判断存活性仍要看可达关系。调试生命周期时应结合 IsValid 和 BeginDestroy/FinishDestroy 日志。",
-    "source": "资料依据：Epic Games · EObjectFlags and UObject Lifecycle"
-  },
-  {
-    "id": "095",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "GENERATED_BODY 的位置和声明顺序有什么要求？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "GENERATED_BODY 必须位于对应 UCLASS、USTRUCT 或 UINTERFACE 声明体内且只出现一次，并与头文件中最后包含的 generated.h 配对。它展开的声明与文件和行号关联，移动代码后应重新运行 UHT 或清理 Intermediate 产物。缺少 GENERATED_BODY 会导致编译错误和反射信息缺失。",
-    "source": "资料依据：Epic Games · GENERATED_BODY and Generated Code"
-  },
-  {
-    "id": "096",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
@@ -1347,19 +1299,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Lifecycle: Construction and BeginPlay"
   },
   {
-    "id": "097",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "OnConstruction 在运行时 SpawnActor 和编辑器放置 Actor 时有什么区别？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "编辑器放置 Actor 的 OnConstruction 会随属性编辑和重建多次运行，并携带关卡实例的覆盖值。SpawnActor 路径则使用 Spawn 参数和 ExposeOnSpawn 值，延迟生成还要等 FinishSpawning 才执行完整构造。因此 OnConstruction 中的逻辑必须可重复且不依赖固定调用次数。",
-    "source": "资料依据：Epic Games · Construction Script for Placed and Spawned Actors"
-  },
-  {
-    "id": "098",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -1371,19 +1311,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actors and Components Architecture"
   },
   {
-    "id": "099",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "运行时创建组件后需要哪些步骤才能正常工作？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "运行时组件应以目标 Actor 为 Outer 创建，需要保存为实例组件时调用 AddInstanceComponent，设置附加关系后调用 RegisterComponent。未注册的组件没有渲染、物理或 Tick 状态。激活和 Tick 开关应在所有依赖和初始属性就绪后设置，而不是注册前就打开。",
-    "source": "资料依据：Epic Games · Runtime Component Creation and Registration"
-  },
-  {
-    "id": "100",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -1395,7 +1323,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Programming Subsystems"
   },
   {
-    "id": "101",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "RootComponent 和组件附加关系如何正确设置？",
@@ -1407,7 +1335,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Scene Component Attachment"
   },
   {
-    "id": "102",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
@@ -1419,7 +1347,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor EndPlay and Destruction"
   },
   {
-    "id": "103",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
@@ -1431,19 +1359,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Spawning Actors and SpawnParameters"
   },
   {
-    "id": "104",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "PostInitializeComponents 在什么时候调用？适合做什么？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "PostInitializeComponents 在所有组件注册完成后、BeginPlay 之前调用，此时 Actor 的完整组件树已经可用。它适合需要引用其他组件进行初始化的逻辑，例如绑定委托或读取相邻组件的属性。编辑器和运行时都会执行这个回调。",
-    "source": "资料依据：Epic Games · Actor PostInitializeComponents"
-  },
-  {
-    "id": "105",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -1455,7 +1371,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegates: Single-Cast and Multicast"
   },
   {
-    "id": "106",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -1467,7 +1383,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Dynamic versus Static Delegates"
   },
   {
-    "id": "107",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
@@ -1479,7 +1395,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegate Binding and Lifetime"
   },
   {
-    "id": "108",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
@@ -1491,7 +1407,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Interfaces"
   },
   {
-    "id": "109",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
@@ -1503,7 +1419,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Removing Delegate Bindings"
   },
   {
-    "id": "110",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
@@ -1515,7 +1431,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint Event Specifiers"
   },
   {
-    "id": "111",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
@@ -1527,7 +1443,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Lambda Capture and UObject Lifetime"
   },
   {
-    "id": "112",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -1539,7 +1455,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Replication Overview"
   },
   {
-    "id": "113",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
@@ -1551,7 +1467,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Remote Procedure Calls"
   },
   {
-    "id": "114",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
@@ -1563,7 +1479,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Replication and RepNotify"
   },
   {
-    "id": "115",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
@@ -1575,31 +1491,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Roles and Proxy Types"
   },
   {
-    "id": "116",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "条件复制和 SetReplicates 怎么控制 Actor 是否同步？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "SetReplicates 可以在运行时开关 Actor 的复制能力，关闭后服务器不再同步该 Actor 的属性。GetLifetimeReplicatedProps 中可以用 DOREPLIFETIME_CONDITION 设置条件复制，如 COND_OwnerOnly 只同步给拥有者，COND_SkipOwner 跳过拥有者。条件复制能显著减少网络带宽消耗。",
-    "source": "资料依据：Epic Games · Conditional Replication"
-  },
-  {
-    "id": "117",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "UE5 的序列化机制是怎么工作的？FArchive 扮演什么角色？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "FArchive 是 UE5 序列化的核心抽象，同一个接口既用于加载也用于保存。反射属性由引擎自动序列化，自定义序列化需要重载 Serialize 函数或使用 FArchive 的按字段操作。USaveGame 配合 SaveGameToSlot/LoadGameFromSlot 提供游戏存档的高层接口。",
-    "source": "资料依据：Epic Games · Serialization and FArchive"
-  },
-  {
-    "id": "118",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -1611,7 +1503,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Prediction and Rollback"
   },
   {
-    "id": "119",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
@@ -1623,7 +1515,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Priority and Relevancy"
   },
   {
-    "id": "120",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
@@ -1635,7 +1527,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Build.cs Module Dependencies"
   },
   {
-    "id": "121",
+    "id": "112",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
@@ -1647,7 +1539,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Build Tool and Compilation"
   },
   {
-    "id": "122",
+    "id": "113",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -1659,7 +1551,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Plugin Structure and Creation"
   },
   {
-    "id": "123",
+    "id": "114",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
@@ -1671,7 +1563,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Module Loading Phases"
   },
   {
-    "id": "124",
+    "id": "115",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "API 宏和跨模块导出怎么使用？",
@@ -1683,7 +1575,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · API Macros and Module Exports"
   },
   {
-    "id": "125",
+    "id": "116",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -1695,7 +1587,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Stereo Rendering"
   },
   {
-    "id": "126",
+    "id": "117",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统和 MotionController 如何使用？",
@@ -1707,7 +1599,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · XR Input and Motion Controllers"
   },
   {
-    "id": "127",
+    "id": "118",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -1719,7 +1611,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Performance Optimization"
   },
   {
-    "id": "128",
+    "id": "119",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -1731,7 +1623,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · OpenXR Integration"
   },
   {
-    "id": "129",
+    "id": "120",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
@@ -1743,19 +1635,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR UI and Widget Interaction"
   },
   {
-    "id": "130",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "SaveGame 系统怎么使用？如何管理版本兼容性？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "继承 USaveGame 并标记 UPROPERTY 字段，用 SaveGameToSlot 保存和 LoadGameFromSlot 加载。版本兼容需要在序列化时写入版本号，加载时根据版本执行迁移或拒绝加载。复杂项目可自定义 FArchive 或使用 FObjectAndNameAsStringProxyArchive 处理类重命名。",
-    "source": "资料依据：Epic Games · SaveGame System and Versioning"
-  },
-  {
-    "id": "131",
+    "id": "121",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -1767,7 +1647,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Async Loading and Thread Safety"
   },
   {
-    "id": "132",
+    "id": "122",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
@@ -1779,7 +1659,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
   },
   {
-    "id": "133",
+    "id": "123",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
@@ -1791,7 +1671,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UObject initialization lifecycle"
   },
   {
-    "id": "134",
+    "id": "124",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
@@ -1803,7 +1683,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Component communication patterns"
   },
   {
-    "id": "135",
+    "id": "125",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
@@ -1813,6 +1693,126 @@ window.CPP_INTERVIEW_QUESTIONS = [
     ],
     "answer": "Delegate 是 C++ 层面的回调机制，支持单播和多播，类型安全且性能高。Event 在蓝图层面使用更广泛，蓝图 Event 可以被子类覆盖，支持网络复制标记。BlueprintAssignable 的 Event 可以从 C++ 触发、在蓝图中绑定，是 C++ 和蓝图交互的主要回调方式。简单回调用 Delegate，需要蓝图扩展时用 Event。",
     "source": "资料依据：Epic Games · Delegate vs Event usage"
+  },
+  {
+    "id": "126",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Tick 和定时器（Timer）有什么区别？分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Tick 每帧调用，适合需要每帧更新的逻辑如摄像机跟随和物理模拟，但开销大且帧率不稳定。定时器通过 SetTimer 按固定间隔触发，精度更高且不影响帧率，适合技能冷却、延迟执行和周期性检查。能用定时器的场景就不开 Tick，减少性能开销。",
+    "source": "资料依据：Epic Games · Tick and Timer management"
+  },
+  {
+    "id": "127",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "UE5 的碰撞和追踪系统是怎么工作的？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "碰撞通过 Collision Channel 和 Collision Response 控制哪些物体之间可以相互检测和阻挡。Line Trace（射线检测）和 Sweep（形状扫描）用于即时查询场景中的碰撞信息。Overlap Event 检测重叠但不阻挡，OnComponentHit 处理物理碰撞。碰撞预设（Collision Preset）简化了通道配置。",
+    "source": "资料依据：Epic Games · collision and trace system"
+  },
+  {
+    "id": "128",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "UE5 的 Gameplay 框架包含哪些核心类？各自的职责是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "GameMode 定义游戏规则（仅服务器存在），GameState 同步游戏状态给所有客户端。PlayerController 处理玩家输入，PlayerState 保存玩家数据。Pawn/Character 是玩家或 AI 的化身，HUD 和 Widget 负责 UI 显示。理解这些类的职责和生命周期是搭建游戏框架的基础。",
+    "source": "资料依据：Epic Games · gameplay framework classes"
+  },
+  {
+    "id": "129",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "DataTable 和 DataAsset 有什么区别？分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "DataTable 是基于行的数据表，适合存储大量同构记录如怪物属性、道具配置，通过 CSV 或 JSON 导入。DataAsset 是继承自 UPrimaryDataAsset 的独立资产类，可以有自定义属性和逻辑，适合结构复杂的配置。DataTable 轻量但类型不严格，DataAsset 类型安全且支持异步加载。",
+    "source": "资料依据：Epic Games · DataTable and DataAsset usage"
+  },
+  {
+    "id": "130",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Gameplay Ability System（GAS）的核心概念有哪些？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "GAS 围绕三个核心概念构建：Ability（技能/行为）、Attribute（数值属性如血量）、Effect（对属性的修改）。AbilitySystemComponent 是入口点，管理所有能力的激活和属性变化。GameplayTag 用于标记状态和分类，替代布尔标志和枚举。GAS 提供网络同步、冷却、资源消耗等开箱即用的机制。",
+    "source": "资料依据：Epic Games · Gameplay Ability System overview"
+  },
+  {
+    "id": "131",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "UMG 和 Slate 有什么区别？UE5 的 UI 系统怎么选择？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UMG 是蓝图友好的 UI 框架，基于 UUserWidget，可视化编辑且支持动画和绑定。Slate 是底层 C++ UI 框架，UMG 底层就是 Slate，性能更好但开发效率低。游戏 UI 通常用 UMG 快速原型和迭代，编辑器工具和性能关键的 UI 用 Slate。两者可以混合使用。",
+    "source": "资料依据：Epic Games · UMG and Slate UI framework"
+  },
+  {
+    "id": "132",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "World Partition 是什么？它和旧的世界组合有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "World Partition 是 UE5 的大世界管理系统，自动将世界划分为网格并按距离加载卸载，无需手动划分关卡。支持 HLOD 自动合并远处物体降低渲染开销，One File Per Actor 让多人协作不冲突。旧版 World Composition 需要手动设置流式关卡和层级，已被 World Partition 取代。",
+    "source": "资料依据：Epic Games · World Partition streaming"
+  },
+  {
+    "id": "133",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "Soft Reference 和 Hard Reference 有什么区别？怎么避免资产加载问题？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Hard Reference 直接指向资产，加载引用者时目标资产必须同时加载，可能导致连锁加载和卡顿。Soft Reference（TSoftObjectPtr、FSoftObjectPath）只存储路径，按需异步加载，避免不必要的内存占用。大型项目中应多用软引用配合异步加载，用 Asset Manager 统一管理加载和释放策略。",
+    "source": "资料依据：Epic Games · soft and hard asset references"
+  },
+  {
+    "id": "134",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "蓝图和 C++ 之间怎么通信？有哪些方式？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "C++ 暴露给蓝图：UFUNCTION(BlueprintCallable) 让蓝图调用 C++ 函数，UPROPERTY(BlueprintReadWrite) 让蓝图读写属性，BlueprintNativeEvent 可以从蓝图覆盖 C++ 实现。蓝图暴露给 C++：通过反射系统查找属性和调用函数，或使用 Delegate 回调。实践中核心逻辑用 C++，表现层用蓝图。",
+    "source": "资料依据：Epic Games · Blueprint and C++ communication"
+  },
+  {
+    "id": "135",
+    "group": "ue5",
+    "category": "ue5/modules-plugins-buildcs",
+    "title": "UE5 的资产管理系统怎么工作？Asset Manager 有什么作用？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Asset Manager 提供统一的资产加载、卸载和注册接口。通过 Primary Asset Type 和 Primary Asset Id 标识资产，支持同步加载、异步加载和批量加载。Soft Reference 配合 Asset Manager 可以按需加载资产，避免启动时加载所有资源。Asset Registry 在编辑器中提供资产查询和依赖分析功能。",
+    "source": "资料依据：Epic Games · Asset Manager and loading"
   },
   {
     "id": "136",
