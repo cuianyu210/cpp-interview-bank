@@ -1076,18 +1076,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
   {
     "id": "077",
     "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在类构造函数中建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表并注册。混淆三者的使用时机会导致编辑器默认结构异常或运行时组件缺失。",
-    "source": "资料依据：Epic Games · Creating and Duplicating UObject Instances"
-  },
-  {
-    "id": "078",
-    "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
     "difficulty": 2,
@@ -1098,7 +1086,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Lifecycle: Construction and BeginPlay"
   },
   {
-    "id": "079",
+    "id": "078",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -1110,7 +1098,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actors and Components Architecture"
   },
   {
-    "id": "080",
+    "id": "079",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -1122,19 +1110,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Programming Subsystems"
   },
   {
-    "id": "081",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "RootComponent 和组件附加关系如何正确设置？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RootComponent 必须是 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级。附加时需明确 KeepRelative、KeepWorld 或 SnapToTarget 等变换规则。在构造函数中使用 SetupAttachment，运行时使用 AttachToComponent 并指定变换保持模式。",
-    "source": "资料依据：Epic Games · Scene Component Attachment"
-  },
-  {
-    "id": "082",
+    "id": "080",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
@@ -1146,7 +1122,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor EndPlay and Destruction"
   },
   {
-    "id": "083",
+    "id": "081",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
@@ -1158,7 +1134,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Spawning Actors and SpawnParameters"
   },
   {
-    "id": "084",
+    "id": "082",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -1170,7 +1146,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegates: Single-Cast and Multicast"
   },
   {
-    "id": "085",
+    "id": "083",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -1182,19 +1158,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Dynamic versus Static Delegates"
   },
   {
-    "id": "086",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "AddUObject 记录 UObject 弱绑定，对象失效后自动跳过调用。AddRaw 不跟踪普通 C++ 对象寿命，目标析构前必须显式移除绑定。AddLambda 的捕获寿命完全由调用方管理，涉及 UObject 时可用 AddWeakLambda 或捕获弱引用后校验。混淆这些绑定方式是委托崩溃的常见原因。",
-    "source": "资料依据：Epic Games · Delegate Binding and Lifetime"
-  },
-  {
-    "id": "087",
+    "id": "084",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
@@ -1206,19 +1170,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Interfaces"
   },
   {
-    "id": "088",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，在 EndPlay、Deinitialize 或 C++ 对象析构前调用 Remove 或 RemoveAll。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命，必须主动移除。",
-    "source": "资料依据：Epic Games · Removing Delegate Bindings"
-  },
-  {
-    "id": "089",
+    "id": "085",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
@@ -1230,19 +1182,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint Event Specifiers"
   },
   {
-    "id": "090",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "普通 AddLambda 不跟踪 UObject 生命周期，如果 UObject 被 GC 回收而 Lambda 仍被调用会导致悬空指针。应使用 AddWeakLambda 或手动捕获 TWeakObjectPtr 并在回调中调用 IsValid 校验。异步任务切回游戏线程后必须同时校验对象和 World 有效性。",
-    "source": "资料依据：Epic Games · Lambda Capture and UObject Lifetime"
-  },
-  {
-    "id": "091",
+    "id": "086",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -1254,7 +1194,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Replication Overview"
   },
   {
-    "id": "092",
+    "id": "087",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
@@ -1266,7 +1206,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Remote Procedure Calls"
   },
   {
-    "id": "093",
+    "id": "088",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
@@ -1278,19 +1218,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Replication and RepNotify"
   },
   {
-    "id": "094",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Authority 是服务器上的权威副本，负责状态判定和属性同步。AutonomousProxy 是本地玩家的客户端副本，可以预测移动并接受服务器校正。SimulatedProxy 是其他玩家或 NPC 的客户端副本，只接收服务器同步的位置和动画信息。",
-    "source": "资料依据：Epic Games · Network Roles and Proxy Types"
-  },
-  {
-    "id": "095",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -1302,19 +1230,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Prediction and Rollback"
   },
   {
-    "id": "096",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NetPriority 数值越高的 Actor 越优先获得带宽，NetUpdateFrequency 指定期望的同步频率。Relevancy 判断 Actor 对特定客户端是否可见，超出 NetCullDistanceSquared 的 Actor 不会被同步。bAlwaysRelevant 可强制同步关键 Actor，bOnlyRelevantToOwner 限制只同步给拥有者。",
-    "source": "资料依据：Epic Games · Network Priority and Relevancy"
-  },
-  {
-    "id": "097",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
@@ -1326,19 +1242,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Build.cs Module Dependencies"
   },
   {
-    "id": "098",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UBT 分析 Build.cs 和模块结构生成编译配置，UHT 扫描反射宏并生成注册代码和 generated.h，最后 C++ 编译器编译各模块源文件。修改 Build.cs 或反射声明后通常需要重新编译，UHT 不会自动重跑除非源文件发生变化或手动清理。",
-    "source": "资料依据：Epic Games · Unreal Build Tool and Compilation"
-  },
-  {
-    "id": "099",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -1350,31 +1254,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Plugin Structure and Creation"
   },
   {
-    "id": "100",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "模块可在 Default、PreDefault、PostDefault、PreLoadingScreen 等阶段加载。大多数游戏逻辑模块使用 Default，需要早于其他模块初始化的基础设施用 PreDefault，依赖大量其他模块的高层逻辑用 PostDefault。加载阶段错误会导致依赖模块尚未就绪的运行时崩溃。",
-    "source": "资料依据：Epic Games · Module Loading Phases"
-  },
-  {
-    "id": "101",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "API 宏和跨模块导出怎么使用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "每个模块在 Build.cs 中定义 MYMODULE_API 宏，导出类和函数前加上该宏使其对其他模块可见。UCLASS、USTRUCT 和 UFUNCTION 标记的类型还需要在对应头文件中声明，且依赖模块的 Build.cs 必须引用该模块。缺少 API 宏会导致链接错误。",
-    "source": "资料依据：Epic Games · API Macros and Module Exports"
-  },
-  {
-    "id": "102",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -1386,7 +1266,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Stereo Rendering"
   },
   {
-    "id": "103",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统和 MotionController 如何使用？",
@@ -1398,7 +1278,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · XR Input and Motion Controllers"
   },
   {
-    "id": "104",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -1410,7 +1290,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Performance Optimization"
   },
   {
-    "id": "105",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -1422,7 +1302,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · OpenXR Integration"
   },
   {
-    "id": "106",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
@@ -1434,7 +1314,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR UI and Widget Interaction"
   },
   {
-    "id": "107",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -1446,7 +1326,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Async Loading and Thread Safety"
   },
   {
-    "id": "108",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
@@ -1458,7 +1338,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
   },
   {
-    "id": "109",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
@@ -1470,7 +1350,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UObject initialization lifecycle"
   },
   {
-    "id": "110",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
@@ -1482,7 +1362,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Component communication patterns"
   },
   {
-    "id": "111",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
@@ -1494,7 +1374,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegate vs Event usage"
   },
   {
-    "id": "112",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Tick 和定时器（Timer）有什么区别？分别适合什么场景？",
@@ -1506,7 +1386,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Tick and Timer management"
   },
   {
-    "id": "113",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的碰撞和追踪系统是怎么工作的？",
@@ -1518,7 +1398,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · collision and trace system"
   },
   {
-    "id": "114",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Gameplay 框架包含哪些核心类？各自的职责是什么？",
@@ -1530,7 +1410,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · gameplay framework classes"
   },
   {
-    "id": "115",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "DataTable 和 DataAsset 有什么区别？分别适合什么场景？",
@@ -1542,7 +1422,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · DataTable and DataAsset usage"
   },
   {
-    "id": "116",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Gameplay Ability System（GAS）的核心概念有哪些？",
@@ -1554,7 +1434,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Gameplay Ability System overview"
   },
   {
-    "id": "117",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UMG 和 Slate 有什么区别？UE5 的 UI 系统怎么选择？",
@@ -1566,7 +1446,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UMG and Slate UI framework"
   },
   {
-    "id": "118",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "World Partition 是什么？它和旧的世界组合有什么区别？",
@@ -1578,7 +1458,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · World Partition streaming"
   },
   {
-    "id": "119",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "Soft Reference 和 Hard Reference 有什么区别？怎么避免资产加载问题？",
@@ -1590,7 +1470,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · soft and hard asset references"
   },
   {
-    "id": "120",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "蓝图和 C++ 之间怎么通信？有哪些方式？",
@@ -1602,7 +1482,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint and C++ communication"
   },
   {
-    "id": "121",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的资产管理系统怎么工作？Asset Manager 有什么作用？",
@@ -1614,7 +1494,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Asset Manager and loading"
   },
   {
-    "id": "122",
+    "id": "112",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "进程和线程有什么区别？Windows 中如何创建进程？",
@@ -1626,7 +1506,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Process and Thread Concepts"
   },
   {
-    "id": "123",
+    "id": "113",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "进程和线程句柄的访问权限和等待语义是怎样的？",
@@ -1638,7 +1518,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Process and Thread Handles"
   },
   {
-    "id": "124",
+    "id": "114",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "WaitForSingleObject 有哪些返回值？各表示什么？",
@@ -1650,7 +1530,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · WaitForSingleObject Return Values"
   },
   {
-    "id": "125",
+    "id": "115",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "CreateThread 和 _beginthreadex 有什么区别？",
@@ -1662,7 +1542,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CreateThread versus _beginthreadex"
   },
   {
-    "id": "126",
+    "id": "116",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "线程优先级与调度有什么关系？提高优先级一定能保证实时性吗？",
@@ -1674,7 +1554,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Thread Priority and Scheduling"
   },
   {
-    "id": "127",
+    "id": "117",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "临界区（CRITICAL_SECTION）和互斥体（Mutex）有什么区别？",
@@ -1686,7 +1566,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Critical Section and Mutex Comparison"
   },
   {
-    "id": "128",
+    "id": "118",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "手动重置事件和自动重置事件有什么区别？如何选择？",
@@ -1698,7 +1578,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Event Objects Manual and Auto Reset"
   },
   {
-    "id": "129",
+    "id": "119",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "SRW Lock 有什么特点？它支持递归和升级吗？",
@@ -1710,7 +1590,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Slim Reader Writer Locks"
   },
   {
-    "id": "130",
+    "id": "120",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "TLS 和 FLS 有什么区别？线程退出时如何清理？",
@@ -1722,7 +1602,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Thread Local Storage and Fiber Local Storage"
   },
   {
-    "id": "131",
+    "id": "121",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "WSAStartup 和 WSACleanup 的配对规则是什么？",
@@ -1735,7 +1615,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · WSAStartup and WSACleanup"
   },
   {
-    "id": "132",
+    "id": "122",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "阻塞、非阻塞和重叠 IO 有什么区别？",
@@ -1748,7 +1628,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Blocking Nonblocking and Overlapped I/O"
   },
   {
-    "id": "133",
+    "id": "123",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "TCP 粘包和拆包问题怎么处理？",
@@ -1761,7 +1641,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：IETF RFC · RFC 9293 TCP byte stream semantics"
   },
   {
-    "id": "134",
+    "id": "124",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "select、WSAPoll 和 IOCP 在可扩展性上如何比较？",
@@ -1774,7 +1654,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · select WSAPoll and IOCP Scalability"
   },
   {
-    "id": "135",
+    "id": "125",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "send 返回小于请求长度时怎么处理？",
@@ -1787,7 +1667,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Send Return Values and Partial Sends"
   },
   {
-    "id": "136",
+    "id": "126",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "recv 返回 0、SOCKET_ERROR 和正数分别表示什么？",
@@ -1800,7 +1680,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Recv Return Values and Graceful Close"
   },
   {
-    "id": "137",
+    "id": "127",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "shutdown 和 closesocket 有什么区别？什么是半关闭？",
@@ -1813,7 +1693,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Shutdown and Graceful Connection Closure；IETF RFC · RFC 9293 TCP half-close"
   },
   {
-    "id": "138",
+    "id": "128",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "SO_REUSEADDR 和 SO_EXCLUSIVEADDRUSE 有什么区别？",
@@ -1826,7 +1706,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · SO_REUSEADDR and SO_EXCLUSIVEADDRUSE"
   },
   {
-    "id": "139",
+    "id": "129",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "UDP 的报文边界、丢包和乱序如何处理？",
@@ -1839,7 +1719,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：IETF RFC · RFC 768 UDP Semantics；Microsoft Learn · Winsock Datagram Sockets"
   },
   {
-    "id": "140",
+    "id": "130",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "getaddrinfo 的 hints 参数怎么用？解析失败如何处理？",
@@ -1852,7 +1732,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · getaddrinfo and Name Resolution"
   },
   {
-    "id": "141",
+    "id": "131",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "OVERLAPPED 结构的生命周期如何保证？",
@@ -1865,7 +1745,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Overlapped I/O Lifecycle"
   },
   {
-    "id": "142",
+    "id": "132",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "IOCP 的完成键和 GetQueuedCompletionStatus 如何使用？",
@@ -1878,7 +1758,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · IOCP Completion Keys and GQCS"
   },
   {
-    "id": "143",
+    "id": "133",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "取消重叠 IO 时有哪些竞态需要注意？",
@@ -1891,7 +1771,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CancelIoEx and Cancellation Race"
   },
   {
-    "id": "144",
+    "id": "134",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "LoadLibrary 的搜索路径有哪些？如何避免 DLL 劫持？",
@@ -1903,7 +1783,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · LoadLibraryEx Search Flags"
   },
   {
-    "id": "145",
+    "id": "135",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "GetProcAddress 如何保证 ABI 一致性？",
@@ -1915,7 +1795,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · GetProcAddress and Calling Conventions"
   },
   {
-    "id": "146",
+    "id": "136",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "DllMain 的通知机制有什么限制？哪些操作不能在 DllMain 中做？",
@@ -1927,7 +1807,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · DllMain Notifications and Loader Lock"
   },
   {
-    "id": "147",
+    "id": "137",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "内存映射文件（Memory-Mapped File）是什么？有什么优势？",
@@ -1939,7 +1819,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Memory-Mapped Files"
   },
   {
-    "id": "148",
+    "id": "138",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 中的 Unicode 和宽字符如何处理？",
@@ -1951,7 +1831,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Unicode and Character Sets in Windows"
   },
   {
-    "id": "149",
+    "id": "139",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 内核对象和句柄是什么关系？",
@@ -1963,7 +1843,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Kernel Objects and Handle Tables"
   },
   {
-    "id": "150",
+    "id": "140",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "CreateFile 的关键参数有哪些？如何正确设置共享模式？",
@@ -1975,7 +1855,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CreateFile Parameters and Sharing Mode"
   },
   {
-    "id": "151",
+    "id": "141",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 的结构化异常处理（SEH）是什么？和 C++ 异常有什么区别？",
@@ -1987,7 +1867,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Structured Exception Handling"
   },
   {
-    "id": "152",
+    "id": "142",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "什么是原子操作？Windows 提供的 Interlocked 函数有哪些？",
@@ -1999,7 +1879,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Interlocked functions"
   },
   {
-    "id": "153",
+    "id": "143",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "协程的基本概念是什么？和用户态线程有什么区别？",
@@ -2011,7 +1891,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Fibers and coroutine concepts"
   },
   {
-    "id": "154",
+    "id": "144",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "高并发服务器有哪些常见架构模型？各有什么优缺点？",
@@ -2024,7 +1904,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · server architecture models"
   },
   {
-    "id": "155",
+    "id": "145",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "什么是 Zero Copy？Windows 上有什么实现方式？",
@@ -2037,7 +1917,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · TransmitFile zero copy"
   },
   {
-    "id": "156",
+    "id": "146",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "网络编程中缓冲区设计的要点是什么？",
@@ -2050,7 +1930,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · network buffer design"
   },
   {
-    "id": "157",
+    "id": "147",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "什么是内存池？相比直接调用 malloc/new 有什么优势？",

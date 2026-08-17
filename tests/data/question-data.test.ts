@@ -45,7 +45,7 @@ const questionFiles: Record<Group, string> = {
 const expectedCounts: Record<Group, number> = {
   cpp: 51,
   gof: 20,
-  ue5: 50,
+  ue5: 40,
   windows: 36
 };
 const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库时，关键是|它的价值在于|如果变化点并不存在|不能只看一次调用是否返回成功|工程上应该把/u;
@@ -126,7 +126,7 @@ describe('authoring question data', () => {
   const evidenceById = new Map(evidence.map((record) => [record.id, record]));
 
   it('publishes the requested group counts and one continuous id sequence', () => {
-    expect(questions).toHaveLength(157);
+    expect(questions).toHaveLength(147);
     for (const group of Object.keys(expectedCounts) as Group[]) {
       expect(questions.filter((question) => question.group === group)).toHaveLength(expectedCounts[group]);
     }

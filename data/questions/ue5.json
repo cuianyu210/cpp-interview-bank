@@ -107,27 +107,6 @@
   {
     "id": "077",
     "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
-    "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NewObject 用于运行时创建全新 UObject，DuplicateObject 复制已有对象及其可复制属性，CreateDefaultSubobject 只应在类构造函数中建立默认子对象模板。动态 ActorComponent 通常用 NewObject 创建，再按需要加入实例组件列表并注册。混淆三者的使用时机会导致编辑器默认结构异常或运行时组件缺失。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Creating and Duplicating UObject Instances"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "078",
-    "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
     "difficulty": 2,
@@ -147,7 +126,7 @@
     ]
   },
   {
-    "id": "079",
+    "id": "078",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -168,7 +147,7 @@
     ]
   },
   {
-    "id": "080",
+    "id": "079",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -189,28 +168,7 @@
     ]
   },
   {
-    "id": "081",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "RootComponent 和组件附加关系如何正确设置？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "RootComponent 必须是 Actor 拥有的 USceneComponent，子组件应通过 SetupAttachment 或 AttachToComponent 建立层级。附加时需明确 KeepRelative、KeepWorld 或 SnapToTarget 等变换规则。在构造函数中使用 SetupAttachment，运行时使用 AttachToComponent 并指定变换保持模式。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Scene Component Attachment"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "082",
+    "id": "080",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
@@ -231,7 +189,7 @@
     ]
   },
   {
-    "id": "083",
+    "id": "081",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
@@ -252,7 +210,7 @@
     ]
   },
   {
-    "id": "084",
+    "id": "082",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -273,7 +231,7 @@
     ]
   },
   {
-    "id": "085",
+    "id": "083",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -294,28 +252,7 @@
     ]
   },
   {
-    "id": "086",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
-    "difficulty": 4,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "AddUObject 记录 UObject 弱绑定，对象失效后自动跳过调用。AddRaw 不跟踪普通 C++ 对象寿命，目标析构前必须显式移除绑定。AddLambda 的捕获寿命完全由调用方管理，涉及 UObject 时可用 AddWeakLambda 或捕获弱引用后校验。混淆这些绑定方式是委托崩溃的常见原因。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Delegate Binding and Lifetime"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "087",
+    "id": "084",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
@@ -336,28 +273,7 @@
     ]
   },
   {
-    "id": "088",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "绑定长寿命发布者时应保存 FDelegateHandle，在 EndPlay、Deinitialize 或 C++ 对象析构前调用 Remove 或 RemoveAll。AddUObject 能阻止无效 UObject 被执行，但仍应清理无用条目。Raw 和 Lambda 绑定更不能依赖发布者猜测目标寿命，必须主动移除。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Removing Delegate Bindings"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "089",
+    "id": "085",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
@@ -378,28 +294,7 @@
     ]
   },
   {
-    "id": "090",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "普通 AddLambda 不跟踪 UObject 生命周期，如果 UObject 被 GC 回收而 Lambda 仍被调用会导致悬空指针。应使用 AddWeakLambda 或手动捕获 TWeakObjectPtr 并在回调中调用 IsValid 校验。异步任务切回游戏线程后必须同时校验对象和 World 有效性。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Lambda Capture and UObject Lifetime"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "091",
+    "id": "086",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -420,7 +315,7 @@
     ]
   },
   {
-    "id": "092",
+    "id": "087",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
@@ -441,7 +336,7 @@
     ]
   },
   {
-    "id": "093",
+    "id": "088",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
@@ -462,28 +357,7 @@
     ]
   },
   {
-    "id": "094",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "Authority 是服务器上的权威副本，负责状态判定和属性同步。AutonomousProxy 是本地玩家的客户端副本，可以预测移动并接受服务器校正。SimulatedProxy 是其他玩家或 NPC 的客户端副本，只接收服务器同步的位置和动画信息。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Network Roles and Proxy Types"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "095",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -504,28 +378,7 @@
     ]
   },
   {
-    "id": "096",
-    "group": "ue5",
-    "category": "ue5/replication-rpc-serialization",
-    "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "NetPriority 数值越高的 Actor 越优先获得带宽，NetUpdateFrequency 指定期望的同步频率。Relevancy 判断 Actor 对特定客户端是否可见，超出 NetCullDistanceSquared 的 Actor 不会被同步。bAlwaysRelevant 可强制同步关键 Actor，bOnlyRelevantToOwner 限制只同步给拥有者。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Network Priority and Relevancy"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "097",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
@@ -546,28 +399,7 @@
     ]
   },
   {
-    "id": "098",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "UBT 分析 Build.cs 和模块结构生成编译配置，UHT 扫描反射宏并生成注册代码和 generated.h，最后 C++ 编译器编译各模块源文件。修改 Build.cs 或反射声明后通常需要重新编译，UHT 不会自动重跑除非源文件发生变化或手动清理。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Unreal Build Tool and Compilation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "099",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -588,49 +420,7 @@
     ]
   },
   {
-    "id": "100",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "模块可在 Default、PreDefault、PostDefault、PreLoadingScreen 等阶段加载。大多数游戏逻辑模块使用 Default，需要早于其他模块初始化的基础设施用 PreDefault，依赖大量其他模块的高层逻辑用 PostDefault。加载阶段错误会导致依赖模块尚未就绪的运行时崩溃。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Module Loading Phases"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "101",
-    "group": "ue5",
-    "category": "ue5/modules-plugins-buildcs",
-    "title": "API 宏和跨模块导出怎么使用？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "每个模块在 Build.cs 中定义 MYMODULE_API 宏，导出类和函数前加上该宏使其对其他模块可见。UCLASS、USTRUCT 和 UFUNCTION 标记的类型还需要在对应头文件中声明，且依赖模块的 Build.cs 必须引用该模块。缺少 API 宏会导致链接错误。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "API Macros and Module Exports"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-001",
-      "evidence-ue5-002"
-    ]
-  },
-  {
-    "id": "102",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -651,7 +441,7 @@
     ]
   },
   {
-    "id": "103",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统和 MotionController 如何使用？",
@@ -672,7 +462,7 @@
     ]
   },
   {
-    "id": "104",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -693,7 +483,7 @@
     ]
   },
   {
-    "id": "105",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -714,7 +504,7 @@
     ]
   },
   {
-    "id": "106",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
@@ -735,7 +525,7 @@
     ]
   },
   {
-    "id": "107",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -756,7 +546,7 @@
     ]
   },
   {
-    "id": "108",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
@@ -777,7 +567,7 @@
     ]
   },
   {
-    "id": "109",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
@@ -798,7 +588,7 @@
     ]
   },
   {
-    "id": "110",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
@@ -819,7 +609,7 @@
     ]
   },
   {
-    "id": "111",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
@@ -840,7 +630,7 @@
     ]
   },
   {
-    "id": "112",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Tick 和定时器（Timer）有什么区别？分别适合什么场景？",
@@ -861,7 +651,7 @@
     ]
   },
   {
-    "id": "113",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的碰撞和追踪系统是怎么工作的？",
@@ -882,7 +672,7 @@
     ]
   },
   {
-    "id": "114",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Gameplay 框架包含哪些核心类？各自的职责是什么？",
@@ -903,7 +693,7 @@
     ]
   },
   {
-    "id": "115",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "DataTable 和 DataAsset 有什么区别？分别适合什么场景？",
@@ -924,7 +714,7 @@
     ]
   },
   {
-    "id": "116",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Gameplay Ability System（GAS）的核心概念有哪些？",
@@ -945,7 +735,7 @@
     ]
   },
   {
-    "id": "117",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UMG 和 Slate 有什么区别？UE5 的 UI 系统怎么选择？",
@@ -966,7 +756,7 @@
     ]
   },
   {
-    "id": "118",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "World Partition 是什么？它和旧的世界组合有什么区别？",
@@ -987,7 +777,7 @@
     ]
   },
   {
-    "id": "119",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "Soft Reference 和 Hard Reference 有什么区别？怎么避免资产加载问题？",
@@ -1008,7 +798,7 @@
     ]
   },
   {
-    "id": "120",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "蓝图和 C++ 之间怎么通信？有哪些方式？",
@@ -1029,7 +819,7 @@
     ]
   },
   {
-    "id": "121",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的资产管理系统怎么工作？Asset Manager 有什么作用？",
