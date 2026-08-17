@@ -311,7 +311,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "023",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "C++ 的四种类型转换运算符分别是什么？各适用什么场景？",
+    "title": "C++ 四种类型转换运算符各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -507,7 +507,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "037",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "C++ 的编译过程分哪几个阶段？预处理、编译、链接分别做什么？",
+    "title": "C++ 从源码到可执行文件要经过哪些步骤？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -1053,7 +1053,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "075",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UPROPERTY 的 EditAnywhere、VisibleOnly 等 specifier 分别控制什么？",
+    "title": "UPROPERTY 常用的 specifier 有哪些？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1077,7 +1077,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "077",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
+    "title": "Actor 的生命周期是怎样的？从创建到 BeginPlay 经历了什么？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1113,7 +1113,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "080",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
+    "title": "Actor 销毁时的清理顺序是怎样的？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1341,7 +1341,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "099",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
+    "title": "UObject 的构造和初始化流程是怎样的？",
     "difficulty": 3,
     "scopes": [
       "UE5"
@@ -1365,7 +1365,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "101",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
-    "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
+    "title": "UE5 中 Event 和 Delegate 有什么区别？各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1377,7 +1377,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "Tick 和定时器（Timer）有什么区别？分别适合什么场景？",
+    "title": "Tick 和 Timer 有什么区别？什么情况下用哪个？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1401,7 +1401,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "UE5 的 Gameplay 框架包含哪些核心类？各自的职责是什么？",
+    "title": "UE5 的 Gameplay 框架有哪些核心类？各自负责什么？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1413,7 +1413,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "105",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
-    "title": "DataTable 和 DataAsset 有什么区别？分别适合什么场景？",
+    "title": "DataTable 和 DataAsset 有什么区别？各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "UE5"
@@ -1670,7 +1670,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "126",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
-    "title": "recv 返回 0、SOCKET_ERROR 和正数分别表示什么？",
+    "title": "recv 的返回值有哪些含义？",
     "difficulty": 2,
     "scopes": [
       "Win32",

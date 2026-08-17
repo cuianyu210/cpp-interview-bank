@@ -509,7 +509,7 @@
     "id": "023",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
-    "title": "C++ 的四种类型转换运算符分别是什么？各适用什么场景？",
+    "title": "C++ 四种类型转换运算符各用在什么场景？",
     "difficulty": 2,
     "scopes": [
       "C++11",
@@ -831,7 +831,7 @@
     "id": "037",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "C++ 的编译过程分哪几个阶段？预处理、编译、链接分别做什么？",
+    "title": "C++ 从源码到可执行文件要经过哪些步骤？",
     "difficulty": 2,
     "scopes": [
       "C++11",
