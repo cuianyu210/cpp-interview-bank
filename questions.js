@@ -3,48 +3,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "001",
     "group": "cpp",
     "category": "cpp/core-language",
-    "title": "inline 关键字有什么作用？它一定会让函数内联展开吗？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "inline 的语言语义主要是允许函数或变量在多个翻译单元中出现等价定义，而非强制编译器展开调用。是否真正执行内联属于优化决定，编译器可以忽略 inline 也可以内联未标记的函数。面试时应该说清楚 inline 解决的是 ODR 层面的重复定义问题，实际展开由优化器决定。",
-    "source": "资料依据：cppreference · inline specifier and ODR"
-  },
-  {
-    "id": "002",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "什么是 ODR（单一定义规则）？违反会怎样？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "ODR 要求被使用的非 inline 实体在每个翻译单元中最多只有一个定义，同一实体的多次声明可以存在。inline 函数、inline 变量和模板可以在多个翻译单元出现等价定义，但不一致的定义仍属于未定义行为。",
-    "source": "资料依据：cppreference · One Definition Rule"
-  },
-  {
-    "id": "003",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "extern \"C\" 有什么作用？它能转换 C++ 类型吗？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "extern \"C\" 指定 C 语言链接，主要影响函数名的修饰方式和调用约定。它不会把 C++ 类型、重载或异常自动变成 C ABI 可用形式，接口仍应限制为双方都能表示的数据布局。常用于 C++ 与 C 或其他语言的互操作边界。",
-    "source": "资料依据：cppreference · language linkage"
-  },
-  {
-    "id": "004",
-    "group": "cpp",
-    "category": "cpp/core-language",
     "title": "constexpr 有什么作用？标记的函数一定在编译期执行吗？",
     "difficulty": 3,
     "scopes": [
@@ -56,7 +14,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · constexpr specifier"
   },
   {
-    "id": "005",
+    "id": "002",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "auto 类型推导有哪些容易踩坑的地方？",
@@ -70,21 +28,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · placeholder type specifiers"
   },
   {
-    "id": "006",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "decltype 的推导规则是什么？加括号会改变结果吗？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "对未加括号的名字或成员访问，decltype 直接得到声明类型。对一般表达式，lvalue 得到 T&、xvalue 得到 T&&、prvalue 得到 T。因此额外括号可能把变量名从 T 变成 T&，看似无意义的括号会实质改变推导结果。",
-    "source": "资料依据：cppreference · decltype specifier"
-  },
-  {
-    "id": "007",
+    "id": "003",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "enum class 比普通 enum 好在哪里？",
@@ -98,7 +42,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · enumeration declaration"
   },
   {
-    "id": "008",
+    "id": "004",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "静态对象初始化顺序问题是什么？有什么解决办法？",
@@ -112,47 +56,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · non-local initialization"
   },
   {
-    "id": "009",
-    "group": "cpp",
-    "category": "cpp/types-expressions-initialization",
-    "title": "什么是整型提升？为什么小整数运算结果可能和预期不同？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "bool、char、short 等小整数类型参与大多数算术运算前会提升为 int 或 unsigned int，运算结果类型由提升后的操作数决定。因此溢出和重载选择不能按原始变量类型判断，char 相乘的结果类型是 int 而非 char。",
-    "source": "资料依据：cppreference · implicit conversions integral promotions"
-  },
-  {
-    "id": "010",
-    "group": "cpp",
-    "category": "cpp/types-expressions-initialization",
-    "title": "什么是窄化转换？列表初始化为什么能拦住它？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "花括号初始化会拒绝可能丢失范围或精度的整型、浮点转换，这个检查发生在编译期。例如 int x{3.14} 会被拒绝，而 int x(3.14) 可能只留下警告或直接截断。因此列表初始化更适合暴露隐式截断问题。",
-    "source": "资料依据：cppreference · list-initialization narrowing conversions"
-  },
-  {
-    "id": "011",
-    "group": "cpp",
-    "category": "cpp/types-expressions-initialization",
-    "title": "什么是聚合初始化？C++17 有哪些变化？",
-    "difficulty": 3,
-    "scopes": [
-      "C++17"
-    ],
-    "answer": "C++17 允许满足聚合条件的类包含公开基类，初始化顺序先基类后成员，未显式提供的成员使用默认成员初始化器或值初始化。用户提供了构造函数等条件会使类型失去聚合资格。聚合初始化的元素个数超过成员数会导致编译错误。",
-    "source": "资料依据：cppreference · aggregate initialization"
-  },
-  {
-    "id": "012",
+    "id": "005",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
     "title": "有符号数和无符号数混用有什么坑？",
@@ -166,21 +70,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · usual arithmetic conversions"
   },
   {
-    "id": "013",
-    "group": "cpp",
-    "category": "cpp/types-expressions-initialization",
-    "title": "数组什么时候不会退化成指针？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "数组在大多数值上下文中隐式转换为指向首元素的指针，但作为 sizeof、alignof、取地址和引用绑定的操作数时不会退化。模板按引用接收数组也能保留长度信息，退化是 C++ 中数组相关 bug 的常见来源。",
-    "source": "资料依据：cppreference · array-to-pointer conversion"
-  },
-  {
-    "id": "014",
+    "id": "006",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "虚函数是怎么实现的？虚表的结构是什么？",
@@ -194,7 +84,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · virtual functions and vtable implementation"
   },
   {
-    "id": "015",
+    "id": "007",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "基类析构函数为什么通常要写成 virtual？",
@@ -208,21 +98,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：C++ Core Guidelines · virtual destructor for polymorphic base"
   },
   {
-    "id": "016",
-    "group": "cpp",
-    "category": "cpp/classes-object-model",
-    "title": "纯虚析构函数为什么还要有函数体？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "纯虚析构函数让类保持抽象，但派生对象销毁时仍会调用基类析构部分，链接器需要找到该析构函数的定义。因此即使声明为 = 0 也必须提供实现，这也是为什么抽象基类的析构函数常写成 public virtual 或 protected non-virtual。",
-    "source": "资料依据：cppreference · pure virtual destructor"
-  },
-  {
-    "id": "017",
+    "id": "008",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "构造函数和析构函数中调用虚函数有什么问题？",
@@ -236,7 +112,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · virtual function during construction"
   },
   {
-    "id": "018",
+    "id": "009",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "什么是对象切片？怎样避免？",
@@ -250,7 +126,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：C++ Core Guidelines · object slicing"
   },
   {
-    "id": "019",
+    "id": "010",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "什么是三法则、五法则和零法则？",
@@ -264,21 +140,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · rule of zero three five"
   },
   {
-    "id": "020",
-    "group": "cpp",
-    "category": "cpp/classes-object-model",
-    "title": "什么是 PImpl（实现指针）模式？它解决什么问题？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "PImpl 让公开类只持有指向私有实现的指针，调用方无需看到成员布局，修改实现通常不要求重新编译。析构和移动操作应在实现类型完整的源文件中定义，常见写法是 unique_ptr<Impl> 配合 .cpp 中定义的析构函数。",
-    "source": "资料依据：C++ Core Guidelines · pImpl idiom"
-  },
-  {
-    "id": "021",
+    "id": "011",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "什么是 RAII（资源获取即初始化）？它为什么是 C++ 资源管理的核心？",
@@ -292,7 +154,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · RAII idiom"
   },
   {
-    "id": "022",
+    "id": "012",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "C++ 的异常安全保证分哪几级？",
@@ -306,7 +168,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · exception safety levels"
   },
   {
-    "id": "023",
+    "id": "013",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "noexcept 有什么作用？为什么移动操作应该是 noexcept？",
@@ -320,7 +182,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · noexcept specifier"
   },
   {
-    "id": "024",
+    "id": "014",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "智能指针怎样配合 RAII（资源获取即初始化）管理资源？",
@@ -334,7 +196,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · smart pointers and RAII"
   },
   {
-    "id": "025",
+    "id": "015",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "自定义 deleter 有什么用途？在哪些场景下使用？",
@@ -348,7 +210,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · custom deleters for smart pointers"
   },
   {
-    "id": "026",
+    "id": "016",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "shared_ptr 的引用计数是怎么实现的？",
@@ -362,7 +224,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · shared_ptr control block"
   },
   {
-    "id": "027",
+    "id": "017",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "unique_ptr 和 move 语义怎样配合？",
@@ -376,7 +238,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · unique_ptr and move semantics"
   },
   {
-    "id": "028",
+    "id": "018",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "weak_ptr 解决什么问题？怎样正确使用？",
@@ -390,7 +252,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · weak_ptr breaking circular references"
   },
   {
-    "id": "029",
+    "id": "019",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "make_shared 相比 new 构造 shared_ptr 有什么优势？",
@@ -404,7 +266,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · make_shared advantages"
   },
   {
-    "id": "030",
+    "id": "020",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "vector 的扩容机制是什么？扩容时迭代器会怎样？",
@@ -418,7 +280,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · vector capacity and reallocation"
   },
   {
-    "id": "031",
+    "id": "021",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "map 和 unordered_map 有什么区别？怎样选择？",
@@ -432,7 +294,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · associative containers comparison"
   },
   {
-    "id": "032",
+    "id": "022",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "deque 的底层结构是什么？它适合什么场景？",
@@ -446,35 +308,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · deque internal structure"
   },
   {
-    "id": "033",
-    "group": "cpp",
-    "category": "cpp/stl",
-    "title": "set 和 unordered_set 有什么区别？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "set 基于红黑树存储唯一元素并保持有序，查找和插入均为 O(log n)。unordered_set 基于哈希表存储，平均 O(1) 查找但不保持顺序。自定义类型用于 unordered_set 时需提供哈希函数和相等比较。",
-    "source": "资料依据：cppreference · set and unordered_set"
-  },
-  {
-    "id": "034",
-    "group": "cpp",
-    "category": "cpp/stl",
-    "title": "priority_queue 的底层实现和适用场景是什么？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "priority_queue 默认基于 vector 用大顶堆实现，top 返回最大元素，push 和 pop 均为 O(log n)。可以通过自定义比较器改变排序方向。它适用于任务调度、Dijkstra 算法和 Top-K 问题等需要快速获取最值的场景。",
-    "source": "资料依据：cppreference · priority_queue heap implementation"
-  },
-  {
-    "id": "035",
+    "id": "023",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "STL 迭代器在哪些情况下会失效？",
@@ -488,21 +322,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · iterator invalidation rules"
   },
   {
-    "id": "036",
-    "group": "cpp",
-    "category": "cpp/stl",
-    "title": "什么是 allocator？为什么要自定义分配器？",
-    "difficulty": 4,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "allocator 负责容器底层内存的分配、构造和销毁，标准 allocator 封装了 new/delete。自定义分配器可用于池化内存、共享内存映射、NUMA 感知分配或嵌入式系统的静态缓冲区。C++17 起多态分配器进一步简化了运行时切换分配策略的写法。",
-    "source": "资料依据：cppreference · allocator and custom allocators"
-  },
-  {
-    "id": "037",
+    "id": "024",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
     "title": "什么是模板特化和偏特化？",
@@ -516,21 +336,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · template specialization"
   },
   {
-    "id": "038",
-    "group": "cpp",
-    "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "什么是 SFINAE（替换失败并非错误）？它的原理是什么？",
-    "difficulty": 4,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "SFINAE 指替换失败不是错误：模板参数替换过程中如果产生无效的类型或表达式，该候选会从重载集合中移除而非编译报错。std::enable_if 和 void_t 是利用 SFINAE 的常用工具。C++20 的 concepts 提供了更清晰的约束语法，但 SFINAE 在 C++17 仍是主要的编译期分派手段。",
-    "source": "资料依据：cppreference · SFINAE substitution failure"
-  },
-  {
-    "id": "039",
+    "id": "025",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
     "title": "常用的 type_traits 有哪些？怎么用？",
@@ -544,7 +350,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · type traits utilities"
   },
   {
-    "id": "040",
+    "id": "026",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
     "title": "什么是可变参数模板和折叠表达式？",
@@ -558,7 +364,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · variadic templates and fold expressions"
   },
   {
-    "id": "041",
+    "id": "027",
     "group": "cpp",
     "category": "cpp/templates-sfinae-traits-constexpr",
     "title": "if constexpr 和普通 if 有什么区别？",
@@ -570,7 +376,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · constexpr if statement"
   },
   {
-    "id": "042",
+    "id": "028",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "C++ 的值类别有哪些？左值和右值怎么区分？",
@@ -584,7 +390,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · value categories"
   },
   {
-    "id": "043",
+    "id": "029",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "std::move 的作用是什么？它本身会移动对象吗？",
@@ -598,7 +404,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · std::move utility"
   },
   {
-    "id": "044",
+    "id": "030",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "std::forward 和完美转发是怎么回事？",
@@ -612,7 +418,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · std::forward perfect forwarding"
   },
   {
-    "id": "045",
+    "id": "031",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "什么是 RVO 和拷贝消除？",
@@ -626,7 +432,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · copy elision and RVO"
   },
   {
-    "id": "046",
+    "id": "032",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "移动语义在 STL 容器中是怎样应用的？",
@@ -640,7 +446,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · move semantics in containers"
   },
   {
-    "id": "047",
+    "id": "033",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "Lambda 表达式的捕获方式有哪些？各有什么注意事项？",
@@ -654,7 +460,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · lambda expression capture"
   },
   {
-    "id": "048",
+    "id": "034",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "std::function 和直接使用 lambda 有什么区别？",
@@ -668,7 +474,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · std::function type erasure"
   },
   {
-    "id": "049",
+    "id": "035",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "std::optional、std::variant 和 std::any 各解决什么问题？",
@@ -680,7 +486,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · optional variant any vocabulary types"
   },
   {
-    "id": "050",
+    "id": "036",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "std::tuple 和结构化绑定怎么用？",
@@ -694,7 +500,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · tuple and structured bindings"
   },
   {
-    "id": "051",
+    "id": "037",
     "group": "cpp",
     "category": "cpp/exceptions-rtti",
     "title": "C++ 异常处理的抛出和捕获机制是怎样的？",
@@ -708,7 +514,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · exception handling mechanism"
   },
   {
-    "id": "052",
+    "id": "038",
     "group": "cpp",
     "category": "cpp/exceptions-rtti",
     "title": "RTTI 和 typeid 有什么用途和开销？",
@@ -722,7 +528,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · RTTI and typeid"
   },
   {
-    "id": "053",
+    "id": "039",
     "group": "cpp",
     "category": "cpp/exceptions-rtti",
     "title": "dynamic_cast 的实现原理和使用场景是什么？",
@@ -736,7 +542,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · dynamic_cast implementation"
   },
   {
-    "id": "054",
+    "id": "040",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "std::thread 的基本用法和注意事项有哪些？",
@@ -750,7 +556,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · std::thread basics"
   },
   {
-    "id": "055",
+    "id": "041",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "mutex、lock_guard 和 unique_lock 有什么区别？",
@@ -764,7 +570,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · mutex lock_guard unique_lock"
   },
   {
-    "id": "056",
+    "id": "042",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "condition_variable 怎样避免虚假唤醒？",
@@ -778,7 +584,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · condition_variable spurious wakeup"
   },
   {
-    "id": "057",
+    "id": "043",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "std::atomic 和内存序是什么？",
@@ -792,7 +598,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · atomic operations and memory order"
   },
   {
-    "id": "058",
+    "id": "044",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "std::async、std::future 和 std::promise 怎样配合使用？",
@@ -806,21 +612,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：cppreference · async future promise"
   },
   {
-    "id": "059",
-    "group": "cpp",
-    "category": "cpp/strings-time-files-streams",
-    "title": "std::string 的小字符串优化（SSO）是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "多数 std::string 实现在对象内部预留一段小缓冲区，当字符串长度不超过该缓冲区时直接在栈上存储而无需堆分配，这就是小字符串优化。它显著减少了短字符串的分配开销，典型阈值在 15 到 22 字节之间，具体取决于实现和对齐。",
-    "source": "资料依据：cppreference · basic_string small string optimization"
-  },
-  {
-    "id": "060",
+    "id": "045",
     "group": "cpp",
     "category": "cpp/strings-time-files-streams",
     "title": "C++ 文件流和 iostream 的基本用法是什么？",
@@ -832,6 +624,216 @@ window.CPP_INTERVIEW_QUESTIONS = [
     ],
     "answer": "ifstream、ofstream 和 fstream 分别用于文件读取、写入和读写，构造时打开文件，析构时自动关闭。配合 RAII 可以安全地管理文件句柄。iostream 体系通过格式化运算符和 manipulator 提供类型安全的输入输出，但性能通常不如 C 风格的 stdio。",
     "source": "资料依据：cppreference · file stream and iostream basics"
+  },
+  {
+    "id": "046",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "指针和引用有什么区别？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "引用必须在创建时绑定到一个已存在的对象，之后不能重新绑定；指针可以不初始化，也可以随时指向不同对象。引用不能为空，指针可以为 nullptr。使用引用时语法更简洁，指针则需要解引用操作。",
+    "source": "资料依据：cppreference · references and pointers"
+  },
+  {
+    "id": "047",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "const 有哪些常见用法？const 指针和指向 const 的指针有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "const 可以修饰变量、函数参数、返回值、成员函数等，表达不可修改的语义。const int* p 表示指向的值不可变，int* const p 表示指针本身不可变。const 成员函数不能修改非 mutable 成员，是接口设计的重要契约。",
+    "source": "资料依据：cppreference · const correctness"
+  },
+  {
+    "id": "048",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "static 关键字在 C++ 中有哪些不同含义？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "static 在函数内部声明局部静态变量，只初始化一次且生命周期持续到程序结束。在命名空间作用域声明时限制链接为内部链接，只在当前翻译单元可见。静态成员变量和函数属于类而非对象，不依赖具体实例即可访问。",
+    "source": "资料依据：cppreference · static specifier"
+  },
+  {
+    "id": "049",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "虚函数和纯虚函数有什么区别？抽象类能实例化吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "虚函数允许派生类覆盖，实现运行时多态；纯虚函数在声明末尾加 = 0，要求派生类必须实现。含有纯虚函数的类是抽象类，不能直接实例化，只能作为基类使用。派生类如果未覆盖所有纯虚函数，仍然是抽象类。",
+    "source": "资料依据：cppreference · abstract classes and pure virtual"
+  },
+  {
+    "id": "050",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "volatile 关键字有什么作用？它能保证线程安全吗？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "volatile 告诉编译器不要优化对该变量的读写，每次必须从内存取值，主要用于内存映射 IO 和信号处理等特殊场景。它不提供任何线程同步保证，不能替代 atomic 或 mutex。C++ 中多线程共享变量应使用 std::atomic。",
+    "source": "资料依据：cppreference · volatile qualifier"
+  },
+  {
+    "id": "051",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "new 和 malloc 有什么区别？new 的过程做了什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "malloc 只分配原始内存并返回 void*，需要手动计算大小和类型转换。new 先调用 operator new 分配内存，再在分配的内存上调用构造函数初始化对象。delete 对应地先调用析构函数再释放内存，而 free 只做释放。",
+    "source": "资料依据：cppreference · new expression vs operator new"
+  },
+  {
+    "id": "052",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "什么是内存对齐？为什么结构体的大小可能大于成员大小之和？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "编译器会在成员之间和末尾插入填充字节，使每个成员的地址满足其自然对齐要求，提高 CPU 访问效率。结构体总大小是对最大成员对齐值的整数倍。可以使用 alignof 查询对齐要求，alignas 指定对齐。",
+    "source": "资料依据：cppreference · alignment and padding"
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "C++ 的四种类型转换运算符分别是什么？各适用什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "static_cast 用于编译期可验证的类型转换，如数值类型之间或基类派生类指针之间。dynamic_cast 借助 RTTI 在运行时检查继承关系，向下转换失败返回 nullptr。const_cast 去除或添加 const 限定。reinterpret_cast 做底层的位模式重解释，风险最高。",
+    "source": "资料依据：cppreference · casting operators"
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "什么是内存泄漏？C++ 中常见的原因和检测方法有哪些？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "内存泄漏指动态分配的内存不再被使用但未被释放，长期运行会导致可用内存耗尽。常见原因包括忘记 delete、异常路径跳过释放、循环引用导致 shared_ptr 无法释放。使用智能指针、RAII 和工具如 Valgrind、AddressSanitizer 可以有效检测和预防。",
+    "source": "资料依据：cppreference · memory management best practices"
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "深拷贝和浅拷贝有什么区别？什么时候需要自定义拷贝构造函数？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "浅拷贝只复制指针值，两个对象指向同一块内存，析构时会发生重复释放。深拷贝分配新内存并复制数据，两个对象各自独立。当类管理动态资源时必须自定义拷贝构造函数和拷贝赋值运算符，或者使用智能指针和标准容器自动处理。",
+    "source": "资料依据：cppreference · copy constructors and deep copy"
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "vector 和 list 有什么区别？分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "vector 是连续内存存储，支持随机访问 O(1)，尾部插入均摊 O(1)，中间插入需要移动元素 O(n)。list 是双向链表，插入删除 O(1) 但不支持随机访问，迭代器在插入删除后仍有效。大多数场景优先选 vector，只有频繁中间插入且需要迭代器稳定时才选 list。",
+    "source": "资料依据：cppreference · sequence containers comparison"
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "emplace_back 和 push_back 有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "push_back 接受一个已构造的对象，可能需要一次额外的移动或拷贝操作。emplace_back 在容器内存中原位构造对象，将参数直接转发给构造函数，避免了临时对象的创建。当对象构造代价较高时 emplace_back 通常更高效。",
+    "source": "资料依据：cppreference · emplace_back in place construction"
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "什么是死锁？产生的条件和常见解决方法有哪些？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "死锁指两个或多个线程互相等待对方释放资源，导致所有线程永久阻塞。产生需要四个条件同时满足：互斥、持有并等待、不可抢占、循环等待。常用解决方法包括统一加锁顺序、使用 std::lock 同时锁定多个 mutex、采用 RAII 的 lock_guard 防止遗漏解锁。",
+    "source": "资料依据：cppreference · deadlock avoidance"
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "什么是线程池？为什么不建议频繁创建和销毁线程？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "线程池预先创建一组工作线程，从任务队列中取出任务执行，避免反复创建和销毁线程的开销。线程创建涉及内核对象分配和栈空间预留，频繁操作会显著影响性能。C++ 标准库没有内置线程池，但可以用 std::thread 和条件变量简单实现。",
+    "source": "资料依据：cppreference · thread management patterns"
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "什么是生产者消费者模型？用 C++ 标准库怎么实现？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "生产者线程向共享队列放入数据，消费者线程取出数据进行处理，通过条件变量协调双方的速度差异。生产者放入后 notify 消费者，消费者在队列为空时 wait。使用 mutex 保护队列，condition_variable 配合谓词避免虚假唤醒，是最经典的多线程协作模式。",
+    "source": "资料依据：cppreference · condition_variable producer consumer"
   },
   {
     "id": "061",
@@ -927,21 +929,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "067",
     "group": "gof",
     "category": "gof/structural",
-    "title": "什么是桥接模式？它的设计意图是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "桥接模式将抽象部分与实现部分分离，使两者可以独立变化。它把操作接口与底层细节放在两个独立继承层次中，由抽象端持有实现接口。两条变化轴可独立扩展，代价是多一个间接层。若只有一个稳定实现，普通继承更简单。",
-    "pattern": "Bridge",
-    "source": "资料依据：GoF · GoF Bridge abstraction-implementation separation"
-  },
-  {
-    "id": "068",
-    "group": "gof",
-    "category": "gof/structural",
     "title": "什么是组合模式？如何统一叶子节点和容器节点的操作？",
     "difficulty": 2,
     "scopes": [
@@ -954,7 +941,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Composite part-whole hierarchy"
   },
   {
-    "id": "069",
+    "id": "068",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是装饰器模式？它和继承相比有什么优势？",
@@ -969,7 +956,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Decorator dynamic responsibility attachment"
   },
   {
-    "id": "070",
+    "id": "069",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是外观模式？它如何降低系统复杂度？",
@@ -984,22 +971,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Facade subsystem interface"
   },
   {
-    "id": "071",
-    "group": "gof",
-    "category": "gof/structural",
-    "title": "什么是享元模式？内在状态和外在状态如何划分？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "享元把可共享的内在状态放入池中，将位置、颜色等每次使用才确定的外在状态交给调用者传入。共享前必须证明内在状态不可变或有同步保护，否则会节省内存却换来跨对象状态污染。它适合存在大量相似对象的场景。",
-    "pattern": "Flyweight",
-    "source": "资料依据：GoF · GoF Flyweight intrinsic and extrinsic state"
-  },
-  {
-    "id": "072",
+    "id": "070",
     "group": "gof",
     "category": "gof/structural",
     "title": "什么是代理模式？常见的代理类型有哪些？",
@@ -1014,7 +986,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Proxy subject access control"
   },
   {
-    "id": "073",
+    "id": "071",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是责任链模式？它的优缺点是什么？",
@@ -1029,7 +1001,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Chain of Responsibility successor handling"
   },
   {
-    "id": "074",
+    "id": "072",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是命令模式？如何实现撤销操作？",
@@ -1044,22 +1016,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Command request encapsulation and undo"
   },
   {
-    "id": "075",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "什么是解释器模式？适用于什么场景？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "解释器把语言的文法规则表示为表达式对象层次，非终结符组合子表达式，终结符读取输入。它适合小而稳定的 DSL，文法规则直接对应类层次。当文法规模或性能要求上升后，解析器生成器和专用 AST 通常更可维护。",
-    "pattern": "Interpreter",
-    "source": "资料依据：GoF · GoF Interpreter grammar representation"
-  },
-  {
-    "id": "076",
+    "id": "073",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是迭代器模式？C++ 中如何自定义迭代器？",
@@ -1074,37 +1031,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Iterator aggregate traversal"
   },
   {
-    "id": "077",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "什么是中介者模式？它如何解耦对象之间的交互？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "中介者引入一个协调对象，让各同事只依赖中介者接口而不彼此直接调用，把网状依赖变成星形依赖。它适合协作规则集中且变化频繁的场景。当中介者承载过多业务时会成为上帝对象，应按用例拆分或引入领域服务。",
-    "pattern": "Mediator",
-    "source": "资料依据：GoF · GoF Mediator colleague collaboration"
-  },
-  {
-    "id": "078",
-    "group": "gof",
-    "category": "gof/behavioral",
-    "title": "什么是备忘录模式？如何在不破坏封装的前提下保存状态？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "备忘录由发起者创建状态快照，管理者只持有不透明句柄而不读取内容，从而在不暴露内部表示的前提下保存和恢复状态。快照需要定义一致性时点和容量成本，含外部资源句柄时恢复不一定能重建资源。",
-    "pattern": "Memento",
-    "source": "资料依据：GoF · GoF Memento encapsulation boundary"
-  },
-  {
-    "id": "079",
+    "id": "074",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是观察者模式？如何处理订阅和取消订阅的生命周期？",
@@ -1119,7 +1046,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Observer subject notification"
   },
   {
-    "id": "080",
+    "id": "075",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是状态模式？它和策略模式有什么区别？",
@@ -1134,7 +1061,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF State state-dependent behavior"
   },
   {
-    "id": "081",
+    "id": "076",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是策略模式？如何封装可互换的算法？",
@@ -1149,7 +1076,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Strategy interchangeable algorithm"
   },
   {
-    "id": "082",
+    "id": "077",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是模板方法模式？钩子函数的作用是什么？",
@@ -1164,7 +1091,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Template Method algorithm skeleton and hooks"
   },
   {
-    "id": "083",
+    "id": "078",
     "group": "gof",
     "category": "gof/behavioral",
     "title": "什么是访问者模式？双重分派解决了什么问题？",
@@ -1179,7 +1106,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF Visitor double dispatch and operation extension"
   },
   {
-    "id": "084",
+    "id": "079",
     "group": "gof",
     "category": "gof/creation",
     "title": "工厂方法和抽象工厂有什么区别？",
@@ -1194,7 +1121,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：GoF · GoF pattern relationships and creation tradeoffs"
   },
   {
-    "id": "085",
+    "id": "080",
     "group": "gof",
     "category": "gof/creation",
     "title": "建造者模式和命名构造函数如何选择？",
@@ -1207,6 +1134,81 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "answer": "命名构造函数适合少量互斥选项，能保持调用点简洁并直接返回完整对象。建造者更适合许多可选步骤、需要校验或多种表示的场景。建造者会增加类型数量和状态管理成本，如果构建过程并不复杂，采用它反而扩大了维护面。",
     "pattern": "Cross-pattern",
     "source": "资料依据：GoF · GoF Builder construction process and representation"
+  },
+  {
+    "id": "081",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "观察者模式在事件驱动的系统中如何使用？订阅和取消订阅的生命周期怎么管理？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "观察者模式定义一对多的依赖关系，当被观察对象状态变化时自动通知所有注册的观察者。在 UE 中委托系统和事件分发器就是这种模式的实现。订阅者应在析构时主动取消订阅，否则被观察对象可能持有悬空引用导致崩溃。",
+    "pattern": "Observer",
+    "source": "资料依据：GoF · GoF Observer publish-subscribe mechanism"
+  },
+  {
+    "id": "082",
+    "group": "gof",
+    "category": "gof/structural",
+    "title": "组合模式在树形结构和游戏场景管理中如何使用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "组合模式把对象组合成树形结构以表示部分-整体层次，使客户端对单个对象和组合对象的使用具有一致性。UE 的 Actor-Component 层级和场景图就是典型应用。所有节点实现统一接口，叶子节点执行业务逻辑，容器节点递归转发给子节点。",
+    "pattern": "Composite",
+    "source": "资料依据：GoF · GoF Composite uniform treatment of part-whole"
+  },
+  {
+    "id": "083",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "命令模式在游戏输入系统和撤销操作中如何使用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "命令模式将请求封装为对象，使请求的发送者和接收者解耦，支持排队、记录和撤销。游戏中的输入系统把按键映射为命令对象，便于重绑定和录制回放。撤销操作通过保存已执行命令的逆命令或状态快照实现。",
+    "pattern": "Command",
+    "source": "资料依据：GoF · GoF Command undoable operations"
+  },
+  {
+    "id": "084",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "模板方法模式在框架设计和 AI 行为中如何使用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "模板方法在基类中定义算法骨架，将某些步骤延迟到子类实现，子类可以不改变算法结构而重定义某些步骤。UE 的 Actor Tick、GAS 的 GameplayAbility 生命周期都采用了这种模式。钩子函数允许子类在骨架的特定节点插入自定义逻辑。",
+    "pattern": "Template Method",
+    "source": "资料依据：GoF · GoF Template Method algorithm skeleton"
+  },
+  {
+    "id": "085",
+    "group": "gof",
+    "category": "gof/behavioral",
+    "title": "迭代器模式如何统一不同容器的遍历方式？C++ 中怎么自定义迭代器？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "迭代器模式提供顺序访问聚合对象元素的方法，而不暴露其内部表示。C++ STL 所有容器都提供迭代器接口，算法通过迭代器操作容器，实现算法和数据结构解耦。自定义迭代器需要实现 iterator_traits 中规定的类型别名和操作符。",
+    "pattern": "Iterator",
+    "source": "资料依据：GoF · GoF Iterator sequential access"
   },
   {
     "id": "086",
@@ -1236,18 +1238,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "088",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UHT 常见的解析失败原因有哪些？如何定位生成错误？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "常见原因包括缺少或位置错误的 generated.h、反射宏藏在复杂宏内部、不支持的模板签名和括号不匹配。定位时应读取构建日志中最早的 UHT 错误和对应源文件行号，生成目录只用于核对，不能手工修补。移动代码后的异常应通过清理 Intermediate 产物并重新运行 UHT 解决。",
-    "source": "资料依据：Epic Games · UHT Parsing and Generated Headers"
-  },
-  {
-    "id": "089",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
     "title": "UE5 的 GC 机制是什么？哪些引用能被 GC 识别？",
     "difficulty": 4,
     "scopes": [
@@ -1257,7 +1247,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Garbage Collection and Reflected References"
   },
   {
-    "id": "090",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UPROPERTY 的 EditAnywhere、VisibleOnly 等 specifier 分别控制什么？",
@@ -1269,7 +1259,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Specifiers and Editor Visibility"
   },
   {
-    "id": "091",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UFUNCTION 的 BlueprintCallable、BlueprintPure 和 BlueprintNativeEvent 有什么区别？",
@@ -1281,7 +1271,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · UFunction Specifiers and Blueprint Events"
   },
   {
-    "id": "092",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "TObjectPtr 和裸 UObject 指针在 GC 和序列化方面有什么差异？",
@@ -1293,7 +1283,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Object Pointers and TObjectPtr"
   },
   {
-    "id": "093",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "TWeakObjectPtr 怎么用？IsValid 和裸指针的 Pin 有什么区别？",
@@ -1305,7 +1295,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Weak Object Pointers"
   },
   {
-    "id": "094",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
@@ -1317,7 +1307,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Creating and Duplicating UObject Instances"
   },
   {
-    "id": "095",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "RF_Transient、RF_Public 等对象标志分别影响什么行为？",
@@ -1329,7 +1319,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · EObjectFlags and UObject Lifecycle"
   },
   {
-    "id": "096",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "GENERATED_BODY 的位置和声明顺序有什么要求？",
@@ -1341,7 +1331,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · GENERATED_BODY and Generated Code"
   },
   {
-    "id": "097",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
@@ -1353,7 +1343,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Lifecycle: Construction and BeginPlay"
   },
   {
-    "id": "098",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "OnConstruction 在运行时 SpawnActor 和编辑器放置 Actor 时有什么区别？",
@@ -1365,7 +1355,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Construction Script for Placed and Spawned Actors"
   },
   {
-    "id": "099",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -1377,7 +1367,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actors and Components Architecture"
   },
   {
-    "id": "100",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "运行时创建组件后需要哪些步骤才能正常工作？",
@@ -1389,7 +1379,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Runtime Component Creation and Registration"
   },
   {
-    "id": "101",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -1401,19 +1391,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Programming Subsystems"
   },
   {
-    "id": "102",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "Tick 和 TickGroup 是什么？如何控制组件的更新顺序？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TickFunction 每帧被引擎调度执行，PrimaryComponentTick 在构造阶段通过 bCanEverTick、TickGroup 和 TickInterval 配置。AddTickPrerequisiteComponent 可建立细粒度的前置依赖关系，TickGroup 提供更粗的阶段顺序。依赖图应无环，不能依赖组件数组或注册的偶然顺序。",
-    "source": "资料依据：Epic Games · Actor Ticking and Tick Prerequisites"
-  },
-  {
-    "id": "103",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "RootComponent 和组件附加关系如何正确设置？",
@@ -1425,7 +1403,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Scene Component Attachment"
   },
   {
-    "id": "104",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
@@ -1437,7 +1415,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor EndPlay and Destruction"
   },
   {
-    "id": "105",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
@@ -1449,7 +1427,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Spawning Actors and SpawnParameters"
   },
   {
-    "id": "106",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "PostInitializeComponents 在什么时候调用？适合做什么？",
@@ -1461,7 +1439,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor PostInitializeComponents"
   },
   {
-    "id": "107",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -1473,7 +1451,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegates: Single-Cast and Multicast"
   },
   {
-    "id": "108",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -1485,7 +1463,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Dynamic versus Static Delegates"
   },
   {
-    "id": "109",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
@@ -1497,19 +1475,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Delegate Binding and Lifetime"
   },
   {
-    "id": "110",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "BlueprintNativeEvent 的 C++ 实现规则是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中。业务代码应调用 FunctionName 以经过蓝图分派，派生 C++ 类覆盖 _Implementation。直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口，导致蓝图逻辑不生效。",
-    "source": "资料依据：Epic Games · BlueprintNativeEvent Implementation"
-  },
-  {
-    "id": "111",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
@@ -1521,7 +1487,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Interfaces"
   },
   {
-    "id": "112",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
@@ -1533,7 +1499,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Removing Delegate Bindings"
   },
   {
-    "id": "113",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
@@ -1545,7 +1511,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Blueprint Event Specifiers"
   },
   {
-    "id": "114",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
@@ -1557,7 +1523,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Lambda Capture and UObject Lifetime"
   },
   {
-    "id": "115",
+    "id": "112",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -1569,7 +1535,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Actor Replication Overview"
   },
   {
-    "id": "116",
+    "id": "113",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
@@ -1581,7 +1547,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Remote Procedure Calls"
   },
   {
-    "id": "117",
+    "id": "114",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
@@ -1593,7 +1559,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Property Replication and RepNotify"
   },
   {
-    "id": "118",
+    "id": "115",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
@@ -1605,7 +1571,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Roles and Proxy Types"
   },
   {
-    "id": "119",
+    "id": "116",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "条件复制和 SetReplicates 怎么控制 Actor 是否同步？",
@@ -1617,7 +1583,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Conditional Replication"
   },
   {
-    "id": "120",
+    "id": "117",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的序列化机制是怎么工作的？FArchive 扮演什么角色？",
@@ -1629,7 +1595,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Serialization and FArchive"
   },
   {
-    "id": "121",
+    "id": "118",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -1641,7 +1607,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Prediction and Rollback"
   },
   {
-    "id": "122",
+    "id": "119",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
@@ -1653,7 +1619,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Network Priority and Relevancy"
   },
   {
-    "id": "123",
+    "id": "120",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
@@ -1665,7 +1631,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Build.cs Module Dependencies"
   },
   {
-    "id": "124",
+    "id": "121",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
@@ -1677,7 +1643,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Unreal Build Tool and Compilation"
   },
   {
-    "id": "125",
+    "id": "122",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -1689,7 +1655,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Plugin Structure and Creation"
   },
   {
-    "id": "126",
+    "id": "123",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
@@ -1701,7 +1667,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Module Loading Phases"
   },
   {
-    "id": "127",
+    "id": "124",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "API 宏和跨模块导出怎么使用？",
@@ -1713,7 +1679,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · API Macros and Module Exports"
   },
   {
-    "id": "128",
+    "id": "125",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -1725,7 +1691,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Stereo Rendering"
   },
   {
-    "id": "129",
+    "id": "126",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统和 MotionController 如何使用？",
@@ -1737,7 +1703,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · XR Input and Motion Controllers"
   },
   {
-    "id": "130",
+    "id": "127",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -1749,7 +1715,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR Performance Optimization"
   },
   {
-    "id": "131",
+    "id": "128",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -1761,7 +1727,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · OpenXR Integration"
   },
   {
-    "id": "132",
+    "id": "129",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
@@ -1773,7 +1739,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · VR UI and Widget Interaction"
   },
   {
-    "id": "133",
+    "id": "130",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "SaveGame 系统怎么使用？如何管理版本兼容性？",
@@ -1785,7 +1751,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · SaveGame System and Versioning"
   },
   {
-    "id": "134",
+    "id": "131",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -1797,7 +1763,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Epic Games · Async Loading and Thread Safety"
   },
   {
-    "id": "135",
+    "id": "132",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
@@ -1807,6 +1773,42 @@ window.CPP_INTERVIEW_QUESTIONS = [
     ],
     "answer": "ChildActorComponent 在注册或类配置变化时创建子 Actor，编辑器的 Construction Script 重建可能销毁旧实例。外部代码不能永久缓存 ChildActor 指针，应在重建后重新获取。组件负责子 Actor 的创建和销毁流程，手动干预可能导致生命周期不一致。",
     "source": "资料依据：Epic Games · Child Actor Component Lifecycle"
+  },
+  {
+    "id": "133",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UObject 通过 NewObject 或 ConstructObject 创建时，先调用 C++ 构造函数，然后引擎调用 PostInitProperties 做属性后处理。从磁盘加载的对象会在反序列化完成后调用 PostLoad。Serialize、Initialize、BeginPlay 等回调按生命周期顺序依次触发，理解这个顺序对正确初始化组件和资源至关重要。",
+    "source": "资料依据：Epic Games · UObject initialization lifecycle"
+  },
+  {
+    "id": "134",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Actor 可以通过 GetComponentByClass 获取组件引用后直接调用方法，适合强类型访问。组件之间可以通过 GetOwner 获取所属 Actor 再访问其他组件，但耦合度较高。委托和事件分发是最解耦的方式，适合跨组件通信。对于全局通信，Subsystem 或 GameInstance 作为中介者更合适。",
+    "source": "资料依据：Epic Games · Actor Component communication patterns"
+  },
+  {
+    "id": "135",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Delegate 是 C++ 层面的回调机制，支持单播和多播，类型安全且性能高。Event 在蓝图层面使用更广泛，蓝图 Event 可以被子类覆盖，支持网络复制标记。BlueprintAssignable 的 Event 可以从 C++ 触发、在蓝图中绑定，是 C++ 和蓝图交互的主要回调方式。简单回调用 Delegate，需要蓝图扩展时用 Event。",
+    "source": "资料依据：Epic Games · Delegate vs Event usage"
   },
   {
     "id": "136",
@@ -1836,30 +1838,6 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "id": "138",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "句柄继承有什么安全问题？如何收窄继承范围？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "传统继承要求 bInheritHandles 为 TRUE 且目标句柄带可继承标志，容易把无关句柄泄露给子进程。更稳妥的做法是用 PROC_THREAD_ATTRIBUTE_HANDLE_LIST 明确白名单，并通过约定的命令行或 IPC 协议把句柄值交给子进程验证。",
-    "source": "资料依据：Microsoft Learn · Handle Inheritance and PROC_THREAD_ATTRIBUTE"
-  },
-  {
-    "id": "139",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "Job Object 能限制进程组的哪些资源？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "通过 SetInformationJobObject 可设置进程数、CPU、内存限制和 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等策略。把 Job 关联到完成端口可接收新进程加入、退出和资源限制消息。消息通知不能代替对 API 返回值和进程退出状态的检查。",
-    "source": "资料依据：Microsoft Learn · Job Objects and Resource Limits"
-  },
-  {
-    "id": "140",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
     "title": "WaitForSingleObject 有哪些返回值？各表示什么？",
     "difficulty": 2,
     "scopes": [
@@ -1869,7 +1847,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · WaitForSingleObject Return Values"
   },
   {
-    "id": "141",
+    "id": "139",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "CreateThread 和 _beginthreadex 有什么区别？",
@@ -1881,7 +1859,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CreateThread versus _beginthreadex"
   },
   {
-    "id": "142",
+    "id": "140",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "线程优先级与调度有什么关系？提高优先级一定能保证实时性吗？",
@@ -1893,7 +1871,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Thread Priority and Scheduling"
   },
   {
-    "id": "143",
+    "id": "141",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "临界区（CRITICAL_SECTION）和互斥体（Mutex）有什么区别？",
@@ -1905,7 +1883,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Critical Section and Mutex Comparison"
   },
   {
-    "id": "144",
+    "id": "142",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "手动重置事件和自动重置事件有什么区别？如何选择？",
@@ -1917,19 +1895,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Event Objects Manual and Auto Reset"
   },
   {
-    "id": "145",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "信号量（Semaphore）如何使用？如何避免超发？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，超过创建时最大值会失败。代码应只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
-    "source": "资料依据：Microsoft Learn · Semaphore Objects and ReleaseSemaphore"
-  },
-  {
-    "id": "146",
+    "id": "143",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "SRW Lock 有什么特点？它支持递归和升级吗？",
@@ -1941,7 +1907,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Slim Reader Writer Locks"
   },
   {
-    "id": "147",
+    "id": "144",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "条件变量如何配合临界区或 SRW Lock 使用？如何处理虚假唤醒？",
@@ -1953,7 +1919,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Condition Variables with Locks"
   },
   {
-    "id": "148",
+    "id": "145",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "死锁的四个必要条件是什么？如何预防？",
@@ -1965,7 +1931,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Deadlock Detection and Prevention"
   },
   {
-    "id": "149",
+    "id": "146",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "TLS 和 FLS 有什么区别？线程退出时如何清理？",
@@ -1977,19 +1943,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Thread Local Storage and Fiber Local Storage"
   },
   {
-    "id": "150",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "什么是 APC？alertable wait 是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "QueueUserAPC 把回调排入目标线程队列，目标线程进入 SleepEx、WaitForSingleObjectEx 等可警报等待后才会执行。APC 没有通用的撤回接口，取消应由共享状态或代际标记让回调自行退出。回调捕获的内存必须在执行前一直有效。",
-    "source": "资料依据：Microsoft Learn · Asynchronous Procedure Calls"
-  },
-  {
-    "id": "151",
+    "id": "147",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "WSAStartup 和 WSACleanup 的配对规则是什么？",
@@ -2002,7 +1956,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · WSAStartup and WSACleanup"
   },
   {
-    "id": "152",
+    "id": "148",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "阻塞、非阻塞和重叠 IO 有什么区别？",
@@ -2015,7 +1969,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Blocking Nonblocking and Overlapped I/O"
   },
   {
-    "id": "153",
+    "id": "149",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "TCP 粘包和拆包问题怎么处理？",
@@ -2028,7 +1982,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：IETF RFC · RFC 9293 TCP byte stream semantics"
   },
   {
-    "id": "154",
+    "id": "150",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "select、WSAPoll 和 IOCP 在可扩展性上如何比较？",
@@ -2041,20 +1995,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · select WSAPoll and IOCP Scalability"
   },
   {
-    "id": "155",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "WSAEventSelect 怎么用？为什么不能只靠 ResetEvent？",
-    "difficulty": 2,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象并自动把 socket 置为非阻塞模式。事件被置位后应调用 WSAEnumNetworkEvents 读取每一位及其错误码，这同时完成事件状态重置。只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
-    "source": "资料依据：Microsoft Learn · WSAEventSelect and WSAEnumNetworkEvents"
-  },
-  {
-    "id": "156",
+    "id": "151",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "send 返回小于请求长度时怎么处理？",
@@ -2067,7 +2008,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Send Return Values and Partial Sends"
   },
   {
-    "id": "157",
+    "id": "152",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "recv 返回 0、SOCKET_ERROR 和正数分别表示什么？",
@@ -2080,7 +2021,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Recv Return Values and Graceful Close"
   },
   {
-    "id": "158",
+    "id": "153",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "shutdown 和 closesocket 有什么区别？什么是半关闭？",
@@ -2093,20 +2034,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Shutdown and Graceful Connection Closure；IETF RFC · RFC 9293 TCP half-close"
   },
   {
-    "id": "159",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "TCP_NODELAY 对小包延迟有什么影响？什么时候该启用？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "TCP_NODELAY 禁用 Nagle 算法，减少小写入等待未确认数据的延迟，但可能产生更多小包降低链路效率。实时交互场景可以启用，同时仍应在应用层合并同一帧可一起发送的数据。批处理吞吐场景通常不必默认关闭 Nagle。",
-    "source": "资料依据：Microsoft Learn · TCP_NODELAY and Nagle Algorithm"
-  },
-  {
-    "id": "160",
+    "id": "154",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "SO_REUSEADDR 和 SO_EXCLUSIVEADDRUSE 有什么区别？",
@@ -2119,20 +2047,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · SO_REUSEADDR and SO_EXCLUSIVEADDRUSE"
   },
   {
-    "id": "161",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "SO_KEEPALIVE 和应用层心跳有什么区别？如何配合使用？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "SO_KEEPALIVE 在连接空闲后用传输层探测判断对端是否可达，默认周期通常不适合快速故障发现。应用层心跳可以携带会话语义并设置业务超时，但会增加流量。二者解决的层次不同，可按场景组合使用。",
-    "source": "资料依据：Microsoft Learn · SO_KEEPALIVE and SIO_KEEPALIVE_VALS"
-  },
-  {
-    "id": "162",
+    "id": "155",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "UDP 的报文边界、丢包和乱序如何处理？",
@@ -2145,20 +2060,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：IETF RFC · RFC 768 UDP Semantics；Microsoft Learn · Winsock Datagram Sockets"
   },
   {
-    "id": "163",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "IPv4 和 IPv6 双栈监听有哪些兼容问题？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "双栈服务用 getaddrinfo(AF_UNSPEC) 遍历可用地址，并显式决定 IPV6_V6ONLY 策略。允许双栈时 IPv4 客户端可能以 IPv4-mapped IPv6 地址出现，日志、访问控制和地址比较必须先规范化表示，不能假设所有系统默认值相同。",
-    "source": "资料依据：Microsoft Learn · Dual-Stack Sockets and IPv4-Mapped Addresses"
-  },
-  {
-    "id": "164",
+    "id": "156",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "getaddrinfo 的 hints 参数怎么用？解析失败如何处理？",
@@ -2171,7 +2073,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · getaddrinfo and Name Resolution"
   },
   {
-    "id": "165",
+    "id": "157",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "OVERLAPPED 结构的生命周期如何保证？",
@@ -2184,7 +2086,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Overlapped I/O Lifecycle"
   },
   {
-    "id": "166",
+    "id": "158",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "IOCP 的完成键和 GetQueuedCompletionStatus 如何使用？",
@@ -2197,7 +2099,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · IOCP Completion Keys and GQCS"
   },
   {
-    "id": "167",
+    "id": "159",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "取消重叠 IO 时有哪些竞态需要注意？",
@@ -2210,7 +2112,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CancelIoEx and Cancellation Race"
   },
   {
-    "id": "168",
+    "id": "160",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "LoadLibrary 的搜索路径有哪些？如何避免 DLL 劫持？",
@@ -2222,7 +2124,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · LoadLibraryEx Search Flags"
   },
   {
-    "id": "169",
+    "id": "161",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "GetProcAddress 如何保证 ABI 一致性？",
@@ -2234,7 +2136,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · GetProcAddress and Calling Conventions"
   },
   {
-    "id": "170",
+    "id": "162",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "DllMain 的通知机制有什么限制？哪些操作不能在 DllMain 中做？",
@@ -2246,7 +2148,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · DllMain Notifications and Loader Lock"
   },
   {
-    "id": "171",
+    "id": "163",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "内存映射文件（Memory-Mapped File）是什么？有什么优势？",
@@ -2258,7 +2160,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Memory-Mapped Files"
   },
   {
-    "id": "172",
+    "id": "164",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 中的 Unicode 和宽字符如何处理？",
@@ -2270,7 +2172,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Unicode and Character Sets in Windows"
   },
   {
-    "id": "173",
+    "id": "165",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 内核对象和句柄是什么关系？",
@@ -2282,7 +2184,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · Kernel Objects and Handle Tables"
   },
   {
-    "id": "174",
+    "id": "166",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "CreateFile 的关键参数有哪些？如何正确设置共享模式？",
@@ -2294,7 +2196,7 @@ window.CPP_INTERVIEW_QUESTIONS = [
     "source": "资料依据：Microsoft Learn · CreateFile Parameters and Sharing Mode"
   },
   {
-    "id": "175",
+    "id": "167",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 的结构化异常处理（SEH）是什么？和 C++ 异常有什么区别？",
@@ -2304,5 +2206,104 @@ window.CPP_INTERVIEW_QUESTIONS = [
     ],
     "answer": "SEH 是操作系统级别的异常机制，__try/__except/__finally 处理访问违规、除零等硬件异常和系统错误。C++ 异常只处理 throw 抛出的对象，SEH 可以捕获更底层的故障。编译器通常不允许在同一函数中混用两者，__try 块中不能出现需要析构的局部变量。",
     "source": "资料依据：Microsoft Learn · Structured Exception Handling"
+  },
+  {
+    "id": "168",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是线程池？Windows 线程池 API 有什么优势？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "线程池维护一组预先创建的工作线程，从任务队列中取出任务执行，避免频繁创建销毁线程的开销。Windows 提供 Work Item API（QueueUserWorkItem）和 Vista 之后的 Thread Pool API（CreateThreadpoolWork）。适合大量短任务和异步回调场景。",
+    "source": "资料依据：Microsoft Learn · thread pool API"
+  },
+  {
+    "id": "169",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是生产者消费者模型？Windows 下用什么同步原语实现？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "生产者向共享缓冲区写入数据，消费者从中读取，通过同步原语协调速度和容量。Windows 下常用临界区保护缓冲区，事件对象或条件变量通知等待方。有界缓冲区需要同时处理满和空两种阻塞条件，防止忙等待浪费 CPU。",
+    "source": "资料依据：Microsoft Learn · synchronization producer consumer"
+  },
+  {
+    "id": "170",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是原子操作？Windows 提供的 Interlocked 函数有哪些？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "原子操作是不可被中断的最小执行单元，保证在多线程环境下对共享变量的读写不会出现数据竞争。Windows 提供 InterlockedIncrement、InterlockedDecrement、InterlockedExchange、InterlockedCompareExchange 等函数。C++11 的 std::atomic 在 Windows 上通常映射到这些 API。",
+    "source": "资料依据：Microsoft Learn · Interlocked functions"
+  },
+  {
+    "id": "171",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "协程的基本概念是什么？和用户态线程有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "协程是可以主动挂起和恢复的函数，在用户态管理执行状态，切换开销远小于线程上下文切换。和用户态线程不同，协程的调度由程序员控制而非操作系统抢占，适合高并发 IO 密集场景。C++20 引入了语言级协程支持，Windows 上也提供了 Fiber API 作为替代。",
+    "source": "资料依据：Microsoft Learn · Fibers and coroutine concepts"
+  },
+  {
+    "id": "172",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "高并发服务器有哪些常见架构模型？各有什么优缺点？",
+    "difficulty": 2,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "每连接一线程模型简单但线程切换开销大，只适合低并发。Reactor 模型用少量线程通过 IO 多路复用处理大量连接，适合 Linux 的 epoll。IOCP 模型让操作系统内核管理异步 IO 完成通知，工作线程从完成队列取结果处理，是 Windows 上扩展性最好的服务器架构。",
+    "source": "资料依据：Microsoft Learn · server architecture models"
+  },
+  {
+    "id": "173",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "什么是 Zero Copy？Windows 上有什么实现方式？",
+    "difficulty": 3,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "Zero Copy 避免数据在内核缓冲区和用户缓冲区之间的多余拷贝，减少 CPU 和内存带宽消耗。Linux 上常用 sendfile 和 splice，Windows 上 TransmitFile 和 TransmitPackets 可以直接把文件内容发送到 socket。WSARecv 配合 FILE_FLAG_OVERLAPPED 也能减少一次拷贝。",
+    "source": "资料依据：Microsoft Learn · TransmitFile zero copy"
+  },
+  {
+    "id": "174",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "网络编程中缓冲区设计的要点是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "接收缓冲区需要根据协议的报文边界设计，TCP 是流式协议没有天然边界，需要自定义长度前缀或分隔符来划分消息。发送缓冲区应支持部分写入后继续发送剩余数据。环形缓冲区适合高频读写场景，减少内存分配次数和数据拷贝。",
+    "source": "资料依据：Microsoft Learn · network buffer design"
+  },
+  {
+    "id": "175",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "什么是内存池？相比直接调用 malloc/new 有什么优势？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "内存池预先分配一大块内存，按固定大小或分级大小管理空闲块，分配和释放只需链表操作，O(1) 时间完成。相比 malloc/new 避免了频繁向操作系统申请内存的开销和碎片问题。游戏引擎广泛使用内存池管理高频创建销毁的对象，如粒子、子弹和 AI 节点。",
+    "source": "资料依据：Microsoft Learn · memory pool allocation"
   }
 ];

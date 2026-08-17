@@ -52,7 +52,7 @@ const genericAnswerPadding = /这类(?:规则|问题|知识点)|使用标准库�
 const commonCppAbbreviations = ['ODR', 'ADL', 'PImpl', 'RAII', 'EBO', 'SFINAE', 'NRVO', 'ABI'];
 const referenceStyleCppTitlePhrases = /有哪些约束|链接语义|函数候选|表示同一实体|引用限定|对象存储|可移植语义|何时|如何|怎样因为|分别表达什么|分别保证什么|哪些状态|哪些性质|哪些成本|生命周期取舍|二进制边界|适用边界|最终得到什么类型|动态类型|路径表示|可能丢精度的方向|underflow 和 overflow/u;
 const commonCppInterviewTitles = new Map([
-  ['015', '基类析构函数为什么通常要写成 virtual？']
+  ['007', '基类析构函数为什么通常要写成 virtual？']
 ]);
 const allowedAuthorities = new Set([
   'cppreference',
@@ -160,13 +160,12 @@ describe('authoring question data', () => {
     expect(cppCategories).not.toContain('cpp/stl-containers');
     expect(cppCategories).not.toContain('cpp/containers-iterators');
     for (const id of [
-      '030',
-      '031',
-      '032',
-      '033',
-      '034',
-      '035',
-      '036'
+      '020',
+      '021',
+      '022',
+      '023',
+      '056',
+      '057'
     ]) {
       expect(categoryById.get(id), id).toBe('cpp/stl');
     }

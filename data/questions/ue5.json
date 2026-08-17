@@ -45,27 +45,6 @@
     "id": "088",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
-    "title": "UHT 常见的解析失败原因有哪些？如何定位生成错误？",
-    "difficulty": 2,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "常见原因包括缺少或位置错误的 generated.h、反射宏藏在复杂宏内部、不支持的模板签名和括号不匹配。定位时应读取构建日志中最早的 UHT 错误和对应源文件行号，生成目录只用于核对，不能手工修补。移动代码后的异常应通过清理 Intermediate 产物并重新运行 UHT 解决。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "UHT Parsing and Generated Headers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-004",
-      "evidence-ue5-001"
-    ]
-  },
-  {
-    "id": "089",
-    "group": "ue5",
-    "category": "ue5/uobject-reflection-gc",
     "title": "UE5 的 GC 机制是什么？哪些引用能被 GC 识别？",
     "difficulty": 4,
     "scopes": [
@@ -84,7 +63,7 @@
     ]
   },
   {
-    "id": "090",
+    "id": "089",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UPROPERTY 的 EditAnywhere、VisibleOnly 等 specifier 分别控制什么？",
@@ -105,7 +84,7 @@
     ]
   },
   {
-    "id": "091",
+    "id": "090",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "UFUNCTION 的 BlueprintCallable、BlueprintPure 和 BlueprintNativeEvent 有什么区别？",
@@ -126,7 +105,7 @@
     ]
   },
   {
-    "id": "092",
+    "id": "091",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "TObjectPtr 和裸 UObject 指针在 GC 和序列化方面有什么差异？",
@@ -147,7 +126,7 @@
     ]
   },
   {
-    "id": "093",
+    "id": "092",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "TWeakObjectPtr 怎么用？IsValid 和裸指针的 Pin 有什么区别？",
@@ -168,7 +147,7 @@
     ]
   },
   {
-    "id": "094",
+    "id": "093",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "NewObject、DuplicateObject 和 CreateDefaultSubobject 分别在什么时候用？",
@@ -189,7 +168,7 @@
     ]
   },
   {
-    "id": "095",
+    "id": "094",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "RF_Transient、RF_Public 等对象标志分别影响什么行为？",
@@ -210,7 +189,7 @@
     ]
   },
   {
-    "id": "096",
+    "id": "095",
     "group": "ue5",
     "category": "ue5/uobject-reflection-gc",
     "title": "GENERATED_BODY 的位置和声明顺序有什么要求？",
@@ -231,7 +210,7 @@
     ]
   },
   {
-    "id": "097",
+    "id": "096",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 的生命周期是怎样的？构造函数、OnConstruction、BeginPlay 分别做什么？",
@@ -252,7 +231,7 @@
     ]
   },
   {
-    "id": "098",
+    "id": "097",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "OnConstruction 在运行时 SpawnActor 和编辑器放置 Actor 时有什么区别？",
@@ -273,7 +252,7 @@
     ]
   },
   {
-    "id": "099",
+    "id": "098",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "Actor 和 Component 有什么区别？为什么 UE5 推崇组件化设计？",
@@ -294,7 +273,7 @@
     ]
   },
   {
-    "id": "100",
+    "id": "099",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "运行时创建组件后需要哪些步骤才能正常工作？",
@@ -315,7 +294,7 @@
     ]
   },
   {
-    "id": "101",
+    "id": "100",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "UE5 的 Subsystem 有哪几种？它们的范围和生命周期有什么区别？",
@@ -336,28 +315,7 @@
     ]
   },
   {
-    "id": "102",
-    "group": "ue5",
-    "category": "ue5/actor-component-subsystem",
-    "title": "Tick 和 TickGroup 是什么？如何控制组件的更新顺序？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "TickFunction 每帧被引擎调度执行，PrimaryComponentTick 在构造阶段通过 bCanEverTick、TickGroup 和 TickInterval 配置。AddTickPrerequisiteComponent 可建立细粒度的前置依赖关系，TickGroup 提供更粗的阶段顺序。依赖图应无环，不能依赖组件数组或注册的偶然顺序。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "Actor Ticking and Tick Prerequisites"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-003",
-      "evidence-ue5-004"
-    ]
-  },
-  {
-    "id": "103",
+    "id": "101",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "RootComponent 和组件附加关系如何正确设置？",
@@ -378,7 +336,7 @@
     ]
   },
   {
-    "id": "104",
+    "id": "102",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "EndPlay、OnDestroyed 和析构函数各自负责什么清理工作？",
@@ -399,7 +357,7 @@
     ]
   },
   {
-    "id": "105",
+    "id": "103",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "SpawnActor 的参数有哪些？Owner 和 Instigator 有什么区别？",
@@ -420,7 +378,7 @@
     ]
   },
   {
-    "id": "106",
+    "id": "104",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "PostInitializeComponents 在什么时候调用？适合做什么？",
@@ -441,7 +399,7 @@
     ]
   },
   {
-    "id": "107",
+    "id": "105",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "单播委托和多播委托有什么区别？",
@@ -462,7 +420,7 @@
     ]
   },
   {
-    "id": "108",
+    "id": "106",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "动态委托和静态委托有什么区别？什么时候用哪个？",
@@ -483,7 +441,7 @@
     ]
   },
   {
-    "id": "109",
+    "id": "107",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "AddUObject、AddRaw 和 AddLambda 的生命周期风险分别是什么？",
@@ -504,28 +462,7 @@
     ]
   },
   {
-    "id": "110",
-    "group": "ue5",
-    "category": "ue5/delegate-interface-async",
-    "title": "BlueprintNativeEvent 的 C++ 实现规则是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "UE5"
-    ],
-    "answer": "BlueprintNativeEvent 会生成可从蓝图覆盖的入口，C++ 默认行为写在 FunctionName_Implementation 中。业务代码应调用 FunctionName 以经过蓝图分派，派生 C++ 类覆盖 _Implementation。直接调用 _Implementation 会绕过蓝图覆盖和生成的事件入口，导致蓝图逻辑不生效。",
-    "answerSources": [
-      {
-        "authority": "epic-games",
-        "topic": "BlueprintNativeEvent Implementation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-ue5-002",
-      "evidence-ue5-003"
-    ]
-  },
-  {
-    "id": "111",
+    "id": "108",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "UINTERFACE 和纯 C++ 虚接口有什么区别？",
@@ -546,7 +483,7 @@
     ]
   },
   {
-    "id": "112",
+    "id": "109",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "对象销毁或 EndPlay 时应该如何清理委托绑定？",
@@ -567,7 +504,7 @@
     ]
   },
   {
-    "id": "113",
+    "id": "110",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "BlueprintImplementableEvent 和 BlueprintNativeEvent 有什么区别？",
@@ -588,7 +525,7 @@
     ]
   },
   {
-    "id": "114",
+    "id": "111",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "Lambda 捕获 UObject 时有什么安全注意事项？",
@@ -609,7 +546,7 @@
     ]
   },
   {
-    "id": "115",
+    "id": "112",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的网络复制原理是什么？Actor 如何实现属性同步？",
@@ -630,7 +567,7 @@
     ]
   },
   {
-    "id": "116",
+    "id": "113",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RPC 的三种类型 Server、Client 和 NetMulticast 分别在什么场景使用？",
@@ -651,7 +588,7 @@
     ]
   },
   {
-    "id": "117",
+    "id": "114",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "RepNotify 是什么？属性复制后如何触发客户端回调？",
@@ -672,7 +609,7 @@
     ]
   },
   {
-    "id": "118",
+    "id": "115",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络中的 Authority、AutonomousProxy 和 SimulatedProxy 分别是什么角色？",
@@ -693,7 +630,7 @@
     ]
   },
   {
-    "id": "119",
+    "id": "116",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "条件复制和 SetReplicates 怎么控制 Actor 是否同步？",
@@ -714,7 +651,7 @@
     ]
   },
   {
-    "id": "120",
+    "id": "117",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "UE5 的序列化机制是怎么工作的？FArchive 扮演什么角色？",
@@ -735,7 +672,7 @@
     ]
   },
   {
-    "id": "121",
+    "id": "118",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络预测和回滚是什么？客户端如何处理服务器校正？",
@@ -756,7 +693,7 @@
     ]
   },
   {
-    "id": "122",
+    "id": "119",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "网络优先级和 Relevancy 如何决定哪些 Actor 被同步？",
@@ -777,7 +714,7 @@
     ]
   },
   {
-    "id": "123",
+    "id": "120",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "Build.cs 中的模块依赖如何管理？Public 和 Private 有什么区别？",
@@ -798,7 +735,7 @@
     ]
   },
   {
-    "id": "124",
+    "id": "121",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 的模块编译流程是怎样的？UHT 在其中起什么作用？",
@@ -819,7 +756,7 @@
     ]
   },
   {
-    "id": "125",
+    "id": "122",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "UE5 插件的基本结构是什么？如何创建自定义插件？",
@@ -840,7 +777,7 @@
     ]
   },
   {
-    "id": "126",
+    "id": "123",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "模块的加载阶段有哪些？如何选择正确的加载时机？",
@@ -861,7 +798,7 @@
     ]
   },
   {
-    "id": "127",
+    "id": "124",
     "group": "ue5",
     "category": "ue5/modules-plugins-buildcs",
     "title": "API 宏和跨模块导出怎么使用？",
@@ -882,7 +819,7 @@
     ]
   },
   {
-    "id": "128",
+    "id": "125",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "UE5 中如何实现 VR 立体渲染？",
@@ -903,7 +840,7 @@
     ]
   },
   {
-    "id": "129",
+    "id": "126",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "XR 输入系统和 MotionController 如何使用？",
@@ -924,7 +861,7 @@
     ]
   },
   {
-    "id": "130",
+    "id": "127",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 项目有哪些常见的性能优化手段？",
@@ -945,7 +882,7 @@
     ]
   },
   {
-    "id": "131",
+    "id": "128",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "OpenXR 在 UE5 中如何集成和使用？",
@@ -966,7 +903,7 @@
     ]
   },
   {
-    "id": "132",
+    "id": "129",
     "group": "ue5",
     "category": "ue5/xr-vr",
     "title": "VR 中的 UI 交互如何实现？World Space 和 Widget 组件怎么用？",
@@ -987,7 +924,7 @@
     ]
   },
   {
-    "id": "133",
+    "id": "130",
     "group": "ue5",
     "category": "ue5/replication-rpc-serialization",
     "title": "SaveGame 系统怎么使用？如何管理版本兼容性？",
@@ -1008,7 +945,7 @@
     ]
   },
   {
-    "id": "134",
+    "id": "131",
     "group": "ue5",
     "category": "ue5/delegate-interface-async",
     "title": "异步加载资产时如何保证回调线程安全和 UObject 有效？",
@@ -1029,7 +966,7 @@
     ]
   },
   {
-    "id": "135",
+    "id": "132",
     "group": "ue5",
     "category": "ue5/actor-component-subsystem",
     "title": "ChildActorComponent 的子 Actor 创建和销毁有哪些陷阱？",
@@ -1047,6 +984,69 @@
     "evidenceIds": [
       "evidence-ue5-004",
       "evidence-ue5-001"
+    ]
+  },
+  {
+    "id": "133",
+    "group": "ue5",
+    "category": "ue5/uobject-reflection-gc",
+    "title": "UObject 的构造和初始化流程是什么？PostInitProperties 和 PostLoad 分别在什么时候调用？",
+    "difficulty": 3,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "UObject 通过 NewObject 或 ConstructObject 创建时，先调用 C++ 构造函数，然后引擎调用 PostInitProperties 做属性后处理。从磁盘加载的对象会在反序列化完成后调用 PostLoad。Serialize、Initialize、BeginPlay 等回调按生命周期顺序依次触发，理解这个顺序对正确初始化组件和资源至关重要。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "UObject initialization lifecycle"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-005"
+    ]
+  },
+  {
+    "id": "134",
+    "group": "ue5",
+    "category": "ue5/actor-component-subsystem",
+    "title": "Actor 和 Component 之间的通信方式有哪些？各有什么优缺点？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Actor 可以通过 GetComponentByClass 获取组件引用后直接调用方法，适合强类型访问。组件之间可以通过 GetOwner 获取所属 Actor 再访问其他组件，但耦合度较高。委托和事件分发是最解耦的方式，适合跨组件通信。对于全局通信，Subsystem 或 GameInstance 作为中介者更合适。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Actor Component communication patterns"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-001",
+      "evidence-ue5-003"
+    ]
+  },
+  {
+    "id": "135",
+    "group": "ue5",
+    "category": "ue5/delegate-interface-async",
+    "title": "UE5 中的事件（Event）和委托（Delegate）有什么区别？分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "UE5"
+    ],
+    "answer": "Delegate 是 C++ 层面的回调机制，支持单播和多播，类型安全且性能高。Event 在蓝图层面使用更广泛，蓝图 Event 可以被子类覆盖，支持网络复制标记。BlueprintAssignable 的 Event 可以从 C++ 触发、在蓝图中绑定，是 C++ 和蓝图交互的主要回调方式。简单回调用 Delegate，需要蓝图扩展时用 Event。",
+    "answerSources": [
+      {
+        "authority": "epic-games",
+        "topic": "Delegate vs Event usage"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-ue5-005",
+      "evidence-ue5-007"
     ]
   }
 ]

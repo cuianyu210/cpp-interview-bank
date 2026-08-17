@@ -45,48 +45,6 @@
     "id": "138",
     "group": "windows",
     "category": "windows/process-thread-sync",
-    "title": "句柄继承有什么安全问题？如何收窄继承范围？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "传统继承要求 bInheritHandles 为 TRUE 且目标句柄带可继承标志，容易把无关句柄泄露给子进程。更稳妥的做法是用 PROC_THREAD_ATTRIBUTE_HANDLE_LIST 明确白名单，并通过约定的命令行或 IPC 协议把句柄值交给子进程验证。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "Handle Inheritance and PROC_THREAD_ATTRIBUTE"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-003",
-      "evidence-windows-004"
-    ]
-  },
-  {
-    "id": "139",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "Job Object 能限制进程组的哪些资源？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "通过 SetInformationJobObject 可设置进程数、CPU、内存限制和 JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE 等策略。把 Job 关联到完成端口可接收新进程加入、退出和资源限制消息。消息通知不能代替对 API 返回值和进程退出状态的检查。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "Job Objects and Resource Limits"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-004",
-      "evidence-windows-001"
-    ]
-  },
-  {
-    "id": "140",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
     "title": "WaitForSingleObject 有哪些返回值？各表示什么？",
     "difficulty": 2,
     "scopes": [
@@ -105,7 +63,7 @@
     ]
   },
   {
-    "id": "141",
+    "id": "139",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "CreateThread 和 _beginthreadex 有什么区别？",
@@ -126,7 +84,7 @@
     ]
   },
   {
-    "id": "142",
+    "id": "140",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "线程优先级与调度有什么关系？提高优先级一定能保证实时性吗？",
@@ -147,7 +105,7 @@
     ]
   },
   {
-    "id": "143",
+    "id": "141",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "临界区（CRITICAL_SECTION）和互斥体（Mutex）有什么区别？",
@@ -168,7 +126,7 @@
     ]
   },
   {
-    "id": "144",
+    "id": "142",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "手动重置事件和自动重置事件有什么区别？如何选择？",
@@ -189,28 +147,7 @@
     ]
   },
   {
-    "id": "145",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "信号量（Semaphore）如何使用？如何避免超发？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "等待成功会把信号量计数减一，ReleaseSemaphore 按指定数量增加计数，超过创建时最大值会失败。代码应只为已成功取得的许可释放一次，并用作用域对象记录许可所有权，避免超时或异常分支误释放。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "Semaphore Objects and ReleaseSemaphore"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-004",
-      "evidence-windows-001"
-    ]
-  },
-  {
-    "id": "146",
+    "id": "143",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "SRW Lock 有什么特点？它支持递归和升级吗？",
@@ -231,7 +168,7 @@
     ]
   },
   {
-    "id": "147",
+    "id": "144",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "条件变量如何配合临界区或 SRW Lock 使用？如何处理虚假唤醒？",
@@ -252,7 +189,7 @@
     ]
   },
   {
-    "id": "148",
+    "id": "145",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "死锁的四个必要条件是什么？如何预防？",
@@ -273,7 +210,7 @@
     ]
   },
   {
-    "id": "149",
+    "id": "146",
     "group": "windows",
     "category": "windows/process-thread-sync",
     "title": "TLS 和 FLS 有什么区别？线程退出时如何清理？",
@@ -294,28 +231,7 @@
     ]
   },
   {
-    "id": "150",
-    "group": "windows",
-    "category": "windows/process-thread-sync",
-    "title": "什么是 APC？alertable wait 是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32"
-    ],
-    "answer": "QueueUserAPC 把回调排入目标线程队列，目标线程进入 SleepEx、WaitForSingleObjectEx 等可警报等待后才会执行。APC 没有通用的撤回接口，取消应由共享状态或代际标记让回调自行退出。回调捕获的内存必须在执行前一直有效。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "Asynchronous Procedure Calls"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-001",
-      "evidence-windows-002"
-    ]
-  },
-  {
-    "id": "151",
+    "id": "147",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "WSAStartup 和 WSACleanup 的配对规则是什么？",
@@ -337,7 +253,7 @@
     ]
   },
   {
-    "id": "152",
+    "id": "148",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "阻塞、非阻塞和重叠 IO 有什么区别？",
@@ -359,7 +275,7 @@
     ]
   },
   {
-    "id": "153",
+    "id": "149",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "TCP 粘包和拆包问题怎么处理？",
@@ -381,7 +297,7 @@
     ]
   },
   {
-    "id": "154",
+    "id": "150",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "select、WSAPoll 和 IOCP 在可扩展性上如何比较？",
@@ -403,29 +319,7 @@
     ]
   },
   {
-    "id": "155",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "WSAEventSelect 怎么用？为什么不能只靠 ResetEvent？",
-    "difficulty": 2,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "WSAEventSelect 把指定 FD_* 事件关联到事件对象并自动把 socket 置为非阻塞模式。事件被置位后应调用 WSAEnumNetworkEvents 读取每一位及其错误码，这同时完成事件状态重置。只调用 ResetEvent 会丢失 Winsock 维护的事件信息。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "WSAEventSelect and WSAEnumNetworkEvents"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-002",
-      "evidence-windows-003"
-    ]
-  },
-  {
-    "id": "156",
+    "id": "151",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "send 返回小于请求长度时怎么处理？",
@@ -447,7 +341,7 @@
     ]
   },
   {
-    "id": "157",
+    "id": "152",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "recv 返回 0、SOCKET_ERROR 和正数分别表示什么？",
@@ -469,7 +363,7 @@
     ]
   },
   {
-    "id": "158",
+    "id": "153",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "shutdown 和 closesocket 有什么区别？什么是半关闭？",
@@ -495,29 +389,7 @@
     ]
   },
   {
-    "id": "159",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "TCP_NODELAY 对小包延迟有什么影响？什么时候该启用？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "TCP_NODELAY 禁用 Nagle 算法，减少小写入等待未确认数据的延迟，但可能产生更多小包降低链路效率。实时交互场景可以启用，同时仍应在应用层合并同一帧可一起发送的数据。批处理吞吐场景通常不必默认关闭 Nagle。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "TCP_NODELAY and Nagle Algorithm"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-003",
-      "evidence-windows-004"
-    ]
-  },
-  {
-    "id": "160",
+    "id": "154",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "SO_REUSEADDR 和 SO_EXCLUSIVEADDRUSE 有什么区别？",
@@ -539,29 +411,7 @@
     ]
   },
   {
-    "id": "161",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "SO_KEEPALIVE 和应用层心跳有什么区别？如何配合使用？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "SO_KEEPALIVE 在连接空闲后用传输层探测判断对端是否可达，默认周期通常不适合快速故障发现。应用层心跳可以携带会话语义并设置业务超时，但会增加流量。二者解决的层次不同，可按场景组合使用。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "SO_KEEPALIVE and SIO_KEEPALIVE_VALS"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-002",
-      "evidence-windows-003"
-    ]
-  },
-  {
-    "id": "162",
+    "id": "155",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "UDP 的报文边界、丢包和乱序如何处理？",
@@ -587,29 +437,7 @@
     ]
   },
   {
-    "id": "163",
-    "group": "windows",
-    "category": "windows/winsock-protocol-iocp",
-    "title": "IPv4 和 IPv6 双栈监听有哪些兼容问题？",
-    "difficulty": 3,
-    "scopes": [
-      "Win32",
-      "Winsock"
-    ],
-    "answer": "双栈服务用 getaddrinfo(AF_UNSPEC) 遍历可用地址，并显式决定 IPV6_V6ONLY 策略。允许双栈时 IPv4 客户端可能以 IPv4-mapped IPv6 地址出现，日志、访问控制和地址比较必须先规范化表示，不能假设所有系统默认值相同。",
-    "answerSources": [
-      {
-        "authority": "microsoft-learn",
-        "topic": "Dual-Stack Sockets and IPv4-Mapped Addresses"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-windows-004",
-      "evidence-windows-001"
-    ]
-  },
-  {
-    "id": "164",
+    "id": "156",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "getaddrinfo 的 hints 参数怎么用？解析失败如何处理？",
@@ -631,7 +459,7 @@
     ]
   },
   {
-    "id": "165",
+    "id": "157",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "OVERLAPPED 结构的生命周期如何保证？",
@@ -653,7 +481,7 @@
     ]
   },
   {
-    "id": "166",
+    "id": "158",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "IOCP 的完成键和 GetQueuedCompletionStatus 如何使用？",
@@ -675,7 +503,7 @@
     ]
   },
   {
-    "id": "167",
+    "id": "159",
     "group": "windows",
     "category": "windows/winsock-protocol-iocp",
     "title": "取消重叠 IO 时有哪些竞态需要注意？",
@@ -697,7 +525,7 @@
     ]
   },
   {
-    "id": "168",
+    "id": "160",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "LoadLibrary 的搜索路径有哪些？如何避免 DLL 劫持？",
@@ -718,7 +546,7 @@
     ]
   },
   {
-    "id": "169",
+    "id": "161",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "GetProcAddress 如何保证 ABI 一致性？",
@@ -739,7 +567,7 @@
     ]
   },
   {
-    "id": "170",
+    "id": "162",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "DllMain 的通知机制有什么限制？哪些操作不能在 DllMain 中做？",
@@ -760,7 +588,7 @@
     ]
   },
   {
-    "id": "171",
+    "id": "163",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "内存映射文件（Memory-Mapped File）是什么？有什么优势？",
@@ -781,7 +609,7 @@
     ]
   },
   {
-    "id": "172",
+    "id": "164",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 中的 Unicode 和宽字符如何处理？",
@@ -802,7 +630,7 @@
     ]
   },
   {
-    "id": "173",
+    "id": "165",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 内核对象和句柄是什么关系？",
@@ -823,7 +651,7 @@
     ]
   },
   {
-    "id": "174",
+    "id": "166",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "CreateFile 的关键参数有哪些？如何正确设置共享模式？",
@@ -844,7 +672,7 @@
     ]
   },
   {
-    "id": "175",
+    "id": "167",
     "group": "windows",
     "category": "windows/dll-files-mmap-unicode-handles",
     "title": "Windows 的结构化异常处理（SEH）是什么？和 C++ 异常有什么区别？",
@@ -862,6 +690,177 @@
     "evidenceIds": [
       "evidence-windows-004",
       "evidence-windows-001"
+    ]
+  },
+  {
+    "id": "168",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是线程池？Windows 线程池 API 有什么优势？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "线程池维护一组预先创建的工作线程，从任务队列中取出任务执行，避免频繁创建销毁线程的开销。Windows 提供 Work Item API（QueueUserWorkItem）和 Vista 之后的 Thread Pool API（CreateThreadpoolWork）。适合大量短任务和异步回调场景。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "thread pool API"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-001",
+      "evidence-windows-003"
+    ]
+  },
+  {
+    "id": "169",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是生产者消费者模型？Windows 下用什么同步原语实现？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "生产者向共享缓冲区写入数据，消费者从中读取，通过同步原语协调速度和容量。Windows 下常用临界区保护缓冲区，事件对象或条件变量通知等待方。有界缓冲区需要同时处理满和空两种阻塞条件，防止忙等待浪费 CPU。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "synchronization producer consumer"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-002",
+      "evidence-windows-004"
+    ]
+  },
+  {
+    "id": "170",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "什么是原子操作？Windows 提供的 Interlocked 函数有哪些？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "原子操作是不可被中断的最小执行单元，保证在多线程环境下对共享变量的读写不会出现数据竞争。Windows 提供 InterlockedIncrement、InterlockedDecrement、InterlockedExchange、InterlockedCompareExchange 等函数。C++11 的 std::atomic 在 Windows 上通常映射到这些 API。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "Interlocked functions"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-001",
+      "evidence-windows-004"
+    ]
+  },
+  {
+    "id": "171",
+    "group": "windows",
+    "category": "windows/process-thread-sync",
+    "title": "协程的基本概念是什么？和用户态线程有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "协程是可以主动挂起和恢复的函数，在用户态管理执行状态，切换开销远小于线程上下文切换。和用户态线程不同，协程的调度由程序员控制而非操作系统抢占，适合高并发 IO 密集场景。C++20 引入了语言级协程支持，Windows 上也提供了 Fiber API 作为替代。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "Fibers and coroutine concepts"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-003",
+      "evidence-windows-004"
+    ]
+  },
+  {
+    "id": "172",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "高并发服务器有哪些常见架构模型？各有什么优缺点？",
+    "difficulty": 2,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "每连接一线程模型简单但线程切换开销大，只适合低并发。Reactor 模型用少量线程通过 IO 多路复用处理大量连接，适合 Linux 的 epoll。IOCP 模型让操作系统内核管理异步 IO 完成通知，工作线程从完成队列取结果处理，是 Windows 上扩展性最好的服务器架构。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "server architecture models"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-002",
+      "evidence-windows-003"
+    ]
+  },
+  {
+    "id": "173",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "什么是 Zero Copy？Windows 上有什么实现方式？",
+    "difficulty": 3,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "Zero Copy 避免数据在内核缓冲区和用户缓冲区之间的多余拷贝，减少 CPU 和内存带宽消耗。Linux 上常用 sendfile 和 splice，Windows 上 TransmitFile 和 TransmitPackets 可以直接把文件内容发送到 socket。WSARecv 配合 FILE_FLAG_OVERLAPPED 也能减少一次拷贝。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "TransmitFile zero copy"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-001",
+      "evidence-windows-004"
+    ]
+  },
+  {
+    "id": "174",
+    "group": "windows",
+    "category": "windows/winsock-protocol-iocp",
+    "title": "网络编程中缓冲区设计的要点是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "Winsock",
+      "IOCP"
+    ],
+    "answer": "接收缓冲区需要根据协议的报文边界设计，TCP 是流式协议没有天然边界，需要自定义长度前缀或分隔符来划分消息。发送缓冲区应支持部分写入后继续发送剩余数据。环形缓冲区适合高频读写场景，减少内存分配次数和数据拷贝。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "network buffer design"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-002",
+      "evidence-windows-004"
+    ]
+  },
+  {
+    "id": "175",
+    "group": "windows",
+    "category": "windows/dll-files-mmap-unicode-handles",
+    "title": "什么是内存池？相比直接调用 malloc/new 有什么优势？",
+    "difficulty": 2,
+    "scopes": [
+      "Win32"
+    ],
+    "answer": "内存池预先分配一大块内存，按固定大小或分级大小管理空闲块，分配和释放只需链表操作，O(1) 时间完成。相比 malloc/new 避免了频繁向操作系统申请内存的开销和碎片问题。游戏引擎广泛使用内存池管理高频创建销毁的对象，如粒子、子弹和 AI 节点。",
+    "answerSources": [
+      {
+        "authority": "microsoft-learn",
+        "topic": "memory pool allocation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-windows-001",
+      "evidence-windows-003"
     ]
   }
 ]
