@@ -2,121 +2,6 @@
   {
     "id": "001",
     "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "constexpr 有什么作用？标记的函数一定在编译期执行吗？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "constexpr 函数具备参与常量求值的资格，但只有实参和执行路径满足常量表达式规则时才必须在编译期求值。C++14 放宽了函数体限制，允许循环和局部变量。不满足常量求值条件的调用仍可作为普通运行期调用。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "constexpr specifier"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "002",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "auto 类型推导有哪些容易踩坑的地方？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "普通 auto 按模板传值规则推导，会丢弃顶层 const/volatile 和引用。auto& 保留左值引用，auto&& 可以接受任意值类别。花括号初始化可能触发 initializer_list 的特殊推导规则，导致意外的类型选择。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "placeholder type specifiers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "003",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "enum class 比普通 enum 好在哪里？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "作用域枚举的枚举值必须通过枚举类型名限定访问，不会隐式转换为整数，避免了名字冲突和意外的整型运算。可以显式指定底层类型以控制存储和 ABI，适合需要类型安全的场景。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "enumeration declaration"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "004",
-    "group": "cpp",
-    "category": "cpp/core-language",
-    "title": "静态对象初始化顺序问题是什么？有什么解决办法？",
-    "difficulty": 4,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "同一翻译单元内的有序动态初始化按定义顺序进行，但不同翻译单元之间没有可依赖的全局顺序，跨模块的全局对象可能访问尚未初始化的依赖。常用解法是用函数内静态对象按需初始化，C++11 起语言保证这种初始化的线程安全。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "non-local initialization"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "005",
-    "group": "cpp",
-    "category": "cpp/types-expressions-initialization",
-    "title": "有符号数和无符号数混用有什么坑？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "通常算术转换可能把有符号操作数转换成同等级的无符号类型，负数随后表现为很大的无符号值，导致比较和循环条件出现意外结果。比较前应统一到能表达双方范围的类型，不能只在结果异常后再做强制转换。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "usual arithmetic conversions"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "006",
-    "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "虚函数是怎么实现的？虚表的结构是什么？",
     "difficulty": 3,
@@ -138,7 +23,7 @@
     ]
   },
   {
-    "id": "007",
+    "id": "002",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "基类析构函数为什么通常要写成 virtual？",
@@ -161,7 +46,7 @@
     ]
   },
   {
-    "id": "008",
+    "id": "003",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "构造函数和析构函数中调用虚函数有什么问题？",
@@ -184,53 +69,7 @@
     ]
   },
   {
-    "id": "009",
-    "group": "cpp",
-    "category": "cpp/classes-object-model",
-    "title": "什么是对象切片？怎样避免？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "按值构造基类对象只复制派生对象中的基类子对象，派生新增状态被切掉，虚函数分派也不会再看到派生类行为。需要保留动态类型时应使用引用、指针或具备值语义的多态封装。",
-    "answerSources": [
-      {
-        "authority": "cpp-core-guidelines",
-        "topic": "object slicing"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "010",
-    "group": "cpp",
-    "category": "cpp/classes-object-model",
-    "title": "什么是三法则、五法则和零法则？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "三法则指出需要自定义析构、复制构造或复制赋值之一时，通常三者都需要自定义。五法则在此基础上加入移动构造和移动赋值。零法则把资源管理交给 RAII 包装和标准容器，使编译器生成的默认操作自然正确。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "rule of zero three five"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "011",
+    "id": "004",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "什么是 RAII（资源获取即初始化）？它为什么是 C++ 资源管理的核心？",
@@ -253,53 +92,7 @@
     ]
   },
   {
-    "id": "012",
-    "group": "cpp",
-    "category": "cpp/lifetime-raii",
-    "title": "C++ 的异常安全保证分哪几级？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "基本保证：异常后对象仍有效且无资源泄漏，但状态可能改变。强保证：操作要么完全成功要么回滚到调用前状态，通常借助 copy-and-swap 实现。不抛出保证：操作绝不抛异常，析构函数、swap 和移动操作应满足此级别。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "exception safety levels"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "013",
-    "group": "cpp",
-    "category": "cpp/lifetime-raii",
-    "title": "noexcept 有什么作用？为什么移动操作应该是 noexcept？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "noexcept 声明函数不会抛出异常，编译器可以据此优化调用路径，且 noexcept 的函数在栈展开时有更好的性能表现。容器在 resize 时优先使用 noexcept 的移动操作，否则退回复制以保证强异常安全，因此移动操作加 noexcept 直接影响容器性能。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "noexcept specifier"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "014",
+    "id": "005",
     "group": "cpp",
     "category": "cpp/lifetime-raii",
     "title": "智能指针怎样配合 RAII（资源获取即初始化）管理资源？",
@@ -322,53 +115,7 @@
     ]
   },
   {
-    "id": "015",
-    "group": "cpp",
-    "category": "cpp/lifetime-raii",
-    "title": "自定义 deleter 有什么用途？在哪些场景下使用？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "自定义 deleter 允许智能指针在释放时执行非默认的清理逻辑，例如 C 库的 free、fclose 或自定义引用计数释放。unique_ptr 的自定义 deleter 不影响类型大小，shared_ptr 的 deleter 存储在控制块中。这使得 RAII 可以管理任意类型的资源。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "custom deleters for smart pointers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-004",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "016",
-    "group": "cpp",
-    "category": "cpp/smart-pointers-allocators",
-    "title": "shared_ptr 的引用计数是怎么实现的？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "shared_ptr 使用控制块保存强引用计数和弱引用计数，引用计数的增减是原子操作以保证线程安全。make_shared 将对象和控制块分配在同一块内存中，减少分配次数并改善缓存局部性。当强引用归零时销毁对象，弱引用也归零时释放控制块。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "shared_ptr control block"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "017",
+    "id": "006",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "unique_ptr 和 move 语义怎样配合？",
@@ -391,7 +138,7 @@
     ]
   },
   {
-    "id": "018",
+    "id": "007",
     "group": "cpp",
     "category": "cpp/smart-pointers-allocators",
     "title": "weak_ptr 解决什么问题？怎样正确使用？",
@@ -414,30 +161,7 @@
     ]
   },
   {
-    "id": "019",
-    "group": "cpp",
-    "category": "cpp/smart-pointers-allocators",
-    "title": "make_shared 相比 new 构造 shared_ptr 有什么优势？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "make_shared 把对象和控制块分配在同一块内存中，只需一次内存分配，减少了分配开销并改善缓存局部性。缺点是对象生命周期被控制块绑定，弱引用存活期间对象内存无法释放。对于大对象且不需要长期弱引用时 make_shared 更优。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "make_shared advantages"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "020",
+    "id": "008",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "vector 的扩容机制是什么？扩容时迭代器会怎样？",
@@ -460,7 +184,7 @@
     ]
   },
   {
-    "id": "021",
+    "id": "009",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "map 和 unordered_map 有什么区别？怎样选择？",
@@ -483,30 +207,7 @@
     ]
   },
   {
-    "id": "022",
-    "group": "cpp",
-    "category": "cpp/stl",
-    "title": "deque 的底层结构是什么？它适合什么场景？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "deque 通常由固定大小的内存块数组组成，两端可以高效地插入和删除，首尾操作均为均摊 O(1)。中间插入仍需移动元素。它作为 std::queue 和 std::stack 的默认底层容器，适合需要两端操作的场景。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "deque internal structure"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "023",
+    "id": "010",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "STL 迭代器在哪些情况下会失效？",
@@ -529,120 +230,7 @@
     ]
   },
   {
-    "id": "024",
-    "group": "cpp",
-    "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "什么是模板特化和偏特化？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "全特化为特定的模板参数组合提供完整实现，偏特化只对部分参数做特化而保留其他参数为泛型。它们允许为指针、引用或特定类型族提供优化或不同的行为。偏特化只能针对类模板和变量模板，函数模板通过重载实现类似效果。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "template specialization"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "025",
-    "group": "cpp",
-    "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "常用的 type_traits 有哪些？怎么用？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "is_same、is_base_of、is_integral 等提供类型属性查询，enable_if 实现编译期条件，conditional 做编译期分支，decay 和 remove_reference 用于剥离类型修饰。它们是编写泛型代码的基础工具，常与 SFINAE 或 if constexpr 配合使用。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "type traits utilities"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "026",
-    "group": "cpp",
-    "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "什么是可变参数模板和折叠表达式？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "可变参数模板用 template<typename... Args> 接受任意数量和类型的参数，通过递归或包展开处理参数包。C++17 折叠表达式 (args + ...) 将参数包的二元运算简化为单行表达式，支持一元和二元左折叠、右折叠四种形式。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "variadic templates and fold expressions"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-004",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "027",
-    "group": "cpp",
-    "category": "cpp/templates-sfinae-traits-constexpr",
-    "title": "if constexpr 和普通 if 有什么区别？",
-    "difficulty": 3,
-    "scopes": [
-      "C++17"
-    ],
-    "answer": "if constexpr 的条件必须是编译期常量，未选择的分支成为丢弃语句，依赖模板参数的丢弃分支不会在该实例中完成实例化。这避免了为不满足条件的类型生成无效代码，大幅简化了模板中的编译期分支逻辑。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "constexpr if statement"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-004",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "028",
-    "group": "cpp",
-    "category": "cpp/value-categories-move-forwarding",
-    "title": "C++ 的值类别有哪些？左值和右值怎么区分？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "C++ 表达式按身份和可移动性分为 lvalue、xvalue 和 prvalue 三类。lvalue 有确定身份且不可被移动，xvalue 有身份但可被移动，prvalue 没有身份且用于初始化。右值是 xvalue 和 prvalue 的总称，右值引用 && 可以绑定到右值以实现移动语义。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "value categories"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "029",
+    "id": "011",
     "group": "cpp",
     "category": "cpp/value-categories-move-forwarding",
     "title": "std::move 的作用是什么？它本身会移动对象吗？",
@@ -665,76 +253,7 @@
     ]
   },
   {
-    "id": "030",
-    "group": "cpp",
-    "category": "cpp/value-categories-move-forwarding",
-    "title": "std::forward 和完美转发是怎么回事？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "std::forward 在模板中保持实参的值类别不变，让转发函数将参数以原始的左值或右值形式传递给下一层。它配合万能引用 T&& 使用，避免所有参数都被当作左值处理。完美转发确保包装函数不会改变调用语义。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "std::forward perfect forwarding"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "031",
-    "group": "cpp",
-    "category": "cpp/value-categories-move-forwarding",
-    "title": "什么是 RVO 和拷贝消除？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "返回值优化让编译器直接在调用者的存储空间中构造返回对象，避免额外的复制或移动。C++17 将强制拷贝消除写入语言标准，prvalue 不再产生临时对象而是直接初始化目标。这保证了即使类型不可复制也能作为函数返回值使用。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "copy elision and RVO"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-004",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "032",
-    "group": "cpp",
-    "category": "cpp/value-categories-move-forwarding",
-    "title": "移动语义在 STL 容器中是怎样应用的？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "容器在扩容或重新分配时使用移动而非复制，前提是该类型的移动操作是 noexcept 的。emplace_back 在容器内存中原位构造对象，避免临时对象的创建和移动。使用 std::move 将元素移入容器可以显著减少不必要的深拷贝。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "move semantics in containers"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-001",
-      "evidence-cpp-002"
-    ]
-  },
-  {
-    "id": "033",
+    "id": "012",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "Lambda 表达式的捕获方式有哪些？各有什么注意事项？",
@@ -757,7 +276,7 @@
     ]
   },
   {
-    "id": "034",
+    "id": "013",
     "group": "cpp",
     "category": "cpp/lambdas-utility-types",
     "title": "std::function 和直接使用 lambda 有什么区别？",
@@ -780,51 +299,7 @@
     ]
   },
   {
-    "id": "035",
-    "group": "cpp",
-    "category": "cpp/lambdas-utility-types",
-    "title": "std::optional、std::variant 和 std::any 各解决什么问题？",
-    "difficulty": 3,
-    "scopes": [
-      "C++17"
-    ],
-    "answer": "optional 表示可能不存在的值，避免用特殊值或指针表达空状态。variant 是类型安全的联合体，同一时刻持有多种候选类型之一。any 可以存储任意类型，取值时需要 any_cast 并处理类型不匹配。三者都避免了裸指针和动态分配的开销。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "optional variant any vocabulary types"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "036",
-    "group": "cpp",
-    "category": "cpp/lambdas-utility-types",
-    "title": "std::tuple 和结构化绑定怎么用？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "tuple 可以打包不同类型的值，std::get 或 std::tie 用于访问元素。C++17 结构化绑定 auto [a, b] = pair 让返回值解包更简洁，适用于多返回值函数和 map 遍历。tuple 也是实现泛型编程中复合返回值的基础工具。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "tuple and structured bindings"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "037",
+    "id": "014",
     "group": "cpp",
     "category": "cpp/exceptions-rtti",
     "title": "C++ 异常处理的抛出和捕获机制是怎样的？",
@@ -847,53 +322,7 @@
     ]
   },
   {
-    "id": "038",
-    "group": "cpp",
-    "category": "cpp/exceptions-rtti",
-    "title": "RTTI 和 typeid 有什么用途和开销？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "RTTI 通过 typeid 运算符获取对象的运行时类型信息，返回 std::type_info 引用。它需要虚表支持，因此只对含虚函数的多态类型有效。RTTI 有存储和查询开销，某些嵌入式或性能敏感环境会禁用它，改用自定义类型标识方案。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "RTTI and typeid"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "039",
-    "group": "cpp",
-    "category": "cpp/exceptions-rtti",
-    "title": "dynamic_cast 的实现原理和使用场景是什么？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "dynamic_cast 借助 RTTI 在运行时检查继承关系，向下转换成功返回目标指针，失败返回 nullptr（指针）或抛 bad_cast（引用）。它需要基类有虚函数，对性能敏感代码可能不够友好。频繁的 dynamic_cast 通常暗示类型层次设计需要调整。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "dynamic_cast implementation"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "040",
+    "id": "015",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "std::thread 的基本用法和注意事项有哪些？",
@@ -916,7 +345,7 @@
     ]
   },
   {
-    "id": "041",
+    "id": "016",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "mutex、lock_guard 和 unique_lock 有什么区别？",
@@ -939,7 +368,7 @@
     ]
   },
   {
-    "id": "042",
+    "id": "017",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "condition_variable 怎样避免虚假唤醒？",
@@ -962,76 +391,7 @@
     ]
   },
   {
-    "id": "043",
-    "group": "cpp",
-    "category": "cpp/standard-concurrency",
-    "title": "std::atomic 和内存序是什么？",
-    "difficulty": 4,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "atomic 提供原子读写和 CAS 操作，保证并发访问不会发生数据竞争。内存序控制操作的可见性顺序，默认的 memory_order_seq_cst 提供最强的一致性但性能较低，relaxed 只保证原子性不提供排序，acquire/release 在两者之间取得平衡。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "atomic operations and memory order"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-003",
-      "evidence-cpp-004"
-    ]
-  },
-  {
-    "id": "044",
-    "group": "cpp",
-    "category": "cpp/standard-concurrency",
-    "title": "std::async、std::future 和 std::promise 怎样配合使用？",
-    "difficulty": 3,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "async 异步启动任务并返回 future，future 用于获取异步结果或等待完成。promise 允许手动设置结果或异常，适合将结果从一个线程传递到另一个线程。async 的启动策略可选立即执行或延迟执行，不保存 future 时 async 会同步等待完成。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "async future promise"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-004",
-      "evidence-cpp-001"
-    ]
-  },
-  {
-    "id": "045",
-    "group": "cpp",
-    "category": "cpp/strings-time-files-streams",
-    "title": "C++ 文件流和 iostream 的基本用法是什么？",
-    "difficulty": 2,
-    "scopes": [
-      "C++11",
-      "C++14",
-      "C++17"
-    ],
-    "answer": "ifstream、ofstream 和 fstream 分别用于文件读取、写入和读写，构造时打开文件，析构时自动关闭。配合 RAII 可以安全地管理文件句柄。iostream 体系通过格式化运算符和 manipulator 提供类型安全的输入输出，但性能通常不如 C 风格的 stdio。",
-    "answerSources": [
-      {
-        "authority": "cppreference",
-        "topic": "file stream and iostream basics"
-      }
-    ],
-    "evidenceIds": [
-      "evidence-cpp-002",
-      "evidence-cpp-003"
-    ]
-  },
-  {
-    "id": "046",
+    "id": "018",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "指针和引用有什么区别？",
@@ -1054,7 +414,7 @@
     ]
   },
   {
-    "id": "047",
+    "id": "019",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "const 有哪些常见用法？const 指针和指向 const 的指针有什么区别？",
@@ -1077,7 +437,7 @@
     ]
   },
   {
-    "id": "048",
+    "id": "020",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "static 关键字在 C++ 中有哪些不同含义？",
@@ -1100,7 +460,7 @@
     ]
   },
   {
-    "id": "049",
+    "id": "021",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "虚函数和纯虚函数有什么区别？抽象类能实例化吗？",
@@ -1123,7 +483,7 @@
     ]
   },
   {
-    "id": "050",
+    "id": "022",
     "group": "cpp",
     "category": "cpp/core-language",
     "title": "volatile 关键字有什么作用？它能保证线程安全吗？",
@@ -1146,7 +506,7 @@
     ]
   },
   {
-    "id": "051",
+    "id": "023",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
     "title": "new 和 malloc 有什么区别？new 的过程做了什么？",
@@ -1169,7 +529,7 @@
     ]
   },
   {
-    "id": "052",
+    "id": "024",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
     "title": "什么是内存对齐？为什么结构体的大小可能大于成员大小之和？",
@@ -1192,7 +552,7 @@
     ]
   },
   {
-    "id": "053",
+    "id": "025",
     "group": "cpp",
     "category": "cpp/types-expressions-initialization",
     "title": "C++ 的四种类型转换运算符分别是什么？各适用什么场景？",
@@ -1215,7 +575,7 @@
     ]
   },
   {
-    "id": "054",
+    "id": "026",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "什么是内存泄漏？C++ 中常见的原因和检测方法有哪些？",
@@ -1238,7 +598,7 @@
     ]
   },
   {
-    "id": "055",
+    "id": "027",
     "group": "cpp",
     "category": "cpp/classes-object-model",
     "title": "深拷贝和浅拷贝有什么区别？什么时候需要自定义拷贝构造函数？",
@@ -1261,7 +621,7 @@
     ]
   },
   {
-    "id": "056",
+    "id": "028",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "vector 和 list 有什么区别？分别适合什么场景？",
@@ -1284,7 +644,7 @@
     ]
   },
   {
-    "id": "057",
+    "id": "029",
     "group": "cpp",
     "category": "cpp/stl",
     "title": "emplace_back 和 push_back 有什么区别？",
@@ -1307,7 +667,7 @@
     ]
   },
   {
-    "id": "058",
+    "id": "030",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "什么是死锁？产生的条件和常见解决方法有哪些？",
@@ -1330,7 +690,7 @@
     ]
   },
   {
-    "id": "059",
+    "id": "031",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "什么是线程池？为什么不建议频繁创建和销毁线程？",
@@ -1353,7 +713,7 @@
     ]
   },
   {
-    "id": "060",
+    "id": "032",
     "group": "cpp",
     "category": "cpp/standard-concurrency",
     "title": "什么是生产者消费者模型？用 C++ 标准库怎么实现？",
@@ -1373,6 +733,650 @@
     "evidenceIds": [
       "evidence-cpp-001",
       "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "033",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "struct 和 class 在 C++ 中有什么区别？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "唯一的区别是默认访问权限和默认继承权限不同：struct 默认 public，class 默认 private。在 C++ 中 struct 可以有成员函数、构造函数和继承，功能和 class 完全一样。习惯上 struct 用于纯数据聚合，class 用于有行为的类型。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "class and struct differences"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "034",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "this 指针是什么？什么时候需要用 this？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "this 是隐式传递给非静态成员函数的指针，指向调用该函数的对象本身。在构造函数中给成员赋值时区分同名参数、返回自身引用支持链式调用、以及把自己传给外部函数时都需要显式使用 this。静态成员函数没有 this 指针。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "this pointer"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "035",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "友元函数和友元类是什么？什么场景下使用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "友元声明允许指定的非成员函数或外部类访问当前类的私有和受保护成员，突破了封装限制。常见于运算符重载、工厂函数和需要紧密协作的两个类之间。友元关系是单向的且不能被继承，滥用会破坏封装性。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "friend declarations"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "036",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "构造函数初始化列表和函数体内赋值有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "初始化列表直接调用成员的构造函数完成初始化，函数体内赋值则是先默认构造再赋值，对复杂类型多一次构造开销。const 成员、引用成员和没有默认构造函数的基类必须通过初始化列表初始化。初始化列表的顺序按成员声明顺序而非列表书写顺序。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "constructor initializer list"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "037",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "什么是隐式转换？explicit 关键字有什么作用？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "C++ 允许单参数构造函数参与隐式类型转换，例如接受 int 的构造函数可以让函数参数自动从 int 转为对象类型。explicit 阻止这种隐式转换，只允许显式构造。避免意外转换导致的 bug 和性能问题，单参数构造函数通常应标记 explicit。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "explicit specifier"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "038",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "什么是多重继承？菱形继承问题怎么解决？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "多重继承允许一个类同时继承多个基类，菱形继承指两个类继承同一基类、又被同一个类继承时产生两份基类子对象的问题。虚继承让中间层共享同一份基类子对象来解决歧义和二义性。UE 中通常避免多重继承，改用接口类（纯虚类）组合。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "multiple and virtual inheritance"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "039",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "C++ 的编译过程分哪几个阶段？预处理、编译、链接分别做什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "预处理阶段展开宏、处理 #include 和条件编译。编译阶段将每个翻译单元翻译成目标文件，进行语法检查和代码生成。链接阶段将所有目标文件和库合并为可执行文件，解析符号引用。理解这个过程有助于排查头文件包含、重复定义和未解析符号等常见编译错误。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "translation and linkage"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "040",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "函数指针和 std::function 有什么区别？回调函数怎么实现？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "函数指针直接指向函数地址，调用开销最小但不能捕获上下文。std::function 是类型擦除包装器，可以存储函数指针、lambda 和仿函数，使用更灵活但有堆分配开销。UE 中回调主要用委托系统（Delegate），C++ 项目中简单回调用函数指针，需要闭包时用 std::function。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "function pointers and callbacks"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "041",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "C++ 中常用的运算符重载有哪些？有什么注意事项？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "operator==、operator< 用于比较，operator<< 用于流输出，operator[] 用于下标访问，operator() 用于仿函数。运算符重载应保持直觉语义，不要改变优先级和结合性。重载 == 时通常也要重载 !=，重载 < 时考虑全套比较运算符以支持标准算法和容器。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "operator overloading"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "042",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "sizeof 在不同类型上的表现是什么？空类占多少字节？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "sizeof 返回类型或对象的字节数，空类大小为 1 字节以保证不同对象有不同地址。含有虚函数的类至少包含一个虚表指针（通常 8 字节），多重继承会有多个虚表指针。sizeof 是编译期常量，数组作为函数参数时退化为指针，sizeof 返回指针大小而非数组大小。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "sizeof operator"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "043",
+    "group": "cpp",
+    "category": "cpp/core-language",
+    "title": "位运算在游戏开发中有哪些常见用法？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "位掩码用单个整数的不同位表达多个布尔标志，节省内存且支持高效的组合查询。左移右移用于快速乘除 2 的幂，按位与用于提取特定位，按位或用于设置标志位。游戏开发中常用于组件标志、权限系统和网络协议中的紧凑数据编码。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "bitwise operators"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "044",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "栈和堆的区别是什么？各自的优缺点？",
+    "difficulty": 1,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "栈由编译器自动管理，速度快但空间有限（通常几 MB），局部变量和函数调用帧存放在栈上。堆由程序员手动管理（new/delete 或智能指针），空间大但分配慢且容易泄漏。栈对象生命周期确定，适合 RAII；堆对象可以跨作用域共享。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "stack and heap allocation"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "045",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "什么是 placement new？它在游戏引擎中有什么用途？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "placement new 在预先分配的内存上构造对象，语法为 new (buffer) Type(args)，不会分配新内存。游戏引擎常用它在内存池的预分配块上构造对象，避免频繁的系统内存分配。使用 placement new 的对象需要手动调用析构函数销毁，不能用 delete。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "placement new"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "046",
+    "group": "cpp",
+    "category": "cpp/types-expressions-initialization",
+    "title": "assert 有什么作用？和异常处理有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "assert 是调试期的断言宏，条件不满足时终止程序并输出诊断信息，帮助尽早发现逻辑错误。Release 构建中 NDEBUG 会移除 assert，零运行时开销。异常处理用于运行期可恢复的错误，而 assert 用于绝不应发生的情况。UE 用 check 和 ensure 宏提供类似功能。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "assertions and debugging"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "047",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "构造函数和析构函数的执行顺序是怎样的？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "构造时先执行基类构造函数（按声明顺序），再按声明顺序初始化成员，最后执行派生类构造函数体。析构顺序完全相反：先执行派生类析构函数体，再逆序析构成员，最后逆序析构基类。理解这个顺序对避免访问未初始化或已销毁的成员至关重要。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "construction and destruction order"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "048",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "虚继承是什么？它和普通继承有什么区别？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "虚继承让派生类在多重继承路径中只保留一份虚基类子对象，解决菱形继承的二义性问题。虚基类的构造由最派生类负责，中间层的初始化会被忽略。代价是额外的虚基表指针和间接访问开销。UE 中通常避免多重继承，改用接口和组合。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "virtual inheritance"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "049",
+    "group": "cpp",
+    "category": "cpp/classes-object-model",
+    "title": "什么是空基类优化（EBO）？它有什么实际价值？",
+    "difficulty": 3,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "空基类优化允许空基类子对象不占用额外空间，派生类的大小不会因为继承空类而增加。标准库中大量使用这一优化，比如 empty base 策略让 allocator 和比较器不增加容器体积。C++11 的 [[no_unique_address]] 属性将类似优化扩展到了成员变量。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "empty base optimization"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "050",
+    "group": "cpp",
+    "category": "cpp/lifetime-raii",
+    "title": "C++ 中常见的资源管理方式有哪些？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "RAII 是最核心的方式，把资源生命周期绑定到栈对象的作用域。智能指针管理堆内存，unique_ptr 表示独占，shared_ptr 表示共享。自定义 deleter 可以管理文件句柄、socket 等任意资源。UE 还有自己的引用计数体系和 TSharedPtr、TWeakPtr 等智能指针。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "resource management patterns"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-003",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "051",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "裸指针、引用和智能指针分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "引用表示必须有效的别名，不能为空也不能重新绑定。裸指针表示可选引用或观察者，可以为空。unique_ptr 表示独占所有权，shared_ptr 表示共享所有权。函数参数优先用引用或裸指针（不转移所有权时），返回值用智能指针（转移所有权时）。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "pointer and reference usage guidelines"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "052",
+    "group": "cpp",
+    "category": "cpp/smart-pointers-allocators",
+    "title": "引用计数智能指针有什么性能开销？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "shared_ptr 的引用计数增减是原子操作，多线程下有额外的同步开销。每次拷贝、赋值和析构都会修改计数，频繁传递的短生命周期对象开销明显。控制块需要额外的堆内存，make_shared 可以把对象和控制块合在一次分配中。性能敏感场景优先用 unique_ptr。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "shared_ptr performance overhead"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "053",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "map 和 unordered_map 的底层数据结构是什么？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "map 基于红黑树实现，元素按 key 有序排列，查找、插入、删除均为 O(log n)，迭代器按序遍历。unordered_map 基于哈希表实现，平均 O(1) 查找但最坏 O(n)，迭代顺序不确定。需要有序遍历或稳定性能选 map，追求平均速度选 unordered_map。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "map and unordered_map internals"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "054",
+    "group": "cpp",
+    "category": "cpp/stl",
+    "title": "游戏开发中常用的 STL 容器有哪些？怎么选择？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "vector 是最常用的容器，连续内存、随机访问 O(1)、尾部插入均摊 O(1)。map/unordered_map 用于键值查找，string 用于文本处理。deque 适合两端操作，list 适合频繁中间插入。游戏开发中通常优先用 vector 配合 reserve，只在有明确需求时才换其他容器。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "STL container selection"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "055",
+    "group": "cpp",
+    "category": "cpp/value-categories-move-forwarding",
+    "title": "什么是移动语义？它解决了什么问题？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "移动语义允许把即将销毁的对象的资源直接转移给新对象，避免深拷贝。std::move 把左值转为右值引用，让编译器选择移动构造或移动赋值而非复制。对于管理堆内存、文件句柄等重资源的类型，移动操作比复制高效得多，是 C++11 最重要的特性之一。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "move semantics overview"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-002"
+    ]
+  },
+  {
+    "id": "056",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "Lambda 表达式在游戏开发中怎么用？有什么注意事项？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "Lambda 在 UE 中广泛用于委托绑定、异步回调和算法谓词。值捕获 [&] 保存引用要注意悬空引用问题，值捕获 [=] 会复制对象。C++14 的广义捕获支持移动语义捕获 unique_ptr。lambda 作为参数时建议用模板而非 std::function 以避免类型擦除开销。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lambda in game development"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "057",
+    "group": "cpp",
+    "category": "cpp/lambdas-utility-types",
+    "title": "什么是仿函数（函数对象）？和函数指针有什么区别？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "仿函数是重载了 operator() 的类对象，可以持有状态且编译器更容易内联优化。函数指针只是一个地址，不能携带上下文。STL 算法大量接受仿函数，C++11 后 lambda 本质上也是编译器生成的仿函数类。UE 的委托系统底层也使用类似函数对象的设计。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "function objects and functors"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-003"
+    ]
+  },
+  {
+    "id": "058",
+    "group": "cpp",
+    "category": "cpp/exceptions-rtti",
+    "title": "C++ 异常处理的开销在哪里？游戏引擎为什么经常禁用异常？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "异常的开销主要来自栈展开时需要查找和匹配 catch 处理器，以及异常对象的构造和复制。即使没有抛出异常，try-catch 也会增加代码体积和影响编译器优化。游戏引擎对帧率敏感且错误通常可预测，所以 UE 默认禁用异常，改用 assert、日志和错误码处理。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "exception handling performance"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "059",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "C++ 多线程编程中有哪些常见陷阱？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "数据竞争是最大风险，多个线程同时读写同一变量且至少一个是写操作时会产生未定义行为。死锁由多个线程互相等待对方释放锁导致。悬空引用发生在被捕获的变量在线程执行前已销毁。使用 mutex 保护共享数据、避免嵌套加锁、用 RAII 锁管理可以规避大部分问题。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "multithreading pitfalls"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-002",
+      "evidence-cpp-004"
+    ]
+  },
+  {
+    "id": "060",
+    "group": "cpp",
+    "category": "cpp/standard-concurrency",
+    "title": "mutex、读写锁和自旋锁分别适合什么场景？",
+    "difficulty": 2,
+    "scopes": [
+      "C++11",
+      "C++14",
+      "C++17"
+    ],
+    "answer": "mutex 适合通用的互斥保护，临界区较短时使用。读写锁（shared_mutex）适合读多写少的场景，允许多个读者同时访问。自旋锁在等待时不断轮询不释放 CPU，适合临界区极短且锁竞争低的场景，UE 中用于性能关键路径。选择时考虑锁持有时间和竞争频率。",
+    "answerSources": [
+      {
+        "authority": "cppreference",
+        "topic": "lock types and selection"
+      }
+    ],
+    "evidenceIds": [
+      "evidence-cpp-001",
+      "evidence-cpp-003"
     ]
   }
 ]
